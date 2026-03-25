@@ -1,0 +1,60 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  max-width: 400px;
+  margin: auto;
+
+  padding: 20px;
+  border-radius: 12px;
+
+  /* стеклянный эффект */
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.55)
+  );
+
+  backdrop-filter: blur(8px);
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form input {
+  padding: 12px;
+  border-radius: 8px;
+
+  border: 1px solid rgba(0, 0, 0, 0.15);
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+/* фокус */
+.form input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(46, 139, 87, 0.2);
+}
+
+/* кнопка */
+.form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+
+  background: linear-gradient(
+    rgba(46, 139, 87, 0.9),
+    rgba(46, 139, 87, 0.75)
+  );
+
+  color: white;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.form button:hover {
+  background: #256f46;
+  transform: translateY(-2px);
+}

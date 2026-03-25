@@ -1,0 +1,28 @@
+/* =========================
+   СЕКЦИЯ ABOUT
+========================= */
+.about {
+  text-align: center;
+
+  /* фон как в секции услуг */
+  background: rgba(14, 71, 3, 0.25)
+    url("/services-bg.jpg") center/cover no-repeat;
+
+  color: #fff;
+  padding: 60px 20px; /* добавляем отступы сверху/снизу */
+}
+
+.about p {
+  max-width: 800px; /* сужаем текст */
+  margin: 15px auto;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* адаптив */
+@media (max-width: 768px) {
+  .about p {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+}

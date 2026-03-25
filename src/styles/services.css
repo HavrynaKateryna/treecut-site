@@ -1,0 +1,83 @@
+/* СЕКЦИЯ SERVICES (как FAQ, но карточки в ряд) */
+.services-section {
+  padding: 60px 20px;
+
+  background: url("/services-bg.jpg") center/cover
+    no-repeat;
+
+  display: flex;
+  justify-content: center; /* центрируем контейнер */
+  color: #fff;
+}
+
+/* контейнер */
+.services-section .container {
+  width: 100%;
+  max-width: 1100px; /* шире, чтобы поместились карточки в ряд */
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* заголовок */
+.services-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* 4 карточки в ряд */
+  gap: 20px;
+}
+
+/* карточка */
+.card {
+  background: rgba(3, 44, 22, 0.74);
+  padding: 20px;
+  border-radius: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  color: #fff;
+
+  transition: all 0.3s ease;
+}
+
+/* hover */
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #2e7d32;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* текст */
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* адаптив */
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* 2 карточки в ряд на планшете */
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* 1 карточка на мобильных */
+  }
+}

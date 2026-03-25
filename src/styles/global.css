@@ -1,0 +1,176 @@
+/* =========================
+   ПЕРЕМЕННЫЕ (ЦВЕТА)
+========================= */
+:root {
+  --green: #2e8b57;
+  --dark: #34495e;
+  --white: #ffffff;
+  --light: #f5f5f5;
+}
+
+/* =========================
+   СБРОС
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   ОСНОВА
+========================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--dark);
+
+  /* ОБЩИЙ ФОН САЙТА */
+  background: url("/bg.jpg") center/cover
+    no-repeat fixed;
+}
+
+/* =========================
+   КОНТЕЙНЕР
+========================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* =========================
+   ТЕКСТ
+========================= */
+h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+/* =========================
+   ССЫЛКИ
+========================= */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================
+   СЕКЦИИ (ОСНОВА)
+========================= */
+.section {
+  padding: 60px 20px;
+  margin: 20px;
+  border-radius: 12px;
+
+  /* стекло + градиент */
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.75),
+    rgba(255, 255, 255, 0.55)
+  );
+
+  backdrop-filter: blur(10px);
+}
+
+/* ТЁМНАЯ */
+.section--dark {
+  background: linear-gradient(
+    rgba(52, 73, 94, 0.85),
+    rgba(52, 73, 94, 0.65)
+  );
+  color: white;
+}
+
+/* ЗЕЛЁНАЯ */
+.section--green {
+  background: linear-gradient(
+    rgba(46, 139, 87, 0.85),
+    rgba(46, 139, 87, 0.65)
+  );
+  color: white;
+}
+
+/* =========================
+   КНОПКИ
+========================= */
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* основная */
+.btn-primary {
+  background: var(--green);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #256f46;
+  transform: translateY(-2px);
+}
+
+/* вторичная */
+.btn-secondary {
+  background: white;
+  color: var(--dark);
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+/* =========================
+   FLEX УТИЛИТЫ
+========================= */
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   ИЗОБРАЖЕНИЯ
+========================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   АДАПТИВ
+========================= */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .section {
+    padding: 40px 15px;
+    margin: 10px;
+  }
+}

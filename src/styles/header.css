@@ -1,0 +1,157 @@
+:root {
+  --header-height: 80px;
+  --green: #2e7d32;
+}
+
+/* =========================
+   GLOBAL (минимально нужно)
+========================= */
+body {
+  margin: 0;
+  padding-top: var(--header-height);
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+
+  background: linear-gradient(
+    rgba(5, 120, 51, 0.8),
+    rgba(0, 0, 0, 0.8)
+  );
+
+  backdrop-filter: blur(6px);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  color: #fff; /* ← ВАЖНО */
+}
+
+.logo span {
+  color: #fff; /* на всякий случай */
+}
+
+.logo-circle img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* NAV */
+.nav a {
+  margin-left: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #a5d6a7;
+}
+
+/* BURGER */
+.burger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #fff; /* ← ВАЖНО */
+}
+
+/* =========================
+   MODAL MENU
+========================= */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 2000;
+}
+
+.menu-modal {
+  background: #1a2b22;
+  padding: 30px;
+  border-radius: 12px;
+
+  width: 90%;
+  max-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  position: relative;
+}
+
+.menu-modal a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.menu-modal a:hover {
+  background: var(--green);
+}
+
+.menu-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* =========================
+   ADAPTIVE
+========================= */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+}

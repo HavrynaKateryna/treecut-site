@@ -1,0 +1,114 @@
+.hero {
+  height: 100vh;
+
+  background: url("/hero.jpg") center/cover
+    no-repeat;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  overflow: hidden;
+}
+
+/* overlay */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  /* более глубокий и "премиальный" градиент */
+  background: linear-gradient(
+    180deg,
+    rgba(0, 40, 30, 0.4) 0%,
+    rgba(0, 20, 15, 0.75) 100%
+  );
+}
+
+/* контент */
+.hero__content {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+/* кнопки */
+.hero__buttons {
+  margin-top: 25px;
+
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* базовая кнопка */
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+
+  font-size: 16px;
+  transition: all 0.3s ease;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* primary */
+.btn-primary {
+  background: var(--green);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #256f46;
+  transform: translateY(-2px);
+}
+
+/* secondary */
+.btn-secondary {
+  background: white;
+  color: var(--dark);
+}
+
+.btn-secondary:hover {
+  background: #e6e6e6;
+  transform: translateY(-2px);
+}
+
+/* whatsapp */
+.btn-whatsapp {
+  background: #156c35;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background: #1da851;
+  transform: translateY(-2px);
+}
+
+/* адаптив */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 260px;
+  }
+}

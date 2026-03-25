@@ -1,0 +1,93 @@
+/* ОБЁРТКА */
+.floating-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  z-index: 3000;
+}
+
+/* КНОПКА */
+.float-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+
+  backdrop-filter: blur(6px);
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+
+  transition: all 0.3s ease;
+}
+
+/* ТЕЛЕФОН */
+.float-btn.call {
+  background: linear-gradient(
+    rgba(52, 73, 94, 0.95),
+    rgba(52, 73, 94, 0.75)
+  );
+}
+
+.float-btn.call:hover {
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* WHATSAPP (правильный цвет) */
+.float-btn.whatsapp {
+  background: linear-gradient(
+    rgba(37, 211, 102, 0.95),
+    rgba(37, 211, 102, 0.75)
+  );
+}
+
+.float-btn.whatsapp:hover {
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* ПУЛЬС АНИМАЦИЯ (очень круто смотрится) */
+.float-btn.whatsapp::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+
+  background: rgba(37, 211, 102, 0.4);
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* АДАПТИВ */
+@media (max-width: 600px) {
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}

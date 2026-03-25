@@ -13,7 +13,7 @@ import Modal from "./components/Modal";
 
 export default function App() {
   const [modalOpen, setModalOpen] =
-    useState(false);
+    useState<boolean>(false);
 
   return (
     <>

@@ -12,9 +12,13 @@ import "./styles/faq.css";
 import "./styles/footer.css";
 import "./styles/modal.css";
 
-ReactDOM.createRoot(
-  document.getElementById("root"),
-).render(
+const root = document.getElementById("root");
+
+if (!root) {
+  throw new Error("Root element not found");
+}
+
+ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

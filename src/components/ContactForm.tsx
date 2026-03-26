@@ -1,5 +1,7 @@
 export default function ContactForm() {
-  const submit = (e) => {
+  const submit = (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
     alert("Заявка отправлена");
   };

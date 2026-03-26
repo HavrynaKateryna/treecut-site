@@ -1,21 +1,45 @@
-import { useState } from "react";
+import {
+  useState,
+  ChangeEvent,
+  FormEvent,
+} from "react";
 
-export default function Modal({ open, onClose }) {
-  const [form, setForm] = useState({
+type ModalProps = {
+  open: boolean;
+  onClose: () => void;
+};
+
+type FormData = {
+  name: string;
+  phone: string;
+  email: string;
+  question: string;
+};
+
+type FormErrors = Partial<
+  Record<keyof FormData, string>
+>;
+
+export default function Modal({
+  open,
+  onClose,
+}: ModalProps) {
+  const [form, setForm] = useState<FormData>({
     name: "",
     phone: "",
     email: "",
     question: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] =
+    useState<FormErrors>({});
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 
   if (!open) return null;
 
-  const validate = () => {
-    const newErrors = {};
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
 
     if (
       !form.name.trim() ||
@@ -53,25 +77,30 @@ export default function Modal({ open, onClose }) {
     }
 
     setErrors(newErrors);
-
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >,
+  ) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (
+    e: FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
 
     if (!validate()) return;
 
     setLoading(true);
 
-    // имитация запроса (например API)
+    // имитация запроса
     await new Promise((resolve) =>
       setTimeout(resolve, 1500),
     );
@@ -84,7 +113,6 @@ export default function Modal({ open, onClose }) {
       email: "",
       question: "",
     });
-
     setErrors({});
     setLoading(false);
     setSuccess(true);
@@ -156,7 +184,6 @@ export default function Modal({ open, onClose }) {
                 value={form.question}
                 onChange={handleChange}
               />
-
               <small>
                 Words:{" "}
                 {form.question.trim()
@@ -166,7 +193,6 @@ export default function Modal({ open, onClose }) {
                   : 0}{" "}
                 / 50
               </small>
-
               {errors.question && (
                 <span className="error">
                   {errors.question}

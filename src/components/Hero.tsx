@@ -1,4 +1,10 @@
-export default function Hero({ openModal }) {
+type Props = {
+  openModal: () => void;
+};
+
+export default function Hero({
+  openModal,
+}: Props) {
   return (
     <section className="hero">
       <div className="hero__overlay"></div>

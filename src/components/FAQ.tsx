@@ -1,7 +1,12 @@
 import { useState } from "react";
 
+type FAQItem = {
+  q: string;
+  a: string;
+};
+
 export default function FAQ() {
-  const data = [
+  const data: FAQItem[] = [
     {
       q: "How much does tree removal cost?",
       a: "The price depends on the tree height, access conditions, and job complexity. An exact quote is provided after assessment.",
@@ -24,10 +29,11 @@ export default function FAQ() {
     },
   ];
 
-  const [openIndex, setOpenIndex] =
-    useState(null);
+  const [openIndex, setOpenIndex] = useState<
+    number | null
+  >(null);
 
-  const toggle = (index) => {
+  const toggle = (index: number) => {
     setOpenIndex(
       openIndex === index ? null : index,
     );

@@ -1,5 +1,5 @@
-import {
-  useState,
+import { useState } from "react";
+import type {
   ChangeEvent,
   FormEvent,
 } from "react";
@@ -44,37 +44,30 @@ export default function Modal({
     if (
       !form.name.trim() ||
       form.name.trim().length < 2
-    ) {
+    )
       newErrors.name =
         "Enter a valid name (min 2 characters)";
-    }
 
     const phoneRegex = /^[0-9+\-\s()]{7,}$/;
-    if (!phoneRegex.test(form.phone)) {
+    if (!phoneRegex.test(form.phone))
       newErrors.phone =
         "Enter a valid phone number";
-    }
 
     const emailRegex =
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(form.email)) {
+    if (!emailRegex.test(form.email))
       newErrors.email =
         "Enter a valid email address";
-    }
 
     const wordCount = form.question.trim()
       ? form.question.trim().split(/\s+/).length
       : 0;
-
-    if (wordCount < 3) {
+    if (wordCount < 3)
       newErrors.question =
         "Question must contain at least 3 words";
-    }
-
-    if (wordCount > 50) {
+    if (wordCount > 50)
       newErrors.question =
         "Question is too long (max 50 words)";
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -95,12 +88,9 @@ export default function Modal({
     e: FormEvent<HTMLFormElement>,
   ) => {
     e.preventDefault();
-
     if (!validate()) return;
 
     setLoading(true);
-
-    // имитация запроса
     await new Promise((resolve) =>
       setTimeout(resolve, 1500),
     );
@@ -135,7 +125,6 @@ export default function Modal({
         {!success ? (
           <>
             <h2>Submit a request</h2>
-
             <form
               className="form"
               onSubmit={handleSubmit}
@@ -213,7 +202,6 @@ export default function Modal({
             <h2>Request successfully sent ✅</h2>
           </div>
         )}
-
         <button
           className="modal-close"
           onClick={onClose}

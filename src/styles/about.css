@@ -9,7 +9,7 @@
     url("/services-bg.jpg") center/cover no-repeat;
 
   color: #fff;
-  padding: 60px 20px; /* добавляем отступы сверху/снизу */
+  padding: 100px 20px; /* добавляем отступы сверху/снизу */
 }
 
 .about p {

@@ -1,16 +1,12 @@
-/* =========================
-   СЕКЦИЯ ГАЛЕРЕЯ
-========================= */
 .gallery-section {
   padding: 60px 20px;
   color: #fff;
   display: flex;
-  justify-content: center; /* центрируем контейнер */
+  justify-content: center;
 }
 
-/* контейнер с ограниченной шириной и фоном */
 .gallery-section .container {
-  max-width: 100%; /* ограничиваем ширину */
+  max-width: 100%;
   width: 100%;
   background: rgba(14, 71, 3, 0.25)
     url("/services-bg.jpg") center/cover no-repeat;
@@ -18,23 +14,18 @@
   padding: 60px 20px;
 }
 
-/* заголовок */
-.gallery-section h2 {
+.gallery-title {
   text-align: center;
   margin-bottom: 30px;
 }
 
-/* сетка картинок */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(
-    3,
-    1fr
-  ); /* четыре картинки в ряд на десктопе */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  transition: all 0.5s ease;
 }
 
-/* карточка */
 .gallery-card {
   background: rgba(26, 43, 34, 0.85);
   border-radius: 12px;
@@ -54,45 +45,42 @@
   object-fit: cover;
 }
 
-/* пагинация */
-.pagination {
+/* Пагинация с точками */
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin-top: 25px;
-  text-align: center;
 }
 
-.pagination button {
-  padding: 10px 15px;
-  margin: 0 5px;
-  border: none;
-  border-radius: 6px;
-  background: #2e7d32;
-  color: #fff;
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.pagination button:hover {
-  background: #256f46;
-  transform: translateY(-2px);
+.dot:hover {
+  transform: scale(1.2);
+  background: rgba(255, 255, 255, 0.7);
 }
 
-.pagination button:disabled {
-  background: #555;
-  cursor: not-allowed;
+.dot.active {
+  background: #2e7d32;
+  transform: scale(1.4);
 }
 
-/* адаптив */
+/* Адаптив */
 @media (max-width: 992px) {
   .gallery-grid {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* две картинки в ряд на планшетах */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
   .gallery-grid {
-    grid-template-columns: 1fr; /* одна картинка в ряд на телефонах */
+    grid-template-columns: 1fr;
   }
 }

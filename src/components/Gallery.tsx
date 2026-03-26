@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/gallery.css";
 
 export default function Gallery() {
   const images = [
@@ -9,10 +10,14 @@ export default function Gallery() {
     "/5.jpg",
     "/6.jpg",
   ];
+  const perPage = 3;
+  const totalPages = Math.ceil(
+    images.length / perPage,
+  );
 
-  const [page, setPage] = useState(1);
-  const perPage = 3; // три картинки на странице
-  const start = (page - 1) * perPage;
+  const [page, setPage] = useState(0);
+
+  const start = page * perPage;
   const visible = images.slice(
     start,
     start + perPage,
@@ -37,22 +42,16 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className="pagination">
-          <button
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-          >
-            Назад
-          </button>
-          <span>{page}</span>
-          <button
-            onClick={() => setPage(page + 1)}
-            disabled={
-              start + perPage >= images.length
-            }
-          >
-            Вперед
-          </button>
+        <div className="pagination-dots">
+          {Array.from({ length: totalPages }).map(
+            (_, i) => (
+              <span
+                key={i}
+                className={`dot ${i === page ? "active" : ""}`}
+                onClick={() => setPage(i)}
+              ></span>
+            ),
+          )}
         </div>
       </div>
     </section>

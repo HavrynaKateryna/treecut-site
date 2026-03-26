@@ -7,7 +7,7 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
-import FloatingButtons from "./components/FloatingButtons";
+
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 
@@ -34,7 +34,7 @@ export default function App() {
       <Hero
         openModal={() => setModalOpen(true)}
       />
-      <FloatingButtons />
+
       <About />
       <Services />
       <Gallery />

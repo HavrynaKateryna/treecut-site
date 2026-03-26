@@ -1,61 +1,49 @@
-/* СЕКЦИЯ SERVICES (как FAQ, но карточки в ряд) */
 .services-section {
-  padding: 60px 20px;
-
+  padding: 100px 20px;
   background: url("/services-bg.jpg") center/cover
     no-repeat;
-
   display: flex;
-  justify-content: center; /* центрируем контейнер */
-  color: #fff;
+  justify-content: center;
+  color: #f9fbf8;
 }
 
-/* контейнер */
-.services-section .container {
+.container {
   width: 100%;
-  max-width: 1100px; /* шире, чтобы поместились карточки в ряд */
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-/* заголовок */
 .services-title {
   text-align: center;
   margin-bottom: 30px;
+  color: #036f0e;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  font-size: 36px;
+  font-weight: 700;
 }
 
-/* grid */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(
-    4,
-    1fr
-  ); /* 4 карточки в ряд */
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-/* карточка */
 .card {
   background: rgba(3, 44, 22, 0.74);
   padding: 20px;
   border-radius: 12px;
-
   border: 1px solid rgba(255, 255, 255, 0.15);
-
-  color: #fff;
-
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* hover */
 .card:hover {
   transform: translateY(-5px);
   border-color: #2e7d32;
-
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* текст */
 .card h3 {
   margin-bottom: 10px;
 }
@@ -66,18 +54,201 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* адаптив */
 @media (max-width: 992px) {
   .services-grid {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* 2 карточки в ряд на планшете */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 600px) {
-  .services-grid {
-    grid-template-columns: 1fr; /* 1 карточка на мобильных */
+/* Модалка */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeOverlay 0.3s ease;
+}
+
+.modal {
+  position: relative;
+  background: rgba(11, 45, 26, 0.85);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 16px;
+  max-width: 520px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  animation: modalIn 0.4s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transform: scale(1.05);
+  opacity: 0;
+  animation: imageIn 0.5s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.modal-description {
+  color: #2a4c06;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Крестик */
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.2) rotate(90deg);
+}
+
+/* Кнопки */
+.order-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(
+    135deg,
+    #2e7d32,
+    #1b5e20
+  );
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(46, 125, 50, 0.4);
+}
+
+.order-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-form input,
+.order-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2e7d32;
+  outline: none;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+}
+
+.order-form textarea {
+  min-height: 80px;
+  resize: none;
+}
+
+.order-form input::placeholder,
+.order-form textarea::placeholder {
+  color: #555;
+}
+
+.order-form input:focus,
+.order-form textarea:focus {
+  border-color: #036f0e;
+  box-shadow: 0 0 8px rgba(2, 111, 14, 0.5);
+}
+
+/* Ошибки */
+.order-form .error {
+  color: #ff6666;
+  font-size: 12px;
+  text-align: left;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+/* Сообщение об отправке */
+.success-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #d6e9d7;
+  color: #036f0e;
+  font-weight: 600;
+  border-radius: 10px;
+  text-align: center;
+  min-height: 50px;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Анимации */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes fadeOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes imageIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

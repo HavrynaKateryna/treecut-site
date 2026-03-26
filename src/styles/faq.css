@@ -2,7 +2,7 @@
    СЕКЦИЯ FAQ (столбик)
 ========================= */
 .faq-section {
-  padding: 60px 20px;
+  padding: 100px 20px;
 
   /* фон как в секции услуг */
   background: rgba(14, 71, 3, 0.25)

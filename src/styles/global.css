@@ -2,10 +2,10 @@
    ПЕРЕМЕННЫЕ (ЦВЕТА)
 ========================= */
 :root {
-  --green: #2e8b57;
-  --dark: #34495e;
-  --white: #ffffff;
-  --light: #f5f5f5;
+  --green: #015957;
+  --dark: #015957;
+  --white: #ef6d14;
+  --light: #ef6d14;
 }
 
 /* =========================
@@ -82,8 +82,8 @@ a {
 
   /* стекло + градиент */
   background: linear-gradient(
-    rgba(255, 255, 255, 0.75),
-    rgba(255, 255, 255, 0.55)
+    rgba(255, 255, 255, 0.036),
+    rgba(255, 255, 255, 0.423)
   );
 
   backdrop-filter: blur(10px);
@@ -101,8 +101,8 @@ a {
 /* ЗЕЛЁНАЯ */
 .section--green {
   background: linear-gradient(
-    rgba(46, 139, 87, 0.85),
-    rgba(46, 139, 87, 0.65)
+    rgba(1, 89, 87, 0.85),
+    rgba(1, 89, 87, 0.65)
   );
   color: white;
 }
@@ -121,12 +121,12 @@ a {
 
 /* основная */
 .btn-primary {
-  background: var(--green);
+  background: #015957;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #256f46;
+  background: #015957;
   transform: translateY(-2px);
 }
 

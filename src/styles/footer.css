@@ -1,12 +1,11 @@
+/* Футер */
 .footer {
   padding: 50px 20px 20px;
-
   background: linear-gradient(
-    rgba(5, 120, 51, 0.8),
-    rgba(0, 0, 0, 0.8)
+    rgba(1, 89, 87, 0.8),
+    rgba(0, 0, 0, 0.603)
   );
-
-  color: white;
+  color: #ef6d14;
   backdrop-filter: blur(6px);
 }
 
@@ -14,7 +13,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-
   max-width: 1200px;
   margin: auto;
 }
@@ -33,11 +31,11 @@
 }
 
 .footer__col a:hover {
-  color: var(--green);
+  color: #05a034; /* зеленый при ховере */
   transform: translateX(3px);
 }
 
-/* соцсети */
+/* Соцсети */
 .footer__socials {
   display: flex;
   gap: 15px;
@@ -47,17 +45,13 @@
 .footer__socials a {
   width: 40px;
   height: 40px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-
   font-size: 18px;
   color: white;
-
   transition: all 0.3s ease;
 }
 
@@ -68,11 +62,9 @@
 .footer__socials a:nth-child(1):hover {
   background: #e1306c;
 }
-
 .footer__socials a:nth-child(2):hover {
   background: #25d366;
 }
-
 .footer__socials a:nth-child(3):hover {
   background: #0088cc;
 }
@@ -80,10 +72,22 @@
 .footer__bottom {
   text-align: center;
   margin-top: 35px;
-
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 15px;
-
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+  .footer__grid {
+    grid-template-columns: 1fr; /* колонки в одну колонку */
+    gap: 20px;
+  }
+
+  .footer__socials {
+    flex-direction: column; /* соцсети в столбик */
+    align-items: flex-start; /* выравнивание влево */
+    gap: 10px; /* расстояние между иконками */
+  }
 }

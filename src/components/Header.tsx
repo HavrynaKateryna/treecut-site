@@ -12,9 +12,12 @@ export default function Header() {
           {/* Logo */}
           <div className="logo">
             <div className="logo-circle">
-              <img src="/logo.png" alt="logo" />
+              <img
+                src="/public/logo.jpg"
+                alt="logo"
+              />
             </div>
-            <span>TreeCut</span>
+            <span>TIM'S TREE SERVICE</span>
           </div>
 
           {/* Desktop nav */}

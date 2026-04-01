@@ -16,8 +16,8 @@ body {
 .header {
   background: linear-gradient(
     135deg,
-    #1b5e20,
-    #0d3b1e
+    #015957,
+    #015957
   );
   color: white;
   padding: 15px;
@@ -74,7 +74,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  color: white;
+  color: #015957;
 }
 
 .hero__overlay {
@@ -115,12 +115,12 @@ body {
 }
 
 .btn-primary {
-  background: #2e7d32;
+  background: #015957;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #256f46;
+  background: #015957;
 }
 
 .btn-secondary {
@@ -133,12 +133,12 @@ body {
 }
 
 .btn-whatsapp {
-  background: #25d366;
+  background: #015957;
   color: white;
 }
 
 .btn-whatsapp:hover {
-  background: #1da851;
+  background: #015957;
 }
 
 /* ================= SECTIONS ================= */
@@ -193,7 +193,7 @@ body {
 
 /* ================= FOOTER ================= */
 .footer {
-  background: #0d1f17;
+  background: #015957;
   color: white;
   text-align: center;
   padding: 20px;

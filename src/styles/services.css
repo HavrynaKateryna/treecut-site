@@ -4,7 +4,7 @@
     no-repeat;
   display: flex;
   justify-content: center;
-  color: #f9fbf8;
+  color: #ef6d14;
 }
 
 .container {
@@ -17,7 +17,7 @@
 .services-title {
   text-align: center;
   margin-bottom: 30px;
-  color: #036f0e;
+  color: #ef6d14;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
   font-size: 36px;
   font-weight: 700;
@@ -30,10 +30,10 @@
 }
 
 .card {
-  background: rgba(3, 44, 22, 0.74);
+  background: rgba(1, 89, 87, 0.74);
   padding: 20px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.262);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -209,7 +209,7 @@
   margin-top: 20px;
   padding: 15px;
   background: #d6e9d7;
-  color: #036f0e;
+  color: #ef6d14;
   font-weight: 600;
   border-radius: 10px;
   text-align: center;

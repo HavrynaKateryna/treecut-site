@@ -9,11 +9,8 @@ export default function Footer() {
     <footer id="contact" className="footer">
       <div className="container footer__grid">
         <div className="footer__col">
-          <h3>TreeCut</h3>
-          <p>
-            Professional tree services: removal,
-            trimming, and cleanup.
-          </p>
+          <h3>TIM'S TREE SERVICE</h3>
+          <p>TREE REMOVAL</p>
         </div>
 
         <div className="footer__col">
@@ -63,7 +60,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__bottom">
-        © 2026 TreeCut. All rights reserved.
+        © 2026 TREE REMOVAL.
       </div>
     </footer>
   );

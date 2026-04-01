@@ -10,17 +10,15 @@ export default function Hero({
       <div className="hero__overlay"></div>
 
       <div className="hero__content">
-        <h1>Спил деревьев</h1>
-        <p>
-          Быстро • Безопасно • Профессионально
-        </p>
+        <h1>Removal's Trees Jacksonville</h1>
+        <p>Crane & Large Tree Specialists</p>
 
         <div className="hero__buttons">
           <button
             className="btn btn-primary"
             onClick={openModal}
           >
-            Оставить заявку
+            Request a quote
           </button>
         </div>
       </div>

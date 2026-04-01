@@ -60,8 +60,8 @@
 .btn-primary {
   padding: 12px;
 
-  background: #2e7d32;
-  color: white;
+  background: #015957;
+  color: #ef6d14;
 
   border: none;
   border-radius: 6px;
@@ -72,7 +72,8 @@
 }
 
 .btn-primary:hover {
-  background: #256f46;
+  background: #ef6d14;
+  color: #015957;
 }
 
 .btn-primary:disabled {

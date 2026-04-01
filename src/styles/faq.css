@@ -5,10 +5,10 @@
   padding: 100px 20px;
 
   /* фон как в секции услуг */
-  background: rgba(14, 71, 3, 0.25)
+  background: rgba(1, 89, 87, 0.25)
     url("/services-bg.jpg") center/cover no-repeat;
 
-  color: #fff;
+  color: #ef6d14;
 }
 
 /* заголовок */
@@ -49,8 +49,8 @@
   width: 100%;
   padding: 15px;
 
-  background: #134016;
-  color: #fff;
+  background: #015957;
+  color: #ef6d14;
   border: none;
 
   display: flex;

@@ -1,6 +1,6 @@
 :root {
-  --header-height: 80px;
-  --green: #2e7d32;
+  --header-height: 100px;
+  --green: #015957;
 }
 
 /* =========================
@@ -36,8 +36,8 @@ body {
   align-items: center;
 
   background: linear-gradient(
-    rgba(5, 120, 51, 0.8),
-    rgba(0, 0, 0, 0.8)
+    rgba(0, 89, 87, 0.8),
+    rgba(0, 0, 0, 0.603)
   );
 
   backdrop-filter: blur(6px);
@@ -54,18 +54,18 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   font-weight: bold;
-  color: #fff; /* ← ВАЖНО */
+  color: #ef6d14; /* ← ВАЖНО */
 }
 
 .logo span {
-  color: #fff; /* на всякий случай */
+  color: #ef6d14; /* на всякий случай */
 }
 
 .logo-circle img {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -73,12 +73,12 @@ body {
 /* NAV */
 .nav a {
   margin-left: 20px;
-  color: #fff;
+  color: #ef6d14;
   text-decoration: none;
 }
 
 .nav a:hover {
-  color: #a5d6a7;
+  color: #fcffff4e;
 }
 
 /* BURGER */

@@ -4,11 +4,10 @@
 .about {
   text-align: center;
 
-  /* фон как в секции услуг */
-  background: rgba(14, 71, 3, 0.25)
+  background: rgba(1, 89, 87, 0.25)
     url("/services-bg.jpg") center/cover no-repeat;
 
-  color: #fff;
+  color: #ef6d14;
   padding: 100px 20px; /* добавляем отступы сверху/снизу */
 }
 

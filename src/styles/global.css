@@ -184,3 +184,8 @@ img {
     max-width: 260px;
   }
 }
+@media (max-width: 768px) {
+  body {
+    background: #f5f1e5; /* бежевый цвет */
+  }
+}

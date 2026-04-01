@@ -3,7 +3,7 @@
 
   padding: 100px 20px;
   color: #ef6d14;
-
+  scroll-margin-top: 120px;
   background: url("/services-bg.jpg") center/cover
     no-repeat;
 }

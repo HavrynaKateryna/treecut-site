@@ -5,6 +5,7 @@
   display: flex;
   justify-content: center;
   color: #ef6d14;
+  scroll-margin-top: 120px;
 }
 
 .container {

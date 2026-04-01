@@ -4,7 +4,7 @@
 }
 
 /* =========================
-   GLOBAL (минимально нужно)
+   GLOBAL
 ========================= */
 body {
   margin: 0;
@@ -50,28 +50,41 @@ body {
   width: 100%;
 }
 
-/* LOGO */
+/* =========================
+   LOGO (FIXED)
+========================= */
 .logo {
   display: flex;
   align-items: center;
   gap: 20px;
   font-weight: bold;
   color: #ef6d14;
-  cursor: pointer; /* добавили */
+  cursor: pointer;
+  flex-shrink: 0; /* важно */
 }
 
 .logo span {
-  color: #ef6d14; /* на всякий случай */
+  color: #ef6d14;
 }
 
-.logo-circle img {
+/* контейнер под изображение */
+.logo-circle {
   width: 80px;
   height: 80px;
+  flex-shrink: 0; /* важно */
+}
+
+/* само изображение */
+.logo-circle img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
 
-/* NAV */
+/* =========================
+   NAV
+========================= */
 .nav a {
   margin-left: 20px;
   color: #ef6d14;
@@ -82,12 +95,14 @@ body {
   color: #fcffff4e;
 }
 
-/* BURGER */
+/* =========================
+   BURGER
+========================= */
 .burger {
   display: none;
   font-size: 26px;
   cursor: pointer;
-  color: #ef6d14; /* ← ВАЖНО */
+  color: #ef6d14;
 }
 
 /* =========================
@@ -154,5 +169,18 @@ body {
 
   .burger {
     display: block;
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .logo-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  :root {
+    --header-height: 80px; /* уменьшаем header на мобилке */
   }
 }

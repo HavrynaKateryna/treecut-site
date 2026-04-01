@@ -7,13 +7,12 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
-
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 
 export default function App() {
   const [modalOpen, setModalOpen] =
-    useState<boolean>(false);
+    useState(false);
 
   return (
     <>
@@ -31,15 +30,20 @@ export default function App() {
       </Helmet>
 
       <Header />
-      <Hero
-        openModal={() => setModalOpen(true)}
-      />
 
-      <About />
-      <Services />
-      <Gallery />
-      <FAQ />
+      {/* важно — структура */}
+      <main>
+        <Hero
+          openModal={() => setModalOpen(true)}
+        />
+        <About />
+        <Services />
+        <Gallery />
+        <FAQ />
+      </main>
+
       <Footer />
+
       <Modal
         open={modalOpen}
         onClose={() => setModalOpen(false)}

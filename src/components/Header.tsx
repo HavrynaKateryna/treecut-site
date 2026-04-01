@@ -5,17 +5,25 @@ export default function Header() {
 
   const closeMenu = () => setOpen(false);
 
+  const handleLogoClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <header className="header">
         <div className="container header__inner">
           {/* Logo */}
-          <div className="logo">
+          <div
+            className="logo"
+            onClick={handleLogoClick}
+            style={{ cursor: "pointer" }}
+          >
             <div className="logo-circle">
-              <img
-                src="/public/logo.jpg"
-                alt="logo"
-              />
+              <img src="/logo.jpg" alt="logo" />
             </div>
             <span>TIM'S TREE SERVICE</span>
           </div>

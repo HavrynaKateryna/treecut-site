@@ -59,15 +59,7 @@ export default function Modal({
       newErrors.email =
         "Enter a valid email address";
 
-    const wordCount = form.question.trim()
-      ? form.question.trim().split(/\s+/).length
-      : 0;
-    if (wordCount < 3)
-      newErrors.question =
-        "Question must contain at least 3 words";
-    if (wordCount > 50)
-      newErrors.question =
-        "Question is too long (max 50 words)";
+    // ✅ ВАЛИДАЦИЯ question ПОЛНОСТЬЮ УБРАНА
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -173,15 +165,17 @@ export default function Modal({
                 value={form.question}
                 onChange={handleChange}
               />
+
+              {/* ✅ СЧЁТЧИК СЛОВ ОСТАВЛЕН */}
               <small>
                 Words:{" "}
                 {form.question.trim()
                   ? form.question
                       .trim()
                       .split(/\s+/).length
-                  : 0}{" "}
-                / 50
+                  : 0}
               </small>
+
               {errors.question && (
                 <span className="error">
                   {errors.question}
@@ -202,6 +196,7 @@ export default function Modal({
             <h2>Request successfully sent ✅</h2>
           </div>
         )}
+
         <button
           className="modal-close"
           onClick={onClose}

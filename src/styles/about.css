@@ -1,27 +1,48 @@
-/* =========================
-   СЕКЦИЯ ABOUT
-========================= */
 .about {
-  text-align: center;
+  position: relative;
 
-  background: rgba(1, 89, 87, 0.25)
-    url("/services-bg.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
 
   color: #ef6d14;
-  padding: 100px 20px; /* добавляем отступы сверху/снизу */
+
+  background: url("/services-bg.jpg") center/cover
+    no-repeat;
+
+  padding: 100px 20px;
+}
+
+/* затемнение через overlay */
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: rgba(1, 89, 87, 0.25);
+}
+
+/* контент поверх overlay */
+.about .container {
+  position: relative;
+  z-index: 1;
+
+  max-width: 800px;
+  text-align: center;
 }
 
 .about p {
-  max-width: 800px; /* сужаем текст */
-  margin: 15px auto;
+  margin: 15px 0;
   line-height: 1.7;
   font-size: 16px;
 }
 
 /* адаптив */
 @media (max-width: 768px) {
-  .about p {
-    max-width: 100%;
-    padding: 0 15px;
+  .about {
+    padding: 60px 15px;
+  }
+
+  .about .container {
+    padding: 0 10px;
   }
 }

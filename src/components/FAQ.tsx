@@ -40,38 +40,40 @@ export default function FAQ() {
   };
 
   return (
-    <section
-      id="faq"
-      className="section faq-section"
-    >
-      <h2>Questions & Answers</h2>
+    <section id="faq" className="faq-section">
+      <div className="container">
+        <h2>Questions & Answers</h2>
 
-      <div className="faq">
-        {data.map((item, index) => {
-          const isOpen = openIndex === index;
+        <div className="faq">
+          {data.map((item, index) => {
+            const isOpen = openIndex === index;
 
-          return (
-            <div key={index} className="faq-item">
-              <button
-                className="faq-question"
-                onClick={() => toggle(index)}
-              >
-                {item.q}
-                <span
-                  className={`faq-icon ${isOpen ? "open" : ""}`}
-                >
-                  +
-                </span>
-              </button>
-
+            return (
               <div
-                className={`faq-answer ${isOpen ? "open" : ""}`}
+                key={index}
+                className="faq-item"
               >
-                <p>{item.a}</p>
+                <button
+                  className="faq-question"
+                  onClick={() => toggle(index)}
+                >
+                  {item.q}
+                  <span
+                    className={`faq-icon ${isOpen ? "open" : ""}`}
+                  >
+                    +
+                  </span>
+                </button>
+
+                <div
+                  className={`faq-answer ${isOpen ? "open" : ""}`}
+                >
+                  <p>{item.a}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -1,8 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useRef,
-} from "react";
+import { useState, useEffect } from "react";
 import "../styles/gallery.css";
 
 export default function Gallery() {
@@ -24,25 +20,49 @@ export default function Gallery() {
     "/15.jpg",
   ];
 
-  const perPage = 3;
-  const totalPages = Math.ceil(
-    images.length / perPage,
-  );
-
+  const [isMobile, setIsMobile] = useState(false);
+  const [perPage, setPerPage] = useState(3);
   const [page, setPage] = useState(0);
   const [index, setIndex] = useState<
     number | null
   >(null);
-  const [scale, setScale] = useState(1);
 
-  const start = page * perPage;
-  const visible = images.slice(
-    start,
-    start + perPage,
+  // определяем устройство
+  useEffect(() => {
+    const update = () => {
+      const width = window.innerWidth;
+
+      if (width <= 600) {
+        setIsMobile(true);
+        setPerPage(images.length); // без пагинации
+      } else if (width <= 1024) {
+        setIsMobile(false);
+        setPerPage(4);
+      } else {
+        setIsMobile(false);
+        setPerPage(3);
+      }
+    };
+
+    update();
+    window.addEventListener("resize", update);
+
+    return () =>
+      window.removeEventListener(
+        "resize",
+        update,
+      );
+  }, []);
+
+  const totalPages = Math.ceil(
+    images.length / perPage,
   );
 
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+  const start = page * perPage;
+
+  const visible = isMobile
+    ? images
+    : images.slice(start, start + perPage);
 
   const nextPage = () => {
     setPage((prev) => (prev + 1) % totalPages);
@@ -55,85 +75,11 @@ export default function Gallery() {
   };
 
   const openImage = (i: number) => {
-    setIndex(start + i);
-    setScale(1);
+    setIndex(isMobile ? i : start + i);
   };
 
   const closeModal = () => {
     setIndex(null);
-    setScale(1);
-  };
-
-  const next = () => {
-    if (index === null) return;
-    setIndex((index + 1) % images.length);
-  };
-
-  const prev = () => {
-    if (index === null) return;
-    setIndex(
-      index === 0 ? images.length - 1 : index - 1,
-    );
-  };
-
-  // клавиатура
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (index === null) return;
-
-      if (e.key === "Escape") closeModal();
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-    };
-
-    window.addEventListener("keydown", handleKey);
-    return () =>
-      window.removeEventListener(
-        "keydown",
-        handleKey,
-      );
-  }, [index]);
-
-  // свайп
-  const handleTouchStart = (
-    e: React.TouchEvent,
-  ) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (
-    e: React.TouchEvent,
-  ) => {
-    touchEndX.current =
-      e.changedTouches[0].clientX;
-
-    const diff =
-      touchStartX.current - touchEndX.current;
-
-    if (diff > 50) next();
-    if (diff < -50) prev();
-  };
-
-  // zoom колесиком
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-
-    if (e.deltaY < 0) {
-      setScale((prev) => Math.min(prev + 0.2, 3));
-    } else {
-      setScale((prev) => Math.max(prev - 0.2, 1));
-    }
-  };
-
-  // клик по экрану
-  const handleScreenClick = (
-    e: React.MouseEvent,
-  ) => {
-    const clickX = e.clientX;
-    const width = window.innerWidth;
-
-    if (clickX < width / 2) prev();
-    else next();
   };
 
   return (
@@ -142,16 +88,27 @@ export default function Gallery() {
       className="gallery-section"
     >
       <div className="container">
-        <h2 className="gallery-title">Галерея</h2>
+        <h2 className="gallery-title">Gallery</h2>
 
         <div className="gallery-wrapper">
-          {/* стрелка влево */}
-          <button
-            className="gallery-arrow left"
-            onClick={prevPage}
-          >
-            ‹
-          </button>
+          {/* стрелки только не на мобилке */}
+          {!isMobile && (
+            <>
+              <button
+                className="gallery-arrow left"
+                onClick={prevPage}
+              >
+                ‹
+              </button>
+
+              <button
+                className="gallery-arrow right"
+                onClick={nextPage}
+              >
+                ›
+              </button>
+            </>
+          )}
 
           <div className="gallery-grid">
             {visible.map((img, i) => (
@@ -164,45 +121,19 @@ export default function Gallery() {
               </div>
             ))}
           </div>
-
-          {/* стрелка вправо */}
-          <button
-            className="gallery-arrow right"
-            onClick={nextPage}
-          >
-            ›
-          </button>
         </div>
       </div>
 
-      {/* MODAL */}
+      {/* modal */}
       {index !== null && (
         <div
           className="modal-fullscreen"
-          onClick={handleScreenClick}
-          onTouchStart={handleTouchStart}
-          onTouchEnd={handleTouchEnd}
+          onClick={closeModal}
         >
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-            onWheel={handleWheel}
-          >
-            <button
-              className="modal-close"
-              onClick={closeModal}
-            >
-              ✕
-            </button>
-
-            <img
-              src={images[index]}
-              className="modal-img"
-              style={{
-                transform: `scale(${scale})`,
-              }}
-            />
-          </div>
+          <img
+            src={images[index]}
+            className="modal-img"
+          />
         </div>
       )}
     </section>

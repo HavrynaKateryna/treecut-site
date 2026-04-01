@@ -9,7 +9,7 @@
 body {
   margin: 0;
   padding-top: var(--header-height);
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", Arial, sans-serif;
 }
 
 /* =========================
@@ -56,7 +56,8 @@ body {
   align-items: center;
   gap: 20px;
   font-weight: bold;
-  color: #ef6d14; /* ← ВАЖНО */
+  color: #ef6d14;
+  cursor: pointer; /* добавили */
 }
 
 .logo span {
@@ -86,7 +87,7 @@ body {
   display: none;
   font-size: 26px;
   cursor: pointer;
-  color: #fff; /* ← ВАЖНО */
+  color: #ef6d14; /* ← ВАЖНО */
 }
 
 /* =========================
@@ -105,7 +106,7 @@ body {
 }
 
 .menu-modal {
-  background: #1a2b22;
+  background: #015957;
   padding: 30px;
   border-radius: 12px;
 
@@ -120,7 +121,7 @@ body {
 }
 
 .menu-modal a {
-  color: #fff;
+  color: #ef6d14;
   text-decoration: none;
   font-size: 18px;
   padding: 10px;
@@ -138,7 +139,7 @@ body {
 
   background: none;
   border: none;
-  color: #fff;
+  color: #ef6d14;
   font-size: 20px;
   cursor: pointer;
 }

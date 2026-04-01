@@ -1,15 +1,5 @@
 /* =========================
-   ПЕРЕМЕННЫЕ (ЦВЕТА)
-========================= */
-:root {
-  --green: #015957;
-  --dark: #015957;
-  --white: #ef6d14;
-  --light: #ef6d14;
-}
-
-/* =========================
-   СБРОС
+   RESET
 ========================= */
 * {
   margin: 0;
@@ -18,23 +8,41 @@
 }
 
 /* =========================
-   ОСНОВА
+   BASE
 ========================= */
 html {
   scroll-behavior: smooth;
 }
-
+html,
 body {
-  font-family: Arial, sans-serif;
-  color: var(--dark);
+  overflow-x: hidden;
+}
 
-  /* ОБЩИЙ ФОН САЙТА */
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", Arial, sans-serif;
+
+  color: #fff;
+
+  /* ✅ ФОН-КАРТИНКА САЙТА */
   background: url("/bg.jpg") center/cover
     no-repeat fixed;
 }
 
 /* =========================
-   КОНТЕЙНЕР
+   VARIABLES
+========================= */
+:root {
+  --green: #015957;
+  --dark: #0f1f18;
+  --white: #ffffff;
+  --gray: #cccccc;
+}
+
+/* =========================
+   CONTAINER
 ========================= */
 .container {
   max-width: 1200px;
@@ -43,7 +51,7 @@ body {
 }
 
 /* =========================
-   ТЕКСТ
+   TYPOGRAPHY
 ========================= */
 h1 {
   font-size: 42px;
@@ -64,76 +72,45 @@ p {
   margin: 10px 0;
 }
 
-/* =========================
-   ССЫЛКИ
-========================= */
 a {
   text-decoration: none;
   color: inherit;
 }
 
 /* =========================
-   СЕКЦИИ (ОСНОВА)
+   SECTIONS
 ========================= */
 .section {
   padding: 60px 20px;
-  margin: 20px;
-  border-radius: 12px;
-
-  /* стекло + градиент */
-  background: linear-gradient(
-    rgba(255, 255, 255, 0.036),
-    rgba(255, 255, 255, 0.423)
-  );
-
-  backdrop-filter: blur(10px);
-}
-
-/* ТЁМНАЯ */
-.section--dark {
-  background: linear-gradient(
-    rgba(52, 73, 94, 0.85),
-    rgba(52, 73, 94, 0.65)
-  );
-  color: white;
-}
-
-/* ЗЕЛЁНАЯ */
-.section--green {
-  background: linear-gradient(
-    rgba(1, 89, 87, 0.85),
-    rgba(1, 89, 87, 0.65)
-  );
-  color: white;
+  text-align: center;
+  scroll-margin-top: 120px;
 }
 
 /* =========================
-   КНОПКИ
+   BUTTONS
 ========================= */
 .btn {
-  display: inline-block;
   padding: 12px 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: 0.3s;
+  display: inline-block;
+  font-size: 15px;
 }
 
-/* основная */
 .btn-primary {
-  background: #015957;
+  background: var(--green);
   color: white;
 }
 
 .btn-primary:hover {
-  background: #015957;
-  transform: translateY(-2px);
+  opacity: 0.9;
 }
 
-/* вторичная */
 .btn-secondary {
   background: white;
-  color: var(--dark);
+  color: #111;
 }
 
 .btn-secondary:hover {
@@ -141,7 +118,44 @@ a {
 }
 
 /* =========================
-   FLEX УТИЛИТЫ
+   FORM
+========================= */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.form input,
+.form textarea {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--gray);
+  font-family: inherit;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+.form button {
+  padding: 12px;
+}
+
+/* =========================
+   IMAGES
+========================= */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   UTILITIES
 ========================= */
 .flex {
   display: flex;
@@ -150,15 +164,7 @@ a {
 }
 
 /* =========================
-   ИЗОБРАЖЕНИЯ
-========================= */
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* =========================
-   АДАПТИВ
+   RESPONSIVE
 ========================= */
 @media (max-width: 768px) {
   h1 {
@@ -171,6 +177,10 @@ img {
 
   .section {
     padding: 40px 15px;
-    margin: 10px;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 260px;
   }
 }

@@ -1,31 +1,40 @@
-/* =========================
-   СЕКЦИЯ FAQ (столбик)
-========================= */
 .faq-section {
+  position: relative;
+
   padding: 100px 20px;
-
-  /* фон как в секции услуг */
-  background: rgba(1, 89, 87, 0.25)
-    url("/services-bg.jpg") center/cover no-repeat;
-
   color: #ef6d14;
+
+  background: url("/services-bg.jpg") center/cover
+    no-repeat;
 }
 
-/* заголовок */
+/* overlay затемнение */
+.faq-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 89, 87, 0.25);
+}
+
+/* контейнер */
+.faq-section .container {
+  position: relative;
+  z-index: 1;
+
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .faq-section h2 {
   text-align: center;
   margin-bottom: 30px;
 }
 
-/* контейнер */
+/* список */
 .faq {
-  width: 100%;
-  max-width: 700px; /* сужаем под столбик */
-  margin: 0 auto;
-
   display: flex;
   flex-direction: column;
-  gap: 20px; /* расстояние между карточками */
+  gap: 20px;
 }
 
 /* карточка */
@@ -35,13 +44,11 @@
   overflow: hidden;
 
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .faq-item:hover {
   transform: translateY(-5px);
-  border-color: #2e7d32;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
 /* вопрос */
@@ -59,10 +66,6 @@
 
   cursor: pointer;
   font-size: 16px;
-}
-
-.faq-question:hover {
-  opacity: 0.9;
 }
 
 /* иконка */
@@ -83,7 +86,9 @@
   background: rgba(26, 43, 34, 0.85);
   color: #fff;
 
-  transition: all 0.3s ease;
+  transition:
+    max-height 0.3s ease,
+    padding 0.3s ease;
   padding: 0 15px;
 }
 
@@ -99,7 +104,11 @@
 
 /* адаптив */
 @media (max-width: 768px) {
-  .faq {
+  .faq-section {
+    padding: 60px 15px;
+  }
+
+  .faq-section .container {
     max-width: 100%;
   }
 }

@@ -145,8 +145,8 @@
   padding: 12px 24px;
   background: linear-gradient(
     135deg,
-    #2e7d32,
-    #1b5e20
+    #ef6d14,
+    #ef6d14
   );
   border: none;
   border-radius: 10px;
@@ -172,7 +172,7 @@
 .order-form textarea {
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #2e7d32;
+  border: 1px solid #015957;
   outline: none;
   background: #fff;
   color: #000;
@@ -191,7 +191,7 @@
 
 .order-form input:focus,
 .order-form textarea:focus {
-  border-color: #036f0e;
+  border-color: #015957;
   box-shadow: 0 0 8px rgba(2, 111, 14, 0.5);
 }
 

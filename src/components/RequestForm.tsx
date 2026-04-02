@@ -1,4 +1,8 @@
 import { useState } from "react";
+import type {
+  ChangeEvent,
+  FormEvent,
+} from "react";
 import "../styles/form.css";
 
 type Props = {
@@ -6,24 +10,39 @@ type Props = {
   onSuccess?: () => void;
 };
 
+type FormState = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+};
+
+type Errors = {
+  name?: string;
+  email?: string;
+  phone?: string;
+};
+
 export default function RequestForm({
   serviceName,
   onSuccess,
 }: Props) {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
 
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<Errors>(
+    {},
+  );
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] =
     useState(false);
 
   const validate = () => {
-    const newErrors: any = {};
+    const newErrors: Errors = {};
 
     if (
       !form.name.trim() ||
@@ -53,7 +72,7 @@ export default function RequestForm({
   };
 
   const handleChange = (
-    e: React.ChangeEvent<
+    e: ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement
     >,
   ) => {
@@ -63,9 +82,7 @@ export default function RequestForm({
     });
   };
 
-  const handleSubmit = async (
-    e: React.FormEvent,
-  ) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!validate()) return;

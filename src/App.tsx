@@ -9,9 +9,13 @@ import Gallery from "./components/Gallery";
 import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
+import RequestForm from "./components/RequestForm";
 
 export default function App() {
   const [modalOpen, setModalOpen] =
+    useState(false);
+
+  const [formSuccess, setFormSuccess] =
     useState(false);
 
   return (
@@ -31,11 +35,11 @@ export default function App() {
 
       <Header />
 
-      {/* важно — структура */}
       <main>
         <Hero
           openModal={() => setModalOpen(true)}
         />
+
         <About />
         <Services />
         <Gallery />
@@ -44,10 +48,24 @@ export default function App() {
 
       <Footer />
 
+      {/* ГЛОБАЛЬНАЯ МОДАЛКА */}
       <Modal
         open={modalOpen}
-        onClose={() => setModalOpen(false)}
-      />
+        onClose={() => {
+          setModalOpen(false);
+          setFormSuccess(false);
+        }}
+      >
+        {!formSuccess ? (
+          <RequestForm
+            onSuccess={() => setFormSuccess(true)}
+          />
+        ) : (
+          <div className="success-message">
+            ✅ Заявка отправлена!
+          </div>
+        )}
+      </Modal>
     </>
   );
 }

@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Modal from "../components/Modal";
+import RequestForm from "../components/RequestForm";
 import "../styles/services.css";
 
 type Service = {
@@ -11,18 +13,11 @@ type Service = {
 export default function Services() {
   const [selectedService, setSelectedService] =
     useState<Service | null>(null);
+
   const [showForm, setShowForm] = useState(false);
+
   const [showMessage, setShowMessage] =
     useState(false);
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneInput, setPhoneInput] =
-    useState("");
-  const [comment, setComment] = useState("");
-  const [errors, setErrors] = useState<{
-    [key: string]: string;
-  }>({});
 
   const services: Service[] = [
     {
@@ -41,138 +36,62 @@ export default function Services() {
     },
     {
       title: "Обрезка веток",
-      description: "Формируем крону.",
-      full: "Обрезка деревьев для здоровья растения.",
+      description: "Формируем крону деревьев.",
+      full: "Обрезка деревьев для здоровья растения и эстетики участка.",
       image: "/images/branches.jpg",
     },
     {
       title: "Корчевание пней",
-      description: "Удаление пней.",
-      full: "Полное удаление пней с участка.",
+      description: "Удаление пней с участка.",
+      full: "Полное удаление пней с помощью спецтехники.",
       image: "/images/stump.jpg",
     },
   ];
 
-  // Закрытие модалки по Esc
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    if (selectedService) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener(
-        "keydown",
-        handleEsc,
-      );
-    }
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener(
-        "keydown",
-        handleEsc,
-      );
-    };
-  }, [selectedService]);
-
-  const validateForm = () => {
-    const newErrors: { [key: string]: string } =
-      {};
-    if (!name || name.trim().length < 2)
-      newErrors.name = "Введите корректное имя";
-    if (
-      !email ||
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    )
-      newErrors.email =
-        "Введите корректный email";
-    if (
-      !phoneInput ||
-      !/^\d{10,}$/.test(
-        phoneInput.replace(/\D/g, ""),
-      )
-    )
-      newErrors.phone =
-        "Введите корректный телефон";
-    return newErrors;
-  };
-
-  const clearForm = () => {
-    setName("");
-    setEmail("");
-    setPhoneInput("");
-    setComment("");
-    setErrors({});
-    setShowForm(false);
-  };
-
   const handleClose = () => {
     setSelectedService(null);
-    clearForm();
+    setShowForm(false);
     setShowMessage(false);
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const validationErrors = validateForm();
-    if (
-      Object.keys(validationErrors).length > 0
-    ) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    // Здесь можно добавить отправку на EmailJS / WhatsApp
-
-    clearForm();
-    setShowMessage(true); // показываем сообщение о успешной отправке
   };
 
   return (
     <section
-      id="services"
       className="services-section"
+      id="services"
     >
       <div className="container">
         <h2 className="services-title">Услуги</h2>
+
         <div className="services-grid">
-          {services.map((item, i) => (
+          {services.map((s, i) => (
             <div
-              className="card"
               key={i}
-              onClick={() => {
-                setSelectedService(item);
-                setShowForm(false);
-                setShowMessage(false);
-              }}
+              className="card"
+              onClick={() =>
+                setSelectedService(s)
+              }
             >
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+              <h3>{s.title}</h3>
+              <p>{s.description}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {selectedService && (
-        <div
-          className="modal-overlay"
-          onClick={handleClose}
-        >
-          <div
-            className="modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="modal-close"
-              onClick={handleClose}
-            >
-              ✕
-            </button>
-
+      <Modal
+        open={!!selectedService}
+        onClose={handleClose}
+      >
+        {selectedService && (
+          <>
             <img
               src={selectedService.image}
+              className="modal-img"
               alt={selectedService.title}
             />
+
             <h2>{selectedService.title}</h2>
+
             <p className="modal-description">
               {selectedService.full}
             </p>
@@ -187,78 +106,26 @@ export default function Services() {
             )}
 
             {showForm && !showMessage && (
-              <form
-                className="order-form"
-                onSubmit={handleSubmit}
-              >
-                <input
-                  type="text"
-                  placeholder="Ваше имя"
-                  value={name}
-                  onChange={(e) =>
-                    setName(e.target.value)
-                  }
-                />
-                {errors.name && (
-                  <span className="error">
-                    {errors.name}
-                  </span>
-                )}
-
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value)
-                  }
-                />
-                {errors.email && (
-                  <span className="error">
-                    {errors.email}
-                  </span>
-                )}
-
-                <input
-                  type="tel"
-                  placeholder="Телефон"
-                  value={phoneInput}
-                  onChange={(e) =>
-                    setPhoneInput(e.target.value)
-                  }
-                />
-                {errors.phone && (
-                  <span className="error">
-                    {errors.phone}
-                  </span>
-                )}
-
-                <textarea
-                  placeholder="Комментарий"
-                  value={comment}
-                  onChange={(e) =>
-                    setComment(e.target.value)
-                  }
-                />
-
-                <button
-                  type="submit"
-                  className="order-btn"
-                >
-                  Отправить заявку
-                </button>
-              </form>
+              <RequestForm
+                serviceName={
+                  selectedService.title
+                }
+                onSuccess={() => {
+                  setShowForm(false);
+                  setShowMessage(true);
+                }}
+              />
             )}
 
             {showMessage && (
               <div className="success-message">
                 ✅ Ваша заявка отправлена! Мы
-                свяжемся с вами в ближайшее время.
+                свяжемся с вами.
               </div>
             )}
-          </div>
-        </div>
-      )}
+          </>
+        )}
+      </Modal>
     </section>
   );
 }

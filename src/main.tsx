@@ -16,6 +16,7 @@ import "./styles/gallery.css";
 import "./styles/faq.css";
 import "./styles/footer.css";
 import "./styles/modal.css";
+import "./styles/form.css";
 
 const root = document.getElementById("root");
 

@@ -60,7 +60,9 @@ export default function Services() {
       id="services"
     >
       <div className="container">
-        <h2 className="services-title">Услуги</h2>
+        <h2 className="services-title">
+          Services
+        </h2>
 
         <div className="services-grid">
           {services.map((s, i) => (

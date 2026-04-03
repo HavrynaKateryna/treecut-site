@@ -31,7 +31,7 @@
 }
 
 .footer__col a:hover {
-  color: #05a034; /* зеленый при ховере */
+  color: #ef6d14; /* зеленый при ховере */
   transform: translateX(3px);
 }
 
@@ -63,10 +63,10 @@
   background: #e1306c;
 }
 .footer__socials a:nth-child(2):hover {
-  background: #25d366;
+  background: #0088cc;
 }
 .footer__socials a:nth-child(3):hover {
-  background: #0088cc;
+  background: #25d366;
 }
 
 .footer__bottom {

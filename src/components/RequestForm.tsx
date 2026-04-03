@@ -48,7 +48,8 @@ export default function RequestForm({
       !form.name.trim() ||
       form.name.length < 2
     ) {
-      newErrors.name = "Введите имя";
+      newErrors.name =
+        "Please enter your full name";
     }
 
     if (
@@ -56,7 +57,8 @@ export default function RequestForm({
         form.email,
       )
     ) {
-      newErrors.email = "Некорректный email";
+      newErrors.email =
+        "Please enter a valid email address";
     }
 
     if (
@@ -64,7 +66,8 @@ export default function RequestForm({
         form.phone.replace(/\D/g, ""),
       )
     ) {
-      newErrors.phone = "Некорректный телефон";
+      newErrors.phone =
+        "Please enter a valid phone number";
     }
 
     setErrors(newErrors);
@@ -113,9 +116,13 @@ export default function RequestForm({
     return (
       <div className="success-box">
         <div className="checkmark">✔</div>
-        <h3>Заявка отправлена!</h3>
+        <h3>
+          Your request has been successfully
+          submitted!
+        </h3>
         <p>
-          Мы свяжемся с вами в ближайшее время
+          Our team will contact you shortly to
+          discuss the details
         </p>
       </div>
     );
@@ -125,8 +132,8 @@ export default function RequestForm({
     <div className="form-wrapper">
       <h2>
         {serviceName
-          ? `Заказать: ${serviceName}`
-          : "Оставить заявку"}
+          ? `Get a quote for: ${serviceName}`
+          : "Request a free consultation"}
       </h2>
 
       <form
@@ -141,7 +148,7 @@ export default function RequestForm({
             onChange={handleChange}
             placeholder=" "
           />
-          <label>Имя</label>
+          <label>Full Name</label>
           {errors.name && (
             <span className="error">
               {errors.name}
@@ -157,7 +164,7 @@ export default function RequestForm({
             onChange={handleChange}
             placeholder=" "
           />
-          <label>Email</label>
+          <label>Email Address</label>
           {errors.email && (
             <span className="error">
               {errors.email}
@@ -173,7 +180,7 @@ export default function RequestForm({
             onChange={handleChange}
             placeholder=" "
           />
-          <label>Телефон</label>
+          <label>Phone Number</label>
           {errors.phone && (
             <span className="error">
               {errors.phone}
@@ -189,7 +196,9 @@ export default function RequestForm({
             onChange={handleChange}
             placeholder=" "
           />
-          <label>Комментарий</label>
+          <label>
+            Project Details / Your Message
+          </label>
         </div>
 
         <button
@@ -197,7 +206,9 @@ export default function RequestForm({
           className="btn-primary"
           disabled={loading}
         >
-          {loading ? "Отправка..." : "Отправить"}
+          {loading
+            ? "Submitting your request..."
+            : "Get Free Quote"}
         </button>
       </form>
     </div>

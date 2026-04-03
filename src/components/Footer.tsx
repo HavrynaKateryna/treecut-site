@@ -1,7 +1,7 @@
 import {
   FaInstagram,
   FaWhatsapp,
-  FaTelegram,
+  FaFacebook,
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -10,57 +10,67 @@ export default function Footer() {
       <div className="container footer__grid">
         <div className="footer__col">
           <h3>TIM'S TREE SERVICE</h3>
-          <p>TREE REMOVAL</p>
+          <p>
+            Professional Tree Removal Services
+          </p>
         </div>
 
         <div className="footer__col">
-          <h4>Контакты</h4>
+          <h4>Contact Us</h4>
 
-          <p>📍 г. Ваш город, ул. Пример 10</p>
+          <p>📍 Jacksonville, FL</p>
 
           <p>
             📞{" "}
-            <a href="tel:+79999999999">
-              +7 999 999 99 99
+            <a href="tel:+15596804185">
+              559-680-4185 Tim
             </a>
           </p>
-
+          <p>
+            📞{" "}
+            <a href="tel:+15596804208">
+              559-680-4208 Dasha
+            </a>
+          </p>
           <p>📧 info@treecut.com</p>
         </div>
 
         <div className="footer__col">
-          <h4>Мы в соцсетях</h4>
+          <h4>Follow Us</h4>
 
           <div className="footer__socials">
             <a
-              href="#"
+              href="https://instagram.com/tim.tree_service"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram"
             >
               <FaInstagram />
             </a>
 
             <a
-              href="https://wa.me/79999999999"
+              href="https://facebook.com/removal.s.trees"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Facebook"
             >
-              <FaWhatsapp />
+              <FaFacebook />
             </a>
 
             <a
-              href="#"
+              href="https://wa.me/15596804185"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="WhatsApp"
             >
-              <FaTelegram />
+              <FaWhatsapp />
             </a>
           </div>
         </div>
       </div>
 
       <div className="footer__bottom">
-        © 2026 TREE REMOVAL.
+        © 2026 tree_service_jax
       </div>
     </footer>
   );

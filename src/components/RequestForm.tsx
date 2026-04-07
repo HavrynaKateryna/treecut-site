@@ -8,6 +8,7 @@ import "../styles/form.css";
 type Props = {
   serviceName?: string;
   onSuccess?: () => void;
+  showTitle?: boolean; // 👈 новый проп
 };
 
 type FormState = {
@@ -26,6 +27,7 @@ type Errors = {
 export default function RequestForm({
   serviceName,
   onSuccess,
+  showTitle = true, // 👈 по умолчанию заголовок показываем
 }: Props) {
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -130,11 +132,14 @@ export default function RequestForm({
 
   return (
     <div className="form-wrapper">
-      <h2>
-        {serviceName
-          ? `Get a quote for: ${serviceName}`
-          : "Request a free consultation"}
-      </h2>
+      {/* 👇 заголовок теперь условный */}
+      {showTitle && (
+        <h2>
+          {serviceName
+            ? `Get a quote for: ${serviceName}`
+            : "Request a free consultation"}
+        </h2>
+      )}
 
       <form
         className="form"

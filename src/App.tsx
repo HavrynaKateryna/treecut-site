@@ -1,71 +1,39 @@
-import { useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
+import Home from "./pages/Home";
+import ServicePage from "./pages/ServicePage";
+
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Services from "./components/Services";
-import Gallery from "./components/Gallery";
-import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
-import Modal from "./components/Modal";
-import RequestForm from "./components/RequestForm";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
-  const [modalOpen, setModalOpen] =
-    useState(false);
-
-  const [formSuccess, setFormSuccess] =
-    useState(false);
-
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToTop />
+
       <Helmet>
         <title>TreeCut</title>
-        <link
-          rel="icon"
-          type="image/png"
-          href="/favicon.png"
-        />
-        <meta
-          name="description"
-          content="Описание моего лендинга"
-        />
       </Helmet>
 
+      {/* 👇 теперь всегда отображаются */}
       <Header />
 
-      <main>
-        <Hero
-          openModal={() => setModalOpen(true)}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/services/:id"
+          element={<ServicePage />}
         />
+      </Routes>
 
-        <About />
-        <Services />
-        <Gallery />
-        <FAQ />
-      </main>
-
+      {/* 👇 тоже всегда */}
       <Footer />
-
-      {/* ГЛОБАЛЬНАЯ МОДАЛКА */}
-      <Modal
-        open={modalOpen}
-        onClose={() => {
-          setModalOpen(false);
-          setFormSuccess(false);
-        }}
-      >
-        {!formSuccess ? (
-          <RequestForm
-            onSuccess={() => setFormSuccess(true)}
-          />
-        ) : (
-          <div className="success-message">
-            ✅ Заявка отправлена!
-          </div>
-        )}
-      </Modal>
-    </>
+    </BrowserRouter>
   );
 }

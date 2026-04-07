@@ -1,0 +1,33 @@
+/* Service Page */
+.service-page {
+  padding: 20px;
+}
+
+.service-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  margin: 20px 0;
+  padding: 10px 16px;
+
+  background: rgba(1, 89, 87, 0.85);
+  color: #ef6d14;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+
+  cursor: pointer;
+  font-weight: 500;
+
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #015957;
+  transform: translateX(-3px);
+}

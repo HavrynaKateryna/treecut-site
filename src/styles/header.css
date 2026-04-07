@@ -19,6 +19,7 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 /* =========================
@@ -51,7 +52,7 @@ body {
 }
 
 /* =========================
-   LOGO (FIXED)
+   LOGO
 ========================= */
 .logo {
   display: flex;
@@ -60,21 +61,20 @@ body {
   font-weight: bold;
   color: #ef6d14;
   cursor: pointer;
-  flex-shrink: 0; /* важно */
+  flex-shrink: 0;
 }
 
 .logo span {
   color: #ef6d14;
 }
 
-/* контейнер под изображение */
+/* круг логотипа */
 .logo-circle {
   width: 80px;
   height: 80px;
-  flex-shrink: 0; /* важно */
+  flex-shrink: 0;
 }
 
-/* само изображение */
 .logo-circle img {
   width: 100%;
   height: 100%;
@@ -83,16 +83,23 @@ body {
 }
 
 /* =========================
-   NAV
+   NAV (DESKTOP)
 ========================= */
-.nav a {
-  margin-left: 20px;
-  color: #ef6d14;
-  text-decoration: none;
+.nav {
+  display: flex;
+  align-items: center;
 }
 
-.nav a:hover {
-  color: #fcffff4e;
+.nav span {
+  margin-left: 20px;
+  color: #ef6d14;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav span:hover {
+  color: #ffffff;
 }
 
 /* =========================
@@ -106,7 +113,7 @@ body {
 }
 
 /* =========================
-   MODAL MENU
+   MOBILE MENU
 ========================= */
 .menu-overlay {
   position: fixed;
@@ -135,15 +142,16 @@ body {
   position: relative;
 }
 
-.menu-modal a {
+.menu-modal span {
   color: #ef6d14;
-  text-decoration: none;
+  cursor: pointer;
   font-size: 18px;
   padding: 10px;
   border-radius: 6px;
+  transition: 0.3s;
 }
 
-.menu-modal a:hover {
+.menu-modal span:hover {
   background: var(--green);
 }
 
@@ -181,6 +189,6 @@ body {
   }
 
   :root {
-    --header-height: 80px; /* уменьшаем header на мобилке */
+    --header-height: 80px;
   }
 }

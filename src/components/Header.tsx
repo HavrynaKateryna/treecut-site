@@ -1,11 +1,25 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const closeMenu = () => setOpen(false);
 
+  const handleScrollTo = (id: string) => {
+    navigate("/");
+
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const handleLogoClick = () => {
+    navigate("/");
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -30,11 +44,41 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="nav">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#faq">Questions & Answers</a>
-            <a href="#contact">Contact</a>
+            <span
+              onClick={() =>
+                handleScrollTo("about")
+              }
+            >
+              About
+            </span>
+            <span
+              onClick={() =>
+                handleScrollTo("services")
+              }
+            >
+              Services
+            </span>
+            <span
+              onClick={() =>
+                handleScrollTo("gallery")
+              }
+            >
+              Gallery
+            </span>
+            <span
+              onClick={() =>
+                handleScrollTo("faq")
+              }
+            >
+              Questions & Answers
+            </span>
+            <span
+              onClick={() =>
+                handleScrollTo("contact")
+              }
+            >
+              Contact
+            </span>
           </nav>
 
           {/* Burger */}
@@ -47,7 +91,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* MODAL MENU */}
+      {/* MOBILE MENU */}
       {open && (
         <div
           className="menu-overlay"
@@ -64,30 +108,50 @@ export default function Header() {
               ✕
             </button>
 
-            <a href="#about" onClick={closeMenu}>
+            <span
+              onClick={() => {
+                handleScrollTo("about");
+                closeMenu();
+              }}
+            >
               About
-            </a>
-            <a
-              href="#services"
-              onClick={closeMenu}
+            </span>
+
+            <span
+              onClick={() => {
+                handleScrollTo("services");
+                closeMenu();
+              }}
             >
               Services
-            </a>
-            <a
-              href="#gallery"
-              onClick={closeMenu}
+            </span>
+
+            <span
+              onClick={() => {
+                handleScrollTo("gallery");
+                closeMenu();
+              }}
             >
               Gallery
-            </a>
-            <a href="#faq" onClick={closeMenu}>
+            </span>
+
+            <span
+              onClick={() => {
+                handleScrollTo("faq");
+                closeMenu();
+              }}
+            >
               FAQ
-            </a>
-            <a
-              href="#contact"
-              onClick={closeMenu}
+            </span>
+
+            <span
+              onClick={() => {
+                handleScrollTo("contact");
+                closeMenu();
+              }}
             >
               Contact
-            </a>
+            </span>
           </div>
         </div>
       )}

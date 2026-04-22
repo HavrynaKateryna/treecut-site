@@ -91,3 +91,17 @@
     gap: 10px; /* расстояние между иконками */
   }
 }
+/* Карта / Google Maps ссылка */
+.footer__col a[href*="maps"] {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: 0.3s;
+}
+
+.footer__col a[href*="maps"]:hover {
+  background: rgba(239, 109, 20, 0.2);
+  color: #ef6d14;
+}

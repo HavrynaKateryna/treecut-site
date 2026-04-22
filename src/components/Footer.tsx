@@ -18,7 +18,16 @@ export default function Footer() {
         <div className="footer__col">
           <h4>Contact Us</h4>
 
-          <p>📍 Jacksonville, FL</p>
+          {/* 🔗 ТВОЯ ССЫЛКА */}
+          <p>
+            <a
+              href="https://maps.app.goo.gl/HDfGGPkAKxNw6X3D8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📍 Get Directions
+            </a>
+          </p>
 
           <p>
             📞{" "}
@@ -26,12 +35,14 @@ export default function Footer() {
               559-680-4185 Tim
             </a>
           </p>
+
           <p>
             📞{" "}
             <a href="tel:+15596804208">
               559-680-4208 Dasha
             </a>
           </p>
+
           <p>📧 info@treecut.com</p>
         </div>
 
@@ -43,7 +54,6 @@ export default function Footer() {
               href="https://instagram.com/tim.tree_service"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
             >
               <FaInstagram />
             </a>
@@ -52,7 +62,6 @@ export default function Footer() {
               href="https://facebook.com/removal.s.trees"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook"
             >
               <FaFacebook />
             </a>
@@ -61,7 +70,6 @@ export default function Footer() {
               href="https://wa.me/15596804185"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp"
             >
               <FaWhatsapp />
             </a>

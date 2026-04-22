@@ -8,7 +8,7 @@ import "../styles/form.css";
 type Props = {
   serviceName?: string;
   onSuccess?: () => void;
-  showTitle?: boolean; // 👈 новый проп
+  showTitle?: boolean;
 };
 
 type FormState = {
@@ -16,6 +16,7 @@ type FormState = {
   email: string;
   phone: string;
   message: string;
+  hiddenField: string; // антиспам
 };
 
 type Errors = {
@@ -27,13 +28,14 @@ type Errors = {
 export default function RequestForm({
   serviceName,
   onSuccess,
-  showTitle = true, // 👈 по умолчанию заголовок показываем
+  showTitle = true,
 }: Props) {
   const [form, setForm] = useState<FormState>({
     name: "",
     email: "",
     phone: "",
     message: "",
+    hiddenField: "", // антиспам
   });
 
   const [errors, setErrors] = useState<Errors>(
@@ -43,6 +45,7 @@ export default function RequestForm({
   const [submitted, setSubmitted] =
     useState(false);
 
+  // ✅ ВАЛИДАЦИЯ
   const validate = () => {
     const newErrors: Errors = {};
 
@@ -50,8 +53,7 @@ export default function RequestForm({
       !form.name.trim() ||
       form.name.length < 2
     ) {
-      newErrors.name =
-        "Please enter your full name";
+      newErrors.name = "Enter your name";
     }
 
     if (
@@ -59,8 +61,7 @@ export default function RequestForm({
         form.email,
       )
     ) {
-      newErrors.email =
-        "Please enter a valid email address";
+      newErrors.email = "Invalid email";
     }
 
     if (
@@ -68,14 +69,14 @@ export default function RequestForm({
         form.phone.replace(/\D/g, ""),
       )
     ) {
-      newErrors.phone =
-        "Please enter a valid phone number";
+      newErrors.phone = "Invalid phone";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  // ✅ INPUT CHANGE
   const handleChange = (
     e: ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement
@@ -87,6 +88,7 @@ export default function RequestForm({
     });
   };
 
+  // 🚀 ОТПРАВКА
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -94,45 +96,64 @@ export default function RequestForm({
 
     setLoading(true);
 
-    await new Promise((r) => setTimeout(r, 1200));
+    try {
+      const res = await fetch(
+        "http://localhost:3000/api/lead",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...form,
+            service: serviceName || "general",
+          }),
+        },
+      );
 
-    console.log({
-      ...form,
-      service: serviceName || "general",
-    });
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error("Ошибка");
+      }
+
+      setSubmitted(true);
+
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        hiddenField: "",
+      });
+
+      onSuccess?.();
+
+      // ✅ WhatsApp переход
+      setTimeout(() => {
+        window.location.href =
+          "https://wa.me/79001234567?text=Я оставил заявку на сайте";
+      }, 1500);
+    } catch (err) {
+      alert("Ошибка отправки заявки");
+    }
 
     setLoading(false);
-    setSubmitted(true);
-
-    setForm({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-
-    onSuccess?.();
   };
 
+  // ✅ SUCCESS UI
   if (submitted) {
     return (
       <div className="success-box">
         <div className="checkmark">✔</div>
-        <h3>
-          Your request has been successfully
-          submitted!
-        </h3>
-        <p>
-          Our team will contact you shortly to
-          discuss the details
-        </p>
+        <h3>Заявка отправлена!</h3>
+        <p>Мы скоро свяжемся с вами</p>
       </div>
     );
   }
 
   return (
     <div className="form-wrapper">
-      {/* 👇 заголовок теперь условный */}
       {showTitle && (
         <h2>
           {serviceName
@@ -145,6 +166,15 @@ export default function RequestForm({
         className="form"
         onSubmit={handleSubmit}
       >
+        {/* АНТИСПАМ */}
+        <input
+          type="text"
+          name="hiddenField"
+          value={form.hiddenField}
+          onChange={handleChange}
+          style={{ display: "none" }}
+        />
+
         {/* NAME */}
         <div className="input-group">
           <input
@@ -201,18 +231,12 @@ export default function RequestForm({
             onChange={handleChange}
             placeholder=" "
           />
-          <label>
-            Project Details / Your Message
-          </label>
+          <label>Project Details / Message</label>
         </div>
 
-        <button
-          type="submit"
-          className="btn-primary"
-          disabled={loading}
-        >
+        <button type="submit" disabled={loading}>
           {loading
-            ? "Submitting your request..."
+            ? "Sending..."
             : "Get Free Quote"}
         </button>
       </form>

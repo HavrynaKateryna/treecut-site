@@ -5,7 +5,7 @@ export default function About() {
         <h2>Welcome to Tim’s Tree Service!</h2>
 
         <p>
-          Is a family-owned company with over 5
+          Is a family-owned company with over 8
           years of experience in professional tree
           removal.
         </p>

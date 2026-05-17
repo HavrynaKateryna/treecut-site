@@ -6,20 +6,18 @@ export default function Services() {
   const navigate = useNavigate();
 
   return (
-    <section
-      className="services-section"
-      id="services"
-    >
+    <section className="services-section" id="services">
       <div className="container">
-        <h2 className="services-title">
-          Services
-        </h2>
+        <h2 className="services-title">Services</h2>
 
         <div className="services-grid">
           {services.map((s) => (
             <div key={s.id} className="card">
-              <h3>{s.title}</h3>
-              <p>{s.description}</p>
+
+              <div className="card-content">
+                <h3>{s.title}</h3>
+                <p>{s.description}</p>
+              </div>
 
               <button
                 className="details-btn"
@@ -29,6 +27,7 @@ export default function Services() {
               >
                 View details
               </button>
+
             </div>
           ))}
         </div>

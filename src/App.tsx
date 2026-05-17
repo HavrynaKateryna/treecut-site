@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+
 import { Helmet } from "react-helmet-async";
 
 import Home from "./pages/Home";
@@ -21,18 +22,15 @@ export default function App() {
         <title>TreeCut</title>
       </Helmet>
 
-      {/* 👇 теперь всегда отображаются */}
       <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/services/:id"
-          element={<ServicePage />}
-        />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services/:id" element={<ServicePage />} />
+        </Routes>
+      </main>
 
-      {/* 👇 тоже всегда */}
       <Footer />
     </BrowserRouter>
   );

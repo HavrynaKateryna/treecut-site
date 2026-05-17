@@ -8,17 +8,9 @@ type Props = {
   children: ReactNode;
 };
 
-export default function Modal({
-  open,
-  onClose,
-  children,
-}: Props) {
+export default function Modal({ open, onClose, children }: Props) {
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
   }, [open]);
 
   if (!open) return null;
@@ -32,13 +24,6 @@ export default function Modal({
         className="modal"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          className="modal-close"
-          onClick={onClose}
-        >
-          ×
-        </button>
-
         {children}
       </div>
     </div>

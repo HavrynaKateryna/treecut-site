@@ -189,3 +189,18 @@ img {
     background: #f5f1e5; /* бежевый цвет */
   }
 }
+html,
+body {
+  height: 100%;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔥 ключевой фикс */
+main {
+  flex: 1;
+}

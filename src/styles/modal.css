@@ -1,130 +1,27 @@
-/* OVERLAY */
 .modal-overlay {
   position: fixed;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.65);
-
-  /* 🔥 blur background */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.75);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  z-index: 2000;
-
-  animation: overlayFade 0.35s ease;
+  z-index: 9999;
 }
 
-/* MODAL */
+/* контейнер */
 .modal {
   position: relative;
 
-  background: rgba(1, 89, 87, 0.85);
-  backdrop-filter: blur(14px);
-
-  padding: 30px;
-  border-radius: 16px;
-
   width: 95%;
-  max-width: 900px;
-
-  max-height: 90vh;
-  overflow-y: auto;
+  max-width: 700px;
+  min-height: 80vh;
 
   display: flex;
-  flex-direction: column;
-  align-items: center; /* центрируем содержимое */
+  justify-content: center;
+  align-items: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
-
-  animation: modalIn 0.4s
-    cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* HIDE SCROLLBAR */
-.modal {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.modal::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
-/* CLOSE BUTTON */
-.modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-
-  width: 42px;
-  height: 42px;
-
-  border: none;
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-
-  font-size: 22px;
-  cursor: pointer;
-
-  transition: all 0.3s ease;
-}
-
-.modal-close:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: rotate(90deg) scale(1.1);
-}
-
-/* IMAGE */
-.modal img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-/* TEXT */
-.modal-description {
-  text-align: left;
-  margin-bottom: 20px;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .modal {
-    max-width: 95%;
-    padding: 20px;
-  }
-}
-
-/* ANIMATIONS */
-
-/* overlay blur fade */
-@keyframes overlayFade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* modal scale + fade */
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  background: transparent;
 }

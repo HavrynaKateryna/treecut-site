@@ -10,38 +10,29 @@ import Modal from "../components/Modal";
 import RequestForm from "../components/RequestForm";
 
 export default function Home() {
-  const [modalOpen, setModalOpen] =
-    useState(false);
-  const [formSuccess, setFormSuccess] =
-    useState(false);
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const close = () => {
+    setOpen(false);
+    setSuccess(false);
+  };
 
   return (
     <>
       <main>
-        <Hero
-          openModal={() => setModalOpen(true)}
-        />
+        <Hero openModal={() => setOpen(true)} />
         <About />
         <Services />
         <Gallery />
         <FAQ />
       </main>
 
-      <Modal
-        open={modalOpen}
-        onClose={() => {
-          setModalOpen(false);
-          setFormSuccess(false);
-        }}
-      >
-        {!formSuccess ? (
-          <RequestForm
-            onSuccess={() => setFormSuccess(true)}
-          />
+      <Modal open={open} onClose={close}>
+        {!success ? (
+          <RequestForm onSuccess={() => setSuccess(true)} />
         ) : (
-          <div className="success-message">
-            ✅ Заявка отправлена!
-          </div>
+          <div className="success-box">✔ Sent!</div>
         )}
       </Modal>
     </>

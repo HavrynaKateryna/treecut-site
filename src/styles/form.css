@@ -1,56 +1,58 @@
+/* =========================================================
+   FORM WRAPPER
+========================================================= */
+
 .form-wrapper {
+  position: relative;
+
   width: 100%;
-  max-width: 620px;
 
   padding: 40px;
-  border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-
-  position: relative;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  background: rgba(1, 89, 87, 0.4);
+
+  backdrop-filter: blur(18px);
 }
 
-/* 🔥 НАЗВАНИЕ (КАК БЫЛО — ВОЗВРАЩАЕМ) */
+/* =========================================================
+   TITLE
+========================================================= */
+
 .form-wrapper h2 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
   color: #ef6d14;
 }
 
-/* 🔥 КРЕСТИК (ФИКС + 100% РАБОТАЕТ) */
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
 .form-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 14px;
+  right: 14px;
 
   width: 44px;
   height: 44px;
 
   border-radius: 50%;
-  border: none;
 
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
 
-  font-size: 22px;
-  font-weight: bold;
-
-  cursor: pointer;
-
-  z-index: 9999;
+  font-size: 24px;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 999999;
 
   transition: 0.3s ease;
 }
@@ -60,75 +62,81 @@
   transform: rotate(90deg);
 }
 
-/* 🔥 ФОРМА */
-.form {
-  width: 100%;
-  max-width: 520px;
+/* =========================================================
+   FORM
+========================================================= */
 
+.form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
-/* INPUTS */
+/* =========================================================
+   INPUTS
+========================================================= */
+
 .form input,
 .form textarea {
   width: 100%;
-  padding: 16px;
+
+  padding: 14px;
 
   border-radius: 12px;
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255,255,255,0.2);
 
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0,0,0,0.35);
+
   color: white;
-
-  font-size: 15px;
 
   outline: none;
 
   transition: 0.3s ease;
 }
 
-/* ERROR BORDER 🔥 */
-.input-error {
-  border: 1px solid #ff4d4d !important;
-  box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+.form textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
-/* ERROR TEXT */
+.form input:focus,
+.form textarea:focus {
+  border-color: #ef6d14;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.input-error {
+  border: 1px solid #ff4d4d !important;
+}
+
 .error {
   color: #ff4d4d;
   font-size: 12px;
-  margin-top: -10px;
+  margin-top: -8px;
 }
 
-/* 🔥 BUTTON (как крестик hover) */
+/* =========================================================
+   BUTTON
+========================================================= */
+
 .form-submit {
-  width: 100%;
   padding: 14px;
 
-  border: none;
-  border-radius: 10px;
+  border-radius: 12px;
 
   background: #ef6d14;
   color: white;
 
-  font-size: 16px;
   font-weight: 600;
-
-  cursor: pointer;
 
   transition: 0.3s ease;
 }
 
 .form-submit:hover {
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
   transform: translateY(-2px);
-}
-
-.form-submit:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  background: #ff7f22;
 }

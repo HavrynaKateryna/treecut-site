@@ -1,130 +1,289 @@
-.gallery-section {
-  padding: 40px 20px;
-  color: #ef6d14;
-  display: flex;
-  justify-content: center;
+/* =========================================================
+   GALLERY
+========================================================= */
 
-  scroll-margin-top: 120px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
+.gallery {
+  overflow: hidden;
 }
 
 .gallery-title {
-  text-align: center;
-  margin-bottom: 20px;
-  text-align: center;
-  margin-bottom: 30px;
-  color: #ef6d14;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  font-size: 36px;
-  font-weight: 700;
+  margin-bottom: 50px;
 }
 
-/* wrapper */
-.gallery-wrapper {
+/* =========================================================
+   CAROUSEL
+========================================================= */
+
+.carousel {
   position: relative;
-}
 
-/* GRID */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-/* карточка */
-.gallery-card {
   width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
+  height: 640px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
 }
 
-.gallery-card img {
+/* =========================================================
+   SLIDER
+========================================================= */
+
+.slider {
+  position: relative;
+
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 12px;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* arrows */
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.slide {
+  position: absolute;
+
+  transition:
+    transform 0.55s ease,
+    opacity 0.55s ease;
+
+  border-radius: 28px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/* =========================================================
+   CENTER ACTIVE
+========================================================= */
+
+.slide.active {
+  width: 760px;
+  height: 520px;
+
+  z-index: 5;
+
+  opacity: 1;
+
+  transform: translateX(0) scale(1);
+}
+
+/* =========================================================
+   LEFT
+========================================================= */
+
+.slide.left {
+  width: 500px;
+  height: 360px;
+
+  opacity: 0.45;
+
+  transform: translateX(-440px) scale(0.9);
+
+  z-index: 3;
+}
+
+/* =========================================================
+   RIGHT
+========================================================= */
+
+.slide.right {
+  width: 500px;
+  height: 360px;
+
+  opacity: 0.45;
+
+  transform: translateX(440px) scale(0.9);
+
+  z-index: 3;
+}
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.slide.hidden {
+  opacity: 0;
+  pointer-events: none;
+
+  transform: scale(0.7);
+}
+
+/* =========================================================
+   ARROWS
+========================================================= */
+
 .gallery-arrow {
   position: absolute;
   top: 50%;
+
   transform: translateY(-50%);
 
-  width: 45px;
-  height: 45px;
+  width: 64px;
+  height: 64px;
+
   border-radius: 50%;
 
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  border: none;
-  cursor: pointer;
+  background: rgba(0,0,0,0.45);
 
-  font-size: 24px;
+  color: white;
+
+  font-size: 42px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  z-index: 10;
-}
+  z-index: 20;
 
-.gallery-arrow.left {
-  left: -20px;
-}
+  backdrop-filter: blur(12px);
 
-.gallery-arrow.right {
-  right: -20px;
+  transition: 0.3s ease;
 }
 
 .gallery-arrow:hover {
   background: #ef6d14;
+  transform: translateY(-50%) scale(1.08);
 }
 
-/* modal */
-.modal-fullscreen {
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox {
   position: fixed;
   inset: 0;
+
+  background: rgba(0,0,0,0.92);
+
+  backdrop-filter: blur(10px);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
+  z-index: 999999;
+
+  padding: 20px;
+
+  animation: fadeIn 0.3s ease;
 }
 
-.modal-img {
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
+.lightbox img {
+  width: auto;
+  max-width: 95vw;
+
+  max-height: 92vh;
+
+  border-radius: 22px;
+
+  box-shadow: 0 30px 120px rgba(0,0,0,0.7);
 }
 
-/* =========================
-   ADAPTIVE
-========================= */
+/* =========================================================
+   ANIMATION
+========================================================= */
 
-/* tablet */
-@media (max-width: 1024px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-/* mobile */
-@media (max-width: 600px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .carousel {
+    height: 520px;
+  }
+
+  .slide.active {
+    width: 620px;
+    height: 420px;
+  }
+
+  .slide.left,
+  .slide.right {
+    width: 380px;
+    height: 260px;
+  }
+
+  .slide.left {
+    transform: translateX(-320px) scale(0.88);
+  }
+
+  .slide.right {
+    transform: translateX(320px) scale(0.88);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .carousel {
+    height: 420px;
+  }
+
+  .slide.active {
+    width: 92vw;
+    height: 320px;
+  }
+
+  .slide.left,
+  .slide.right {
+    width: 62vw;
+    height: 220px;
+
+    opacity: 0.25;
+  }
+
+  .slide.left {
+    transform: translateX(-62vw) scale(0.82);
+  }
+
+  .slide.right {
+    transform: translateX(62vw) scale(0.82);
   }
 
   .gallery-arrow {

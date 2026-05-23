@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../styles/gallery.css";
 
 export default function Gallery() {
   const images = [
-    "/1.jpg",
     "/2.jpg",
     "/3.jpg",
     "/4.jpg",
@@ -20,122 +19,155 @@ export default function Gallery() {
     "/15.jpg",
   ];
 
-  const [isMobile, setIsMobile] = useState(false);
-  const [perPage, setPerPage] = useState(3);
-  const [page, setPage] = useState(0);
-  const [index, setIndex] = useState<
-    number | null
-  >(null);
+  const [index, setIndex] = useState<number>(0);
+  const [zoom, setZoom] = useState<boolean>(false);
 
-  // определяем устройство
+  const startX = useRef<number | null>(null);
+
+  const len = images.length;
+
+  /* ========================================
+     NEXT / PREV
+  ======================================== */
+
+  const next = () => {
+    setIndex((prev) => (prev + 1) % len);
+  };
+
+  const prev = () => {
+    setIndex((prev) => (prev - 1 + len) % len);
+  };
+
+  /* ========================================
+     KEYBOARD
+  ======================================== */
+
   useEffect(() => {
-    const update = () => {
-      const width = window.innerWidth;
+    const onKey = (e: KeyboardEvent) => {
+      if (zoom && e.key === "Escape") {
+        setZoom(false);
+      }
 
-      if (width <= 600) {
-        setIsMobile(true);
-        setPerPage(images.length); // без пагинации
-      } else if (width <= 1024) {
-        setIsMobile(false);
-        setPerPage(4);
-      } else {
-        setIsMobile(false);
-        setPerPage(3);
+      if (!zoom) {
+        if (e.key === "ArrowRight") next();
+        if (e.key === "ArrowLeft") prev();
       }
     };
 
-    update();
-    window.addEventListener("resize", update);
+    window.addEventListener("keydown", onKey);
 
-    return () =>
-      window.removeEventListener(
-        "resize",
-        update,
-      );
-  }, []);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [zoom]);
 
-  const totalPages = Math.ceil(
-    images.length / perPage,
-  );
+  /* ========================================
+     SWIPE
+  ======================================== */
 
-  const start = page * perPage;
-
-  const visible = isMobile
-    ? images
-    : images.slice(start, start + perPage);
-
-  const nextPage = () => {
-    setPage((prev) => (prev + 1) % totalPages);
+  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    startX.current = e.touches[0].clientX;
   };
 
-  const prevPage = () => {
-    setPage((prev) =>
-      prev === 0 ? totalPages - 1 : prev - 1,
-    );
+  const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (startX.current === null) return;
+
+    const diff = e.changedTouches[0].clientX - startX.current;
+
+    if (diff > 60) prev();
+    if (diff < -60) next();
+
+    startX.current = null;
   };
 
-  const openImage = (i: number) => {
-    setIndex(isMobile ? i : start + i);
-  };
+  /* ========================================
+     POSITION
+  ======================================== */
 
-  const closeModal = () => {
-    setIndex(null);
+  const getClass = (i: number) => {
+    if (i === index) return "slide active";
+
+    if (i === (index - 1 + len) % len) {
+      return "slide left";
+    }
+
+    if (i === (index + 1) % len) {
+      return "slide right";
+    }
+
+    return "slide hidden";
   };
 
   return (
-    <section
-      id="gallery"
-      className="gallery-section"
-    >
+    <section id="gallery" className="gallery section">
+
       <div className="container">
-        <h2 className="gallery-title">Gallery</h2>
 
-        <div className="gallery-wrapper">
-          {/* стрелки только не на мобилке */}
-          {!isMobile && (
-            <>
-              <button
-                className="gallery-arrow left"
-                onClick={prevPage}
-              >
-                ‹
-              </button>
+        <h2 className="gallery-title">
+          Gallery
+        </h2>
 
-              <button
-                className="gallery-arrow right"
-                onClick={nextPage}
-              >
-                ›
-              </button>
-            </>
-          )}
+        <div className="carousel">
 
-          <div className="gallery-grid">
-            {visible.map((img, i) => (
+          {/* LEFT */}
+          <button
+            className="gallery-arrow left-arrow"
+            onClick={prev}
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+
+          {/* SLIDER */}
+          <div
+            className="slider"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+          >
+            {images.map((img, i) => (
               <div
                 key={i}
-                className="gallery-card"
-                onClick={() => openImage(i)}
+                className={getClass(i)}
+                onClick={() => {
+                  if (i === index) {
+                    setZoom(true);
+                  } else {
+                    setIndex(i);
+                  }
+                }}
               >
                 <img src={img} alt="" />
               </div>
             ))}
           </div>
+
+          {/* RIGHT */}
+          <button
+            className="gallery-arrow right-arrow"
+            onClick={next}
+            aria-label="Next"
+          >
+            ›
+          </button>
+
         </div>
+
       </div>
 
-      {/* modal */}
-      {index !== null && (
+      {/* LIGHTBOX */}
+      {zoom && (
         <div
-          className="modal-fullscreen"
-          onClick={closeModal}
+          className="lightbox"
+          onClick={() => setZoom(false)}
         >
           <img
             src={images[index]}
-            className="modal-img"
+            alt=""
+            onClick={(e) => e.stopPropagation()}
           />
         </div>
       )}
+
     </section>
   );
 }

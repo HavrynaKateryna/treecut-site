@@ -1,10 +1,5 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-
-import { Helmet } from "react-helmet-async";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import Home from "./pages/Home";
 import ServicePage from "./pages/ServicePage";
@@ -15,23 +10,31 @@ import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
+    <HelmetProvider>
+      <BrowserRouter>
+        <ScrollToTop />
 
-      <Helmet>
-        <title>TreeCut</title>
-      </Helmet>
+        <Helmet>
+          <title>TreeCut</title>
+          <meta
+            name="description"
+            content="Спил деревьев, обрезка и вывоз мусора"
+          />
+        </Helmet>
 
-      <Header />
+        <div className="app-layout">
+          <Header />
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services/:id" element={<ServicePage />} />
-        </Routes>
-      </main>
+          <main className="page-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/services/:id" element={<ServicePage />} />
+            </Routes>
+          </main>
 
-      <Footer />
-    </BrowserRouter>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

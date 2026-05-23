@@ -1,114 +1,219 @@
+/* =========================================================
+   SECTION (PREMIUM BASE)
+========================================================= */
+
 .faq-section {
   position: relative;
 
-  padding: 40px 20px;
-  color: #ef6d14;
-  scroll-margin-top: 120px;
-  background: url("/services-bg.jpg") center/cover
-    no-repeat;
+  width: 100%;
+
+  padding: 100px 0;
+
+  color: #fff;
+
+  scroll-margin-top: 92px;
+
+  overflow: hidden;
 }
 
-/* overlay затемнение */
+/* dark cinematic overlay */
 .faq-section::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(1, 89, 87, 0.25);
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(239, 109, 20, 0.08),
+      transparent 60%
+    ),
+   
+
+
 }
 
-/* контейнер */
-.faq-section .container {
+/* content layer */
+.faq-section > * {
   position: relative;
   z-index: 1;
-
-  max-width: 700px;
-  margin: 0 auto;
 }
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .faq-section h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+
+  font-size: clamp(30px, 5vw, 56px);
+  font-weight: 800;
+
+  color: #ef6d14;
+
+  letter-spacing: 0.3px;
+
+  text-shadow:
+    0 0 14px rgba(239, 109, 20, 0.25),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: faqTitleIn 0.9s ease forwards;
 }
 
-/* список */
+@keyframes faqTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
 .faq {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding-inline: clamp(16px, 4vw, 48px);
 }
 
-/* карточка */
+/* =========================================================
+   CARD
+========================================================= */
+
 .faq-item {
-  background: rgba(26, 43, 34, 0.85);
-  border-radius: 12px;
+  background: rgba(1, 89, 87, 0.4);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+
+  backdrop-filter: blur(14px);
+
   overflow: hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.35s ease;
+
+  opacity: 0;
+  transform: translateY(25px);
+  animation: faqCardIn 0.8s ease forwards;
+}
+
+.faq-item:nth-child(1) { animation-delay: 0.05s; }
+.faq-item:nth-child(2) { animation-delay: 0.1s; }
+.faq-item:nth-child(3) { animation-delay: 0.15s; }
+.faq-item:nth-child(4) { animation-delay: 0.2s; }
+.faq-item:nth-child(5) { animation-delay: 0.25s; }
+.faq-item:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes faqCardIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .faq-item:hover {
-  transform: translateY(-5px);
+  border-color: rgba(239, 109, 20, 0.35);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
 }
 
-/* вопрос */
+/* =========================================================
+   QUESTION
+========================================================= */
+
 .faq-question {
   width: 100%;
-  padding: 15px;
+  padding: 20px 22px;
 
-  background: #015957;
-  color: #ef6d14;
+  background: transparent;
   border: none;
+
+  color: #ef6d14;
+
+  font-size: 17px;
+  font-weight: 600;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   cursor: pointer;
-  font-size: 16px;
+
+  transition: color 0.25s ease;
 }
 
-/* иконка */
-.faq-icon {
-  font-size: 20px;
+.faq-question:hover {
+  color: #ff8a2a;
+}
+
+/* =========================================================
+   CHEVRON
+========================================================= */
+
+.chevron {
+  font-size: 22px;
   transition: transform 0.3s ease;
+  opacity: 0.8;
 }
 
-.faq-icon.open {
-  transform: rotate(45deg);
+.chevron.open {
+  transform: rotate(90deg);
+  opacity: 1;
 }
 
-/* ответ */
+/* =========================================================
+   ANSWER
+========================================================= */
+
 .faq-answer {
-  max-height: 0;
   overflow: hidden;
-
-  background: rgba(26, 43, 34, 0.85);
-  color: #fff;
-
-  transition:
-    max-height 0.3s ease,
-    padding 0.3s ease;
-  padding: 0 15px;
 }
 
-.faq-answer.open {
-  max-height: 200px;
-  padding: 12px 15px;
+.faq-answer-inner {
+  padding: 0 22px 18px 22px;
 }
 
 .faq-answer p {
   margin: 0;
+
+  font-size: 15.5px;
+  line-height: 1.75;
+
   color: rgba(255, 255, 255, 0.85);
+
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: answerIn 0.4s ease forwards;
 }
 
-/* адаптив */
-@media (max-width: 768px) {
-  .faq-section {
-    padding: 60px 15px;
+@keyframes answerIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (min-width: 768px) {
+  .faq {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 
-  .faq-section .container {
-    max-width: 100%;
+  .faq-question {
+    font-size: 18px;
   }
 }

@@ -1,25 +1,101 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Phone } from "lucide-react";
+import "../styles/header.css";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
 
-  const closeMenu = () => setOpen(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  /* =========================
+     MENU
+  ========================= */
+
+  const closeMenu = () => {
+    setOpen(false);
+  };
+
+  /* =========================
+     LOCK BODY
+  ========================= */
+
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("lock");
+    } else {
+      document.body.classList.remove("lock");
+    }
+
+    return () => {
+      document.body.classList.remove("lock");
+    };
+  }, [open]);
+
+  /* =========================
+     ESC CLOSE
+  ========================= */
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    };
+
+    window.addEventListener("keydown", onKey);
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+    };
+  }, []);
+
+  /* =========================
+     SCROLL
+  ========================= */
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+
+    if (!el) return;
+
+    const offset = 100;
+
+    const top =
+      el.getBoundingClientRect().top +
+      window.scrollY -
+      offset;
+
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  };
 
   const handleScrollTo = (id: string) => {
+    closeMenu();
+
+    if (location.pathname === "/") {
+      setTimeout(() => {
+        scrollToSection(id);
+      }, 50);
+
+      return;
+    }
+
     navigate("/");
 
     setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
+      scrollToSection(id);
+    }, 150);
   };
 
-  const handleLogoClick = () => {
+  const goHomeTop = () => {
+    closeMenu();
+
     navigate("/");
+
     window.scrollTo({
       top: 0,
       behavior: "smooth",
@@ -29,65 +105,81 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        <div className="container header__inner">
-          {/* Logo */}
-          <div
+        <div className="header__inner">
+
+          {/* LOGO */}
+          <button
+            type="button"
             className="logo"
-            onClick={handleLogoClick}
-            style={{ cursor: "pointer" }}
+            onClick={goHomeTop}
           >
             <div className="logo-circle">
               <img src="/logo.jpg" alt="logo" />
             </div>
-            <span>TIM'S TREE SERVICE</span>
-          </div>
 
-          {/* Desktop nav */}
+            <span>TIM'S TREE SERVICE</span>
+          </button>
+
+          {/* DESKTOP NAV */}
           <nav className="nav">
-            <span
-              onClick={() =>
-                handleScrollTo("about")
-              }
-            >
+
+            <button onClick={() => handleScrollTo("about")}>
               About
-            </span>
-            <span
-              onClick={() =>
-                handleScrollTo("services")
-              }
-            >
+            </button>
+
+            <button onClick={() => handleScrollTo("services")}>
               Services
-            </span>
-            <span
-              onClick={() =>
-                handleScrollTo("gallery")
-              }
-            >
+            </button>
+
+            <button onClick={() => handleScrollTo("gallery")}>
               Gallery
-            </span>
-            <span
-              onClick={() =>
-                handleScrollTo("faq")
-              }
-            >
-              Questions & Answers
-            </span>
-            <span
-              onClick={() =>
-                handleScrollTo("contact")
-              }
-            >
+            </button>
+
+            <button onClick={() => handleScrollTo("reviews")}>
+              Reviews
+            </button>
+
+            <button onClick={() => handleScrollTo("faq")}>
+              FAQ
+            </button>
+
+            <button onClick={() => handleScrollTo("contact")}>
               Contact
-            </span>
+            </button>
+
           </nav>
 
-          {/* Burger */}
-          <div
+          {/* PHONES */}
+          <div className="header-contact">
+
+            <a
+              href="tel:+15596804185"
+              className="header-phone"
+            >
+              <Phone size={18} />
+              <span>(559) 680-4185</span>
+            </a>
+
+            <a
+              href="tel:+15596804208"
+              className="header-phone"
+            >
+              <Phone size={18} />
+              <span>(559) 680-4208</span>
+            </a>
+
+          </div>
+
+          {/* BURGER */}
+          <button
+            type="button"
             className="burger"
             onClick={() => setOpen(true)}
+            aria-label="Open menu"
           >
             ☰
-          </div>
+          </button>
+
         </div>
       </header>
 
@@ -101,57 +193,55 @@ export default function Header() {
             className="menu-modal"
             onClick={(e) => e.stopPropagation()}
           >
+
             <button
+              type="button"
               className="menu-close"
               onClick={closeMenu}
             >
               ✕
             </button>
 
-            <span
-              onClick={() => {
-                handleScrollTo("about");
-                closeMenu();
-              }}
-            >
+            <button onClick={() => handleScrollTo("about")}>
               About
-            </span>
+            </button>
 
-            <span
-              onClick={() => {
-                handleScrollTo("services");
-                closeMenu();
-              }}
-            >
+            <button onClick={() => handleScrollTo("services")}>
               Services
-            </span>
+            </button>
 
-            <span
-              onClick={() => {
-                handleScrollTo("gallery");
-                closeMenu();
-              }}
-            >
+            <button onClick={() => handleScrollTo("gallery")}>
               Gallery
-            </span>
+            </button>
 
-            <span
-              onClick={() => {
-                handleScrollTo("faq");
-                closeMenu();
-              }}
-            >
+            <button onClick={() => handleScrollTo("reviews")}>
+              Reviews
+            </button>
+
+            <button onClick={() => handleScrollTo("faq")}>
               FAQ
-            </span>
+            </button>
 
-            <span
-              onClick={() => {
-                handleScrollTo("contact");
-                closeMenu();
-              }}
-            >
+            <button onClick={() => handleScrollTo("contact")}>
               Contact
-            </span>
+            </button>
+
+            <a
+              href="tel:+15596804185"
+              className="mobile-phone"
+            >
+              <Phone size={18} />
+              <span>(559) 680-4185</span>
+            </a>
+
+            <a
+              href="tel:+15596804208"
+              className="mobile-phone"
+            >
+              <Phone size={18} />
+              <span>(559) 680-4208</span>
+            </a>
+
           </div>
         </div>
       )}

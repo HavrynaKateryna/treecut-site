@@ -8,6 +8,8 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import "./styles/global.css";
+import "./styles/layout.css";
+
 import "./styles/header.css";
 import "./styles/hero.css";
 import "./styles/about.css";
@@ -20,12 +22,10 @@ import "./styles/form.css";
 
 const root = document.getElementById("root");
 
-if (!root) {
-  throw new Error("Root element not found");
-}
+if (!root) throw new Error("Root element not found");
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

@@ -1,0 +1,64 @@
+/* =========================================================
+   LAYOUT SYSTEM
+========================================================= */
+
+.app-layout {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1 1 auto;
+
+  width: 100%;
+  min-width: 0;
+}
+
+/* =========================================================
+   CONTAINER SYSTEM
+========================================================= */
+
+.container {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin-inline: auto;
+
+  padding-inline: 16px;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 24px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1200px) {
+  .container {
+    padding-inline: 40px;
+  }
+}
+
+/* =========================================================
+   SECTION SYSTEM
+========================================================= */
+
+.section {
+  width: 100%;
+
+  padding-top: 110px;
+  padding-bottom: 110px;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+}

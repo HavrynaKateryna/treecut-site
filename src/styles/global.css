@@ -1,206 +1,226 @@
-/* =========================
+/* =========================================================
    RESET
-========================= */
-* {
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* =========================
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+  --header-height: 80px;
+
+  --primary: #ef6d14;
+
+  /* UNIFIED SPACING SYSTEM */
+  --section-space-mobile: 72px;
+  --section-space-desktop: 110px;
+
+  --container: 1200px;
+
+  --glass-bg: rgba(255, 255, 255, 0.01);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================================================
    BASE
-========================= */
+========================================================= */
+
 html {
   scroll-behavior: smooth;
 }
+
 html,
 body {
+  width: 100%;
   overflow-x: hidden;
 }
 
-* {
-  box-sizing: border-box;
-}
 body {
   font-family: "Roboto", Arial, sans-serif;
-
   color: #fff;
-
-  /* ✅ ФОН-КАРТИНКА САЙТА */
-  background: url("/bg.jpg") center/cover
-    no-repeat fixed;
+  background: #0b1411;
 }
 
-/* =========================
-   VARIABLES
-========================= */
-:root {
-  --green: #015957;
-  --dark: #0f1f18;
-  --white: #ffffff;
-  --gray: #cccccc;
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
 }
 
-/* =========================
+body::before {
+  z-index: -2;
+
+  background:
+    radial-gradient(circle at top, rgba(239,109,20,0.05), transparent 55%),
+    radial-gradient(circle at bottom, rgba(0,255,200,0.04), transparent 60%),
+    url("/bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: brightness(0.65) saturate(1.2);
+}
+
+body::after {
+  z-index: -1;
+  background: rgba(0,0,0,0.55);
+}
+
+/* =========================================================
+   BUTTON RESET
+========================================================= */
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: none;
+  outline: none;
+  background: none;
+
+  font: inherit;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   APP LAYOUT
+========================================================= */
+
+.app-layout {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+/* =========================================================
    CONTAINER
-========================= */
+========================================================= */
+
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+  width: 100%;
+  max-width: var(--container);
+
+  margin-inline: auto;
+
+  padding-inline: 16px;
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
-h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 24px;
+  }
 }
+
+@media (min-width: 1200px) {
+  .container {
+    padding-inline: 40px;
+  }
+}
+
+/* =========================================================
+   SECTION SYSTEM
+========================================================= */
+
+section {
+  width: 100%;
+
+  scroll-margin-top: var(--header-height);
+}
+
+/* ОДИНАКОВОЕ РАССТОЯНИЕ МЕЖДУ ВСЕМИ СЕКЦИЯМИ */
+.section {
+  padding-block: var(--section-space-mobile);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--section-space-desktop);
+  }
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
 
 h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
+  font-size: clamp(30px, 5vw, 52px);
 
-h3 {
-  font-size: 22px;
+  font-weight: 800;
+
+  text-align: center;
+
+  margin-bottom: 42px;
+
+  color: var(--primary);
 }
 
 p {
   line-height: 1.6;
-  margin: 10px 0;
+  color: rgba(255,255,255,0.85);
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+/* =========================================================
+   GLASS
+========================================================= */
+
+.glass {
+  background: var(--glass-bg);
+
+  border: 1px solid var(--glass-border);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 18px;
+
+  box-shadow: var(--glass-shadow);
 }
 
-/* =========================
-   SECTIONS
-========================= */
-.section {
-  padding: 60px 20px;
-  text-align: center;
-  scroll-margin-top: 120px;
+.glass-hover {
+  transition: 0.3s ease;
 }
 
-/* =========================
-   BUTTONS
-========================= */
-.btn {
-  padding: 12px 20px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-  display: inline-block;
-  font-size: 15px;
+.glass-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(239,109,20,0.35);
 }
 
-.btn-primary {
-  background: var(--green);
-  color: white;
-}
+/* =========================================================
+   LOCK SCROLL
+========================================================= */
 
-.btn-primary:hover {
-  opacity: 0.9;
-}
-
-.btn-secondary {
-  background: white;
-  color: #111;
-}
-
-.btn-secondary:hover {
-  background: #ddd;
-}
-
-/* =========================
-   FORM
-========================= */
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-  margin: auto;
-}
-
-.form input,
-.form textarea {
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid var(--gray);
-  font-family: inherit;
-}
-
-.form input:focus,
-.form textarea:focus {
-  outline: none;
-  border-color: var(--green);
-}
-
-.form button {
-  padding: 12px;
-}
-
-/* =========================
-   IMAGES
-========================= */
-img {
-  max-width: 100%;
-  display: block;
-}
-
-/* =========================
-   UTILITIES
-========================= */
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 28px;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  .section {
-    padding: 40px 15px;
-  }
-
-  .btn {
-    width: 100%;
-    max-width: 260px;
-  }
-}
-@media (max-width: 768px) {
-  body {
-    background: #f5f1e5; /* бежевый цвет */
-  }
-}
-html,
-body {
-  height: 100%;
-}
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* 🔥 ключевой фикс */
-main {
-  flex: 1;
+body.lock {
+  overflow: hidden !important;
+  height: 100vh;
 }

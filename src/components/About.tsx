@@ -1,35 +1,48 @@
+import { useEffect, useRef } from "react";
+
 export default function About() {
+  const ref = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("active");
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="about">
+    <section id="about" className="about" ref={ref}>
       <div className="container">
-        <h2>Welcome to Tim’s Tree Service!</h2>
+        <div className="about__card">
 
-        <p>
-          Is a family-owned company with over 8
-          years of experience in professional tree
-          removal.
-        </p>
+          <div className="about__text">
+            <h2>Welcome to Tim’s Tree Service!</h2>
 
-        <p>
-          We help homeowners safely and
-          effortlessly handle any tree removal
-          needs. We take care of the entire
-          process — from assessment and work to
-          complete cleanup and debris removal.
-        </p>
+            <p>A family-owned company with over 8 years of experience in professional tree removal.</p>
 
-        <p>
-          In our work, we focus on reliability,
-          precision, and attention to detail.
-          Using our own equipment and a trusted
-          team, we ensure safe execution and
-          high-quality results every time.
-        </p>
+            <p>We help homeowners safely and effortlessly handle any tree removal needs. From assessment to cleanup — everything is fully managed.</p>
 
-        <p>
-          We treat every property with care and
-          respect, as if it were our own.
-        </p>
+            <p>We focus on reliability, precision, and safety using professional equipment and an experienced team.</p>
+
+            <p>Every property is treated with care and respect as if it were our own.</p>
+          </div>
+
+          <div className="about__image">
+            <img src="/1.jpg" alt="Our team" />
+          </div>
+
+        </div>
       </div>
     </section>
   );

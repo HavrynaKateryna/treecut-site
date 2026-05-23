@@ -1,194 +1,313 @@
 :root {
-  --header-height: 100px;
-  --green: #015957;
+  --z-header: 1000;
+  --z-menu: 1200;
 }
 
-/* =========================
-   GLOBAL
-========================= */
-body {
-  margin: 0;
-  padding-top: var(--header-height);
-  font-family: "Roboto", Arial, sans-serif;
-}
-
-/* =========================
-   CONTAINER
-========================= */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
+
 .header {
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
-  height: var(--header-height);
-  z-index: 1000;
+  height: 92px;
 
-  display: flex;
-  align-items: center;
+  z-index: var(--z-header);
 
-  background: linear-gradient(
-    rgba(0, 89, 87, 0.8),
-    rgba(0, 0, 0, 0.603)
-  );
+  background:
+    linear-gradient(
+      rgba(1, 89, 87, 0.82),
+      rgba(0, 0, 0, 0.45)
+    );
 
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+
+/* =========================================================
+   INNER
+========================================================= */
 
 .header__inner {
+  height: 100%;
+
+  max-width: 1440px;
+
+  margin-inline: auto;
+
+  padding-inline: 16px;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
+
+  gap: 20px;
 }
 
-/* =========================
+@media (min-width: 768px) {
+  .header__inner {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__inner {
+    padding-inline: 40px;
+  }
+}
+
+/* =========================================================
    LOGO
-========================= */
+========================================================= */
+
 .logo {
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-weight: bold;
+  gap: 12px;
+
   color: #ef6d14;
-  cursor: pointer;
-  flex-shrink: 0;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  white-space: nowrap;
 }
 
-.logo span {
-  color: #ef6d14;
-}
-
-/* круг логотипа */
 .logo-circle {
-  width: 80px;
-  height: 80px;
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  overflow: hidden;
+
   flex-shrink: 0;
+
+  border: 2px solid rgba(255,255,255,0.12);
 }
 
 .logo-circle img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
-  border-radius: 50%;
 }
 
-/* =========================
-   NAV (DESKTOP)
-========================= */
+/* =========================================================
+   NAV
+========================================================= */
+
 .nav {
+  display: none;
+
+  align-items: center;
+  gap: 20px;
+}
+
+.nav button {
+  color: #ef6d14;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.nav button:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.header-contact {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.header-phone {
   display: flex;
   align-items: center;
-}
+  gap: 8px;
 
-.nav span {
-  margin-left: 20px;
   color: #ef6d14;
-  cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: 0.3s ease;
 }
 
-.nav span:hover {
-  color: #ffffff;
+.header-phone:hover {
+  color: #fff;
 }
 
-/* =========================
+/* =========================================================
    BURGER
-========================= */
+========================================================= */
+
 .burger {
-  display: none;
-  font-size: 26px;
-  cursor: pointer;
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   color: #ef6d14;
+
+  font-size: 34px;
+
+  border-radius: 12px;
+
+  transition: 0.3s ease;
 }
 
-/* =========================
+.burger:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* =========================================================
    MOBILE MENU
-========================= */
+========================================================= */
+
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: rgba(0,0,0,0.72);
 
-  z-index: 2000;
+  backdrop-filter: blur(12px);
+
+  z-index: var(--z-menu);
+
+  animation: fadeIn 0.25s ease;
 }
 
 .menu-modal {
-  background: #015957;
-  padding: 30px;
-  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
 
-  width: 90%;
-  max-width: 320px;
+  width: min(340px, 100%);
+  height: 100%;
+
+  padding:
+    110px
+    28px
+    40px;
+
+  background: rgba(1, 89, 87, 0.92);
+
+  backdrop-filter: blur(24px);
+
+  border-left: 1px solid rgba(255,255,255,0.1);
 
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 
-  position: relative;
+  animation: menuSlide 0.35s ease;
 }
 
-.menu-modal span {
+.menu-modal button {
+  text-align: left;
+
   color: #ef6d14;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 10px;
-  border-radius: 6px;
-  transition: 0.3s;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  transition: 0.3s ease;
 }
 
-.menu-modal span:hover {
-  background: var(--green);
+.menu-modal button:hover {
+  color: #fff;
+  transform: translateX(6px);
 }
 
 .menu-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
 
-  background: none;
-  border: none;
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
   color: #ef6d14;
-  font-size: 20px;
-  cursor: pointer;
+
+  font-size: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.08);
 }
 
-/* =========================
-   ADAPTIVE
-========================= */
-@media (max-width: 768px) {
+.mobile-phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 10px;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menuSlide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1024px) {
+
   .nav {
-    display: none;
+    display: flex;
+  }
+
+  .header-contact {
+    display: flex;
   }
 
   .burger {
-    display: block;
-  }
-
-  .logo {
-    gap: 10px;
-  }
-
-  .logo-circle {
-    width: 50px;
-    height: 50px;
-  }
-
-  :root {
-    --header-height: 80px;
+    display: none;
   }
 }

@@ -1,106 +1,142 @@
+/* =========================================================
+   SERVICES SECTION
+========================================================= */
+
 .services-section {
-  padding: 40px 20px;
-  background: url("/services-bg.jpg") center/cover no-repeat;
-  display: flex;
-  justify-content: center;
-  color: #ef6d14;
-  scroll-margin-top: 120px;
+  width: 100%;
+
+  /* правильные отступы между секциями (mobile-first) */
+  padding-block: clamp(60px, 8vw, 120px);
+
+  /* стартовое состояние */
+  opacity: 0;
+  transform: translateY(40px);
+
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: transform, opacity;
 }
 
-.container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 15px;
+/* активное состояние */
+.services-section.show {
+  opacity: 1;
+  transform: translateY(0);
 }
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .services-title {
   text-align: center;
-  margin-bottom: 30px;
+
+  margin-bottom: 40px;
+
+  font-size: clamp(28px, 5vw, 54px);
+  font-weight: 800;
+
   color: #ef6d14;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
-  font-size: 36px;
-  font-weight: 700;
+
+  text-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* GRID */
+/* =========================================================
+   GRID
+========================================================= */
+
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  align-items: stretch;
+
+  grid-template-columns: 1fr;
+  gap: 18px;
 }
 
-/* CARD */
-.card {
-  background: rgba(1, 89, 87, 0.74);
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.262);
-  cursor: pointer;
+/* =========================================================
+   CARD
+========================================================= */
 
-  transition: all 0.3s ease;
+.service-card {
+  width: 100%;
+  min-height: 240px;
+
+  padding: 20px;
+  border-radius: 16px;
+
+  background: rgba(1, 89, 87, 0.4);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
-  height: 100%;
-  min-height: 220px; /* 🔥 важно чтобы кнопка не прыгала */
+  transition: transform 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #2e7d32;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+/* hover */
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(3, 42, 15, 0.4);
 }
 
-/* TEXT */
-.card h3 {
+/* =========================================================
+   TEXT
+========================================================= */
+
+.service-card h3 {
+  color: #fff;
+  font-size: 18px;
+
   margin-bottom: 10px;
 }
 
-.card p {
+.service-card p {
   font-size: 14px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
 
-  flex-grow: 1; /* 🔥 ключ: тянет текст и толкает кнопку вниз */
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* BUTTON */
-.details-btn {
-  margin-top: auto;
+/* =========================================================
+   BUTTON
+========================================================= */
 
-  align-self: center;
+.service-btn {
+  margin-top: 14px;
 
-  padding: 10px 16px;
-
-  border: none;
-  border-radius: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
 
   background: #ef6d14;
   color: #fff;
 
+  border: none;
+
   cursor: pointer;
 
-  transition: all 0.25s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.details-btn:hover {
-  background: #ff7f2a;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+.service-btn:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
 }
 
-/* RESPONSIVE */
-@media (max-width: 992px) {
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (min-width: 768px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
   }
 }
 
-@media (max-width: 600px) {
+@media (min-width: 1024px) {
   .services-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
   }
 }

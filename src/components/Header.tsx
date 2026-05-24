@@ -140,7 +140,7 @@ export default function Header() {
             </button>
 
             <button onClick={() => handleScrollTo("faq")}>
-              FAQ
+              Questions & Answers
             </button>
 
             <button onClick={() => handleScrollTo("contact")}>
@@ -219,7 +219,7 @@ export default function Header() {
             </button>
 
             <button onClick={() => handleScrollTo("faq")}>
-              FAQ
+              Questions & Answers
             </button>
 
             <button onClick={() => handleScrollTo("contact")}>

@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 type FAQItem = {
   q: string;
@@ -7,9 +7,7 @@ type FAQItem = {
 };
 
 export default function FAQ() {
-  const ref = useRef<HTMLElement | null>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [active, setActive] = useState(false);
 
   const data: FAQItem[] = [
     {
@@ -38,44 +36,19 @@ export default function FAQ() {
     },
   ];
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setActive(false);
-
-          requestAnimationFrame(() => {
-            setActive(true);
-          });
-        } else {
-          setActive(false);
-        }
-      },
-      { threshold: 0.25 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
   };
 
   return (
-    <section
-      id="faq"
-      className={`faq-section ${active ? "active" : ""}`}
-      ref={ref}
-    >
+    <section id="faq" className="faq-section">
       <div className="container">
 
+        {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={active ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
           Questions & Answers
@@ -90,8 +63,12 @@ export default function FAQ() {
                 key={index}
                 className="faq-item"
                 initial={{ opacity: 0, y: 20 }}
-                animate={active ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: index * 0.05 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                }}
               >
                 <button
                   className="faq-question"

@@ -20,19 +20,24 @@ export default function Home() {
 
   return (
     <>
-      {/* ❌ НЕ main здесь — он уже есть в App.tsx */}
-
       <Hero openModal={() => setOpen(true)} />
+
       <About />
       <Services />
       <Gallery />
       <FAQ />
-<Reviews/>
+      <Reviews />
+
       <Modal open={open} onClose={close}>
         {!success ? (
-          <RequestForm onSuccess={() => setSuccess(true)} />
+          <RequestForm
+            onSuccess={() => setSuccess(true)}
+            onClose={close}
+          />
         ) : (
-          <div className="success-box">✔ Sent!</div>
+          <div className="success-box">
+            ✔ Sent!
+          </div>
         )}
       </Modal>
     </>

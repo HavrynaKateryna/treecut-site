@@ -5,49 +5,67 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-
-/* =========================================================
-   ROOT
-========================================================= */
-
-:root {
-  --header-height: 80px;
-
-  --primary: #ef6d14;
-
-  /* UNIFIED SPACING SYSTEM */
-  --section-space-mobile: 72px;
-  --section-space-desktop: 110px;
-
-  --container: 1200px;
-
-  --glass-bg: rgba(255, 255, 255, 0.01);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-}
-
-/* =========================================================
-   BASE
-========================================================= */
 
 html {
   scroll-behavior: smooth;
 }
 
-html,
-body {
-  width: 100%;
-  overflow-x: hidden;
+/* =========================================================
+   DESIGN TOKENS
+========================================================= */
+
+:root {
+  --primary: #ef6d14;
+
+  --header-height: 120px;
+
+  /* контейнер */
+  --container: 1440px;
+
+  /* ======================================================
+     SPACING SYSTEM
+  ====================================================== */
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 120px;
+
+  /* секции */
+  --section-y: var(--space-7);
+  --section-y-mobile: var(--space-5);
+
+  /* текст */
+  --text: rgba(255, 255, 255, 0.9);
+  --muted: rgba(255, 255, 255, 0.7);
+
+  /* радиусы */
+  --radius: 18px;
+
+  /* фон */
+  --bg-glass: rgba(1, 89, 87, 0.4);
 }
 
+/* =========================================================
+   BODY
+========================================================= */
+
 body {
-  font-family: "Roboto", Arial, sans-serif;
+  font-family: "Manrope", "Inter", sans-serif;
+  background: #02150e;
   color: #fff;
-  background: #0b1411;
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* =========================================================
@@ -64,39 +82,20 @@ body::after {
 
 body::before {
   z-index: -2;
-
   background:
-    radial-gradient(circle at top, rgba(239,109,20,0.05), transparent 55%),
-    radial-gradient(circle at bottom, rgba(0,255,200,0.04), transparent 60%),
+    radial-gradient(circle at top, rgba(239, 109, 20, 0.06), transparent 60%),
+    radial-gradient(circle at bottom, rgba(0, 255, 200, 0.04), transparent 60%),
     url("/bg.jpg");
 
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
 
-  filter: brightness(0.65) saturate(1.2);
+  filter: brightness(0.65);
 }
 
 body::after {
   z-index: -1;
-  background: rgba(0,0,0,0.55);
-}
-
-/* =========================================================
-   BUTTON RESET
-========================================================= */
-
-button {
-  appearance: none;
-  -webkit-appearance: none;
-
-  border: none;
-  outline: none;
-  background: none;
-
-  font: inherit;
-
-  cursor: pointer;
+  background: rgba(0, 0, 0, 0.55);
 }
 
 /* =========================================================
@@ -109,18 +108,58 @@ button {
 }
 
 /* =========================================================
-   APP LAYOUT
+   TYPOGRAPHY SYSTEM
 ========================================================= */
 
-.app-layout {
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
+h1,
+h2,
+h3,
+h4 {
+  color: var(--primary);
+  font-weight: 700;
+  line-height: 1.1;
 }
 
-.page-content {
-  flex: 1;
+h1 {
+  font-size: clamp(42px, 7vw, 82px);
+}
+
+h2 {
+  font-size: clamp(32px, 5vw, 56px);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+h3 {
+  font-size: 24px;
+  margin-bottom: var(--space-2);
+}
+
+h4 {
+  font-size: 20px;
+  margin-bottom: var(--space-2);
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: var(--space-3);
+  max-width: 70ch;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
 }
 
 /* =========================================================
@@ -130,21 +169,13 @@ button {
 .container {
   width: 100%;
   max-width: var(--container);
-
-  margin-inline: auto;
-
-  padding-inline: 16px;
+  margin: 0 auto;
+  padding-inline: var(--space-4);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .container {
-    padding-inline: 24px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    padding-inline: 40px;
+    padding-inline: var(--space-3);
   }
 }
 
@@ -152,75 +183,116 @@ button {
    SECTION SYSTEM
 ========================================================= */
 
-section {
-  width: 100%;
-
-  scroll-margin-top: var(--header-height);
-}
-
-/* ОДИНАКОВОЕ РАССТОЯНИЕ МЕЖДУ ВСЕМИ СЕКЦИЯМИ */
 .section {
-  padding-block: var(--section-space-mobile);
+  padding-block: clamp(64px, 10vw, 120px);
 }
 
-@media (min-width: 768px) {
-  .section {
-    padding-block: var(--section-space-desktop);
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+  padding-top: var(--header-height);
+}
+
+/* =========================================================
+   STACK SYSTEM
+========================================================= */
+
+.stack > * + * {
+  margin-top: var(--space-3);
+}
+
+/* =========================================================
+   GLASS CARD
+========================================================= */
+
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(14px);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================================
+   GRID HELPERS
+========================================================= */
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
   }
 }
 
 /* =========================================================
-   TYPOGRAPHY
+   BUTTON RESET
 ========================================================= */
 
-h2 {
-  font-size: clamp(30px, 5vw, 52px);
-
-  font-weight: 800;
-
-  text-align: center;
-
-  margin-bottom: 42px;
-
-  color: var(--primary);
-}
-
-p {
-  line-height: 1.6;
-  color: rgba(255,255,255,0.85);
+button {
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
 }
 
 /* =========================================================
-   GLASS
+   IMAGE RESET
 ========================================================= */
 
-.glass {
-  background: var(--glass-bg);
-
-  border: 1px solid var(--glass-border);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  border-radius: 18px;
-
-  box-shadow: var(--glass-shadow);
-}
-
-.glass-hover {
-  transition: 0.3s ease;
-}
-
-.glass-hover:hover {
-  transform: translateY(-6px);
-  border-color: rgba(239,109,20,0.35);
+img {
+  display: block;
+  max-width: 100%;
 }
 
 /* =========================================================
-   LOCK SCROLL
+   SELECTION
 ========================================================= */
 
-body.lock {
-  overflow: hidden !important;
-  height: 100vh;
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(239, 109, 20, 0.7);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(239, 109, 20, 1);
 }

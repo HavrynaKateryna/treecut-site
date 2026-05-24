@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "../styles/reviews.css";
 
 type Review = {
@@ -15,61 +16,51 @@ type ApiResponse = {
 
 export default function Reviews() {
   const [reviews, setReviews] = useState<Review[]>([]);
-  const sectionRef = useRef<HTMLElement | null>(null);
 
+  // 🔥 load only on page refresh / mount
   useEffect(() => {
     fetch("http://localhost:5000/api/reviews")
       .then((res) => res.json())
       .then((data: ApiResponse) => {
-        setReviews(data.reviews || []);
+        setReviews((data.reviews || []).slice(0, 3)); // only 3 reviews
       })
       .catch((err) => console.log(err));
   }, []);
 
-  // ⭐ animation on scroll (re-trigger every time)
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-
-    const cards = el.querySelectorAll(".review-card");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const card = entry.target as HTMLElement;
-
-          if (entry.isIntersecting) {
-            card.classList.add("active");
-          } else {
-            card.classList.remove("active"); // allows re-animation
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    cards.forEach((card) => observer.observe(card));
-
-    return () => observer.disconnect();
-  }, [reviews]);
-
-  const renderStars = (rating: number) => {
-    return Array.from({ length: 5 })
+  const renderStars = (rating: number) =>
+    Array.from({ length: 5 })
       .map((_, i) => (i < rating ? "★" : "☆"))
       .join("");
-  };
 
   return (
-    <section className="reviews" id="reviews" ref={sectionRef}>
+    <section className="reviews" id="reviews">
       <div className="container">
 
-        <div className="section-header">
+        {/* TITLE */}
+        <motion.div
+          className="section-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2>What clients say</h2>
-        </div>
+        </motion.div>
 
+        {/* GRID */}
         <div className="reviews-grid">
           {reviews.map((r, i) => (
-            <div className="review-card" key={i}>
+            <motion.div
+              className="review-card"
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.08,
+              }}
+            >
               <div className="review-top">
                 <div className="avatar">
                   {r.author_name?.charAt(0).toUpperCase()}
@@ -84,7 +75,7 @@ export default function Reviews() {
               <p className="text">"{r.text}"</p>
 
               <div className="time">{r.relative_time_description}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

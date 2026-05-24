@@ -72,7 +72,7 @@
 
   color: #ef6d14;
 
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 800;
 
   white-space: nowrap;
@@ -112,8 +112,8 @@
 .nav button {
   color: #ef6d14;
 
-  font-size: 17px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
 
   transition: 0.3s ease;
 }
@@ -140,6 +140,7 @@
 
   color: #ef6d14;
 
+  font-size: 20px;
   font-weight: 700;
 
   text-decoration: none;
@@ -206,7 +207,7 @@
     28px
     40px;
 
-  background: rgba(1, 89, 87, 0.92);
+  background: rgba(1, 89, 87, 0.4);
 
   backdrop-filter: blur(24px);
 

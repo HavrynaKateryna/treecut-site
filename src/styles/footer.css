@@ -1,11 +1,17 @@
-/* Футер */
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer {
   padding: 50px 20px 20px;
+
   background: linear-gradient(
     rgba(1, 89, 87, 0.8),
     rgba(0, 0, 0, 0.603)
   );
+
   color: #ef6d14;
+
   backdrop-filter: blur(6px);
 }
 
@@ -13,29 +19,31 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+
   max-width: 1200px;
   margin: auto;
-}
-
-.footer__col h3,
-.footer__col h4 {
-  margin-bottom: 15px;
 }
 
 .footer__col p,
 .footer__col a {
   margin: 6px 0;
+
   color: rgba(255, 255, 255, 0.85);
+
   text-decoration: none;
+
   transition: 0.3s;
 }
 
 .footer__col a:hover {
-  color: #ef6d14; /* зеленый при ховере */
+  color: #ef6d14;
   transform: translateX(3px);
 }
 
-/* Соцсети */
+/* =========================================================
+   SOCIALS
+========================================================= */
+
 .footer__socials {
   display: flex;
   gap: 15px;
@@ -43,65 +51,98 @@
 }
 
 .footer__socials a {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+
+  color: rgba(255, 255, 255, 0.9);
+
   font-size: 18px;
-  color: white;
-  transition: all 0.3s ease;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .footer__socials a:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+
+  background: rgba(239, 109, 20, 0.15);
+
+  color: #ef6d14;
+
+  box-shadow:
+    0 0 15px rgba(239, 109, 20, 0.35),
+    0 0 30px rgba(239, 109, 20, 0.15);
 }
 
-.footer__socials a:nth-child(1):hover {
-  background: #e1306c;
-}
-.footer__socials a:nth-child(2):hover {
-  background: #0088cc;
-}
-.footer__socials a:nth-child(3):hover {
-  background: #25d366;
-}
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
 
 .footer__bottom {
   text-align: center;
+
   margin-top: 35px;
+
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+
   padding-top: 15px;
+
   font-size: 14px;
+
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Адаптив для мобильных */
-@media (max-width: 768px) {
-  .footer__grid {
-    grid-template-columns: 1fr; /* колонки в одну колонку */
-    gap: 20px;
-  }
+/* =========================================================
+   GOOGLE MAPS LINK
+========================================================= */
 
-  .footer__socials {
-    flex-direction: column; /* соцсети в столбик */
-    align-items: flex-start; /* выравнивание влево */
-    gap: 10px; /* расстояние между иконками */
-  }
-}
-/* Карта / Google Maps ссылка */
 .footer__col a[href*="maps"] {
   display: inline-block;
+
   margin-top: 8px;
   padding: 6px 10px;
+
   border-radius: 6px;
+
   background: rgba(255, 255, 255, 0.08);
+
   transition: 0.3s;
 }
 
 .footer__col a[href*="maps"]:hover {
   background: rgba(239, 109, 20, 0.2);
+
   color: #ef6d14;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer__socials {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }

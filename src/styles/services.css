@@ -1,59 +1,22 @@
-/* =========================================================
-   SERVICES SECTION
-========================================================= */
-
 .services-section {
   width: 100%;
-
-  /* правильные отступы между секциями (mobile-first) */
-  padding-block: clamp(60px, 8vw, 120px);
-
-  /* стартовое состояние */
-  opacity: 0;
-  transform: translateY(40px);
-
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  will-change: transform, opacity;
+  padding: 40px 0;
 }
 
-/* активное состояние */
-.services-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================================================
-   TITLE
-========================================================= */
-
+/* TITLE */
 .services-title {
   text-align: center;
-
   margin-bottom: 40px;
-
-  font-size: clamp(28px, 5vw, 54px);
-  font-weight: 800;
-
-  color: #ef6d14;
-
-  text-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* =========================================================
-   GRID
-========================================================= */
-
+/* GRID */
 .services-grid {
   display: grid;
-
   grid-template-columns: 1fr;
   gap: 18px;
 }
 
-/* =========================================================
-   CARD
-========================================================= */
-
+/* CARD */
 .service-card {
   width: 100%;
   min-height: 240px;
@@ -71,37 +34,22 @@
   justify-content: space-between;
 
   transition: transform 0.25s ease, border-color 0.25s ease;
-  will-change: transform;
 }
 
 /* hover */
 .service-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(3, 42, 15, 0.4);
+  border-color: rgba(239, 109, 20, 0.4);
 }
 
-/* =========================================================
-   TEXT
-========================================================= */
-
-.service-card h3 {
-  color: #fff;
-  font-size: 18px;
-
-  margin-bottom: 10px;
-}
-
+/* TEXT */
 .service-card p {
   font-size: 14px;
   line-height: 1.6;
-
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* =========================================================
-   BUTTON
-========================================================= */
-
+/* BUTTON */
 .service-btn {
   margin-top: 14px;
 
@@ -112,7 +60,6 @@
   color: #fff;
 
   border: none;
-
   cursor: pointer;
 
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -123,10 +70,7 @@
   opacity: 0.9;
 }
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
+/* RESPONSIVE */
 @media (min-width: 768px) {
   .services-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -1,9 +1,10 @@
-/* =========================================================
+ /* =========================================================
    ABOUT SECTION
 ========================================================= */
 
 .about {
   width: 100%;
+  padding: 40px 0;
 }
 
 /* =========================================================
@@ -22,20 +23,6 @@
   backdrop-filter: blur(14px);
 
   box-shadow: 0 35px 90px rgba(0, 0, 0, 0.55);
-
-  transform: translateY(40px);
-  opacity: 0;
-
-  transition: all 0.8s ease;
-
-  will-change: transform, opacity;
-}
-
-/* ACTIVE STATE */
-
-.about.active .about__card {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 /* =========================================================
@@ -56,7 +43,6 @@
 
 .about__text::before {
   content: "";
-
   position: absolute;
   inset: 0;
 
@@ -69,47 +55,10 @@
   pointer-events: none;
 }
 
-/* TITLE */
-
-.about__text h2 {
-  font-size: clamp(28px, 5vw, 52px);
-  line-height: 1.1;
-
-  color: #ef6d14;
-
-  margin-bottom: 24px;
-
-  text-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-}
-
 /* PARAGRAPHS */
-
 .about__text p {
-  font-size: 16px;
-  line-height: 1.8;
-
-  margin-bottom: 16px;
-
-  color: rgba(255, 255, 255, 0.9);
-
-  opacity: 0;
-  transform: translateY(14px);
-
-  transition: all 0.6s ease;
+  opacity: 0.9;
 }
-
-/* SAFE STAGGER (WITHOUT nth-child BUG) */
-
-.about.active .about__text p {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* manual stagger via delay */
-.about.active .about__text p:nth-of-type(1) { transition-delay: 0.05s; }
-.about.active .about__text p:nth-of-type(2) { transition-delay: 0.1s; }
-.about.active .about__text p:nth-of-type(3) { transition-delay: 0.15s; }
-.about.active .about__text p:nth-of-type(4) { transition-delay: 0.2s; }
 
 /* =========================================================
    IMAGE
@@ -130,10 +79,6 @@
   transform: scale(1.08);
 
   transition: transform 1s ease;
-}
-
-.about.active .about__image img {
-  transform: scale(1);
 }
 
 /* =========================================================

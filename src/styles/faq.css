@@ -7,7 +7,7 @@
 
   width: 100%;
 
-  padding: 100px 0;
+  padding: 40px 0;
 
   color: #fff;
 
@@ -43,25 +43,7 @@
    TITLE
 ========================================================= */
 
-.faq-section h2 {
-  text-align: center;
-  margin-bottom: 50px;
 
-  font-size: clamp(30px, 5vw, 56px);
-  font-weight: 800;
-
-  color: #ef6d14;
-
-  letter-spacing: 0.3px;
-
-  text-shadow:
-    0 0 14px rgba(239, 109, 20, 0.25),
-    0 10px 30px rgba(0, 0, 0, 0.6);
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: faqTitleIn 0.9s ease forwards;
-}
 
 @keyframes faqTitleIn {
   to {

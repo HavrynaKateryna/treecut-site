@@ -39,8 +39,8 @@ export default function ServicePage() {
           {/* BEFORE / AFTER */}
           <div className="hero-image">
             <BeforeAfterSlider
-              before="/public/befor.jpg"
-              after="/public/after.jpg"
+              before="/before.jpg"
+               after="/after.webp"
             />
           </div>
 

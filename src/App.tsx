@@ -8,18 +8,25 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
+// 🔥 CTA (floating buttons)
+import FloatingCTA from "./components/RightFloatingCTA";
+
 export default function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <ScrollToTop />
 
+        {/* GLOBAL SEO */}
         <Helmet>
-          <title>TreeCut</title>
+          <title>TreeCut | Tree Removal Jacksonville FL</title>
           <meta
             name="description"
-            content="Спил деревьев, обрезка и вывоз мусора"
+            content="Professional tree removal, trimming and stump grinding in Jacksonville Florida. Fast, safe and insured service."
           />
+
+          {/* mobile UX + branding */}
+          <meta name="theme-color" content="#ef6d14" />
         </Helmet>
 
         <div className="app-layout">
@@ -34,6 +41,9 @@ export default function App() {
 
           <Footer />
         </div>
+
+        {/* 🔥 GLOBAL CONVERSION LAYER (ВАЖНО: ВНЕ layout) */}
+        <FloatingCTA />
       </BrowserRouter>
     </HelmetProvider>
   );

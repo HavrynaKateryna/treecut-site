@@ -5,6 +5,14 @@ type Props = {
 export default function Hero({ openModal }: Props) {
   return (
     <section className="hero">
+      <img
+        src="/hero.webp"
+        alt=""
+        className="hero__bg"
+        decoding="async"
+        fetchPriority="high"
+      />
+
       <div className="hero__overlay" />
 
       <div className="hero__content">

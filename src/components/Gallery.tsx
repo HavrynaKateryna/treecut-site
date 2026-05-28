@@ -1,62 +1,46 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/gallery.css";
 
 export default function Gallery() {
-  const images = [
-    "/2.webp", "/3.webp", "/4.webp", "/5.webp", "/6.webp",
-    "/7.webp", "/8.webp", "/9.webp", "/10.webp", "/11.webp",
-    "/12.webp", "/13.webp", "/14.webp",
-  ];
+  const images = useMemo(
+    () => [
+      "/2.webp",
+      "/3.webp",
+      "/4.webp",
+      "/5.webp",
+      "/6.webp",
+      "/7.webp",
+      "/8.webp",
+      "/9.webp",
+      "/10.webp",
+      "/11.webp",
+      "/12.webp",
+      "/13.webp",
+      "/14.webp",
+    ],
+    []
+  );
 
   const [index, setIndex] = useState(0);
   const [zoom, setZoom] = useState(false);
-
-  const startX = useRef<number | null>(null);
-  const isSwiping = useRef(false);
 
   const len = images.length;
 
   const next = () => setIndex((p) => (p + 1) % len);
   const prev = () => setIndex((p) => (p - 1 + len) % len);
 
+  // preload ONLY 3 images (critical fix)
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (zoom && e.key === "Escape") setZoom(false);
-
-      if (!zoom) {
-        if (e.key === "ArrowRight") next();
-        if (e.key === "ArrowLeft") prev();
-      }
+    const load = (src: string) => {
+      const img = new Image();
+      img.src = src;
     };
 
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [zoom]);
-
-  const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    startX.current = e.touches[0].clientX;
-    isSwiping.current = true;
-  };
-
-  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    // 🚨 ВАЖНО: блокируем скролл страницы
-    if (isSwiping.current) {
-      e.preventDefault();
-    }
-  };
-
-  const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (startX.current === null) return;
-
-    const diff = e.changedTouches[0].clientX - startX.current;
-
-    if (diff > 60) prev();
-    if (diff < -60) next();
-
-    startX.current = null;
-    isSwiping.current = false;
-  };
+    load(images[index]);
+    load(images[(index + 1) % len]);
+    load(images[(index - 1 + len) % len]);
+  }, [index, images, len]);
 
   const getClass = (i: number) => {
     if (i === index) return "slide active";
@@ -65,14 +49,20 @@ export default function Gallery() {
     return "slide hidden";
   };
 
+  const visible = [
+    (index - 1 + len) % len,
+    index,
+    (index + 1) % len,
+  ];
+
   return (
     <motion.section
       id="gallery"
       className="gallery section"
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 0.7 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="container">
         <h2 className="gallery-title">Gallery</h2>
@@ -82,13 +72,8 @@ export default function Gallery() {
             ‹
           </button>
 
-          <div
-            className="slider"
-            onTouchStart={onTouchStart}
-            onTouchMove={onTouchMove}   // 🔥 FIX
-            onTouchEnd={onTouchEnd}
-          >
-            {images.map((img, i) => (
+          <div className="slider">
+            {visible.map((i) => (
               <div
                 key={i}
                 className={getClass(i)}
@@ -97,7 +82,12 @@ export default function Gallery() {
                   else setIndex(i);
                 }}
               >
-                <img src={img} alt="" />
+                <img
+                  src={images[i]}
+                  alt=""
+                  loading={i === index ? "eager" : "lazy"}
+                  decoding="async"
+                />
               </div>
             ))}
           </div>
@@ -108,6 +98,7 @@ export default function Gallery() {
         </div>
       </div>
 
+      {/* LIGHTBOX */}
       <AnimatePresence>
         {zoom && (
           <motion.div
@@ -119,11 +110,11 @@ export default function Gallery() {
           >
             <motion.img
               src={images[index]}
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              decoding="async"
             />
           </motion.div>
         )}

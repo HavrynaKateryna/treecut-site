@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../styles/gallery.css";
 
@@ -27,10 +27,12 @@ export default function Gallery() {
 
   const len = images.length;
 
+  const startX = useRef<number | null>(null);
+
   const next = () => setIndex((p) => (p + 1) % len);
   const prev = () => setIndex((p) => (p - 1 + len) % len);
 
-  // preload ONLY 3 images (critical fix)
+  // preload 3 images
   useEffect(() => {
     const load = (src: string) => {
       const img = new Image();
@@ -42,11 +44,23 @@ export default function Gallery() {
     load(images[(index - 1 + len) % len]);
   }, [index, images, len]);
 
-  const getClass = (i: number) => {
-    if (i === index) return "slide active";
-    if (i === (index - 1 + len) % len) return "slide left";
-    if (i === (index + 1) % len) return "slide right";
-    return "slide hidden";
+  // =========================
+  // SWIPE LOGIC (MOBILE FIX)
+  // =========================
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    startX.current = e.touches[0].clientX;
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (startX.current === null) return;
+
+    const diff = e.changedTouches[0].clientX - startX.current;
+
+    if (diff > 60) prev();   // swipe right
+    if (diff < -60) next();  // swipe left
+
+    startX.current = null;
   };
 
   const visible = [
@@ -55,19 +69,23 @@ export default function Gallery() {
     (index + 1) % len,
   ];
 
+  const getClass = (i: number) => {
+    if (i === index) return "slide active";
+    if (i === (index - 1 + len) % len) return "slide left";
+    if (i === (index + 1) % len) return "slide right";
+    return "slide hidden";
+  };
+
   return (
-    <motion.section
-      id="gallery"
-      className="gallery section"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.section className="gallery section">
       <div className="container">
         <h2 className="gallery-title">Gallery</h2>
 
-        <div className="carousel">
+        <div
+          className="carousel"
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+        >
           <button className="gallery-arrow left-arrow" onClick={prev}>
             ‹
           </button>
@@ -98,7 +116,6 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* LIGHTBOX */}
       <AnimatePresence>
         {zoom && (
           <motion.div

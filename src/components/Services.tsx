@@ -38,7 +38,9 @@ export default function Services() {
         <div className="services-grid">
           {services.map((s) => (
             <div key={s.id} className="service-card">
+
               <h3>{s.title}</h3>
+
               <p>{s.description}</p>
 
               <button
@@ -47,6 +49,7 @@ export default function Services() {
               >
                 View details
               </button>
+
             </div>
           ))}
         </div>

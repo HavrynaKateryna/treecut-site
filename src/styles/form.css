@@ -1,32 +1,24 @@
-/* =========================================================
-   FORM WRAPPER
-========================================================= */
-
 .form-wrapper {
   position: relative;
 
   width: 100%;
+  height: 100%;
 
   padding: 40px;
 
   display: flex;
   flex-direction: column;
 
-  background: rgba(1, 89, 87, 0.4);
-
-  backdrop-filter: blur(18px);
+  background: transparent;
 }
 
-/* =========================================================
-   TITLE
-========================================================= */
+.form-title {
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+}
 
-
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
+/* CLOSE */
 .form-close {
   position: absolute;
   top: 14px;
@@ -48,34 +40,21 @@
 
   cursor: pointer;
 
-  z-index: 999999;
-
-  transition: 0.3s ease;
+  z-index: 10;
 }
 
-.form-close:hover {
-  background: #ef6d14;
-  transform: rotate(90deg);
-}
-
-/* =========================================================
-   FORM
-========================================================= */
-
+/* FORM */
 .form {
   display: flex;
   flex-direction: column;
   gap: 14px;
-}
 
-/* =========================================================
-   INPUTS
-========================================================= */
+  width: 100%;
+}
 
 .form input,
 .form textarea {
   width: 100%;
-
   padding: 14px;
 
   border-radius: 12px;
@@ -83,27 +62,14 @@
   border: 1px solid rgba(255,255,255,0.2);
 
   background: rgba(0,0,0,0.35);
-
   color: white;
 
   outline: none;
-
-  transition: 0.3s ease;
 }
 
 .form textarea {
   min-height: 120px;
-  resize: vertical;
 }
-
-.form input:focus,
-.form textarea:focus {
-  border-color: #ef6d14;
-}
-
-/* =========================================================
-   ERROR
-========================================================= */
 
 .input-error {
   border: 1px solid #ff4d4d !important;
@@ -112,27 +78,14 @@
 .error {
   color: #ff4d4d;
   font-size: 12px;
-  margin-top: -8px;
 }
-
-/* =========================================================
-   BUTTON
-========================================================= */
 
 .form-submit {
   padding: 14px;
-
   border-radius: 12px;
 
   background: #ef6d14;
   color: white;
 
   font-weight: 600;
-
-  transition: 0.3s ease;
-}
-
-.form-submit:hover {
-  transform: translateY(-2px);
-  background: #ff7f22;
 }

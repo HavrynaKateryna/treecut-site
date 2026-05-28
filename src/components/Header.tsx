@@ -4,7 +4,7 @@ import { Phone } from "lucide-react";
 import "../styles/header.css";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -112,9 +112,10 @@ export default function Header() {
             type="button"
             className="logo"
             onClick={goHomeTop}
+            aria-label="Go to home page"
           >
             <div className="logo-circle">
-              <img src="/logo.jpg" alt="logo" />
+              <img src="/logo.webp" alt="Tim Tree Service logo" />
             </div>
 
             <span>TIM'S TREE SERVICE</span>
@@ -155,6 +156,7 @@ export default function Header() {
             <a
               href="tel:+15596804185"
               className="header-phone"
+              aria-label="Call main number"
             >
               <Phone size={18} />
               <span>(559) 680-4185</span>
@@ -163,6 +165,7 @@ export default function Header() {
             <a
               href="tel:+15596804208"
               className="header-phone"
+              aria-label="Call second number"
             >
               <Phone size={18} />
               <span>(559) 680-4208</span>
@@ -174,7 +177,7 @@ export default function Header() {
           <button
             type="button"
             className="burger"
-            onClick={() => setOpen(true)}
+            onClick={() => setOpen((prev) => !prev)}
             aria-label="Open menu"
           >
             ☰
@@ -185,10 +188,7 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div
-          className="menu-overlay"
-          onClick={closeMenu}
-        >
+        <div className="menu-overlay" onClick={closeMenu}>
           <div
             className="menu-modal"
             onClick={(e) => e.stopPropagation()}
@@ -198,37 +198,22 @@ export default function Header() {
               type="button"
               className="menu-close"
               onClick={closeMenu}
+              aria-label="Close menu"
             >
               ✕
             </button>
 
-            <button onClick={() => handleScrollTo("about")}>
-              About
-            </button>
-
-            <button onClick={() => handleScrollTo("services")}>
-              Services
-            </button>
-
-            <button onClick={() => handleScrollTo("gallery")}>
-              Gallery
-            </button>
-
-            <button onClick={() => handleScrollTo("reviews")}>
-              Reviews
-            </button>
-
-            <button onClick={() => handleScrollTo("faq")}>
-              Questions & Answers
-            </button>
-
-            <button onClick={() => handleScrollTo("contact")}>
-              Contact
-            </button>
+            <button onClick={() => handleScrollTo("about")}>About</button>
+            <button onClick={() => handleScrollTo("services")}>Services</button>
+            <button onClick={() => handleScrollTo("gallery")}>Gallery</button>
+            <button onClick={() => handleScrollTo("reviews")}>Reviews</button>
+            <button onClick={() => handleScrollTo("faq")}>Questions & Answers</button>
+            <button onClick={() => handleScrollTo("contact")}>Contact</button>
 
             <a
               href="tel:+15596804185"
               className="mobile-phone"
+              aria-label="Call main number"
             >
               <Phone size={18} />
               <span>(559) 680-4185</span>
@@ -237,6 +222,7 @@ export default function Header() {
             <a
               href="tel:+15596804208"
               className="mobile-phone"
+              aria-label="Call second number"
             >
               <Phone size={18} />
               <span>(559) 680-4208</span>

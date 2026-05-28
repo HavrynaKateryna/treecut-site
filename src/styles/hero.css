@@ -1,14 +1,10 @@
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root {
-  --hero-max: 850px;
+  --hero-max: 900px;
 }
 
-/* =========================================================
-   HERO (FIXED HEADER SAFE)
-========================================================= */
+/* =========================
+   HERO WRAPPER
+========================= */
 
 .hero {
   min-height: 100vh;
@@ -20,38 +16,46 @@
   justify-content: center;
   align-items: center;
 
-  padding: calc(92px + 40px) 16px 60px;
-  /* ↑ ВАЖНО: отступ под fixed header */
+  padding: calc(var(--header-height) + 60px) 16px 70px;
 
-  background-image: url("/hero.jpg");
+  /* ✅ FIX: VITE / REACT PUBLIC PATH */
+  background-image: url("/hero.webp");
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   overflow: hidden;
+
   color: #fff;
 }
 
-/* =========================================================
-   OVERLAY (BETTER READABILITY)
-========================================================= */
+/* =========================
+   DARK OVERLAY (PRO LOOK)
+========================= */
 
 .hero__overlay {
   position: absolute;
   inset: 0;
 
-  /* более умное затемнение */
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.75) 0%,
-    rgba(0, 0, 0, 0.55) 40%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
+  background: radial-gradient(
+      circle at top,
+      rgba(0, 0, 0, 0.45),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.85)
+    );
+
+  backdrop-filter: blur(2px);
 }
 
-/* =========================================================
+/* =========================
    CONTENT
-========================================================= */
+========================= */
 
 .hero__content {
   position: relative;
@@ -61,75 +65,71 @@
   max-width: var(--hero-max);
 
   text-align: center;
+
+  padding: 0 10px;
 }
 
-/* =========================================================
-   TITLE (READABILITY FIX)
-========================================================= */
+/* =========================
+   TITLE
+========================= */
 
 .hero__content h1 {
- 
-  line-height: 1.1;
+  font-size: clamp(34px, 5vw, 72px);
+  line-height: 1.05;
 
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 
   color: #fff;
 
-  text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.9);
 
-  opacity: 0;
-  transform: translateY(20px);
-
-  animation: fadeSlide 0.8s ease forwards;
+  animation: fadeUp 0.8s ease forwards;
 }
 
 .hero__content h1 span {
   color: #ef6d14;
 }
 
-/* =========================================================
-   TEXT (MORE CONTRAST)
-========================================================= */
+/* =========================
+   TEXT
+========================= */
 
 .hero__content p {
- 
+  font-size: clamp(15px, 2vw, 18px);
+
+  max-width: 700px;
+  margin: 0 auto 28px;
+
+  color: rgba(255, 255, 255, 0.88);
+
   line-height: 1.7;
 
-  margin-bottom: 26px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 
-  color: rgba(255, 255, 255, 0.9);
-
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.15s;
   opacity: 0;
-  transform: translateY(20px);
-
-  animation: fadeSlide 0.8s ease forwards;
-  animation-delay: 0.2s;
 }
 
-/* =========================================================
-   BUTTON WRAP
-========================================================= */
+/* =========================
+   BUTTON AREA
+========================= */
 
 .hero__buttons {
   display: flex;
   justify-content: center;
 
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.3s;
   opacity: 0;
-  transform: translateY(20px);
-
-  animation: fadeSlide 0.8s ease forwards;
-  animation-delay: 0.35s;
 }
 
-/* =========================================================
-   BUTTON (CLEAN + PREMIUM)
-========================================================= */
+/* =========================
+   BUTTON
+========================= */
 
 .btn-primary {
-  padding: 14px 28px;
+  padding: 14px 30px;
 
   border-radius: 14px;
 
@@ -138,28 +138,28 @@
   background: linear-gradient(135deg, #ef6d14, #ff8a3d);
 
   color: #fff;
+  font-weight: 600;
 
-  
   cursor: pointer;
 
-  transition: all 0.25s ease;
+  transition: 0.25s ease;
 
-  box-shadow: 0 15px 35px rgba(239, 109, 20, 0.25);
+  box-shadow: 0 18px 45px rgba(239, 109, 20, 0.3);
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 25px 60px rgba(239, 109, 20, 0.35);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(239, 109, 20, 0.4);
 }
 
-/* =========================================================
+/* =========================
    ANIMATION
-========================================================= */
+========================= */
 
-@keyframes fadeSlide {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
@@ -167,17 +167,18 @@
   }
 }
 
-/* =========================================================
-   MOBILE FIX
-========================================================= */
+/* =========================
+   MOBILE
+========================= */
 
-@media (max-width: 375px) {
+@media (max-width: 768px) {
   .hero {
-    padding: calc(92px + 30px) 16px 50px;
+    padding: calc(var(--header-height) + 40px) 16px 60px;
+    text-align: center;
   }
 
   .btn-primary {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
   }
 }

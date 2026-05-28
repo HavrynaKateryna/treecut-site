@@ -1,37 +1,34 @@
 export const services = [
   {
-    id: "tree-cut",
+    id: "tree-removal",
     title: "Спил деревьев",
     description: "Профессиональный спил деревьев любой сложности.",
     full: "Выполняем спил деревьев с использованием спецтехники и альпинистского снаряжения.",
     image: "/images/tree-cut.jpg",
   },
   {
-    id: "danger-tree",
+    id: "emergency-tree-removal",
     title: "Удаление аварийных деревьев",
     description: "Удаляем опасные деревья рядом с домами.",
     full: "Аккуратно удаляем аварийные деревья без повреждений имущества.",
     image: "/images/danger-tree.jpg",
   },
   {
-    id: "branches",
+    id: "tree-trimming",
     title: "Обрезка веток",
     description: "Формируем крону деревьев.",
     full: "Обрезка деревьев для здоровья растения и эстетики участка.",
     image: "/images/branches.jpg",
   },
   {
-    id: "stump",
+    id: "stump-grinding",
     title: "Корчевание пней",
     description: "Удаление пней с участка.",
     full: "Полное удаление пней с помощью спецтехники.",
     image: "/images/stump.jpg",
   },
-
-  /* ✨ NEW SERVICES */
-
   {
-    id: "storm-clean",
+    id: "storm-cleanup",
     title: "Уборка после шторма",
     description: "Быстрая очистка участка после бурь.",
     full: "Удаляем поваленные деревья, ветки и мусор после штормов и ураганов.",

@@ -4,9 +4,9 @@ import "../styles/gallery.css";
 
 export default function Gallery() {
   const images = [
-    "/2.jpg", "/3.jpg", "/4.jpg", "/5.jpg", "/6.jpg",
-    "/7.jpg", "/8.jpg", "/9.jpg", "/10.jpg", "/11.jpg",
-    "/12.jpg", "/13.jpg", "/14.jpg", "/15.jpg",
+    "/public/2.webp", "/public/3.webp", "/public/4.webp", "/public/5.webp", "/public/6.webp",
+    "/public/7.webp", "/public/8.webp", "/public/9.webp", "/public/10.webp", "/public/11.webp",
+    "/public/12.webp", "/public/13.webp", "/public/14.webp", 
   ];
 
   const [index, setIndex] = useState(0);

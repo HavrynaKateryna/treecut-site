@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { services } from "../data/servicesData";
 
+import { Helmet } from "react-helmet-async";
+
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
 import Modal from "../components/Modal";
 import RequestForm from "../components/RequestForm";
@@ -17,7 +19,9 @@ export default function ServicePage() {
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  if (!service) return <h2>Not found</h2>;
+  if (!service) {
+    return <h1>Service not found</h1>;
+  }
 
   const close = () => {
     setOpen(false);
@@ -26,6 +30,20 @@ export default function ServicePage() {
 
   return (
     <div className="service-premium">
+
+      {/* SEO */}
+      <Helmet>
+        <title>{service.title} | Tree Service Jacksonville</title>
+        <meta name="description" content={service.full} />
+
+        <meta property="og:title" content={service.title} />
+        <meta property="og:description" content={service.full} />
+
+        <link
+          rel="canonical"
+          href={`https://timtreeremoval.vercel.app/services/${service.id}`}
+        />
+      </Helmet>
 
       {/* HERO */}
       <section className="service-hero">
@@ -36,11 +54,10 @@ export default function ServicePage() {
 
         <div className="hero-grid">
 
-          {/* BEFORE / AFTER */}
           <div className="hero-image">
             <BeforeAfterSlider
-              before="/before.jpg"
-               after="/after.webp"
+              before="/before.webp"
+              after="/after.webp"
             />
           </div>
 
@@ -54,7 +71,10 @@ export default function ServicePage() {
               <div className="meta-card">✔ Fast response</div>
             </div>
 
-            <button className="btn btn-primary" onClick={() => setOpen(true)}>
+            <button
+              className="btn btn-primary"
+              onClick={() => setOpen(true)}
+            >
               Request service
             </button>
           </div>
@@ -62,7 +82,7 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* INFO CARDS */}
+      {/* INFO */}
       <section className="service-info">
         <div className="info-grid">
 
@@ -90,6 +110,7 @@ export default function ServicePage() {
           <RequestForm
             serviceName={service.title}
             onSuccess={() => setSuccess(true)}
+            onClose={close}   // ✅ ВАЖНО FIX
           />
         ) : (
           <div className="success-box">✔ Request sent</div>

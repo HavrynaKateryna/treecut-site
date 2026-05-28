@@ -1,12 +1,5 @@
-import { useEffect } from "react";
-import type { ReactNode } from "react";
-
-import {
-  motion,
-  AnimatePresence,
-  type PanInfo,
-} from "framer-motion";
-
+import { useEffect, type ReactNode } from "react";
+import { motion, AnimatePresence, type PanInfo } from "framer-motion";
 import "../styles/modal.css";
 
 type Props = {
@@ -40,11 +33,11 @@ export default function Modal({ open, onClose, children }: Props) {
       document.body.style.top = "";
       document.body.style.width = "";
 
-      window.scrollTo(0, parseInt(y || "0") * -1);
+      window.scrollTo(0, Math.abs(parseInt(y || "0")));
     };
   }, [open, onClose]);
 
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
     if (info.offset.y > 120) {
       onClose();
     }

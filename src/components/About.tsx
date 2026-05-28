@@ -42,7 +42,7 @@ export default function About() {
             viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           >
-            <img src="/1.jpg" alt="Our team" />
+            <img src="/public/1.webp" alt="Our team" />
           </motion.div>
 
         </div>

@@ -5,7 +5,7 @@ type Props = {
 export default function Hero({ openModal }: Props) {
   return (
     <section className="hero">
-      <div className="hero__overlay"></div>
+      <div className="hero__overlay" />
 
       <div className="hero__content">
         <h1>

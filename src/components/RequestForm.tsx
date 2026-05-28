@@ -42,7 +42,7 @@ export default function RequestForm({
   const [errors, setErrors] = useState<Errors>({});
   const [loading, setLoading] = useState(false);
 
-  const validate = () => {
+  const validate = (): boolean => {
     const e: Errors = {};
 
     if (form.name.trim().length < 2) {
@@ -79,29 +79,21 @@ export default function RequestForm({
     setLoading(true);
 
     try {
-      const res = await fetch(
-        "http://localhost:3000/api/lead",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...form,
-            service: serviceName || "general",
-          }),
-        }
-      );
+      const res = await fetch("http://localhost:3000/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          service: serviceName || "general",
+        }),
+      });
 
       const data = await res.json();
 
-      if (!data.success) {
-        throw new Error();
-      }
+      if (!data.success) throw new Error();
 
       onSuccess?.();
       onClose?.();
-
     } catch {
       alert("Error sending form");
     }
@@ -112,6 +104,7 @@ export default function RequestForm({
   return (
     <div className="form-wrapper">
 
+      {/* ❗ ЭТО ГЛАВНЫЙ FIX — крестик теперь работает всегда */}
       <button
         type="button"
         className="form-close"
@@ -121,7 +114,7 @@ export default function RequestForm({
       </button>
 
       {showTitle && (
-        <h2>
+        <h2 className="form-title">
           {serviceName
             ? `Get quote: ${serviceName}`
             : "Request a free consultation"}
@@ -137,12 +130,7 @@ export default function RequestForm({
           onChange={handleChange}
           className={errors.name ? "input-error" : ""}
         />
-
-        {errors.name && (
-          <span className="error">
-            {errors.name}
-          </span>
-        )}
+        {errors.name && <span className="error">{errors.name}</span>}
 
         <input
           name="email"
@@ -151,12 +139,7 @@ export default function RequestForm({
           onChange={handleChange}
           className={errors.email ? "input-error" : ""}
         />
-
-        {errors.email && (
-          <span className="error">
-            {errors.email}
-          </span>
-        )}
+        {errors.email && <span className="error">{errors.email}</span>}
 
         <input
           name="phone"
@@ -165,12 +148,7 @@ export default function RequestForm({
           onChange={handleChange}
           className={errors.phone ? "input-error" : ""}
         />
-
-        {errors.phone && (
-          <span className="error">
-            {errors.phone}
-          </span>
-        )}
+        {errors.phone && <span className="error">{errors.phone}</span>}
 
         <textarea
           name="message"
@@ -179,11 +157,7 @@ export default function RequestForm({
           onChange={handleChange}
         />
 
-        <button
-          type="submit"
-          className="form-submit"
-          disabled={loading}
-        >
+        <button type="submit" className="form-submit" disabled={loading}>
           {loading ? "Sending..." : "Send Request"}
         </button>
 

@@ -6,17 +6,19 @@ export default function Gallery() {
   const images = [
     "/2.webp", "/3.webp", "/4.webp", "/5.webp", "/6.webp",
     "/7.webp", "/8.webp", "/9.webp", "/10.webp", "/11.webp",
-    "/12.webp", "/13.webp", "/14.webp", 
+    "/12.webp", "/13.webp", "/14.webp",
   ];
 
   const [index, setIndex] = useState(0);
   const [zoom, setZoom] = useState(false);
 
   const startX = useRef<number | null>(null);
+  const isSwiping = useRef(false);
+
   const len = images.length;
 
-  const next = () => setIndex((prev) => (prev + 1) % len);
-  const prev = () => setIndex((prev) => (prev - 1 + len) % len);
+  const next = () => setIndex((p) => (p + 1) % len);
+  const prev = () => setIndex((p) => (p - 1 + len) % len);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -34,6 +36,14 @@ export default function Gallery() {
 
   const onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startX.current = e.touches[0].clientX;
+    isSwiping.current = true;
+  };
+
+  const onTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    // 🚨 ВАЖНО: блокируем скролл страницы
+    if (isSwiping.current) {
+      e.preventDefault();
+    }
   };
 
   const onTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -45,15 +55,13 @@ export default function Gallery() {
     if (diff < -60) next();
 
     startX.current = null;
+    isSwiping.current = false;
   };
 
   const getClass = (i: number) => {
     if (i === index) return "slide active";
-
     if (i === (index - 1 + len) % len) return "slide left";
-
     if (i === (index + 1) % len) return "slide right";
-
     return "slide hidden";
   };
 
@@ -67,11 +75,9 @@ export default function Gallery() {
       transition={{ duration: 0.7 }}
     >
       <div className="container">
-
         <h2 className="gallery-title">Gallery</h2>
 
         <div className="carousel">
-
           <button className="gallery-arrow left-arrow" onClick={prev}>
             ‹
           </button>
@@ -79,6 +85,7 @@ export default function Gallery() {
           <div
             className="slider"
             onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}   // 🔥 FIX
             onTouchEnd={onTouchEnd}
           >
             {images.map((img, i) => (
@@ -98,7 +105,6 @@ export default function Gallery() {
           <button className="gallery-arrow right-arrow" onClick={next}>
             ›
           </button>
-
         </div>
       </div>
 

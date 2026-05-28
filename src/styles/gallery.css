@@ -1,8 +1,6 @@
 /* =========================================================
-   GALLERY
+   GALLERY WRAPPER
 ========================================================= */
-
-
 
 .gallery-title {
   margin-bottom: 40px;
@@ -14,7 +12,6 @@
 
 .carousel {
   position: relative;
-
   width: 100%;
   height: 600px;
 
@@ -22,101 +19,86 @@
   align-items: center;
   justify-content: center;
 
-  
+  overflow: hidden; /* 🔥 важно */
 }
 
 /* =========================================================
-   SLIDER
+   SLIDER (FIX MOBILE SCROLL ISSUE)
 ========================================================= */
 
 .slider {
   position: relative;
-
   width: 100%;
   height: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  touch-action: pan-y; /* 🔥 ключ: разрешаем вертикальный scroll, блокируем горизонтальный */
+  overscroll-behavior: contain;
 }
 
 /* =========================================================
-   SLIDES
+   SLIDE BASE
 ========================================================= */
 
 .slide {
   position: absolute;
 
-  transition:
-    transform 0.55s ease,
-    opacity 0.55s ease;
-
-  border-radius: 28px;
-
+  border-radius: 24px;
   overflow: hidden;
 
   cursor: pointer;
-
   user-select: none;
 
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
 
-  box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   display: block;
 }
 
 /* =========================================================
-   CENTER ACTIVE
+   ACTIVE (CENTER)
 ========================================================= */
 
 .slide.active {
   width: 760px;
   height: 520px;
 
-  z-index: 5;
-
-  opacity: 1;
-
   transform: translateX(0) scale(1);
+  opacity: 1;
+  z-index: 5;
 }
 
 /* =========================================================
-   LEFT
+   SIDE SLIDES
 ========================================================= */
 
 .slide.left {
   width: 500px;
   height: 360px;
 
-  opacity: 0.45;
-
-  transform: translateX(-440px) scale(0.9);
-
+  transform: translateX(-420px) scale(0.9);
+  opacity: 0.35;
   z-index: 3;
 }
-
-/* =========================================================
-   RIGHT
-========================================================= */
 
 .slide.right {
   width: 500px;
   height: 360px;
 
-  opacity: 0.45;
-
-  transform: translateX(440px) scale(0.9);
-
+  transform: translateX(420px) scale(0.9);
+  opacity: 0.35;
   z-index: 3;
 }
 
@@ -127,7 +109,6 @@
 .slide.hidden {
   opacity: 0;
   pointer-events: none;
-
   transform: scale(0.7);
 }
 
@@ -138,19 +119,16 @@
 .gallery-arrow {
   position: absolute;
   top: 50%;
-
   transform: translateY(-50%);
 
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
 
   border-radius: 50%;
-
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
 
   color: white;
-
-  font-size: 42px;
+  font-size: 36px;
 
   display: flex;
   align-items: center;
@@ -159,13 +137,11 @@
   z-index: 20;
 
   backdrop-filter: blur(12px);
-
   transition: 0.3s ease;
 }
 
 .gallery-arrow:hover {
   background: #ef6d14;
-  transform: translateY(-50%) scale(1.08);
 }
 
 .left-arrow {
@@ -184,81 +160,29 @@
   position: fixed;
   inset: 0;
 
-  background: rgba(0,0,0,0.92);
-
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.92);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   z-index: 999999;
-
   padding: 20px;
-
-  animation: fadeIn 0.3s ease;
 }
 
 .lightbox img {
-  width: auto;
   max-width: 95vw;
-
   max-height: 92vh;
 
-  border-radius: 22px;
-
-  box-shadow: 0 30px 120px rgba(0,0,0,0.7);
+  border-radius: 18px;
+  object-fit: contain;
 }
 
 /* =========================================================
-   ANIMATION
-========================================================= */
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1024px) {
-
-  .carousel {
-    height: 520px;
-  }
-
-  .slide.active {
-    width: 620px;
-    height: 420px;
-  }
-
-  .slide.left,
-  .slide.right {
-    width: 380px;
-    height: 260px;
-  }
-
-  .slide.left {
-    transform: translateX(-320px) scale(0.88);
-  }
-
-  .slide.right {
-    transform: translateX(320px) scale(0.88);
-  }
-}
-
-/* =========================================================
-   MOBILE
+   MOBILE FIX (VERY IMPORTANT)
 ========================================================= */
 
 @media (max-width: 768px) {
-
   .carousel {
     height: 420px;
   }
@@ -270,18 +194,17 @@
 
   .slide.left,
   .slide.right {
-    width: 62vw;
+    width: 70vw;
     height: 220px;
-
-    opacity: 0.25;
+    opacity: 0.2;
   }
 
   .slide.left {
-    transform: translateX(-62vw) scale(0.82);
+    transform: translateX(-70vw) scale(0.85);
   }
 
   .slide.right {
-    transform: translateX(62vw) scale(0.82);
+    transform: translateX(70vw) scale(0.85);
   }
 
   .gallery-arrow {

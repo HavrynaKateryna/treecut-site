@@ -52,7 +52,9 @@ export default function Modal({ open, onClose, children }: Props) {
           className="modal"
           onClick={(e) => e.stopPropagation()}
           drag="y"
-          dragConstraints={{ top: 0, bottom: 0 }}
+dragDirectionLock
+dragElastic={0.12}
+dragConstraints={{ top: 0, bottom: 180 }}
           onDragEnd={handleDragEnd}
           initial={{ opacity: 0, scale: 0.96, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

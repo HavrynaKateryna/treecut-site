@@ -60,12 +60,12 @@ export default function Header() {
 
     if (!el) return;
 
-    const offset = 100;
+    const headerOffset = 130;
 
     const top =
       el.getBoundingClientRect().top +
-      window.scrollY -
-      offset;
+      window.pageYOffset -
+      headerOffset;
 
     window.scrollTo({
       top,
@@ -76,23 +76,46 @@ export default function Header() {
   const handleScrollTo = (id: string) => {
     closeMenu();
 
+    // already on homepage
     if (location.pathname === "/") {
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         scrollToSection(id);
-      }, 50);
+      });
 
       return;
     }
 
-    navigate("/");
+    // save target section
+    sessionStorage.setItem("scroll-target", id);
 
-    setTimeout(() => {
-      scrollToSection(id);
-    }, 150);
+    navigate("/");
   };
+
+  /* =========================
+     SCROLL AFTER ROUTE CHANGE
+  ========================= */
+
+  useEffect(() => {
+    const target = sessionStorage.getItem("scroll-target");
+
+    if (!target) return;
+
+    const timer = setTimeout(() => {
+      scrollToSection(target);
+      sessionStorage.removeItem("scroll-target");
+    }, 250);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
+  /* =========================
+     HOME
+  ========================= */
 
   const goHomeTop = () => {
     closeMenu();
+
+    sessionStorage.removeItem("scroll-target");
 
     navigate("/");
 

@@ -41,6 +41,7 @@ export default function RequestForm({
 
   const [errors, setErrors] = useState<Errors>({});
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const validate = (): boolean => {
     const e: Errors = {};
@@ -79,7 +80,7 @@ export default function RequestForm({
     setLoading(true);
 
     try {
-      const res =  await fetch(`${import.meta.env.VITE_API_URL}/api/lead`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lead`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -99,9 +100,14 @@ export default function RequestForm({
         throw new Error(data?.error || "Request failed");
       }
 
-      // success
-      onSuccess?.();
-      onClose?.();
+      // SUCCESS UI
+      setSuccess(true);
+
+      setTimeout(() => {
+        setSuccess(false);
+        onSuccess?.();
+        onClose?.();
+      }, 2000);
 
       setForm({
         name: "",
@@ -135,6 +141,13 @@ export default function RequestForm({
             ? `Get quote: ${serviceName}`
             : "Request a free consultation"}
         </h2>
+      )}
+
+      {/* SUCCESS MESSAGE */}
+      {success && (
+        <div className="success-message">
+          Request sent successfully!
+        </div>
       )}
 
       <form className="form" onSubmit={handleSubmit}>

@@ -11,7 +11,13 @@ export default function AdminLogin() {
     e.preventDefault();
 
     if (password === "admin123") {
-      localStorage.setItem("admin_auth", "true");
+      const session = {
+        auth: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24, // 24h
+      };
+
+      localStorage.setItem("admin_auth", JSON.stringify(session));
+
       navigate("/admin");
     } else {
       setError("Wrong password");
@@ -21,18 +27,15 @@ export default function AdminLogin() {
   return (
     <div className="admin-login-page">
       <div className="admin-login-card">
-        <h2>Admin Panel</h2>
+        <h2>Admin Login</h2>
         <p>Enter password to continue</p>
 
-        <form onSubmit={handleLogin} className="admin-login-form">
+        <form className="admin-login-form" onSubmit={handleLogin}>
           <input
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              setError("");
-            }}
+            onChange={(e) => setPassword(e.target.value)}
           />
 
           {error && <span className="error-text">{error}</span>}

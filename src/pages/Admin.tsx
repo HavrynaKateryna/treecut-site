@@ -20,78 +20,110 @@ export default function Admin() {
   const navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL as string;
 
+  /* =========================
+     AUTH CHECK
+  ========================= */
   useEffect(() => {
-    const auth = localStorage.getItem("admin_auth");
-    if (!auth) navigate("/admin-login");
+    const raw = localStorage.getItem("admin_auth");
+
+    if (!raw) {
+      navigate("/admin-login");
+      return;
+    }
+
+    try {
+      const session = JSON.parse(raw);
+
+      if (!session.auth || Date.now() > session.expires) {
+        localStorage.removeItem("admin_auth");
+        navigate("/admin-login");
+      }
+    } catch {
+      localStorage.removeItem("admin_auth");
+      navigate("/admin-login");
+    }
   }, []);
 
-  const fetchLeads = async () => {
-    try {
-      const res = await fetch(`${API}/api/lead`);
-      const data = await res.json();
-      setLeads(data.data || []);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  /* =========================
+     LOAD LEADS
+  ========================= */
   useEffect(() => {
+    const fetchLeads = async () => {
+      try {
+        const res = await fetch(`${API}/api/lead`);
+        const data = await res.json();
+        setLeads(data.data || []);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchLeads();
   }, []);
 
+  /* =========================
+     LOGOUT
+  ========================= */
+  const logout = () => {
+    localStorage.removeItem("admin_auth");
+    navigate("/admin-login");
+  };
+
+  /* =========================
+     DELETE
+  ========================= */
   const deleteLead = async (id: string) => {
-    try {
-      setActionLoading(id);
+    setActionLoading(id);
 
-      await fetch(`${API}/api/lead/${id}`, {
-        method: "DELETE",
-      });
+    await fetch(`${API}/api/lead/${id}`, {
+      method: "DELETE",
+    });
 
-      setLeads((prev) => prev.filter((l) => l._id !== id));
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setActionLoading(null);
-    }
+    setLeads((prev) => prev.filter((l) => l._id !== id));
+    setActionLoading(null);
   };
 
+  /* =========================
+     STATUS
+  ========================= */
   const updateStatus = async (id: string, status: string) => {
-    try {
-      setActionLoading(id);
+    setActionLoading(id);
 
-      const res = await fetch(`${API}/api/lead/${id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ status }),
-      });
+    const res = await fetch(`${API}/api/lead/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status }),
+    });
 
-      const data = await res.json();
+    const data = await res.json();
 
-      setLeads((prev) =>
-        prev.map((l) =>
-          l._id === id ? { ...l, status: data.data.status } : l
-        )
-      );
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setActionLoading(null);
-    }
+    setLeads((prev) =>
+      prev.map((l) =>
+        l._id === id ? { ...l, status: data.data.status } : l
+      )
+    );
+
+    setActionLoading(null);
   };
 
-  if (loading) {
-    return <h2 className="loading">Loading leads...</h2>;
-  }
+  /* =========================
+     UI
+  ========================= */
+  if (loading) return <div className="loading">Loading...</div>;
 
   return (
     <div className="admin-page">
       <div className="admin-header">
-        <h1>🪵 TreeCut Admin Panel</h1>
+        <h1>Admin Panel</h1>
         <p>Leads management system</p>
+
+        <button onClick={logout} className="logout-btn">
+          Logout
+        </button>
       </div>
 
       {leads.length === 0 ? (
@@ -128,11 +160,15 @@ export default function Admin() {
 
                   <td>
                     <div className="actions">
-                      <button onClick={() => updateStatus(lead._id, "new")}>
+                      <button
+                        disabled={actionLoading === lead._id}
+                        onClick={() => updateStatus(lead._id, "new")}
+                      >
                         New
                       </button>
 
                       <button
+                        disabled={actionLoading === lead._id}
                         onClick={() =>
                           updateStatus(lead._id, "in_progress")
                         }
@@ -140,7 +176,10 @@ export default function Admin() {
                         Work
                       </button>
 
-                      <button onClick={() => updateStatus(lead._id, "done")}>
+                      <button
+                        disabled={actionLoading === lead._id}
+                        onClick={() => updateStatus(lead._id, "done")}
+                      >
                         Done
                       </button>
 

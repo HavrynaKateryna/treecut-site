@@ -1,10 +1,20 @@
 import { useEffect, useState } from "react";
 
-export default function Admin() {
-  const [leads, setLeads] = useState([]);
-  const [loading, setLoading] = useState(true);
+type Lead = {
+  _id: string;
+  name: string;
+  phone: string;
+  email: string;
+  service: string;
+  message: string;
+  status: string;
+};
 
-  const API = import.meta.env.VITE_API_URL;
+export default function Admin() {
+  const [leads, setLeads] = useState<Lead[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const API = import.meta.env.VITE_API_URL as string;
 
   /* =========================
      LOAD LEADS
@@ -29,7 +39,7 @@ export default function Admin() {
   /* =========================
      DELETE LEAD
   ========================= */
-  const deleteLead = async (id) => {
+  const deleteLead = async (id: string) => {
     try {
       await fetch(`${API}/api/lead/${id}`, {
         method: "DELETE",
@@ -44,7 +54,7 @@ export default function Admin() {
   /* =========================
      UPDATE STATUS
   ========================= */
-  const updateStatus = async (id, status) => {
+  const updateStatus = async (id: string, status: string) => {
     try {
       const res = await fetch(`${API}/api/lead/${id}`, {
         method: "PATCH",
@@ -81,8 +91,8 @@ export default function Admin() {
         <p>No leads yet</p>
       ) : (
         <table
-          border="1"
-          cellPadding="10"
+          border={1}
+          cellPadding={10}
           style={{ width: "100%", marginTop: 20 }}
         >
           <thead>
@@ -105,7 +115,6 @@ export default function Admin() {
                 <td>{lead.email}</td>
                 <td>{lead.service}</td>
                 <td>{lead.message}</td>
-
                 <td>
                   <b>{lead.status}</b>
                 </td>
@@ -116,9 +125,7 @@ export default function Admin() {
                   </button>
 
                   <button
-                    onClick={() =>
-                      updateStatus(lead._id, "in_progress")
-                    }
+                    onClick={() => updateStatus(lead._id, "in_progress")}
                   >
                     Work
                   </button>

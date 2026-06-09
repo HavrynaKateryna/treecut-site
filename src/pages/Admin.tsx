@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Lead = {
   _id: string;
@@ -13,8 +14,21 @@ type Lead = {
 export default function Admin() {
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [actionLoading, setActionLoading] = useState<string | null>(null);
 
+  const navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL as string;
+
+  /* =========================
+     PROTECT ADMIN ROUTE
+  ========================= */
+  useEffect(() => {
+    const auth = localStorage.getItem("admin_auth");
+
+    if (!auth) {
+      navigate("/admin-login");
+    }
+  }, []);
 
   /* =========================
      LOAD LEADS
@@ -41,6 +55,8 @@ export default function Admin() {
   ========================= */
   const deleteLead = async (id: string) => {
     try {
+      setActionLoading(id);
+
       await fetch(`${API}/api/lead/${id}`, {
         method: "DELETE",
       });
@@ -48,6 +64,8 @@ export default function Admin() {
       setLeads((prev) => prev.filter((l) => l._id !== id));
     } catch (err) {
       console.error(err);
+    } finally {
+      setActionLoading(null);
     }
   };
 
@@ -56,6 +74,8 @@ export default function Admin() {
   ========================= */
   const updateStatus = async (id: string, status: string) => {
     try {
+      setActionLoading(id);
+
       const res = await fetch(`${API}/api/lead/${id}`, {
         method: "PATCH",
         headers: {
@@ -73,6 +93,8 @@ export default function Admin() {
       );
     } catch (err) {
       console.error(err);
+    } finally {
+      setActionLoading(null);
     }
   };
 
@@ -120,25 +142,33 @@ export default function Admin() {
                 </td>
 
                 <td style={{ display: "flex", gap: 5 }}>
-                  <button onClick={() => updateStatus(lead._id, "new")}>
+                  <button
+                    disabled={actionLoading === lead._id}
+                    onClick={() => updateStatus(lead._id, "new")}
+                  >
                     New
                   </button>
 
                   <button
+                    disabled={actionLoading === lead._id}
                     onClick={() => updateStatus(lead._id, "in_progress")}
                   >
                     Work
                   </button>
 
-                  <button onClick={() => updateStatus(lead._id, "done")}>
+                  <button
+                    disabled={actionLoading === lead._id}
+                    onClick={() => updateStatus(lead._id, "done")}
+                  >
                     Done
                   </button>
 
                   <button
+                    disabled={actionLoading === lead._id}
                     onClick={() => deleteLead(lead._id)}
                     style={{ color: "red" }}
                   >
-                    Delete
+                    {actionLoading === lead._id ? "..." : "Delete"}
                   </button>
                 </td>
               </tr>

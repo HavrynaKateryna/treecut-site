@@ -78,6 +78,7 @@ export default function RequestForm({
     if (!validate()) return;
 
     setLoading(true);
+    setSuccess(false);
 
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/lead`, {
@@ -100,15 +101,11 @@ export default function RequestForm({
         throw new Error(data?.error || "Request failed");
       }
 
-      // SUCCESS UI
+      // ✅ SHOW SUCCESS FIRST
       setSuccess(true);
+      setLoading(false);
 
-      setTimeout(() => {
-        setSuccess(false);
-        onSuccess?.();
-        onClose?.();
-      }, 2000);
-
+      // clear form immediately
       setForm({
         name: "",
         email: "",
@@ -116,11 +113,17 @@ export default function RequestForm({
         message: "",
       });
 
+      // optional auto-close
+      setTimeout(() => {
+        onSuccess?.();
+        onClose?.();
+        setSuccess(false);
+      }, 2500);
+
     } catch (err) {
       console.error("Form submit error:", err);
-      alert("Something went wrong. Please try again later.");
-    } finally {
       setLoading(false);
+      alert("Something went wrong. Please try again later.");
     }
   };
 
@@ -143,10 +146,10 @@ export default function RequestForm({
         </h2>
       )}
 
-      {/* SUCCESS MESSAGE */}
+      {/* SUCCESS MESSAGE (now stable) */}
       {success && (
         <div className="success-message">
-          Request sent successfully!
+          ✅ Request sent successfully!
         </div>
       )}
 

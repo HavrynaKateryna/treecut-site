@@ -4,6 +4,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import Home from "./pages/Home";
 import ServicePage from "./pages/ServicePage";
 import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -32,6 +33,9 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/services/:id" element={<ServicePage />} />
+
+              {/* ADMIN */}
+              <Route path="/admin-login" element={<AdminLogin />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </main>

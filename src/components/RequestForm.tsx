@@ -79,32 +79,48 @@ export default function RequestForm({
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/api/lead", {
+      const res = await fetch("http://localhost:5000/api/lead", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          ...form,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          message: form.message,
           service: serviceName || "general",
         }),
       });
 
       const data = await res.json();
 
-      if (!data.success) throw new Error();
+      if (!res.ok || !data.success) {
+        throw new Error(data?.error || "Request failed");
+      }
 
+      // success
       onSuccess?.();
       onClose?.();
-    } catch {
-      alert("Error sending form");
-    }
 
-    setLoading(false);
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+    } catch (err) {
+      console.error("Form submit error:", err);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="form-wrapper">
 
-      {/* ❗ ЭТО ГЛАВНЫЙ FIX — крестик теперь работает всегда */}
       <button
         type="button"
         className="form-close"

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import OptimizedImage from "../components/OptimizedImage";
 import "../styles/gallery.css";
 
 export default function Gallery() {
@@ -23,8 +23,6 @@ export default function Gallery() {
   );
 
   const [index, setIndex] = useState(0);
-  const [zoom, setZoom] = useState(false);
-
   const len = images.length;
 
   const startX = useRef<number | null>(null);
@@ -32,7 +30,9 @@ export default function Gallery() {
   const next = () => setIndex((p) => (p + 1) % len);
   const prev = () => setIndex((p) => (p - 1 + len) % len);
 
-  // preload 3 images
+  /* =========================
+     PRELOAD 3 IMAGES ONLY
+  ========================= */
   useEffect(() => {
     const load = (src: string) => {
       const img = new Image();
@@ -44,98 +44,78 @@ export default function Gallery() {
     load(images[(index - 1 + len) % len]);
   }, [index, images, len]);
 
-  // =========================
-  // SWIPE LOGIC (MOBILE FIX)
-  // =========================
-
-  const onTouchStart = (e: React.TouchEvent) => {
+  /* =========================
+     SWIPE
+  ========================= */
+  const onStart = (e: React.TouchEvent) => {
     startX.current = e.touches[0].clientX;
   };
 
-  const onTouchEnd = (e: React.TouchEvent) => {
+  const onEnd = (e: React.TouchEvent) => {
     if (startX.current === null) return;
 
     const diff = e.changedTouches[0].clientX - startX.current;
 
-    if (diff > 60) prev();   // swipe right
-    if (diff < -60) next();  // swipe left
+    if (diff > 60) prev();
+    if (diff < -60) next();
 
     startX.current = null;
   };
 
+  /* =========================
+     VISIBLE ITEMS (3 only)
+  ========================= */
   const visible = [
     (index - 1 + len) % len,
     index,
     (index + 1) % len,
   ];
 
-  const getClass = (i: number) => {
-    if (i === index) return "slide active";
-    if (i === (index - 1 + len) % len) return "slide left";
-    if (i === (index + 1) % len) return "slide right";
-    return "slide hidden";
-  };
-
   return (
-    <motion.section className="gallery section">
+    <section id="gallery" className="gallery section gallery-reveal">
       <div className="container">
+
         <h2 className="gallery-title">Gallery</h2>
 
-        <div
-          className="carousel"
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
-        >
+        <div className="carousel" onTouchStart={onStart} onTouchEnd={onEnd}>
+
+          {/* LEFT ARROW */}
           <button className="gallery-arrow left-arrow" onClick={prev}>
             ‹
           </button>
 
+          {/* SLIDER */}
           <div className="slider">
-            {visible.map((i) => (
-              <div
-                key={i}
-                className={getClass(i)}
-                onClick={() => {
-                  if (i === index) setZoom(true);
-                  else setIndex(i);
-                }}
-              >
-                <img
-                  src={images[i]}
-                  alt=""
-                  loading={i === index ? "eager" : "lazy"}
-                  decoding="async"
-                />
-              </div>
-            ))}
+
+            {visible.map((i, pos) => {
+              const isCenter = i === index;
+
+              return (
+                <div
+                  key={i}
+                  className={`slide ${isCenter ? "active" : ""} ${
+                    pos === 0 ? "left" : ""
+                  } ${pos === 2 ? "right" : ""}`}
+                  onClick={() => setIndex(i)}
+                >
+                  <OptimizedImage
+                    src={images[i]}
+                    alt={`gallery-${i}`}
+                    priority={isCenter ? "high" : "low"}
+                  />
+                </div>
+              );
+            })}
+
           </div>
 
+          {/* RIGHT ARROW */}
           <button className="gallery-arrow right-arrow" onClick={next}>
             ›
           </button>
+
         </div>
       </div>
-
-      <AnimatePresence>
-        {zoom && (
-          <motion.div
-            className="lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setZoom(false)}
-          >
-            <motion.img
-              src={images[index]}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              decoding="async"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.section>
+    </section>
   );
 }

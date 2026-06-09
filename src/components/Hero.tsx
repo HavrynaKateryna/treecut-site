@@ -9,8 +9,8 @@ export default function Hero({ openModal }: Props) {
         src="/hero.webp"
         alt=""
         className="hero__bg"
-        decoding="async"
         fetchPriority="high"
+        decoding="async"
       />
 
       <div className="hero__overlay" />
@@ -21,8 +21,7 @@ export default function Hero({ openModal }: Props) {
         </h1>
 
         <p>
-          Safe. Fast. Insured. We handle everything from small cuts to
-          large hazardous tree removals across Jacksonville.
+          Safe. Fast. Insured. We handle everything from small cuts to large hazardous tree removals across Jacksonville.
         </p>
 
         <div className="hero__buttons">

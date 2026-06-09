@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/admin-login.css";
 
 export default function AdminLogin() {
-  const [password, setPassword] = useState<string>("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
@@ -12,24 +14,32 @@ export default function AdminLogin() {
       localStorage.setItem("admin_auth", "true");
       navigate("/admin");
     } else {
-      alert("Wrong password");
+      setError("Wrong password");
     }
   };
 
   return (
-    <div style={{ padding: 40 }}>
-      <h2>Admin Login</h2>
+    <div className="admin-login-page">
+      <div className="admin-login-card">
+        <h2>Admin Panel</h2>
+        <p>Enter password to continue</p>
 
-      <form onSubmit={handleLogin}>
-        <input
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <form onSubmit={handleLogin} className="admin-login-form">
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError("");
+            }}
+          />
 
-        <button type="submit">Login</button>
-      </form>
+          {error && <span className="error-text">{error}</span>}
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 }

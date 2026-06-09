@@ -1,0 +1,105 @@
+
+/* =========================================================
+   LOGIN PAGE
+========================================================= */
+
+.admin-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-4);
+
+  background: transparent;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.admin-login-card {
+  width: 420px;
+
+  padding: var(--space-6);
+
+  border-radius: var(--radius);
+
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+  text-align: center;
+}
+
+/* TITLE */
+.admin-login-card h2 {
+  font-size: 28px;
+  color: var(--primary);
+  margin-bottom: var(--space-1);
+}
+
+/* TEXT */
+.admin-login-card p {
+  color: var(--muted);
+  margin-bottom: var(--space-4);
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* INPUT */
+.admin-login-form input {
+  padding: 14px;
+  border-radius: 14px;
+
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  color: #fff;
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+.admin-login-form input:focus {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* BUTTON */
+.admin-login-form button {
+  padding: 14px;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #ef6d14, #ff8a3d);
+  color: #fff;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+  box-shadow: 0 20px 40px rgba(239, 109, 20, 0.25);
+}
+
+.admin-login-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 25px 55px rgba(239, 109, 20, 0.35);
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-text {
+  color: #ff5c5c;
+  font-size: 13px;
+}

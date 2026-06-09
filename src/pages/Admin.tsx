@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/admin.css";
 
 type Lead = {
   _id: string;
@@ -13,34 +14,24 @@ type Lead = {
 
 export default function Admin() {
   const [leads, setLeads] = useState<Lead[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
 
   const navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL as string;
 
-  /* =========================
-     PROTECT ADMIN ROUTE
-  ========================= */
   useEffect(() => {
     const auth = localStorage.getItem("admin_auth");
-
-    if (!auth) {
-      navigate("/admin-login");
-    }
+    if (!auth) navigate("/admin-login");
   }, []);
 
-  /* =========================
-     LOAD LEADS
-  ========================= */
   const fetchLeads = async () => {
     try {
       const res = await fetch(`${API}/api/lead`);
       const data = await res.json();
-
       setLeads(data.data || []);
     } catch (err) {
-      console.error("Fetch error:", err);
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -50,9 +41,6 @@ export default function Admin() {
     fetchLeads();
   }, []);
 
-  /* =========================
-     DELETE LEAD
-  ========================= */
   const deleteLead = async (id: string) => {
     try {
       setActionLoading(id);
@@ -69,9 +57,6 @@ export default function Admin() {
     }
   };
 
-  /* =========================
-     UPDATE STATUS
-  ========================= */
   const updateStatus = async (id: string, status: string) => {
     try {
       setActionLoading(id);
@@ -98,83 +83,81 @@ export default function Admin() {
     }
   };
 
-  /* =========================
-     UI
-  ========================= */
   if (loading) {
-    return <h2 style={{ padding: 20 }}>Loading leads...</h2>;
+    return <h2 className="loading">Loading leads...</h2>;
   }
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>🪵 Admin Panel - Leads</h1>
+    <div className="admin-page">
+      <div className="admin-header">
+        <h1>🪵 TreeCut Admin Panel</h1>
+        <p>Leads management system</p>
+      </div>
 
       {leads.length === 0 ? (
-        <p>No leads yet</p>
+        <div className="empty">No leads yet</div>
       ) : (
-        <table
-          border={1}
-          cellPadding={10}
-          style={{ width: "100%", marginTop: 20 }}
-        >
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Service</th>
-              <th>Message</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {leads.map((lead) => (
-              <tr key={lead._id}>
-                <td>{lead.name}</td>
-                <td>{lead.phone}</td>
-                <td>{lead.email}</td>
-                <td>{lead.service}</td>
-                <td>{lead.message}</td>
-                <td>
-                  <b>{lead.status}</b>
-                </td>
-
-                <td style={{ display: "flex", gap: 5 }}>
-                  <button
-                    disabled={actionLoading === lead._id}
-                    onClick={() => updateStatus(lead._id, "new")}
-                  >
-                    New
-                  </button>
-
-                  <button
-                    disabled={actionLoading === lead._id}
-                    onClick={() => updateStatus(lead._id, "in_progress")}
-                  >
-                    Work
-                  </button>
-
-                  <button
-                    disabled={actionLoading === lead._id}
-                    onClick={() => updateStatus(lead._id, "done")}
-                  >
-                    Done
-                  </button>
-
-                  <button
-                    disabled={actionLoading === lead._id}
-                    onClick={() => deleteLead(lead._id)}
-                    style={{ color: "red" }}
-                  >
-                    {actionLoading === lead._id ? "..." : "Delete"}
-                  </button>
-                </td>
+        <div className="table-wrapper">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Service</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {leads.map((lead) => (
+                <tr key={lead._id}>
+                  <td>{lead.name}</td>
+                  <td>{lead.phone}</td>
+                  <td>{lead.email}</td>
+                  <td>{lead.service}</td>
+                  <td className="message">{lead.message}</td>
+
+                  <td>
+                    <span className={`status ${lead.status}`}>
+                      {lead.status}
+                    </span>
+                  </td>
+
+                  <td>
+                    <div className="actions">
+                      <button onClick={() => updateStatus(lead._id, "new")}>
+                        New
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          updateStatus(lead._id, "in_progress")
+                        }
+                      >
+                        Work
+                      </button>
+
+                      <button onClick={() => updateStatus(lead._id, "done")}>
+                        Done
+                      </button>
+
+                      <button
+                        className="delete"
+                        disabled={actionLoading === lead._id}
+                        onClick={() => deleteLead(lead._id)}
+                      >
+                        {actionLoading === lead._id ? "..." : "Delete"}
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

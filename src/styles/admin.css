@@ -1,0 +1,162 @@
+
+/* =========================================================
+   ADMIN PAGE
+========================================================= */
+
+.admin-page {
+  min-height: 100vh;
+  padding: var(--space-5);
+  color: var(--text);
+  background: transparent;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.admin-header {
+  margin-bottom: var(--space-5);
+}
+
+.admin-header h1 {
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--primary);
+}
+
+.admin-header p {
+  color: var(--muted);
+  margin-top: var(--space-1);
+}
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.loading,
+.empty {
+  text-align: center;
+  margin-top: var(--space-7);
+  color: var(--muted);
+}
+
+/* =========================================================
+   TABLE WRAPPER (GLASS)
+========================================================= */
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius);
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.admin-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+
+  background: var(--bg-glass);
+  backdrop-filter: blur(14px);
+
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* HEADER */
+.admin-table th {
+  text-align: left;
+  padding: var(--space-3);
+  font-size: 14px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* CELLS */
+.admin-table td {
+  padding: var(--space-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* =========================================================
+   MESSAGE CELL
+========================================================= */
+
+.message {
+  max-width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--muted);
+}
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.status.new {
+  background: rgba(0, 123, 255, 0.15);
+  color: #4da3ff;
+}
+
+.status.in_progress {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffcc66;
+}
+
+.status.done {
+  background: rgba(40, 167, 69, 0.15);
+  color: #4dff88;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.actions {
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+/* base button */
+.actions button {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.2s ease;
+}
+
+.actions button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* delete */
+.actions .delete {
+  background: rgba(239, 109, 20, 0.1);
+  border: 1px solid rgba(239, 109, 20, 0.3);
+  color: var(--primary);
+}
+
+.actions .delete:hover {
+  background: rgba(239, 109, 20, 0.2);
+}

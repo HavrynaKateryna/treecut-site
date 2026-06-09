@@ -79,7 +79,7 @@ export default function RequestForm({
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/lead", {
+      const res =  await fetch(`${import.meta.env.VITE_API_URL}/api/lead`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

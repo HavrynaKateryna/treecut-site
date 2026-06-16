@@ -1,10 +1,18 @@
+
+/* =========================
+   Z-INDEX SYSTEM (SIMPLIFIED)
+========================= */
+
 :root {
-  --z-header: 1000;
-  --z-menu: 1200;
+  --z-header: 100;
+  --z-menu: 1000;
+  --z-overlay: 1100;
+  --z-fab: 1200;
+  --z-modal: 1300;
 }
 
 /* =========================
-   HEADER
+   HEADER (STABLE FIX)
 ========================= */
 
 .header {
@@ -17,16 +25,22 @@
 
   z-index: var(--z-header);
 
-  background:
-    linear-gradient(
-      rgba(1, 89, 87, 0.82),
-      rgba(0, 0, 0, 0.45)
-    );
+  background: linear-gradient(
+    rgba(1, 89, 87, 0.82),
+    rgba(0, 0, 0, 0.45)
+  );
 
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* REMOVE GPU TRAPS */
+.header {
+  will-change: auto;
+  transform: none;
+  backface-visibility: visible;
 }
 
 /* =========================
@@ -35,66 +49,42 @@
 
 .header__inner {
   height: 100%;
-
   max-width: 1440px;
-
   margin-inline: auto;
-
   padding-inline: 16px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 20px;
 }
 
-@media (min-width: 768px) {
-  .header__inner {
-    padding-inline: 24px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .header__inner {
-    padding-inline: 40px;
-  }
-}
-
 /* =========================
-   LOGO
+   LOGO / NAV / PHONE (UNCHANGED SAFE)
 ========================= */
 
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
-
   color: #ef6d14;
-
   font-size: 20px;
   font-weight: 700;
-
   white-space: nowrap;
 }
 
 .logo-circle {
   width: 40px;
   height: 40px;
-
   border-radius: 50%;
-
   overflow: hidden;
-
   flex-shrink: 0;
-
   border: 2px solid rgba(255,255,255,0.12);
 }
 
 .logo-circle img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
 
@@ -104,17 +94,14 @@
 
 .nav {
   display: none;
-
   align-items: center;
   gap: 20px;
 }
 
 .nav button {
   color: #ef6d14;
-
   font-size: 20px;
   font-weight: 700;
-
   transition: 0.3s ease;
 }
 
@@ -137,15 +124,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
-
   color: #ef6d14;
-
   font-size: 20px;
   font-weight: 700;
-
   text-decoration: none;
-
-  transition: 0.3s ease;
 }
 
 .header-phone:hover {
@@ -159,26 +141,16 @@
 .burger {
   width: 48px;
   height: 48px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #ef6d14;
-
   font-size: 34px;
-
   border-radius: 12px;
-
-  transition: 0.3s ease;
-}
-
-.burger:hover {
-  background: rgba(255,255,255,0.08);
 }
 
 /* =========================
-   MOBILE MENU
+   MENU OVERLAY (FIXED STACKING)
 ========================= */
 
 .menu-overlay {
@@ -186,53 +158,33 @@
   inset: 0;
 
   background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(10px);
 
-  backdrop-filter: blur(12px);
+  z-index: var(--z-menu);
 
-  z-index: 9999;
-
-  animation: fadeIn 0.25s ease;
+  display: flex;
+  justify-content: flex-end;
 }
 
+/* PANEL */
 .menu-modal {
-  position: absolute;
-  top: 0;
-  right: 0;
-
   width: min(340px, 100%);
   height: 100%;
 
   padding: 110px 28px 40px;
 
-  background: rgba(1, 89, 87, 0.4);
-
-  backdrop-filter: blur(24px);
-
+  background: rgba(1, 89, 87, 0.45);
   border-left: 1px solid rgba(255,255,255,0.1);
 
   display: flex;
   flex-direction: column;
   gap: 18px;
 
-  animation: menuSlide 0.35s ease;
+  /* SAFE ANIMATION */
+  animation: menuSlide 0.25s ease;
 }
 
-.menu-modal button {
-  text-align: left;
-
-  color: #ef6d14;
-
-  font-size: 24px;
-  font-weight: 700;
-
-  transition: 0.3s ease;
-}
-
-.menu-modal button:hover {
-  color: #fff;
-  transform: translateX(6px);
-}
-
+/* CLOSE */
 .menu-close {
   position: absolute;
   top: 20px;
@@ -242,45 +194,38 @@
   height: 48px;
 
   border-radius: 50%;
-
   color: #ef6d14;
-
   font-size: 34px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   background: rgba(255,255,255,0.08);
 }
 
-.mobile-phone {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* ITEMS */
+.menu-modal button {
+  text-align: left;
+  color: #ef6d14;
+  font-size: 24px;
+  font-weight: 700;
+}
 
-  margin-top: 10px;
-
+.menu-modal button:hover {
   color: #fff;
-
-  text-decoration: none;
-
-  font-size: 17px;
-  font-weight: 600;
+  transform: translateX(6px);
 }
 
 /* =========================
    ANIMATION
 ========================= */
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes menuSlide {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* =========================
@@ -288,21 +233,13 @@
 ========================= */
 
 @media (min-width: 1024px) {
-  .nav {
-    display: flex;
-  }
-
-  .header-contact {
-    display: flex;
-  }
-
-  .burger {
-    display: none;
-  }
+  .nav { display: flex; }
+  .header-contact { display: flex; }
+  .burger { display: none; }
 }
 
 /* =========================
-   BODY LOCK FIX
+   BODY LOCK
 ========================= */
 
 body.lock {

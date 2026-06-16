@@ -10,10 +10,15 @@ export default function ScrollToTop() {
 
     if (target) return;
 
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    // FIX: delay prevents race condition with scrollToSection
+    const timer = setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }, 50);
+
+    return () => clearTimeout(timer);
   }, [pathname]);
 
   return null;

@@ -1,5 +1,5 @@
 /* =========================================================
-   FOOTER
+   FOOTER (STACK SAFE VERSION)
 ========================================================= */
 
 .footer {
@@ -12,8 +12,18 @@
 
   color: #ef6d14;
 
+  /* IMPORTANT FIX: prevents stacking conflicts */
+  position: relative;
+  z-index: 1;
+
+  /* safer than full backdrop-filter (reduces fixed UI bugs) */
+  -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
+
+/* =========================================================
+   GRID
+========================================================= */
 
 .footer__grid {
   display: grid;
@@ -24,20 +34,46 @@
   margin: auto;
 }
 
+/* =========================================================
+   TEXT / LINKS
+========================================================= */
+
 .footer__col p,
 .footer__col a {
   margin: 6px 0;
-
   color: rgba(255, 255, 255, 0.85);
-
   text-decoration: none;
-
-  transition: 0.3s;
+  transition: color 0.3s ease;
 }
 
+/* FIX: transform on inline elements was unstable */
 .footer__col a:hover {
   color: #ef6d14;
-  transform: translateX(3px);
+}
+
+/* =========================================================
+   PHONE ROW
+========================================================= */
+
+.footer__phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 6px 0;
+
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.footer__phone:hover {
+  color: #ef6d14;
+}
+
+.footer__phone svg {
+  flex-shrink: 0;
 }
 
 /* =========================================================
@@ -61,32 +97,22 @@
   border-radius: 50%;
 
   background: rgba(255, 255, 255, 0.06);
-
   border: 1px solid rgba(255, 255, 255, 0.08);
 
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
   color: rgba(255, 255, 255, 0.9);
 
   font-size: 18px;
 
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
 }
 
 .footer__socials a:hover {
-  transform: translateY(-4px);
-
+  transform: translate3d(0, -4px, 0);
   background: rgba(239, 109, 20, 0.15);
-
   color: #ef6d14;
-
-  box-shadow:
-    0 0 15px rgba(239, 109, 20, 0.35),
-    0 0 30px rgba(239, 109, 20, 0.15);
 }
 
 /* =========================================================
@@ -95,7 +121,6 @@
 
 .footer__bottom {
   text-align: center;
-
   margin-top: 35px;
 
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -103,12 +128,11 @@
   padding-top: 15px;
 
   font-size: 14px;
-
   color: rgba(255, 255, 255, 0.7);
 }
 
 /* =========================================================
-   GOOGLE MAPS LINK
+   MAPS LINK
 ========================================================= */
 
 .footer__col a[href*="maps"] {
@@ -121,12 +145,11 @@
 
   background: rgba(255, 255, 255, 0.08);
 
-  transition: 0.3s;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .footer__col a[href*="maps"]:hover {
   background: rgba(239, 109, 20, 0.2);
-
   color: #ef6d14;
 }
 
@@ -141,7 +164,8 @@
   }
 
   .footer__socials {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 10px;
   }

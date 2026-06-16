@@ -1,3 +1,7 @@
+/* =========================
+   SERVICES SECTION (STABLE VERSION)
+========================= */
+
 .services-section {
   width: 100%;
   padding: 40px 0;
@@ -16,7 +20,7 @@
   gap: 18px;
 }
 
-/* CARD */
+/* CARD (FIXED STACKING BEHAVIOR) */
 .service-card {
   width: 100%;
   min-height: 240px;
@@ -25,7 +29,10 @@
   border-radius: 16px;
 
   background: rgba(1, 89, 87, 0.4);
-  backdrop-filter: blur(10px);
+
+  /* FIX: reduce heavy blur impact */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 
   border: 1px solid rgba(255, 255, 255, 0.08);
 
@@ -33,12 +40,13 @@
   flex-direction: column;
   justify-content: space-between;
 
+  /* FIX: only animate transform, not create new layer constantly */
   transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-/* hover */
+/* hover (SAFE VERSION) */
 .service-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px); /* reduced to avoid stacking stress */
   border-color: rgba(239, 109, 20, 0.4);
 }
 
@@ -66,7 +74,7 @@
 }
 
 .service-btn:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   opacity: 0.9;
 }
 

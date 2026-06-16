@@ -3,11 +3,13 @@ import { motion } from "framer-motion";
 export default function About() {
   return (
     <section id="about" className="about">
+
+      <div id="about-scroll-fix" style={{ position: "relative", top: "-92px" }} />
+
       <div className="container">
 
         <div className="about__card">
 
-          {/* TEXT */}
           <motion.div
             className="about__text"
             initial={{ opacity: 0, x: -40 }}
@@ -34,7 +36,6 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* IMAGE */}
           <motion.div
             className="about__image"
             initial={{ opacity: 0, x: 40 }}

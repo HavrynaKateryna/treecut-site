@@ -1,55 +1,43 @@
 /* =========================================================
-   SECTION (PREMIUM BASE)
+   SECTION
 ========================================================= */
 
 .faq-section {
   position: relative;
-
   width: 100%;
 
-  padding: 40px 0;
+  padding: 90px 0 60px; /* 🔥 FIX: было слишком мало сверху */
 
   color: #fff;
-
-  scroll-margin-top: 92px;
-
-  overflow: hidden;
+  scroll-margin-top: 100px;
 }
 
-/* dark cinematic overlay */
+/* background glow */
 .faq-section::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background:
-    radial-gradient(
-      circle at top,
-      rgba(239, 109, 20, 0.08),
-      transparent 60%
-    ),
-   
+    radial-gradient(circle at top, rgba(239,109,20,0.08), transparent 60%),
+    radial-gradient(circle at bottom, rgba(0,255,200,0.04), transparent 60%);
 
-
-}
-
-/* content layer */
-.faq-section > * {
-  position: relative;
-  z-index: 1;
+  pointer-events: none;
 }
 
 /* =========================================================
    TITLE
 ========================================================= */
 
+.faq-title {
+  text-align: center;
 
+  margin-bottom: 40px; /* 🔥 FIX: главный отступ */
 
-@keyframes faqTitleIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+
+  color: #ef6d14;
 }
 
 /* =========================================================
@@ -61,52 +49,30 @@
   grid-template-columns: 1fr;
   gap: 16px;
 
-  width: 100%;
-  max-width: 1200px;
-
+  max-width: 1100px;
   margin: 0 auto;
 
-  padding-inline: clamp(16px, 4vw, 48px);
+  padding: 0 20px;
 }
 
 /* =========================================================
-   CARD
+   ITEM
 ========================================================= */
 
 .faq-item {
   background: rgba(1, 89, 87, 0.4);
+  border: 1px solid rgba(255,255,255,0.12);
 
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 18px;
-
-  backdrop-filter: blur(14px);
 
   overflow: hidden;
 
-  transition: all 0.35s ease;
-
-  opacity: 0;
-  transform: translateY(25px);
-  animation: faqCardIn 0.8s ease forwards;
-}
-
-.faq-item:nth-child(1) { animation-delay: 0.05s; }
-.faq-item:nth-child(2) { animation-delay: 0.1s; }
-.faq-item:nth-child(3) { animation-delay: 0.15s; }
-.faq-item:nth-child(4) { animation-delay: 0.2s; }
-.faq-item:nth-child(5) { animation-delay: 0.25s; }
-.faq-item:nth-child(6) { animation-delay: 0.3s; }
-
-@keyframes faqCardIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  transition: all 0.25s ease;
 }
 
 .faq-item:hover {
-  border-color: rgba(239, 109, 20, 0.35);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+  border-color: rgba(239,109,20,0.35);
 }
 
 /* =========================================================
@@ -115,7 +81,7 @@
 
 .faq-question {
   width: 100%;
-  padding: 20px 22px;
+  padding: 18px 20px;
 
   background: transparent;
   border: none;
@@ -130,12 +96,6 @@
   align-items: center;
 
   cursor: pointer;
-
-  transition: color 0.25s ease;
-}
-
-.faq-question:hover {
-  color: #ff8a2a;
 }
 
 /* =========================================================
@@ -145,57 +105,34 @@
 .chevron {
   font-size: 22px;
   transition: transform 0.3s ease;
-  opacity: 0.8;
 }
 
 .chevron.open {
   transform: rotate(90deg);
-  opacity: 1;
 }
 
 /* =========================================================
    ANSWER
 ========================================================= */
 
-.faq-answer {
-  overflow: hidden;
-}
-
 .faq-answer-inner {
-  padding: 0 22px 18px 22px;
+  padding: 0 20px 18px;
 }
 
 .faq-answer p {
   margin: 0;
-
   font-size: 15.5px;
-  line-height: 1.75;
-
-  color: rgba(255, 255, 255, 0.85);
-
-  opacity: 0;
-  transform: translateY(-8px);
-  animation: answerIn 0.4s ease forwards;
-}
-
-@keyframes answerIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
 }
 
 /* =========================================================
-   RESPONSIVE
+   DESKTOP
 ========================================================= */
 
 @media (min-width: 768px) {
   .faq {
     grid-template-columns: repeat(2, 1fr);
     gap: 18px;
-  }
-
-  .faq-question {
-    font-size: 18px;
   }
 }

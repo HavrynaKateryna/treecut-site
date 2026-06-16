@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { services } from "../data/servicesData";
 
@@ -19,6 +19,21 @@ export default function ServicePage() {
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  /* =========================
+     HIDE HEADER ON MODAL
+  ========================= */
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add("modal-open");
+    } else {
+      document.body.classList.remove("modal-open");
+    }
+
+    return () => {
+      document.body.classList.remove("modal-open");
+    };
+  }, [open]);
+
   if (!service) {
     return <h1>Service not found</h1>;
   }
@@ -31,7 +46,6 @@ export default function ServicePage() {
   return (
     <div className="service-premium">
 
-      {/* SEO */}
       <Helmet>
         <title>{service.title} | Tree Service Jacksonville</title>
         <meta name="description" content={service.full} />
@@ -45,7 +59,6 @@ export default function ServicePage() {
         />
       </Helmet>
 
-      {/* HERO */}
       <section className="service-hero">
 
         <button className="btn btn-back" onClick={() => navigate(-1)}>
@@ -82,7 +95,6 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* INFO */}
       <section className="service-info">
         <div className="info-grid">
 
@@ -104,13 +116,12 @@ export default function ServicePage() {
         </div>
       </section>
 
-      {/* MODAL */}
       <Modal open={open} onClose={close}>
         {!success ? (
           <RequestForm
             serviceName={service.title}
             onSuccess={() => setSuccess(true)}
-            onClose={close}   // ✅ ВАЖНО FIX
+            onClose={close}
           />
         ) : (
           <div className="success-box">✔ Request sent</div>

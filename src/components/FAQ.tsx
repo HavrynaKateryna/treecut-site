@@ -42,14 +42,15 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="faq-section">
+
       <div className="container">
 
-        {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          className="faq-title"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.2 }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
         >
           Questions & Answers
         </motion.h2>
@@ -59,17 +60,8 @@ export default function FAQ() {
             const isOpen = openIndex === index;
 
             return (
-              <motion.div
-                key={index}
-                className="faq-item"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.05,
-                }}
-              >
+              <div key={index} className="faq-item">
+
                 <button
                   className="faq-question"
                   onClick={() => toggle(index)}
@@ -80,7 +72,7 @@ export default function FAQ() {
                   </span>
                 </button>
 
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       className="faq-answer"
@@ -88,9 +80,8 @@ export default function FAQ() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{
-                        type: "spring",
-                        stiffness: 220,
-                        damping: 28,
+                        duration: 0.35,
+                        ease: "easeInOut",
                       }}
                     >
                       <div className="faq-answer-inner">
@@ -99,10 +90,12 @@ export default function FAQ() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+
+              </div>
             );
           })}
         </div>
+
       </div>
     </section>
   );

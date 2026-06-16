@@ -20,12 +20,15 @@ export default function Modal({ open, onClose, children }: Props) {
 
     const scrollY = window.scrollY;
 
+    document.documentElement.style.overflow = "hidden";
     document.body.style.position = "fixed";
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = "100%";
 
     return () => {
       window.removeEventListener("keydown", handleEsc);
+
+      document.documentElement.style.overflow = "";
 
       const y = document.body.style.top;
 
@@ -38,9 +41,8 @@ export default function Modal({ open, onClose, children }: Props) {
   }, [open, onClose]);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
-    if (info.offset.y > 120) {
-      onClose();
-    }
+    const shouldClose = info.offset.y > 120 && info.velocity.y > 0;
+    if (shouldClose) onClose();
   };
 
   if (!open) return null;
@@ -52,9 +54,8 @@ export default function Modal({ open, onClose, children }: Props) {
           className="modal"
           onClick={(e) => e.stopPropagation()}
           drag="y"
-dragDirectionLock
-dragElastic={0.12}
-dragConstraints={{ top: 0, bottom: 180 }}
+          dragElastic={0.12}
+          dragConstraints={{ top: 0, bottom: 0 }}
           onDragEnd={handleDragEnd}
           initial={{ opacity: 0, scale: 0.96, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

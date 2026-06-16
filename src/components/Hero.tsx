@@ -7,7 +7,7 @@ export default function Hero({ openModal }: Props) {
     <section className="hero">
       <img
         src="/hero.webp"
-        alt=""
+        alt="Tree removal services"
         className="hero__bg"
         fetchPriority="high"
         decoding="async"
@@ -15,18 +15,25 @@ export default function Hero({ openModal }: Props) {
 
       <div className="hero__overlay" />
 
-      <div className="hero__content">
+      <div className="hero__content container">
+        <p className="hero__sub">Licensed & Insured Tree Service</p>
+
         <h1>
-          Removal's <span>Trees</span> Jacksonville
+          Fast & Safe <span>Tree Removal Services</span>
         </h1>
 
-        <p>
-          Safe. Fast. Insured. We handle everything from small cuts to large hazardous tree removals across Jacksonville.
+        <p className="hero__text">
+          Professional tree removal, trimming, and emergency services for residential and commercial properties.
+          Fast response and free estimates.
+        </p>
+
+        <p className="hero__trust">
+          Emergency & scheduled service • Residential & commercial • Fully insured
         </p>
 
         <div className="hero__buttons">
-          <button className="btn btn-primary" onClick={openModal}>
-            Get a Free Quote
+          <button className="btn-primary" onClick={openModal}>
+            Get Free Estimate
           </button>
         </div>
       </div>

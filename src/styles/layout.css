@@ -1,103 +1,91 @@
-/* =========================================================
-   HEADER (FIXED)
-========================================================= */
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: var(--header-height);
-
-  z-index: 1000;
-
-  background: linear-gradient(
-    rgba(1, 89, 87, 0.85),
-    rgba(0, 0, 0, 0.4)
-  );
-
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
 
 /* =========================================================
-   MODAL OVERLAY
+   APP LAYOUT ROOT
 ========================================================= */
 
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-
+.app-layout {
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(12px);
-
-  z-index: 999999;
-
-  /* 🔥 FIX: prevents click-through issues */
-  pointer-events: auto;
-}
-
-/* =========================================================
-   MODAL BOX
-========================================================= */
-
-.modal {
-  position: relative;
-
+  flex-direction: column;
   width: 100%;
-  max-width: 720px;
-
-  border-radius: 24px;
-
-  background: rgba(1,89,87,0.45);
-  backdrop-filter: blur(20px);
-
-  border: 1px solid rgba(255,255,255,0.12);
-
-  /* 🔥 FIX */
-  overflow: hidden;
-
-  /* prevents weird stacking bugs */
-  transform: translateZ(0);
 }
 
 /* =========================================================
-   CLOSE BUTTON (FIXED)
+   HEADER SPACING FIX
 ========================================================= */
 
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+.page-content {
+  flex: 1;
 
-  width: 44px;
-  height: 44px;
+  /* важно: компенсирует fixed header */
+  padding-top: var(--header-height);
 
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 24px;
-  color: #fff;
-
-  background: rgba(0,0,0,0.6);
-
-  cursor: pointer;
-
-  /* 🔥 FIX: must be above everything inside modal */
-  z-index: 9999999;
-
-  transition: 0.25s ease;
+  /* предотвращает горизонтальные сдвиги */
+  width: 100%;
+  overflow-x: clip;
 }
 
-.modal-close:hover {
-  background: #ef6d14;
-  transform: rotate(90deg);
+/* =========================================================
+   MAIN WRAPPER
+========================================================= */
+
+main {
+  display: block;
+  width: 100%;
+}
+
+/* =========================================================
+   SECTION BASE (STABLE SCROLL BEHAVIOR)
+========================================================= */
+
+section {
+  width: 100%;
+}
+
+.section {
+  padding-block: clamp(64px, 10vw, 120px);
+  width: 100%;
+}
+
+/* smooth anchor scroll fix */
+section[id] {
+  scroll-margin-top: var(--header-height);
+}
+
+/* =========================================================
+   CONTAINER SAFETY (NO HORIZONTAL SHIFT)
+========================================================= */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+
+  padding-inline: var(--space-4);
+
+  /* prevents layout shift on mobile scrollbars */
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--space-3);
+  }
+}
+
+/* =========================================================
+   SAFE ROOT CLIPPING (IMPORTANT FOR PERFORMANCE)
+========================================================= */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+/* fallback for older browsers */
+@supports not (overflow: clip) {
+  #root {
+    overflow-x: hidden;
+  }
 }

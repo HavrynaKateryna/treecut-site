@@ -1,68 +1,69 @@
- /* =========================================================
-   ABOUT SECTION
-========================================================= */
-
 .about {
   width: 100%;
-  padding: 40px 0;
+
+  padding: 20px 0 40px;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  /* ❌ УБРАТЬ ЭТО:
+  margin-top: -30px;
+  */
 }
 
-/* =========================================================
+/* =========================
    CARD
-========================================================= */
+========================= */
 
 .about__card {
+  width: 100%;
+
   display: grid;
   grid-template-columns: 1fr;
-
-  overflow: hidden;
 
   border-radius: 22px;
 
   background: rgba(1, 89, 87, 0.45);
   backdrop-filter: blur(14px);
 
-  box-shadow: 0 35px 90px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+
+  overflow: hidden;
 }
 
-/* =========================================================
-   TEXT
-========================================================= */
+/* =========================
+   TEXT (CENTER FIX)
+========================= */
 
 .about__text {
-  padding: 42px 24px;
+  padding: 50px 40px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  color: rgba(255, 255, 255, 0.92);
-
-  position: relative;
+  /* 🔥 центрируем текст визуально */
+  height: 100%;
 }
 
-.about__text::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle at top left,
-    rgba(239, 109, 20, 0.08),
-    transparent 60%
-  );
-
-  pointer-events: none;
+.about__text h2 {
+  margin-bottom: 16px;
+  font-size: clamp(26px, 2.5vw, 38px);
+  line-height: 1.2;
+  color: var(--primary);
 }
 
-/* PARAGRAPHS */
 .about__text p {
-  opacity: 0.9;
+  opacity: 0.88;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
-/* =========================================================
-   IMAGE
-========================================================= */
+/* =========================
+   IMAGE (BALANCED HEIGHT)
+========================= */
 
 .about__image {
   width: 100%;
@@ -75,41 +76,31 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-
-  transform: scale(1.08);
-
-  transition: transform 1s ease;
+  transform: scale(1.05);
 }
 
-/* =========================================================
-   TABLET
-========================================================= */
+/* =========================
+   DESKTOP FIX (IMPORTANT)
+========================= */
 
 @media (min-width: 768px) {
   .about__card {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.1fr 0.9fr;
+
+    /* 🔥 главное: вся секция в экран */
+    height: 70vh;
+
+    align-items: stretch;
   }
 
   .about__text {
-    padding: 70px 48px;
+    padding: 60px;
+
+    display: flex;
+    justify-content: center;
   }
 
   .about__image {
-    height: auto;
-    min-height: 560px;
-  }
-}
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-@media (min-width: 1024px) {
-  .about__text {
-    padding: 100px 80px;
-  }
-
-  .about__image {
-    min-height: 650px;
+    height: 100%;
   }
 }

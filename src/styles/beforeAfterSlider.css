@@ -2,63 +2,77 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-
   user-select: none;
-  touch-action: none; /* важно для пальца */
+  touch-action: none;
 }
 
 .ba-images {
   position: relative;
-  width: 100%;
   height: 520px;
-
   border-radius: 24px;
   overflow: hidden;
 
-  background: #02150e;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
 }
 
-/* ОБЕ КАРТИНКИ */
+/* обе картинки */
 .ba-img {
   width: 100%;
   height: 100%;
-
-  object-fit: cover; /* FIX: было contain → ломало визуал */
-  object-position: center;
-
-  display: block;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
 }
 
-/* BEFORE слой */
+/* BEFORE слой — теперь через clipPath (ВАЖНО!) */
 .ba-before {
   position: absolute;
-  top: 0;
-  left: 0;
-
-  height: 100%;
+  inset: 0;
   overflow: hidden;
 
-  border-right: 3px solid rgba(255,255,255,0.8);
-  box-shadow: 10px 0 25px rgba(0,0,0,0.35);
+  transition: clip-path 0.12s linear;
 }
 
-/* линия */
+/* handle линия */
 .ba-handle {
   position: absolute;
   top: 0;
+  bottom: 0;
 
-  width: 3px;
-  height: 100%;
-
+  width: 2px;
   background: #ef6d14;
 
   transform: translateX(-50%);
-  z-index: 10;
+
+  transition: left 0.12s linear;
 }
 
-/* MOBILE */
+/* точка (как Apple slider) */
+.ba-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+  background: #ef6d14;
+
+  transform: translate(-50%, -50%);
+
+  box-shadow: 0 0 0 6px rgba(239,109,20,0.2);
+}
+
+/* hover эффект */
+.ba-slider:hover .ba-dot {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* mobile */
 @media (max-width: 768px) {
   .ba-images {
     height: 320px;
+    border-radius: 18px;
   }
 }

@@ -8,70 +8,63 @@ type Props = {
 
 export default function BeforeAfterSlider({ before, after }: Props) {
   const [value, setValue] = useState(50);
+  const [dragging, setDragging] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const isDragging = useRef(false);
+  const ref = useRef<HTMLDivElement | null>(null);
 
-  const calcValue = (clientX: number) => {
-    const el = containerRef.current;
+  const update = (clientX: number) => {
+    const el = ref.current;
     if (!el) return;
 
     const rect = el.getBoundingClientRect();
 
     let percent = ((clientX - rect.left) / rect.width) * 100;
 
-    if (percent < 0) percent = 0;
-    if (percent > 100) percent = 100;
+    percent = Math.max(0, Math.min(100, percent));
 
     setValue(percent);
   };
 
-  const start = () => {
-    isDragging.current = true;
-  };
-
-  const end = () => {
-    isDragging.current = false;
-  };
-
-  const move = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDragging.current) return;
-    calcValue(e.clientX);
-  };
-
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    start();
-    calcValue(e.clientX);
+    setDragging(true);
+    update(e.clientX);
   };
 
-  const onPointerUp = () => {
-    end();
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging) return;
+    update(e.clientX);
   };
 
-  const onPointerLeave = () => {
-    end();
-  };
+  const stop = () => setDragging(false);
 
   return (
     <div
       className="ba-slider"
-      ref={containerRef}
-      onPointerMove={move}
+      ref={ref}
       onPointerDown={onPointerDown}
-      onPointerUp={onPointerUp}
-      onPointerLeave={onPointerLeave}
+      onPointerMove={onPointerMove}
+      onPointerUp={stop}
+      onPointerCancel={stop}
+      onPointerLeave={stop}
     >
       <div className="ba-images">
+
         <img src={after} className="ba-img" alt="after" />
 
-        <div className="ba-before" style={{ width: `${value}%` }}>
+        <div
+          className="ba-before"
+          style={{ clipPath: `inset(0 ${100 - value}% 0 0)` }}
+        >
           <img src={before} className="ba-img" alt="before" />
         </div>
 
         <div
           className="ba-handle"
           style={{ left: `${value}%` }}
-        />
+        >
+          <div className="ba-dot" />
+        </div>
+
       </div>
     </div>
   );

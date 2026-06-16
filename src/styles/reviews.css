@@ -1,3 +1,7 @@
+/* =========================
+   REVIEWS (STABLE VERSION)
+========================= */
+
 .reviews {
   width: 100%;
   padding: 40px 0;
@@ -9,60 +13,77 @@
   margin-bottom: 40px;
 }
 
-/* GRID (mobile-first) */
+/* GRID */
 .reviews-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
 
-  padding: 0 16px;
+  /* FIX: remove layout shift risk */
+  padding-inline: 16px;
+  box-sizing: border-box;
 }
 
 /* TABLET */
 @media (min-width: 768px) {
   .reviews-grid {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0 20px;
+    padding-inline: 20px;
   }
 }
 
-/* DESKTOP (3 COLS MAX) */
+/* DESKTOP */
 @media (min-width: 1024px) {
   .reviews-grid {
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 40px;
+    padding-inline: 40px;
   }
 }
 
-/* CARD */
+/* =========================
+   CARD (FIXED STACKING BEHAVIOR)
+========================= */
+
 .review-card {
   background: rgba(1, 89, 87, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.14);
 
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 18px;
   padding: 18px;
 
-  backdrop-filter: blur(10px);
+  /* FIX: lighter blur to reduce compositing bugs */
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  /* FIX: smoother hover without heavy stacking context issues */
+  transition: transform 0.25s ease, border-color 0.25s ease;
+
+  /* IMPORTANT: prevents weird overlap with fixed elements */
+  position: relative;
+  z-index: 1;
 }
 
 /* hover */
 .review-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   border-color: rgba(239, 109, 20, 0.4);
 }
 
-/* TOP */
+/* =========================
+   TOP SECTION
+========================= */
+
 .review-top {
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
 }
 
+/* AVATAR */
 .avatar {
   width: 42px;
   height: 42px;
+
   border-radius: 50%;
   background: #ef6d14;
 

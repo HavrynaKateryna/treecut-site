@@ -12,6 +12,13 @@
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+html,
+body {
+  height: 100%;
+  overscroll-behavior: none;
 }
 
 /* =========================================================
@@ -21,14 +28,9 @@ html {
 :root {
   --primary: #ef6d14;
 
-  --header-height: 120px;
+  --header-height: clamp(80px, 10vw, 120px);
 
-  /* контейнер */
   --container: 1440px;
-
-  /* ======================================================
-     SPACING SYSTEM
-  ====================================================== */
 
   --space-1: 8px;
   --space-2: 16px;
@@ -36,22 +38,15 @@ html {
   --space-4: 32px;
   --space-5: 48px;
   --space-6: 64px;
-  --space-7: 96px;
-  --space-8: 120px;
 
-  /* секции */
-  --section-y: var(--space-7);
-  --section-y-mobile: var(--space-5);
-
-  /* текст */
-  --text: rgba(255, 255, 255, 0.9);
-  --muted: rgba(255, 255, 255, 0.7);
-
-  /* радиусы */
   --radius: 18px;
+  --bg-glass: rgba(1, 89, 87, 0.35);
 
-  /* фон */
-  --bg-glass: rgba(1, 89, 87, 0.4);
+  /* Z-INDEX SYSTEM (AIRBNB/Uber style) */
+  --z-header: 1000;
+  --z-fab: 2000;
+  --z-overlay: 3000;
+  --z-modal: 3100;
 }
 
 /* =========================================================
@@ -62,14 +57,17 @@ body {
   font-family: "Manrope", "Inter", sans-serif;
   background: #02150e;
   color: #fff;
+
   overflow-x: hidden;
+
   line-height: 1.6;
+
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 /* =========================================================
-   BACKGROUND
+   BACKGROUND FIX (ВАЖНО)
 ========================================================= */
 
 body::before,
@@ -82,20 +80,21 @@ body::after {
 
 body::before {
   z-index: -2;
+
   background:
     radial-gradient(circle at top, rgba(239, 109, 20, 0.06), transparent 60%),
     radial-gradient(circle at bottom, rgba(0, 255, 200, 0.04), transparent 60%),
-    url("/public/bg.webp");
+    url("/bg.webp"); /* FIX: УБРАЛ /public */
 
   background-size: cover;
   background-position: center;
 
-  filter: brightness(0.65);
+  filter: brightness(0.7);
 }
 
 body::after {
   z-index: -1;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.45);
 }
 
 /* =========================================================
@@ -108,13 +107,10 @@ body::after {
 }
 
 /* =========================================================
-   TYPOGRAPHY SYSTEM
+   TYPOGRAPHY
 ========================================================= */
 
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
   color: var(--primary);
   font-weight: 700;
   line-height: 1.1;
@@ -127,39 +123,6 @@ h1 {
 h2 {
   font-size: clamp(32px, 5vw, 56px);
   text-align: center;
-  margin-bottom: var(--space-6);
-}
-
-h3 {
-  font-size: 24px;
-  margin-bottom: var(--space-2);
-}
-
-h4 {
-  font-size: 20px;
-  margin-bottom: var(--space-2);
-}
-
-p {
-  font-size: 18px;
-  line-height: 1.8;
-  color: var(--text);
-  margin-bottom: var(--space-3);
-  max-width: 70ch;
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul,
-ol {
-  list-style: none;
 }
 
 /* =========================================================
@@ -167,85 +130,173 @@ ol {
 ========================================================= */
 
 .container {
-  width: 100%;
   max-width: var(--container);
   margin: 0 auto;
-  padding-inline: var(--space-4);
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding-inline: var(--space-3);
-  }
+  padding-inline: 24px;
 }
 
 /* =========================================================
-   SECTION SYSTEM
+   SECTION
 ========================================================= */
 
-.section {
-  padding-block: clamp(64px, 10vw, 120px);
-}
 section[id] {
-  scroll-margin-top: 140px;
+  scroll-margin-top: var(--header-height);
 }
+
 /* =========================================================
-   LAYOUT
+   HEADER
 ========================================================= */
 
-.app-layout {
-  min-height: 100vh;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+
+  z-index: var(--z-header);
+
+  background: linear-gradient(
+    rgba(1, 89, 87, 0.85),
+    rgba(0, 0, 0, 0.4)
+  );
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  transition: all 0.25s ease;
+}
+
+/* =========================================================
+   MODAL SYSTEM
+========================================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  z-index: var(--z-overlay);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+
+  border-radius: 24px;
+
+  background: rgba(1,89,87,0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  overflow: hidden;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  color: #fff;
+
+  background: rgba(0,0,0,0.6);
+
+  cursor: pointer;
+
+  z-index: var(--z-modal);
+}
+
+/* =========================================================
+   HEADER HIDE ON MODAL (AIRBNB BEHAVIOR)
+========================================================= */
+
+body.modal-open .header {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* =========================================================
+   RIGHT FAB (FIXED OVERLAY LAYER)
+========================================================= */
+
+.right-fab {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+
   display: flex;
   flex-direction: column;
+  gap: 12px;
+
+  z-index: var(--z-fab);
+
+  transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.page-content {
-  flex: 1;
-  padding-top: var(--header-height);
+.right-fab.hide {
+  opacity: 0;
+  transform: translate(80px, -50%);
+  pointer-events: none;
 }
 
-/* =========================================================
-   STACK SYSTEM
-========================================================= */
-
-.stack > * + * {
-  margin-top: var(--space-3);
+.right-fab.show {
+  opacity: 1;
+  transform: translate(0, -50%);
 }
 
-/* =========================================================
-   GLASS CARD
-========================================================= */
+.fab {
+  width: 58px;
+  height: 58px;
 
-.glass-card {
-  background: var(--bg-glass);
-  backdrop-filter: blur(14px);
-  border-radius: var(--radius);
-  padding: var(--space-5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+
+  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+
+  transition: transform 0.2s ease;
 }
 
-/* =========================================================
-   GRID HELPERS
-========================================================= */
-
-.grid {
-  display: grid;
-  gap: var(--space-4);
+.fab:hover {
+  transform: translateY(-3px) scale(1.05);
 }
 
-.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
+.fab.call {
+  background: #ef6d14;
+  color: #fff;
 }
 
-.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-@media (max-width: 900px) {
-  .grid-2,
-  .grid-3 {
-    grid-template-columns: 1fr;
-  }
+.fab.whatsapp {
+  background: rgba(1, 89, 87, 0.95);
+  color: #fff;
 }
 
 /* =========================================================
@@ -261,21 +312,12 @@ button {
 }
 
 /* =========================================================
-   IMAGE RESET
+   IMAGE
 ========================================================= */
 
 img {
   display: block;
   max-width: 100%;
-}
-
-/* =========================================================
-   SELECTION
-========================================================= */
-
-::selection {
-  background: var(--primary);
-  color: #fff;
 }
 
 /* =========================================================
@@ -294,7 +336,75 @@ img {
   background: rgba(239, 109, 20, 0.7);
   border-radius: 999px;
 }
+/* =========================
+   RIGHT FLOATING BAR (FIXED ALWAYS VISIBLE)
+========================= */
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(239, 109, 20, 1);
+.right-fab {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  z-index: 999999;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.fab {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+
+  text-decoration: none;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fab:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* COLORS */
+.fab.call {
+  background: #ef6d14;
+  color: #fff;
+}
+
+.fab.whatsapp {
+  background: rgba(1, 89, 87, 0.9);
+  color: #fff;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .right-fab {
+    right: 12px;
+    gap: 10px;
+  }
+
+  .fab {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+  }
 }

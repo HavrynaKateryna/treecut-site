@@ -8,12 +8,12 @@
 }
 
 /* =========================
-   TITLE (ровный как services)
+   TITLE
 ========================= */
 
 .gallery-title {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   font-weight: 600;
 }
 
@@ -62,40 +62,54 @@
 
   cursor: pointer;
 
-  background: rgba(1, 89, 87, 0.25);
+  background: transparent;
+
   border: 1px solid rgba(255, 255, 255, 0.1);
 
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 
   will-change: transform;
+  backface-visibility: hidden;
 }
 
 .slide img {
   width: 100%;
   height: 100%;
+
+  display: block;
   object-fit: cover;
 }
 
 /* CENTER */
+
 .slide.active {
   width: min(760px, 92vw);
   height: 520px;
+
   z-index: 5;
 }
 
 /* LEFT */
+
 .slide.left {
   width: 520px;
   height: 360px;
+
   transform: translateX(-420px) scale(0.92);
+
   opacity: 0.45;
 }
 
 /* RIGHT */
+
 .slide.right {
   width: 520px;
   height: 360px;
+
   transform: translateX(420px) scale(0.92);
+
   opacity: 0.45;
 }
 
@@ -112,30 +126,48 @@
   height: 54px;
 
   border-radius: 50%;
+  border: none;
 
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   color: #fff;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  font-size: 32px;
+  line-height: 1;
+
   cursor: pointer;
 
   z-index: 10;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
 }
 
-.left-arrow { left: 14px; }
-.right-arrow { right: 14px; }
+.gallery-arrow:hover {
+  background: #ef6d14;
+}
+
+.left-arrow {
+  left: 14px;
+}
+
+.right-arrow {
+  right: 14px;
+}
 
 /* =========================
-   DOTS (desktop only)
+   DOTS
 ========================= */
 
 .gallery-dots {
   position: absolute;
   bottom: 18px;
   left: 50%;
+
   transform: translateX(-50%);
 
   display: flex;
@@ -151,13 +183,17 @@
   border-radius: 50%;
   border: none;
 
-  background: rgba(255,255,255,0.35);
+  background: rgba(255, 255, 255, 0.35);
+
   cursor: pointer;
+
+  transition: all 0.25s ease;
 }
 
 .dot.active {
   width: 18px;
-  border-radius: 10px;
+  border-radius: 999px;
+
   background: #ef6d14;
 }
 
@@ -169,7 +205,7 @@
   position: fixed;
   inset: 0;
 
-  background: rgba(0,0,0,0.88);
+  background: rgba(0, 0, 0, 0.88);
 
   display: flex;
   align-items: center;
@@ -178,6 +214,8 @@
   z-index: 999999;
 
   cursor: zoom-out;
+
+  padding: 20px;
 }
 
 .lightbox-img {
@@ -185,21 +223,22 @@
   max-height: 88vh;
 
   border-radius: 16px;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7);
 }
 
 /* =========================
-   STABILITY FOR SWIPE
+   TABLET
 ========================= */
 
-.carousel {
-  touch-action: pan-y;
-  user-select: none;
-}
+@media (max-width: 1024px) {
+  .slide.left {
+    transform: translateX(-340px) scale(0.9);
+  }
 
-.slide {
-  will-change: transform;
-  backface-visibility: hidden;
+  .slide.right {
+    transform: translateX(340px) scale(0.9);
+  }
 }
 
 /* =========================
@@ -207,13 +246,21 @@
 ========================= */
 
 @media (max-width: 768px) {
+  .gallery {
+    padding: 30px 0;
+  }
+
+  .gallery-title {
+    margin-bottom: 24px;
+  }
+
   .carousel {
-    height: 420px;
+    height: 360px;
   }
 
   .slide.active {
-    width: 92vw;
-    height: 320px;
+    width: 94vw;
+    height: 340px;
   }
 
   .slide.left,
@@ -229,7 +276,13 @@
     display: none;
   }
 
-  .gallery-title {
-    margin-bottom: 28px;
+  .lightbox {
+    padding: 12px;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 85vh;
+    border-radius: 14px;
   }
 }

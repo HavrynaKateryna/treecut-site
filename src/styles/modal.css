@@ -25,7 +25,13 @@
 
   border-radius: 28px;
 
-  background: rgba(1, 89, 87, 0.45);
+  background:
+  linear-gradient(
+    110deg,
+    #021c1b 0%,
+    rgba(1, 89, 87, 0.45) 50%,
+    #003b39 100%
+  );
 
   backdrop-filter: blur(14px);
 

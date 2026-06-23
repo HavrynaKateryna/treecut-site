@@ -1,41 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import { services } from "../data/servicesData";
-import { useEffect, useRef, useState } from "react";
 import "../styles/services.css";
 
 export default function Services() {
   const navigate = useNavigate();
-  const ref = useRef<HTMLElement | null>(null);
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShow(true);
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
 
   return (
-    <section
-      id="services"
-      ref={ref}
-      className={`services-section ${show ? "show" : ""}`}
-    >
+    <section id="services" className="services-section">
+
       <div className="container">
 
-        <h2 className="services-title">Services</h2>
+        <div className="services-header">
+          <h2>Our Tree Services</h2>
+
+          <p>
+            Safe, fast and professional tree care for residential and commercial properties.
+          </p>
+        </div>
 
         <div className="services-grid">
+
           {services.map((s) => (
             <div key={s.id} className="service-card">
 
@@ -43,18 +27,28 @@ export default function Services() {
 
               <p>{s.description}</p>
 
-              <button
-                className="service-btn"
-                onClick={() => navigate(`/services/${s.id}`)}
-              >
-                View details
-              </button>
+              <div className="service-actions">
+
+                <button
+                  className="service-btn"
+                  onClick={() => navigate(`/services/${s.id}`)}
+                >
+                  View details
+                </button>
+
+                <a href="tel:+15596804185" className="service-call">
+                  Call now
+                </a>
+
+              </div>
 
             </div>
           ))}
+
         </div>
 
       </div>
+
     </section>
   );
 }

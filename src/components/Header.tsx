@@ -125,7 +125,7 @@ export default function Header() {
             <button onClick={() => handleScrollTo("services")}>Services</button>
             <button onClick={() => handleScrollTo("gallery")}>Gallery</button>
             <button onClick={() => handleScrollTo("reviews")}>Reviews</button>
-            <button onClick={() => handleScrollTo("faq")}>FAQ</button>
+            <button onClick={() => handleScrollTo("faq")}>Questions & Answers</button>
             <button onClick={() => handleScrollTo("contact")}>Contact</button>
           </nav>
 
@@ -164,7 +164,7 @@ export default function Header() {
             <button onClick={() => handleScrollTo("services")}>Services</button>
             <button onClick={() => handleScrollTo("gallery")}>Gallery</button>
             <button onClick={() => handleScrollTo("reviews")}>Reviews</button>
-            <button onClick={() => handleScrollTo("faq")}>FAQ</button>
+            <button onClick={() => handleScrollTo("faq")}>Questions & Answers</button>
             <button onClick={() => handleScrollTo("contact")}>Contact</button>
 
             <a href="tel:+15596804185" className="mobile-phone">

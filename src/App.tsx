@@ -10,41 +10,102 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingCTA from "./components/RightFloatingCTA";
+import Sawdust from "./components/Sawdust";
+
 
 export default function App() {
+
   return (
+
     <HelmetProvider>
+
       <BrowserRouter>
+
+
         <ScrollToTop />
 
+        {/* Летающие опилки поверх сайта */}
+        <Sawdust />
+
+
         <Helmet>
-          <title>TreeCut | Tree Removal Jacksonville FL</title>
+
+          <title>
+            TreeCut | Tree Removal Jacksonville FL
+          </title>
+
+
           <meta
             name="description"
             content="Professional tree removal, trimming and stump grinding in Jacksonville Florida."
           />
-          <meta name="theme-color" content="#ef6d14" />
+
+
+          <meta
+            name="theme-color"
+            content="#ef6d14"
+          />
+
+
         </Helmet>
 
+
+
         <div className="app-layout">
+
+
           <Header />
 
-          <main className="page-content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services/:id" element={<ServicePage />} />
 
-              {/* ADMIN */}
-              <Route path="/admin-login" element={<AdminLogin />} />
-              <Route path="/admin" element={<Admin />} />
+          <main className="page-content">
+
+
+            <Routes>
+
+
+              <Route
+                path="/"
+                element={<Home />}
+              />
+
+
+              <Route
+                path="/services/:id"
+                element={<ServicePage />}
+              />
+
+
+              <Route
+                path="/admin-login"
+                element={<AdminLogin />}
+              />
+
+
+              <Route
+                path="/admin"
+                element={<Admin />}
+              />
+
+
             </Routes>
+
+
           </main>
 
+
           <Footer />
+
+
         </div>
 
+
         <FloatingCTA />
+
+
       </BrowserRouter>
+
     </HelmetProvider>
+
   );
+
 }

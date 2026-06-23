@@ -26,10 +26,19 @@ body {
 ========================================================= */
 
 :root {
-  --primary: #ef6d14;
+  --bg: #081917;
+  --surface: #0f2421;
+  --surface-2: #122d29;
 
-  --header-height: clamp(80px, 10vw, 120px);
+  --primary: #ff8b2b;
+  --primary-hover: #ff9a47;
 
+  --text: #ffffff;
+  --muted: #9ca3af;
+
+  --border: rgba(255, 255, 255, 0.08);
+
+  --header-height: 84px;
   --container: 1440px;
 
   --space-1: 8px;
@@ -39,14 +48,12 @@ body {
   --space-5: 48px;
   --space-6: 64px;
 
-  --radius: 18px;
-  --bg-glass: rgba(1, 89, 87, 0.35);
-
-  /* Z-INDEX SYSTEM (AIRBNB/Uber style) */
+  --z-content: 1;
   --z-header: 1000;
   --z-fab: 2000;
-  --z-overlay: 3000;
-  --z-modal: 3100;
+  --z-menu: 5000;
+  --z-overlay: 6000;
+  --z-modal: 7000;
 }
 
 /* =========================================================
@@ -55,46 +62,32 @@ body {
 
 body {
   font-family: "Manrope", "Inter", sans-serif;
-  background: #02150e;
-  color: #fff;
-
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
-
   line-height: 1.6;
-
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* =========================================================
-   BACKGROUND FIX (ВАЖНО)
-========================================================= */
-
-body::before,
-body::after {
+body::before {
   content: "";
+
   position: fixed;
   inset: 0;
-  pointer-events: none;
-}
 
-body::before {
-  z-index: -2;
+  pointer-events: none;
+
+  z-index: -1;
 
   background:
-    radial-gradient(circle at top, rgba(239, 109, 20, 0.06), transparent 60%),
-    radial-gradient(circle at bottom, rgba(0, 255, 200, 0.04), transparent 60%),
-    url("/bg.webp"); /* FIX: УБРАЛ /public */
+    radial-gradient(
+      circle at top,
+      rgba(34, 197, 94, 0.12),
+      transparent 45%
+    );
 
-  background-size: cover;
-  background-position: center;
-
-  filter: brightness(0.7);
-}
-
-body::after {
-  z-index: -1;
-  background: rgba(0, 0, 0, 0.45);
+  opacity: 0.8;
 }
 
 /* =========================================================
@@ -110,10 +103,14 @@ body::after {
    TYPOGRAPHY
 ========================================================= */
 
-h1, h2, h3, h4 {
-  color: var(--primary);
-  font-weight: 700;
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
+  font-weight: 800;
   line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
 h1 {
@@ -121,17 +118,82 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(32px, 5vw, 56px);
+  position: relative;
+
+  margin-bottom: 40px;
+
   text-align: center;
+
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
 }
+
+h2::after {
+  content: "";
+
+  display: block;
+
+  width: 70px;
+  height: 3px;
+
+  margin: 14px auto 0;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--primary),
+      transparent
+    );
+
+  opacity: 0.9;
+}
+
+h2.left {
+  text-align: left;
+}
+
+h2.left::after {
+  margin: 14px 0 0;
+}
+
+/* =========================================================
+   SECTION TITLES
+========================================================= */
+
+.section-title,
+.services-title,
+.gallery-title,
+.faq-title,
+.section-header h2 {
+  width: 100%;
+
+  margin-bottom: 40px;
+
+  text-align: center;
+
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+
+  color: var(--text);
+}
+
+
 
 /* =========================================================
    CONTAINER
 ========================================================= */
 
 .container {
+  width: 100%;
   max-width: var(--container);
+
   margin: 0 auto;
+
   padding-inline: 24px;
 }
 
@@ -149,28 +211,25 @@ section[id] {
 
 .header {
   position: fixed;
+
   top: 0;
   left: 0;
+
   width: 100%;
   height: var(--header-height);
 
-  z-index: var(--z-header);
+  z-index: 999999;
 
-  background: linear-gradient(
-    rgba(1, 89, 87, 0.85),
-    rgba(0, 0, 0, 0.4)
-  );
+  background: rgba(8,25,23,.85);
 
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-
-  transition: all 0.25s ease;
+  border-bottom: 1px solid var(--border);
 }
 
 /* =========================================================
-   MODAL SYSTEM
+   MODAL
 ========================================================= */
 
 .modal-overlay {
@@ -181,47 +240,54 @@ section[id] {
   align-items: center;
   justify-content: center;
 
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  padding: 20px;
+
+  background: rgba(0,0,0,.7);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   z-index: var(--z-overlay);
 }
 
 .modal {
   position: relative;
+
   width: 100%;
   max-width: 720px;
 
+  overflow: hidden;
+
   border-radius: 24px;
 
-  background: rgba(1,89,87,0.45);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(15,36,33,.95);
 
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid var(--border);
 
-  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .modal-close {
   position: absolute;
+
   top: 12px;
   right: 12px;
 
   width: 44px;
   height: 44px;
 
-  border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 24px;
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.08);
+
   color: #fff;
 
-  background: rgba(0,0,0,0.6);
+  font-size: 22px;
 
   cursor: pointer;
 
@@ -229,7 +295,7 @@ section[id] {
 }
 
 /* =========================================================
-   HEADER HIDE ON MODAL (AIRBNB BEHAVIOR)
+   MODAL OPEN
 ========================================================= */
 
 body.modal-open .header {
@@ -239,13 +305,15 @@ body.modal-open .header {
 }
 
 /* =========================================================
-   RIGHT FAB (FIXED OVERLAY LAYER)
+   FLOATING BUTTONS
 ========================================================= */
 
 .right-fab {
   position: fixed;
-  right: 18px;
+
   top: 50%;
+  right: 18px;
+
   transform: translateY(-50%);
 
   display: flex;
@@ -254,35 +322,41 @@ body.modal-open .header {
 
   z-index: var(--z-fab);
 
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition:
+    transform .25s ease,
+    opacity .25s ease;
 }
 
 .right-fab.hide {
   opacity: 0;
-  transform: translate(80px, -50%);
+  transform: translate(80px,-50%);
   pointer-events: none;
 }
 
 .right-fab.show {
   opacity: 1;
-  transform: translate(0, -50%);
+  transform: translate(0,-50%);
 }
 
 .fab {
   width: 58px;
   height: 58px;
 
-  border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 26px;
+  border-radius: 50%;
 
-  box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+  text-decoration: none;
 
-  transition: transform 0.2s ease;
+  font-size: 24px;
+
+  box-shadow: 0 12px 35px rgba(0,0,0,.35);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
 }
 
 .fab:hover {
@@ -290,12 +364,12 @@ body.modal-open .header {
 }
 
 .fab.call {
-  background: #ef6d14;
+  background: var(--primary);
   color: #fff;
 }
 
 .fab.whatsapp {
-  background: rgba(1, 89, 87, 0.95);
+  background: var(--surface-2);
   color: #fff;
 }
 
@@ -306,9 +380,61 @@ body.modal-open .header {
 button {
   border: none;
   background: none;
+  color: inherit;
   font: inherit;
   cursor: pointer;
-  color: inherit;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 26px;
+
+  border-radius: 999px;
+
+  transition: all .2s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,.04);
+}
+
+/* =========================================================
+   CARD SYSTEM
+========================================================= */
+
+.glass-card {
+  background: rgba(255,255,255,.03);
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* =========================================================
@@ -329,74 +455,33 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,.04);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(239, 109, 20, 0.7);
+  background: rgba(255,139,43,.7);
   border-radius: 999px;
 }
-/* =========================
-   RIGHT FLOATING BAR (FIXED ALWAYS VISIBLE)
-========================= */
 
-.right-fab {
-  position: fixed;
-  right: 18px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  z-index: 999999;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-.fab {
-  width: 58px;
-  height: 58px;
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 26px;
-
-  text-decoration: none;
-
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
-
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.fab:hover {
-  transform: translateY(-4px) scale(1.05);
-}
-
-/* COLORS */
-.fab.call {
-  background: #ef6d14;
-  color: #fff;
-}
-
-.fab.whatsapp {
-  background: rgba(1, 89, 87, 0.9);
-  color: #fff;
-}
-
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 768px) {
+
+  .section-title,
+  .services-title,
+  .gallery-title,
+  .faq-title,
+  .section-header h2 {
+    font-size: clamp(28px,8vw,36px);
+    margin-bottom: 24px;
+  }
+
+  .container {
+    padding-inline: 20px;
+  }
+
   .right-fab {
     right: 12px;
     gap: 10px;

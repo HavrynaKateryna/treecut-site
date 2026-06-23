@@ -1,3 +1,5 @@
+import "../styles/hero.css";
+
 type Props = {
   openModal: () => void;
 };
@@ -5,38 +7,87 @@ type Props = {
 export default function Hero({ openModal }: Props) {
   return (
     <section className="hero">
-      <img
-        src="/hero.webp"
-        alt="Tree removal services"
-        className="hero__bg"
-        fetchPriority="high"
-        decoding="async"
-      />
 
-      <div className="hero__overlay" />
+      <div className="container hero__container">
 
-      <div className="hero__content container">
-        <p className="hero__sub">Licensed & Insured Tree Service</p>
+        <div className="hero__left">
 
-        <h1>
-          Fast & Safe <span>Tree Removal Services</span>
-        </h1>
+          <div className="hero__badge">
+            Licensed & Insured Tree Service
+          </div>
 
-        <p className="hero__text">
-          Professional tree removal, trimming, and emergency services for residential and commercial properties.
-          Fast response and free estimates.
-        </p>
+          <h1>
+            Fast & Safe <span>Tree Removal Services</span>
+          </h1>
 
-        <p className="hero__trust">
-          Emergency & scheduled service • Residential & commercial • Fully insured
-        </p>
+          <p className="hero__text">
+            Professional tree removal, trimming and emergency tree services
+            for residential and commercial properties throughout the area.
+            Fast response and free estimates.
+          </p>
 
-        <div className="hero__buttons">
-          <button className="btn-primary" onClick={openModal}>
-            Get Free Estimate
-          </button>
+
+          <div className="hero__trust">
+
+            <div className="trust-item">
+              ✓ Licensed & Insured
+            </div>
+
+            <div className="trust-item">
+              ✓ Emergency Service
+            </div>
+
+            <div className="trust-item">
+              ✓ Free Estimates
+            </div>
+
+            <div className="trust-item">
+              ✓ Residential & Commercial
+            </div>
+
+          </div>
+
+
+          <div className="hero__buttons">
+
+            <button 
+              className="btn-primary"
+              onClick={openModal}
+            >
+              Free Estimate
+            </button>
+
+
+            <a 
+              href="tel:+15596804185" 
+              className="btn-secondary"
+            >
+              Call Now
+            </a>
+
+          </div>
+
         </div>
+
+
+
+        <div className="hero__right">
+
+          <div className="hero__image-wrap">
+
+            <img
+              src="/hero.webp"
+              alt="Tree service team"
+              loading="eager"
+            />
+
+          </div>
+
+        </div>
+
+
       </div>
+
     </section>
   );
 }

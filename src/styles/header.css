@@ -1,19 +1,6 @@
-
-/* =========================
-   Z-INDEX SYSTEM (SIMPLIFIED)
-========================= */
-
-:root {
-  --z-header: 100;
-  --z-menu: 1000;
-  --z-overlay: 1100;
-  --z-fab: 1200;
-  --z-modal: 1300;
-}
-
-/* =========================
-   HEADER (STABLE FIX)
-========================= */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header {
   position: fixed;
@@ -21,227 +8,325 @@
   left: 0;
 
   width: 100%;
-  height: 92px;
+  height: var(--header-height);
 
   z-index: var(--z-header);
 
-  background: linear-gradient(
-    rgba(1, 89, 87, 0.82),
-    rgba(0, 0, 0, 0.45)
-  );
+  background:
+    linear-gradient(
+      110deg,
+      #021c1b 0%,
+      rgba(1, 89, 87, 0.45) 50%,
+      #003b39 100%
+    );
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* REMOVE GPU TRAPS */
-.header {
-  will-change: auto;
-  transform: none;
-  backface-visibility: visible;
-}
-
-/* =========================
-   INNER
-========================= */
 
 .header__inner {
   height: 100%;
-  max-width: 1440px;
-  margin-inline: auto;
-  padding-inline: 16px;
+  max-width: var(--container);
+
+  margin: 0 auto;
+  padding-inline: 24px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 }
 
-/* =========================
-   LOGO / NAV / PHONE (UNCHANGED SAFE)
-========================= */
+
+/* =========================================================
+   LOGO
+========================================================= */
 
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #ef6d14;
-  font-size: 20px;
-  font-weight: 700;
+
+  color: #fff;
+
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+
   white-space: nowrap;
 }
 
+
 .logo-circle {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
+
   border-radius: 50%;
   overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,.12);
+
   flex-shrink: 0;
-  border: 2px solid rgba(255,255,255,0.12);
 }
+
 
 .logo-circle img {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 }
 
-/* =========================
-   NAV
-========================= */
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
 .nav {
   display: none;
+
   align-items: center;
-  gap: 20px;
+  gap: 26px;
 }
+
 
 .nav button {
-  color: #ef6d14;
-  font-size: 20px;
-  font-weight: 700;
-  transition: 0.3s ease;
+  color: rgba(255,255,255,.75);
+
+  font-size: 18px;
+  font-weight: 600;
+
+  transition: .2s ease;
 }
+
 
 .nav button:hover {
-  color: #fff;
-  transform: translateY(-2px);
+  color:#fff;
 }
 
-/* =========================
+
+/* =========================================================
    CONTACT
-========================= */
+========================================================= */
 
 .header-contact {
   display: none;
-  flex-direction: column;
-  gap: 4px;
+
+  align-items: center;
+  gap:12px;
 }
+
 
 .header-phone {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #ef6d14;
-  font-size: 20px;
-  font-weight: 700;
-  text-decoration: none;
+  display: inline-flex;
+
+  align-items:center;
+  gap:8px;
+
+  padding:12px 16px;
+
+  border-radius:999px;
+
+  background:#ff963f;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-weight:700;
+  font-size:14px;
+
+  transition:.2s ease;
 }
+
 
 .header-phone:hover {
-  color: #fff;
+  transform:translateY(-2px);
+  filter:brightness(1.05);
 }
 
-/* =========================
+
+/* =========================================================
    BURGER
-========================= */
+========================================================= */
 
 .burger {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ef6d14;
-  font-size: 34px;
-  border-radius: 12px;
+  width:46px;
+  height:46px;
+
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+
+  font-size:24px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #021c1b 0%,
+      rgba(1,89,87,.45) 50%,
+      #003b39 100%
+    );
+
+  border:1px solid rgba(255,255,255,.08);
 }
 
-/* =========================
-   MENU OVERLAY (FIXED STACKING)
-========================= */
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 .menu-overlay {
-  position: fixed;
-  inset: 0;
+  position:fixed;
+  inset:0;
 
-  background: rgba(0,0,0,0.72);
-  backdrop-filter: blur(10px);
+  z-index:var(--z-menu);
 
-  z-index: var(--z-menu);
+  background:rgba(0,0,0,.72);
 
-  display: flex;
-  justify-content: flex-end;
+  backdrop-filter:blur(12px);
+
+  display:flex;
+  justify-content:flex-end;
 }
 
-/* PANEL */
+
 .menu-modal {
-  width: min(340px, 100%);
-  height: 100%;
+  width:min(360px,100%);
+  height:100%;
 
-  padding: 110px 28px 40px;
+  padding:110px 28px 40px;
 
-  background: rgba(1, 89, 87, 0.45);
-  border-left: 1px solid rgba(255,255,255,0.1);
+  background:#0b1d1a;
 
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  border-left:1px solid rgba(255,255,255,.06);
 
-  /* SAFE ANIMATION */
-  animation: menuSlide 0.25s ease;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+
+  animation:menuSlide .25s ease;
 }
 
-/* CLOSE */
+
 .menu-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position:absolute;
 
-  width: 48px;
-  height: 48px;
+  top:18px;
+  right:18px;
 
-  border-radius: 50%;
-  color: #ef6d14;
-  font-size: 34px;
+  width:44px;
+  height:44px;
 
-  background: rgba(255,255,255,0.08);
+  border-radius:50%;
+
+  background:rgba(255,255,255,.06);
+
+  color:#fff;
+
+  font-size:22px;
 }
 
-/* ITEMS */
+
 .menu-modal button {
-  text-align: left;
-  color: #ef6d14;
-  font-size: 24px;
-  font-weight: 700;
+  text-align:left;
+
+  color:#fff;
+
+  font-size:16px;
+  font-weight:600;
+
+  opacity:.85;
 }
+
 
 .menu-modal button:hover {
-  color: #fff;
-  transform: translateX(6px);
+  opacity:1;
 }
 
-/* =========================
+
+.mobile-phone {
+  display:inline-flex;
+
+  align-items:center;
+  gap:10px;
+
+  margin-top:10px;
+
+  padding:14px 16px;
+
+  border-radius:14px;
+
+  background:#ff963f;
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-weight:700;
+}
+
+
+/* =========================================================
    ANIMATION
-========================= */
+========================================================= */
 
 @keyframes menuSlide {
+
   from {
-    opacity: 0;
-    transform: translateX(20px);
+    opacity:0;
+    transform:translateX(20px);
   }
+
   to {
-    opacity: 1;
-    transform: translateX(0);
+    opacity:1;
+    transform:translateX(0);
   }
+
 }
 
-/* =========================
+
+/* =========================================================
    DESKTOP
-========================= */
+========================================================= */
 
-@media (min-width: 1024px) {
-  .nav { display: flex; }
-  .header-contact { display: flex; }
-  .burger { display: none; }
+@media (min-width:1024px) {
+
+  .nav {
+    display:flex;
+  }
+
+  .header-contact {
+    display:flex;
+  }
+
+  .burger {
+    display:none;
+  }
+
 }
 
-/* =========================
-   BODY LOCK
-========================= */
 
-body.lock {
-  overflow: hidden;
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:768px) {
+
+  .header__inner {
+    padding-inline:20px;
+  }
+
+
+  .logo span {
+    display:none;
+  }
+
 }

@@ -1,4 +1,3 @@
-
 /* =========================================================
    APP LAYOUT ROOT
 ========================================================= */
@@ -11,22 +10,21 @@
 }
 
 /* =========================================================
-   HEADER SPACING FIX
+   PAGE CONTENT
 ========================================================= */
 
 .page-content {
   flex: 1;
 
-  /* важно: компенсирует fixed header */
   padding-top: var(--header-height);
 
-  /* предотвращает горизонтальные сдвиги */
   width: 100%;
+
   overflow-x: clip;
 }
 
 /* =========================================================
-   MAIN WRAPPER
+   MAIN
 ========================================================= */
 
 main {
@@ -35,7 +33,7 @@ main {
 }
 
 /* =========================================================
-   SECTION BASE (STABLE SCROLL BEHAVIOR)
+   SECTION SYSTEM
 ========================================================= */
 
 section {
@@ -43,38 +41,78 @@ section {
 }
 
 .section {
-  padding-block: clamp(64px, 10vw, 120px);
+  position: relative;
+
   width: 100%;
+
+  padding-block: clamp(80px, 10vw, 140px);
 }
 
-/* smooth anchor scroll fix */
+/* anchor offset for fixed header */
 section[id] {
-  scroll-margin-top: var(--header-height);
+  scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 /* =========================================================
-   CONTAINER SAFETY (NO HORIZONTAL SHIFT)
+   CONTAINER
 ========================================================= */
 
 .container {
   width: 100%;
+
   max-width: var(--container);
+
   margin-inline: auto;
 
-  padding-inline: var(--space-4);
+  padding-inline: clamp(20px, 4vw, 40px);
 
-  /* prevents layout shift on mobile scrollbars */
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding-inline: var(--space-3);
-  }
+/* =========================================================
+   SECTION SPACING HELPERS
+========================================================= */
+
+.section-sm {
+  padding-block: clamp(48px, 7vw, 80px);
+}
+
+.section-lg {
+  padding-block: clamp(120px, 12vw, 180px);
 }
 
 /* =========================================================
-   SAFE ROOT CLIPPING (IMPORTANT FOR PERFORMANCE)
+   COMMON GRID
+========================================================= */
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 40px);
+}
+
+/* =========================================================
+   COMMON CONTENT WIDTHS
+========================================================= */
+
+.content-narrow {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.content-medium {
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+/* =========================================================
+   ROOT
 ========================================================= */
 
 #root {
@@ -83,9 +121,32 @@ section[id] {
   overflow-x: clip;
 }
 
-/* fallback for older browsers */
 @supports not (overflow: clip) {
   #root {
     overflow-x: hidden;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 992px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: 80px;
+  }
+
+  .container {
+    padding-inline: 20px;
   }
 }

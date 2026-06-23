@@ -1,288 +1,390 @@
+/* =========================================================
+   GALLERY
+========================================================= */
+
 #gallery {
-  scroll-margin-top: 92px;
+  scroll-margin-top:92px;
 }
+
 
 .gallery {
-  width: 100%;
-  padding: 40px 0;
+
+  width:100%;
+
+  padding:40px 0;
+
+background:
+  radial-gradient(
+    circle at center,
+    rgba(239,109,20,.12),
+    transparent 45%
+  ),
+  radial-gradient(
+    circle at center,
+    rgba(0,255,200,.06),
+    transparent 70%
+  );
+  
 }
 
-/* =========================
+
+/* =========================================================
    TITLE
-========================= */
+========================================================= */
 
 .gallery-title {
-  text-align: center;
-  margin-bottom: 48px;
-  font-weight: 600;
+
+  text-align:center;
+
+  margin-bottom:40px;
+
+  font-size:clamp(28px,3vw,42px);
+
+  font-weight:700;
+
+  color:#fff;
 }
 
-/* =========================
+
+.gallery-subtitle {
+
+  text-align:center;
+
+  margin-bottom:40px;
+
+  color:rgba(255,255,255,.7);
+
+  max-width:600px;
+
+  margin-inline:auto;
+
+  line-height:1.6;
+}
+
+
+/* =========================================================
    CAROUSEL
-========================= */
+========================================================= */
 
 .carousel {
-  position: relative;
-  width: 100%;
-  height: 540px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position:relative;
 
-  overflow: hidden;
+  width:100%;
 
-  user-select: none;
-  touch-action: pan-y;
+  height:460px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  overflow:hidden;
+
+  user-select:none;
+
+  touch-action:pan-y;
 }
 
-/* =========================
+
+/* =========================================================
    SLIDER
-========================= */
+========================================================= */
 
 .slider {
-  position: relative;
-  width: 100%;
-  height: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position:relative;
+
+  width:100%;
+
+  height:100%;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
 }
 
-/* =========================
+
+/* =========================================================
    SLIDES
-========================= */
+========================================================= */
 
 .slide {
-  position: absolute;
 
-  border-radius: 22px;
-  overflow: hidden;
+  position:absolute;
 
-  cursor: pointer;
+  border-radius:20px;
 
-  background: transparent;
+  overflow:hidden;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor:pointer;
+
+  background:transparent;
+
+  border:1px solid rgba(255,255,255,.06);
 
   transition:
-    transform 0.35s ease,
-    opacity 0.35s ease;
+    transform .35s ease,
+    opacity .35s ease;
 
-  will-change: transform;
-  backface-visibility: hidden;
+  will-change:transform;
+
+  backface-visibility:hidden;
 }
+
 
 .slide img {
-  width: 100%;
-  height: 100%;
 
-  display: block;
-  object-fit: cover;
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
 }
+
 
 /* CENTER */
 
 .slide.active {
-  width: min(760px, 92vw);
-  height: 520px;
 
-  z-index: 5;
+  width:min(680px,92vw);
+
+  height:460px;
+
+  z-index:5;
 }
+
 
 /* LEFT */
 
 .slide.left {
-  width: 520px;
-  height: 360px;
 
-  transform: translateX(-420px) scale(0.92);
+  width:460px;
 
-  opacity: 0.45;
+  height:320px;
+
+  transform:translateX(-360px) scale(.94);
+
+  opacity:.35;
 }
+
 
 /* RIGHT */
 
 .slide.right {
-  width: 520px;
-  height: 360px;
 
-  transform: translateX(420px) scale(0.92);
+  width:460px;
 
-  opacity: 0.45;
+  height:320px;
+
+  transform:translateX(360px) scale(.94);
+
+  opacity:.35;
 }
 
-/* =========================
+
+/* =========================================================
    ARROWS
-========================= */
+========================================================= */
 
 .gallery-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 
-  width: 54px;
-  height: 54px;
+  position:absolute;
 
-  border-radius: 50%;
-  border: none;
+  top:50%;
 
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
+  transform:translateY(-50%);
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width:54px;
 
-  font-size: 32px;
-  line-height: 1;
+  height:54px;
 
-  cursor: pointer;
+  border-radius:50%;
 
-  z-index: 10;
+  border:1px solid rgba(255,255,255,.08);
 
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease;
+  background:rgba(0,0,0,.35);
+
+  color:#fff;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:32px;
+
+  cursor:pointer;
+
+  z-index:10;
+
+  backdrop-filter:blur(10px);
+
+  transition:.25s ease;
 }
+
 
 .gallery-arrow:hover {
-  background: #ef6d14;
+
+  background:#ef6d14;
 }
+
 
 .left-arrow {
-  left: 14px;
+
+  left:14px;
 }
+
 
 .right-arrow {
-  right: 14px;
+
+  right:14px;
 }
 
-/* =========================
+
+/* =========================================================
    DOTS
-========================= */
+========================================================= */
 
-.gallery-dots {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
 
-  transform: translateX(-50%);
 
-  display: flex;
-  gap: 8px;
-
-  z-index: 15;
-}
-
-.dot {
-  width: 8px;
-  height: 8px;
-
-  border-radius: 50%;
-  border: none;
-
-  background: rgba(255, 255, 255, 0.35);
-
-  cursor: pointer;
-
-  transition: all 0.25s ease;
-}
-
-.dot.active {
-  width: 18px;
-  border-radius: 999px;
-
-  background: #ef6d14;
-}
-
-/* =========================
+/* =========================================================
    LIGHTBOX
-========================= */
+========================================================= */
 
 .lightbox {
-  position: fixed;
-  inset: 0;
 
-  background: rgba(0, 0, 0, 0.88);
+  position:fixed;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  inset:0;
 
-  z-index: 999999;
+  background:rgba(0,0,0,.88);
 
-  cursor: zoom-out;
+  display:flex;
 
-  padding: 20px;
+  align-items:center;
+
+  justify-content:center;
+
+  z-index:999999;
+
+  cursor:zoom-out;
+
+  padding:20px;
 }
+
 
 .lightbox-img {
-  max-width: 92vw;
-  max-height: 88vh;
 
-  border-radius: 16px;
+  max-width:92vw;
 
-  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7);
+  max-height:88vh;
+
+  border-radius:16px;
+
+  box-shadow:0 40px 120px rgba(0,0,0,.7);
 }
 
-/* =========================
-   TABLET
-========================= */
 
-@media (max-width: 1024px) {
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1024px){
+
   .slide.left {
-    transform: translateX(-340px) scale(0.9);
+
+    transform:translateX(-320px) scale(.92);
+
   }
+
 
   .slide.right {
-    transform: translateX(340px) scale(0.9);
+
+    transform:translateX(320px) scale(.92);
+
   }
+
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media (max-width: 768px) {
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
   .gallery {
-    padding: 30px 0;
+
+    padding:30px 0;
+
   }
+
 
   .gallery-title {
-    margin-bottom: 24px;
+
+    margin-bottom:10px;
+
   }
+
 
   .carousel {
-    height: 360px;
+
+    height:360px;
+
   }
 
+
   .slide.active {
-    width: 94vw;
-    height: 340px;
+
+    width:94vw;
+
+    height:340px;
+
   }
+
 
   .slide.left,
   .slide.right {
-    display: none;
+
+    display:none;
+
   }
+
 
   .gallery-arrow {
-    display: none;
+
+    display:none;
+
   }
+
 
   .gallery-dots {
-    display: none;
+
+    display:none;
+
   }
+
 
   .lightbox {
-    padding: 12px;
+
+    padding:12px;
+
   }
 
+
   .lightbox-img {
-    max-width: 100%;
-    max-height: 85vh;
-    border-radius: 14px;
+
+    max-width:100%;
+
+    max-height:85vh;
+
+    border-radius:14px;
+
   }
+
 }

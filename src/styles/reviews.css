@@ -1,115 +1,198 @@
-/* =========================
-   REVIEWS (STABLE VERSION)
-========================= */
+/* =========================================================
+   REVIEWS
+========================================================= */
 
 .reviews {
   width: 100%;
-  padding: 40px 0;
+  padding: 60px 0;
+  background:
+  radial-gradient(
+    circle at center,
+    rgba(239,109,20,.12),
+    transparent 45%
+  ),
+  radial-gradient(
+    circle at center,
+    rgba(0,255,200,.06),
+    transparent 70%
+  );
 }
 
-/* HEADER */
+/* =========================================================
+   HEADER
+========================================================= */
+
 .section-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
-/* GRID */
+.google-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 14px;
+}
+
+.google-rating span {
+  color: var(--primary);
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.google-rating strong {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   GRID
+========================================================= */
+
 .reviews-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 18px;
-
-  /* FIX: remove layout shift risk */
-  padding-inline: 16px;
-  box-sizing: border-box;
 }
 
-/* TABLET */
-@media (min-width: 768px) {
-  .reviews-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding-inline: 20px;
-  }
-}
-
-/* DESKTOP */
-@media (min-width: 1024px) {
-  .reviews-grid {
-    grid-template-columns: repeat(3, 1fr);
-    padding-inline: 40px;
-  }
-}
-
-/* =========================
-   CARD (FIXED STACKING BEHAVIOR)
-========================= */
+/* =========================================================
+   CARD
+========================================================= */
 
 .review-card {
-  background: rgba(1, 89, 87, 0.42);
-
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 18px;
-  padding: 18px;
-
-  /* FIX: lighter blur to reduce compositing bugs */
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-
-  /* FIX: smoother hover without heavy stacking context issues */
-  transition: transform 0.25s ease, border-color 0.25s ease;
-
-  /* IMPORTANT: prevents weird overlap with fixed elements */
   position: relative;
-  z-index: 1;
+
+  padding: 22px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #021c1b 0%,
+      rgba(1, 89, 87, 0.45) 50%,
+      #003b39 100%
+    );
+
+  border: 1px solid rgba(255,255,255,.12);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease;
 }
 
-/* hover */
 .review-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(239, 109, 20, 0.4);
+
+  border-color:
+    rgba(255,139,43,.45);
 }
 
-/* =========================
-   TOP SECTION
-========================= */
+/* =========================================================
+   TOP
+========================================================= */
 
 .review-top {
   display: flex;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 12px;
+
+  margin-bottom: 16px;
 }
 
-/* AVATAR */
+/* =========================================================
+   AVATAR
+========================================================= */
+
 .avatar {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
 
   border-radius: 50%;
-  background: #ef6d14;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-weight: bold;
+  background: var(--primary);
+
   color: #fff;
+
+  font-size: 18px;
+  font-weight: 800;
 }
 
-/* STARS */
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.name {
+  color: #fff;
+  font-weight: 700;
+}
+
 .stars {
-  color: #ef6d14;
+  color: var(--primary);
+  font-size: 16px;
 }
 
-/* TEXT */
 .text {
+  margin-bottom: 16px;
+
+  color: rgba(255,255,255,.85);
+
   font-size: 15px;
-  line-height: 1.6;
-  opacity: 0.85;
+  line-height: 1.7;
 }
 
-/* TIME */
 .time {
-  font-size: 12px;
-  opacity: 0.6;
-  margin-top: 10px;
+  color: rgba(255,255,255,.45);
+  font-size: 13px;
+}
+
+/* =========================================================
+   TABLET 768+
+========================================================= */
+
+@media (min-width: 768px) {
+
+  .reviews {
+    padding: 80px 0;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .review-card {
+    padding: 26px;
+  }
+}
+
+/* =========================================================
+   DESKTOP 1024+
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .review-card {
+    padding: 28px;
+  }
 }

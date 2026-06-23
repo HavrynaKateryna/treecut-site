@@ -1,16 +1,40 @@
 /* =========================
-   SERVICES SECTION (STABLE VERSION)
+   SERVICES SECTION
 ========================= */
 
 .services-section {
   width: 100%;
-  padding: 40px 0;
+ padding: clamp(40px, 10vw, 40px) 0;
+ background:
+  radial-gradient(
+    circle at center,
+    rgba(239,109,20,.12),
+    transparent 45%
+  ),
+  radial-gradient(
+    circle at center,
+    rgba(0,255,200,.06),
+    transparent 70%
+  );
 }
 
-/* TITLE */
-.services-title {
+/* HEADER */
+.services-header {
   text-align: center;
+  margin-bottom: 50px;
+}
+
+.services-header h2 {
+  font-size: clamp(28px, 3vw, 42px);
+  color: #fff;
   margin-bottom: 40px;
+}
+
+.services-header p {
+  color: rgba(255,255,255,.7);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 /* GRID */
@@ -20,62 +44,76 @@
   gap: 18px;
 }
 
-/* CARD (FIXED STACKING BEHAVIOR) */
+/* CARD (cleaner + more premium) */
 .service-card {
-  width: 100%;
-  min-height: 240px;
+  padding: 22px;
+  border-radius: 18px;
 
-  padding: 20px;
-  border-radius: 16px;
-
-  background: rgba(1, 89, 87, 0.4);
-
-  /* FIX: reduce heavy blur impact */
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: 
+  linear-gradient(
+    110deg,
+    #021c1b 0%,
+    rgba(1, 89, 87, 0.45) 50%,
+    #003b39 100%
+  );
+  border: 1px solid rgba(255,255,255,0.08);
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  /* FIX: only animate transform, not create new layer constantly */
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition: 0.2s ease;
 }
 
-/* hover (SAFE VERSION) */
 .service-card:hover {
-  transform: translateY(-4px); /* reduced to avoid stacking stress */
-  border-color: rgba(239, 109, 20, 0.4);
+  transform: translateY(-5px);
+  border-color: rgba(239,109,20,.35);
 }
 
-/* TEXT */
+.service-card h3 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
 .service-card p {
-  font-size: 14px;
+  color: rgba(255,255,255,.75);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
 }
 
-/* BUTTON */
+/* ACTIONS */
+.service-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* PRIMARY CTA */
 .service-btn {
-  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
 
-  padding: 12px 16px;
-  border-radius: 10px;
-
-  background: #ef6d14;
+  background:#ff963f;
   color: #fff;
 
   border: none;
-  cursor: pointer;
+  font-weight: 600;
 
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
 }
 
-.service-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+/* SECONDARY CTA */
+.service-call {
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+
+  text-decoration: none;
+
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 /* RESPONSIVE */
@@ -89,6 +127,5 @@
 @media (min-width: 1024px) {
   .services-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 26px;
   }
 }

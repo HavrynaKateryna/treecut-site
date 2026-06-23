@@ -4,51 +4,49 @@ export default function About() {
   return (
     <section id="about" className="about">
 
-      <div id="about-scroll-fix" style={{ position: "relative", top: "-92px" }} />
+      <div className="container about__grid">
 
-      <div className="container">
+        <motion.div
+          className="about__text"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <h2>About Tim’s Tree Service</h2>
 
-        <div className="about__card">
+          <p>
+            Family-owned tree service company with 8+ years of experience.
+          </p>
 
-          <motion.div
-            className="about__text"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <h2>Welcome to Tim’s Tree Service!</h2>
+          <p>
+            We specialize in safe tree removal, trimming, and emergency response
+            for residential and commercial properties.
+          </p>
 
-            <p>
-              A family-owned company with over 8 years of experience in professional tree removal.
-            </p>
+          <p>
+            Our focus is safety, speed, and leaving your property clean.
+          </p>
 
-            <p>
-              We help homeowners safely and effortlessly handle any tree removal needs. From assessment to cleanup — everything is fully managed.
-            </p>
+          <div className="about__stats">
 
-            <p>
-              We focus on reliability, precision, and safety using professional equipment and an experienced team.
-            </p>
+            <div>8+ Years Experience</div>
+            <div>500+ Projects</div>
+            <div>Licensed & Insured</div>
 
-            <p>
-              Every property is treated with care and respect as if it were our own.
-            </p>
-          </motion.div>
+          </div>
+        </motion.div>
 
-          <motion.div
-            className="about__image"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-          >
-            <img src="/1.webp" alt="Our team" />
-          </motion.div>
-
-        </div>
+        <motion.div
+          className="about__image"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <img src="/1.webp" alt="Tree service work" />
+        </motion.div>
 
       </div>
+
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 type FAQItem = {
   q: string;
@@ -9,32 +9,35 @@ type FAQItem = {
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const data: FAQItem[] = [
-    {
-      q: "How much does tree removal cost?",
-      a: "The price depends on the tree height, access conditions, and job complexity. An exact quote is provided after assessment.",
-    },
-    {
-      q: "Do you provide on-site services?",
-      a: "Yes, we offer on-site services and can perform all work at your location at a convenient time.",
-    },
-    {
-      q: "Do I need to prepare the site before work?",
-      a: "It is recommended to clear the area around the tree and remove any fragile or valuable items.",
-    },
-    {
-      q: "How long does tree cutting take?",
-      a: "On average, the job takes from 1 hour to several hours depending on the complexity and conditions.",
-    },
-    {
-      q: "Do you clean up after the job?",
-      a: "Yes, upon request we provide cleanup, cutting, and removal of all wood and debris.",
-    },
-    {
-      q: "Are your services insured and safe?",
-      a: "Yes, all work is fully insured and performed using professional equipment. Safety is always a priority.",
-    },
-  ];
+  const data: FAQItem[] = useMemo(
+    () => [
+      {
+        q: "How much does tree removal cost?",
+        a: "The price depends on the tree height, access conditions, and job complexity. An exact quote is provided after assessment.",
+      },
+      {
+        q: "Do you provide on-site services?",
+        a: "Yes, we offer on-site services and can perform all work at your location at a convenient time.",
+      },
+      {
+        q: "Do I need to prepare the site before work?",
+        a: "It is recommended to clear the area around the tree and remove any fragile or valuable items.",
+      },
+      {
+        q: "How long does tree cutting take?",
+        a: "On average, the job takes from 1 hour to several hours depending on the complexity and conditions.",
+      },
+      {
+        q: "Do you clean up after the job?",
+        a: "Yes, upon request we provide cleanup, cutting, and removal of all wood and debris.",
+      },
+      {
+        q: "Are your services insured and safe?",
+        a: "Yes, all work is fully insured and performed using professional equipment. Safety is always a priority.",
+      },
+    ],
+    []
+  );
 
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index));
@@ -65,8 +68,10 @@ export default function FAQ() {
                 <button
                   className="faq-question"
                   onClick={() => toggle(index)}
+                  aria-expanded={isOpen}
                 >
                   <span>{item.q}</span>
+
                   <span className={`chevron ${isOpen ? "open" : ""}`}>
                     ›
                   </span>
@@ -76,13 +81,14 @@ export default function FAQ() {
                   {isOpen && (
                     <motion.div
                       className="faq-answer"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
+                      initial={{ maxHeight: 0, opacity: 0 }}
+                      animate={{ maxHeight: 300, opacity: 1 }}
+                      exit={{ maxHeight: 0, opacity: 0 }}
                       transition={{
                         duration: 0.35,
                         ease: "easeInOut",
                       }}
+                      style={{ overflow: "hidden" }}
                     >
                       <div className="faq-answer-inner">
                         <p>{item.a}</p>

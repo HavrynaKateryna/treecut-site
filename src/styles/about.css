@@ -1,106 +1,221 @@
+/* =========================================================
+   ABOUT
+========================================================= */
+
 .about {
-  width: 100%;
 
-  padding: 20px 0 40px;
+  min-height: calc(100vh - var(--header-height));
 
-  min-height: 100vh;
+  display:flex;
 
-  display: flex;
-  align-items: center;
+  align-items:center;
 
-  /* ❌ УБРАТЬ ЭТО:
-  margin-top: -30px;
-  */
+  padding:40px 0;
+background:
+  radial-gradient(
+    circle at center,
+    rgba(239,109,20,.12),
+    transparent 45%
+  ),
+  radial-gradient(
+    circle at center,
+    rgba(0,255,200,.06),
+    transparent 70%
+  );
+
 }
 
-/* =========================
-   CARD
-========================= */
 
-.about__card {
-  width: 100%;
 
-  display: grid;
-  grid-template-columns: 1fr;
+.about__grid {
 
-  border-radius: 22px;
+  width:100%;
 
-  background: rgba(1, 89, 87, 0.45);
-  backdrop-filter: blur(14px);
+  display:grid;
 
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  grid-template-columns:
 
-  overflow: hidden;
+    1fr 1fr;
+
+
+  gap:clamp(30px,4vw,70px);
+
+
+  align-items:center;
+
 }
 
-/* =========================
-   TEXT (CENTER FIX)
-========================= */
 
-.about__text {
-  padding: 50px 40px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+/* =========================================================
+   TEXT
+========================================================= */
 
-  /* 🔥 центрируем текст визуально */
-  height: 100%;
-}
 
 .about__text h2 {
-  margin-bottom: 16px;
-  font-size: clamp(26px, 2.5vw, 38px);
-  line-height: 1.2;
-  color: var(--primary);
+
+  font-size:
+    clamp(28px,3vw,42px);
+
+
+  margin-bottom:16px;
+
+  color:#fff;
+
 }
+
+
 
 .about__text p {
-  opacity: 0.88;
-  line-height: 1.6;
-  margin-bottom: 10px;
+
+  color:
+    rgba(255,255,255,.75);
+
+
+  line-height:1.55;
+
+  margin-bottom:10px;
+
 }
 
-/* =========================
-   IMAGE (BALANCED HEIGHT)
-========================= */
 
-.about__image {
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
+
+/* =========================================================
+   STATS
+========================================================= */
+
+
+.about__stats {
+
+  display:flex;
+
+  gap:12px;
+
+  margin-top:18px;
+
+  flex-wrap:wrap;
+
 }
+
+
+
+.about__stats div {
+
+
+  padding:10px 14px;
+
+
+  border-radius:12px;
+
+
+  background:
+
+    linear-gradient(
+      110deg,
+      #021c1b 0%,
+      rgba(1,89,87,.45) 50%,
+      #003b39 100%
+    );
+
+
+  border:
+
+    1px solid rgba(255,255,255,.08);
+
+
+  font-size:13px;
+
+
+  color:
+
+    rgba(255,255,255,.85);
+
+}
+
+
+/* =========================================================
+   IMAGE CARD
+========================================================= */
 
 .about__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transform: scale(1.05);
+
+  width:100%;
+
+  max-width:px;
+
+  height:
+    clamp(420px,58vh,650px);
+
+  border-radius:22px;
+
+  border:
+    1px solid rgba(255,255,255,.08);
+
+  object-fit:cover;
+
+  object-position:50% 35%;
+
 }
 
-/* =========================
-   DESKTOP FIX (IMPORTANT)
-========================= */
+/* =========================================================
+   1024 TABLET
+========================================================= */
 
-@media (min-width: 768px) {
-  .about__card {
-    grid-template-columns: 1.1fr 0.9fr;
 
-    /* 🔥 главное: вся секция в экран */
-    height: 70vh;
+@media(max-width:1024px){
 
-    align-items: stretch;
+
+  .about {
+
+    padding:50px 0;
+
   }
 
-  .about__text {
-    padding: 60px;
 
-    display: flex;
-    justify-content: center;
+  .about__grid {
+
+    gap:35px;
+
   }
 
-  .about__image {
-    height: 100%;
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+
+@media(max-width:768px){
+
+
+  .about {
+
+    min-height:auto;
+
+    padding:40px 0;
+
   }
+
+
+
+  .about__grid {
+
+    grid-template-columns:1fr;
+
+  }
+
+
+
+  .about__image img {
+
+
+    height:360px;
+
+
+  }
+
+
 }

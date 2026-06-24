@@ -1,131 +1,670 @@
-/* =========================
+/* =========================================================
    SERVICES SECTION
-========================= */
+========================================================= */
 
 .services-section {
-  width: 100%;
- padding: clamp(40px, 10vw, 40px) 0;
- background:
-  radial-gradient(
-    circle at center,
-    rgba(239,109,20,.12),
-    transparent 45%
-  ),
-  radial-gradient(
-    circle at center,
-    rgba(0,255,200,.06),
-    transparent 70%
-  );
+
+    width:100%;
+
+    padding:60px 0;
+
+
+    background:
+
+
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(255,139,43,.14),
+        transparent 45%
+    ),
+
+
+    radial-gradient(
+        circle at 80% 60%,
+        rgba(0,255,200,.06),
+        transparent 70%
+    );
+
 }
 
-/* HEADER */
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 .services-header {
-  text-align: center;
-  margin-bottom: 50px;
+
+    text-align:center;
+
+    margin-bottom:32px;
+
 }
+
+
 
 .services-header h2 {
-  font-size: clamp(28px, 3vw, 42px);
-  color: #fff;
-  margin-bottom: 40px;
+
+    margin-bottom:16px;
+
+
+    font-family:"Montserrat",sans-serif;
+
+
+    font-size:
+
+    clamp(34px,8vw,54px);
+
+
+    line-height:1.1;
+
+
+    font-weight:800;
+
+
+    letter-spacing:-.03em;
+
+
+    color:var(--text);
+
 }
+
+
 
 .services-header p {
-  color: rgba(255,255,255,.7);
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
+
+    max-width:600px;
+
+    margin:0 auto;
+
+
+    font-family:"Inter",sans-serif;
+
+
+    font-size:15px;
+
+
+    line-height:1.65;
+
+
+    color:
+
+    rgba(255,255,255,.75);
+
 }
 
-/* GRID */
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
 .services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
+
+    display:grid;
+
+
+    grid-template-columns:1fr;
+
+
+    gap:16px;
+
 }
 
-/* CARD (cleaner + more premium) */
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
 .service-card {
-  padding: 22px;
-  border-radius: 18px;
 
-  background: 
-  linear-gradient(
-    110deg,
-    #021c1b 0%,
-    rgba(1, 89, 87, 0.45) 50%,
-    #003b39 100%
-  );
-  border: 1px solid rgba(255,255,255,0.08);
+    position:relative;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 
-  transition: 0.2s ease;
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:14px;
+
+
+    padding:18px;
+
+
+    border-radius:20px;
+
+
+    background:
+
+
+    linear-gradient(
+        120deg,
+        rgba(2,28,27,.95),
+        rgba(1,89,87,.45),
+        rgba(0,59,57,.95)
+    );
+
+
+    border:
+
+    1px solid rgba(255,255,255,.1);
+
+
+    backdrop-filter:blur(12px);
+
+
+    -webkit-backdrop-filter:blur(12px);
+
+
+    transition:.25s ease;
+
 }
+
+
+
+@media(hover:hover){
 
 .service-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(239,109,20,.35);
+
+
+    transform:translateY(-4px);
+
+
+    border-color:
+
+    rgba(255,139,43,.45);
+
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.25);
+
 }
+
+}
+
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.service-image {
+
+    flex-shrink:0;
+
+
+    width:56px;
+
+
+    height:56px;
+
+
+    overflow:hidden;
+
+
+    border-radius:50%;
+
+
+    border:
+
+    2px solid rgba(255,139,43,.45);
+
+}
+
+
+
+.service-image img {
+
+    width:100%;
+
+
+    height:100%;
+
+
+    object-fit:cover;
+
+}
+
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.service-content {
+
+    flex:1;
+
+}
+
+
+
+.service-top {
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:space-between;
+
+}
+
+
+
+.service-number {
+
+    font-family:"Montserrat",sans-serif;
+
+
+    font-size:28px;
+
+
+    font-weight:800;
+
+
+    line-height:1;
+
+
+    color:
+
+    rgba(255,255,255,.08);
+
+}
+
+
+
+.service-tag {
+
+    padding:
+
+    4px 9px;
+
+
+    border-radius:999px;
+
+
+    background:
+
+    rgba(255,139,43,.15);
+
+
+    color:
+
+    var(--primary);
+
+
+    font-family:"Inter",sans-serif;
+
+
+    font-size:10px;
+
+
+    font-weight:600;
+
+}
+
+
+
+/* TITLE */
 
 .service-card h3 {
-  color: #fff;
-  margin-bottom: 10px;
-  font-size: 18px;
+
+    margin:
+
+    8px 0 6px;
+
+
+    font-family:"Montserrat",sans-serif;
+
+
+    font-size:18px;
+
+
+    line-height:1.2;
+
+
+    font-weight:700;
+
+
+    color:
+
+    var(--text);
+
 }
+
+
+
+/* TEXT */
 
 .service-card p {
-  color: rgba(255,255,255,.75);
-  line-height: 1.6;
-  font-size: 14px;
+
+    margin:0;
+
+
+    font-family:"Inter",sans-serif;
+
+
+    font-size:14px;
+
+
+    line-height:1.5;
+
+
+    color:
+
+    rgba(255,255,255,.72);
+
 }
 
-/* ACTIONS */
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
 .service-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 16px;
+
+    display:flex;
+
+
+    gap:8px;
+
+
+    margin-top:12px;
+
 }
 
-/* PRIMARY CTA */
-.service-btn {
-  padding: 10px 14px;
-  border-radius: 12px;
 
-  background:#ff963f;
-  color: #fff;
 
-  border: none;
-  font-weight: 600;
-
-  cursor: pointer;
-}
-
-/* SECONDARY CTA */
+.service-btn,
 .service-call {
-  padding: 10px 14px;
-  border-radius: 12px;
 
-  background: rgba(255,255,255,0.06);
-  color: #fff;
+    flex:1;
 
-  text-decoration: none;
 
-  border: 1px solid rgba(255,255,255,0.08);
+    padding:
+
+    8px 12px;
+
+
+    border-radius:999px;
+
+
+    font-family:"Inter",sans-serif;
+
+
+    font-size:13px;
+
+
+    font-weight:600;
+
+
+    text-align:center;
+
 }
 
-/* RESPONSIVE */
-@media (min-width: 768px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-  }
+
+
+/* PRIMARY */
+
+.service-btn {
+
+    background:
+
+    var(--primary);
+
+
+    color:#fff;
+
 }
 
-@media (min-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+
+
+.service-btn:hover {
+
+    background:
+
+    var(--primary-hover);
+
+}
+
+
+
+/* CALL */
+
+.service-call {
+
+    background:
+
+    rgba(255,255,255,.06);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.1);
+
+
+    color:#fff;
+
+}
+
+
+
+/* =========================================================
+   MOBILE 0 - 375
+========================================================= */
+
+@media(max-width:375px){
+
+
+.services-section{
+
+    padding:50px 0;
+
+}
+
+
+
+.services-grid{
+
+    gap:14px;
+
+}
+
+
+
+.service-card{
+
+    padding:16px;
+
+}
+
+
+
+.service-image{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+
+
+.service-card h3{
+
+    font-size:17px;
+
+}
+
+
+
+.service-card p{
+
+    font-size:13px;
+
+}
+
+
+
+}
+
+
+
+
+/* =========================================================
+   MOBILE 376 - 768
+========================================================= */
+
+@media(min-width:376px) and (max-width:768px){
+
+
+.services-section{
+
+    padding:70px 0;
+
+}
+
+
+
+.services-grid{
+
+    gap:18px;
+
+}
+
+
+
+.service-card{
+
+    padding:18px;
+
+}
+
+
+
+}
+
+
+
+
+/* =========================================================
+   TABLET 769 - 1199
+========================================================= */
+
+@media(min-width:769px) and (max-width:1199px){
+
+
+.services-section{
+
+    padding:90px 0;
+
+}
+
+
+
+.services-grid{
+
+
+    grid-template-columns:
+
+    repeat(2,minmax(0,1fr));
+
+
+    gap:20px;
+
+}
+
+
+
+.service-card{
+
+    flex-direction:row;
+
+
+    align-items:flex-start;
+
+
+    padding:20px;
+
+}
+
+
+
+.service-image{
+
+    width:58px;
+
+    height:58px;
+
+}
+
+
+
+}
+
+
+
+
+/* =========================================================
+   DESKTOP 1200+
+========================================================= */
+
+@media(min-width:1200px){
+
+
+.services-section{
+
+    padding:70px 0;
+
+}
+
+
+
+.services-grid{
+
+
+    grid-template-columns:
+
+    repeat(3,minmax(0,1fr));
+
+
+    gap:20px;
+
+}
+
+
+
+.service-card{
+
+
+    flex-direction:row;
+
+
+    padding:20px;
+
+}
+
+
+
+.service-image{
+
+
+    width:60px;
+
+    height:60px;
+
+
+    margin-top:5px;
+
+}
+
+
+
 }

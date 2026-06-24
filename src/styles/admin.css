@@ -1,162 +1,558 @@
-
 /* =========================================================
    ADMIN PAGE
 ========================================================= */
 
+
 .admin-page {
-  min-height: 100vh;
-  padding: var(--space-5);
-  color: var(--text);
-  background: transparent;
+
+  min-height:100vh;
+
+
+  padding:
+
+  calc(var(--header-height) + 30px)
+  24px
+  60px;
+
+
+  color:var(--text);
+
+
+  background:
+
+  radial-gradient(
+    circle at top,
+    rgba(255,139,43,.10),
+    transparent 45%
+  );
+
 }
+
+
 
 /* =========================================================
    HEADER
 ========================================================= */
 
+
 .admin-header {
-  margin-bottom: var(--space-5);
+
+  margin-bottom:40px;
+
 }
+
+
 
 .admin-header h1 {
-  font-size: clamp(28px, 4vw, 42px);
-  color: var(--primary);
+
+  font-family:"Montserrat",sans-serif;
+
+
+  font-size:
+
+  clamp(28px,5vw,42px);
+
+
+  font-weight:800;
+
+
+  letter-spacing:-.03em;
+
+
+  color:var(--primary);
+
 }
+
+
 
 .admin-header p {
-  color: var(--muted);
-  margin-top: var(--space-1);
+
+  margin-top:10px;
+
+
+  color:
+
+  rgba(255,255,255,.65);
+
+
+  font-size:15px;
+
 }
 
+
+
+
+
 /* =========================================================
-   EMPTY / LOADING
+   LOADING / EMPTY
 ========================================================= */
+
 
 .loading,
 .empty {
-  text-align: center;
-  margin-top: var(--space-7);
-  color: var(--muted);
+
+
+  text-align:center;
+
+
+  margin-top:80px;
+
+
+  color:
+
+  rgba(255,255,255,.55);
+
+
 }
+
+
+
+
 
 /* =========================================================
-   TABLE WRAPPER (GLASS)
+   TABLE WRAPPER
 ========================================================= */
 
+
 .table-wrapper {
-  overflow-x: auto;
-  border-radius: var(--radius);
+
+
+  width:100%;
+
+
+  overflow-x:auto;
+
+
+  border-radius:24px;
+
+
+  scrollbar-width:thin;
+
+
 }
+
+
 
 /* =========================================================
    TABLE
 ========================================================= */
 
+
 .admin-table {
-  width: 100%;
-  min-width: 900px;
-  border-collapse: collapse;
 
-  background: var(--bg-glass);
-  backdrop-filter: blur(14px);
 
-  border-radius: var(--radius);
-  overflow: hidden;
+  width:100%;
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  min-width:850px;
+
+
+  border-collapse:collapse;
+
+
+  overflow:hidden;
+
+
+  background:
+
+
+  linear-gradient(
+    120deg,
+    rgba(2,28,27,.95),
+    rgba(1,89,87,.45),
+    rgba(0,59,57,.95)
+  );
+
+
+  border:
+
+  1px solid rgba(255,255,255,.1);
+
+
+  backdrop-filter:blur(14px);
+
+
+  -webkit-backdrop-filter:blur(14px);
+
+
+  border-radius:24px;
+
 }
 
-/* HEADER */
-.admin-table th {
-  text-align: left;
-  padding: var(--space-3);
-  font-size: 14px;
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.04);
-}
 
-/* CELLS */
-.admin-table td {
-  padding: var(--space-3);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 14px;
-  color: var(--text);
-}
 
 /* =========================================================
-   MESSAGE CELL
+   TABLE HEADER
 ========================================================= */
+
+
+.admin-table th {
+
+
+  padding:
+
+  16px;
+
+
+  text-align:left;
+
+
+  font-family:"Inter",sans-serif;
+
+
+  font-size:13px;
+
+
+  font-weight:600;
+
+
+  color:
+
+  rgba(255,255,255,.55);
+
+
+  background:
+
+  rgba(255,255,255,.04);
+
+
+}
+
+
+
+/* =========================================================
+   CELLS
+========================================================= */
+
+
+.admin-table td {
+
+
+  padding:
+
+  16px;
+
+
+  border-top:
+
+  1px solid rgba(255,255,255,.06);
+
+
+  color:white;
+
+
+  font-size:14px;
+
+}
+
+
+
+.admin-table tr {
+
+
+  transition:.2s ease;
+
+}
+
+
+
+.admin-table tbody tr:hover {
+
+
+  background:
+
+  rgba(255,255,255,.04);
+
+
+}
+
+
+
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
 
 .message {
-  max-width: 240px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--muted);
+
+
+  max-width:260px;
+
+
+  white-space:nowrap;
+
+
+  overflow:hidden;
+
+
+  text-overflow:ellipsis;
+
+
+  color:
+
+  rgba(255,255,255,.7);
+
+
 }
+
+
+
+
 
 /* =========================================================
-   STATUS BADGES
+   STATUS
 ========================================================= */
 
+
 .status {
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  display: inline-block;
+
+
+  display:inline-flex;
+
+
+  align-items:center;
+
+
+  padding:
+
+  6px 12px;
+
+
+  border-radius:999px;
+
+
+  font-size:11px;
+
+
+  font-weight:700;
+
+
+  text-transform:uppercase;
+
 }
+
+
 
 .status.new {
-  background: rgba(0, 123, 255, 0.15);
-  color: #4da3ff;
+
+
+  background:
+
+  rgba(77,163,255,.15);
+
+
+  color:#4da3ff;
+
+
 }
+
+
 
 .status.in_progress {
-  background: rgba(255, 193, 7, 0.15);
-  color: #ffcc66;
+
+
+  background:
+
+  rgba(255,193,7,.15);
+
+
+  color:#ffcc66;
+
+
 }
 
+
+
 .status.done {
-  background: rgba(40, 167, 69, 0.15);
-  color: #4dff88;
+
+
+  background:
+
+  rgba(40,167,69,.15);
+
+
+  color:#4dff88;
+
+
 }
+
+
+
+
 
 /* =========================================================
    ACTIONS
 ========================================================= */
 
+
 .actions {
-  display: flex;
-  gap: var(--space-1);
-  flex-wrap: wrap;
+
+
+  display:flex;
+
+
+  gap:8px;
+
+
+  flex-wrap:wrap;
+
 }
 
-/* base button */
+
+
 .actions button {
-  padding: 8px 10px;
-  border-radius: 10px;
-  font-size: 12px;
 
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
 
-  transition: 0.2s ease;
+  padding:
+
+  8px 12px;
+
+
+  border-radius:10px;
+
+
+  font-size:12px;
+
+
+  color:white;
+
+
+  background:
+
+  rgba(255,255,255,.06);
+
+
+  border:
+
+  1px solid rgba(255,255,255,.1);
+
+
+  cursor:pointer;
+
+
+  transition:.25s ease;
+
+
 }
+
+
 
 .actions button:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.12);
+
+
+  transform:translateY(-2px);
+
+
+  background:
+
+  rgba(255,255,255,.12);
+
+
 }
 
-/* delete */
+
+
+/* DELETE */
+
+
 .actions .delete {
-  background: rgba(239, 109, 20, 0.1);
-  border: 1px solid rgba(239, 109, 20, 0.3);
-  color: var(--primary);
+
+
+  color:var(--primary);
+
+
+  background:
+
+  rgba(255,139,43,.12);
+
+
+  border-color:
+
+  rgba(255,139,43,.3);
+
+
 }
+
+
 
 .actions .delete:hover {
-  background: rgba(239, 109, 20, 0.2);
+
+
+  background:
+
+  rgba(255,139,43,.22);
+
+
+}
+
+
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+
+@media(max-width:768px){
+
+
+.admin-page {
+
+
+  padding:
+
+  calc(var(--header-height) + 20px)
+  16px
+  40px;
+
+
+}
+
+
+
+.admin-header {
+
+
+  margin-bottom:28px;
+
+
+}
+
+
+
+.table-wrapper {
+
+
+  border-radius:18px;
+
+
+}
+
+
+
+.admin-table {
+
+
+  min-width:760px;
+
+
+}
+
+
+
+.admin-table th,
+.admin-table td {
+
+
+  padding:
+
+  12px;
+
+
+}
+
+
 }

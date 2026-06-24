@@ -1,44 +1,80 @@
-export const services = [
+export interface Service {
+  id: string;
+  number: string;
+  title: string;
+  description: string;
+  full: string;
+  image: string;
+  tag?: string;
+}
+
+
+export const services: Service[] = [
   {
     id: "tree-removal",
-    title: "Спил деревьев",
-    description: "Профессиональный спил деревьев любой сложности.",
-    full: "Выполняем спил деревьев с использованием спецтехники и альпинистского снаряжения.",
+    number: "01",
+    tag: "POPULAR",
+    title: "Tree Removal",
+    description:
+      "Safe and professional removal of unwanted or dangerous trees.",
+    full:
+      "We remove trees of all sizes using professional equipment and safe techniques while protecting your property.",
     image: "/images/tree-cut.jpg",
   },
+
   {
     id: "emergency-tree-removal",
-    title: "Удаление аварийных деревьев",
-    description: "Удаляем опасные деревья рядом с домами.",
-    full: "Аккуратно удаляем аварийные деревья без повреждений имущества.",
+    number: "02",
+    tag: "24/7 RESPONSE",
+    title: "Emergency Tree Removal",
+    description:
+      "Fast help with storm damaged and hazardous trees.",
+    full:
+      "Our team quickly removes fallen and dangerous trees after storms to keep your property safe.",
     image: "/images/danger-tree.jpg",
   },
+
   {
     id: "tree-trimming",
-    title: "Обрезка веток",
-    description: "Формируем крону деревьев.",
-    full: "Обрезка деревьев для здоровья растения и эстетики участка.",
+    number: "03",
+    title: "Tree Trimming",
+    description:
+      "Improve tree health, safety and appearance.",
+    full:
+      "Professional trimming helps maintain healthy trees and improves the look of your property.",
     image: "/images/branches.jpg",
   },
+
   {
     id: "stump-grinding",
-    title: "Корчевание пней",
-    description: "Удаление пней с участка.",
-    full: "Полное удаление пней с помощью спецтехники.",
+    number: "04",
+    title: "Stump Grinding",
+    description:
+      "Remove old stumps and restore your yard.",
+    full:
+      "We completely remove unwanted stumps and prepare the area for new landscaping.",
     image: "/images/stump.jpg",
   },
+
   {
     id: "storm-cleanup",
-    title: "Уборка после шторма",
-    description: "Быстрая очистка участка после бурь.",
-    full: "Удаляем поваленные деревья, ветки и мусор после штормов и ураганов.",
+    number: "05",
+    title: "Storm Cleanup",
+    description:
+      "Quick cleanup after storms and severe weather.",
+    full:
+      "We remove fallen trees, branches and debris after storms.",
     image: "/images/storm-clean.jpg",
   },
+
   {
     id: "lot-clearing",
-    title: "Очистка участка",
-    description: "Полная расчистка территории под строительство.",
-    full: "Подготавливаем участок: удаление деревьев, кустов и мусора.",
+    number: "06",
+    title: "Lot Clearing",
+    description:
+      "Prepare your property for construction or landscaping.",
+    full:
+      "Complete clearing of trees, brush and unwanted vegetation.",
     image: "/images/lot-clearing.jpg",
   },
 ];

@@ -3,252 +3,420 @@
 ========================================================= */
 
 #gallery {
-  scroll-margin-top:92px;
+
+    scroll-margin-top:var(--header-height);
+
 }
+
 
 
 .gallery {
 
-  width:100%;
 
-  padding:40px 0;
+    width:100%;
 
-background:
-  radial-gradient(
-    circle at center,
-    rgba(239,109,20,.12),
-    transparent 45%
-  ),
-  radial-gradient(
-    circle at center,
-    rgba(0,255,200,.06),
-    transparent 70%
-  );
-  
+
+    padding:60px 0;
+
+
+    background:
+
+
+    radial-gradient(
+        circle at 20% 20%,
+        rgba(255,139,43,.14),
+        transparent 45%
+    ),
+
+
+    radial-gradient(
+        circle at 80% 60%,
+        rgba(0,255,200,.06),
+        transparent 70%
+    );
+
+
 }
+
+
+
 
 
 /* =========================================================
    TITLE
 ========================================================= */
 
+
 .gallery-title {
 
-  text-align:center;
 
-  margin-bottom:40px;
+    margin-bottom:18px;
 
-  font-size:clamp(28px,3vw,42px);
 
-  font-weight:700;
+    text-align:center;
 
-  color:#fff;
+
+    font-family:"Montserrat",sans-serif;
+
+
+    font-size:
+
+    clamp(34px,8vw,54px);
+
+
+    line-height:1.1;
+
+
+    font-weight:800;
+
+
+    letter-spacing:-.03em;
+
+
+    color:var(--text);
+
+
 }
+
 
 
 .gallery-subtitle {
 
-  text-align:center;
 
-  margin-bottom:40px;
+    max-width:620px;
 
-  color:rgba(255,255,255,.7);
 
-  max-width:600px;
+    margin:0 auto 32px;
 
-  margin-inline:auto;
 
-  line-height:1.6;
+    text-align:center;
+
+
+    font-family:"Inter",sans-serif;
+
+
+    font-size:15px;
+
+
+    line-height:1.7;
+
+
+    color:
+
+    rgba(255,255,255,.75);
+
+
 }
+
+
+
 
 
 /* =========================================================
    CAROUSEL
 ========================================================= */
 
+
 .carousel {
 
-  position:relative;
 
-  width:100%;
+    position:relative;
 
-  height:460px;
 
-  display:flex;
+    width:100%;
 
-  align-items:center;
 
-  justify-content:center;
+    height:320px;
 
-  overflow:hidden;
 
-  user-select:none;
+    display:flex;
 
-  touch-action:pan-y;
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    overflow:hidden;
+
+
+    user-select:none;
+
+
+    touch-action:pan-y;
+
+
 }
 
 
-/* =========================================================
-   SLIDER
-========================================================= */
+
+
 
 .slider {
 
-  position:relative;
 
-  width:100%;
+    position:relative;
 
-  height:100%;
 
-  display:flex;
+    width:100%;
 
-  align-items:center;
 
-  justify-content:center;
+    height:100%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
 }
+
+
+
 
 
 /* =========================================================
    SLIDES
 ========================================================= */
 
+
 .slide {
 
-  position:absolute;
 
-  border-radius:20px;
+    position:absolute;
 
-  overflow:hidden;
 
-  cursor:pointer;
+    overflow:hidden;
 
-  background:transparent;
 
-  border:1px solid rgba(255,255,255,.06);
+    border-radius:22px;
 
-  transition:
+
+    cursor:pointer;
+
+
+    background:#000;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.1);
+
+
+    transition:
+
+
     transform .35s ease,
+
+
     opacity .35s ease;
 
-  will-change:transform;
 
-  backface-visibility:hidden;
+    will-change:transform;
+
+
 }
+
 
 
 .slide img {
 
-  width:100%;
 
-  height:100%;
+    width:100%;
 
-  object-fit:cover;
+
+    height:100%;
+
+
+    object-fit:cover;
+
+
 }
 
 
-/* CENTER */
+
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
 
 .slide.active {
 
-  width:min(680px,92vw);
 
-  height:460px;
+    width:
 
-  z-index:5;
+    min(92vw,680px);
+
+
+    height:300px;
+
+
+    z-index:5;
+
+
 }
 
 
-/* LEFT */
+
+
+
+/* =========================================================
+   SIDE
+========================================================= */
+
 
 .slide.left {
 
-  width:460px;
 
-  height:320px;
+    width:380px;
 
-  transform:translateX(-360px) scale(.94);
 
-  opacity:.35;
+    height:260px;
+
+
+    transform:
+
+
+    translateX(-310px)
+
+    scale(.92);
+
+
+    opacity:.35;
+
+
 }
 
 
-/* RIGHT */
 
 .slide.right {
 
-  width:460px;
 
-  height:320px;
+    width:380px;
 
-  transform:translateX(360px) scale(.94);
 
-  opacity:.35;
+    height:260px;
+
+
+    transform:
+
+
+    translateX(310px)
+
+    scale(.92);
+
+
+    opacity:.35;
+
+
 }
+
+
+
 
 
 /* =========================================================
    ARROWS
 ========================================================= */
 
+
 .gallery-arrow {
 
-  position:absolute;
 
-  top:50%;
+    position:absolute;
 
-  transform:translateY(-50%);
 
-  width:54px;
+    top:50%;
 
-  height:54px;
 
-  border-radius:50%;
+    transform:translateY(-50%);
 
-  border:1px solid rgba(255,255,255,.08);
 
-  background:rgba(0,0,0,.35);
+    width:48px;
 
-  color:#fff;
 
-  display:flex;
+    height:48px;
 
-  align-items:center;
 
-  justify-content:center;
+    display:flex;
 
-  font-size:32px;
 
-  cursor:pointer;
+    align-items:center;
 
-  z-index:10;
 
-  backdrop-filter:blur(10px);
+    justify-content:center;
 
-  transition:.25s ease;
+
+    border-radius:50%;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.12);
+
+
+    background:
+
+    rgba(0,0,0,.4);
+
+
+    color:#fff;
+
+
+    font-size:28px;
+
+
+    cursor:pointer;
+
+
+    z-index:10;
+
+
+    backdrop-filter:blur(10px);
+
+
 }
+
 
 
 .gallery-arrow:hover {
 
-  background:#ef6d14;
+
+    background:
+
+    var(--primary);
+
+
 }
+
 
 
 .left-arrow {
 
-  left:14px;
+
+    left:12px;
+
+
 }
+
 
 
 .right-arrow {
 
-  right:14px;
+
+    right:12px;
+
+
 }
 
 
-/* =========================================================
-   DOTS
-========================================================= */
 
 
 
@@ -256,135 +424,377 @@ background:
    LIGHTBOX
 ========================================================= */
 
+
 .lightbox {
 
-  position:fixed;
 
-  inset:0;
+    position:fixed;
 
-  background:rgba(0,0,0,.88);
 
-  display:flex;
+    inset:0;
 
-  align-items:center;
 
-  justify-content:center;
+    display:flex;
 
-  z-index:999999;
 
-  cursor:zoom-out;
+    align-items:center;
 
-  padding:20px;
+
+    justify-content:center;
+
+
+    padding:20px;
+
+
+    background:
+
+    rgba(0,0,0,.88);
+
+
+    z-index:999999;
+
+
 }
+
 
 
 .lightbox-img {
 
-  max-width:92vw;
 
-  max-height:88vh;
+    max-width:92vw;
 
-  border-radius:16px;
 
-  box-shadow:0 40px 120px rgba(0,0,0,.7);
+    max-height:88vh;
+
+
+    border-radius:18px;
+
+
+    box-shadow:
+
+
+    0 40px 120px rgba(0,0,0,.7);
+
+
 }
 
 
+
+
+
 /* =========================================================
-   TABLET
+   MOBILE 0 - 375
 ========================================================= */
 
-@media(max-width:1024px){
 
-  .slide.left {
-
-    transform:translateX(-320px) scale(.92);
-
-  }
+@media(max-width:375px){
 
 
-  .slide.right {
+.gallery{
 
-    transform:translateX(320px) scale(.92);
 
-  }
+    padding:50px 0;
+
 
 }
 
 
+
+.gallery-subtitle{
+
+
+    font-size:14px;
+
+
+    margin-bottom:24px;
+
+
+}
+
+
+
+.carousel{
+
+
+    height:260px;
+
+
+}
+
+
+
+.slide.active{
+
+
+    width:90vw;
+
+
+    height:250px;
+
+
+}
+
+
+
+.slide.left,
+.slide.right{
+
+
+    display:none;
+
+
+}
+
+
+
+.gallery-arrow{
+
+
+    width:42px;
+
+
+    height:42px;
+
+
+    font-size:24px;
+
+
+}
+
+
+
+}
+
+
+
+
+
 /* =========================================================
-   MOBILE
+   MOBILE 376 - 768
+========================================================= */
+
+
+@media(min-width:376px) and (max-width:768px){
+
+
+.gallery{
+
+
+    padding:70px 0;
+
+
+}
+
+
+
+.carousel{
+
+
+    height:340px;
+
+
+}
+
+
+
+.slide.active{
+
+
+    height:320px;
+
+
+}
+
+
+
+.slide.left,
+.slide.right{
+
+
+    width:280px;
+
+
+    height:250px;
+
+
+}
+
+
+
+.slide.left{
+
+
+    transform:
+
+    translateX(-250px)
+
+    scale(.9);
+
+
+}
+
+
+
+.slide.right{
+
+
+    transform:
+
+    translateX(250px)
+
+    scale(.9);
+
+
+}
+
+
+
+}
+
+
+
+
+
+/* =========================================================
+   TABLET 769 - 1199
+========================================================= */
+
+
+@media(min-width:769px) and (max-width:1199px){
+
+
+.gallery{
+
+
+    padding:90px 0;
+
+
+}
+
+
+
+.carousel{
+
+
+    height:430px;
+
+
+}
+
+
+
+.slide.active{
+
+
+    width:min(680px,80vw);
+
+
+    height:420px;
+
+
+}
+
+
+
+.slide.left,
+.slide.right{
+
+
+    width:380px;
+
+
+    height:330px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+/* =========================================================
+   DESKTOP 1200+
+========================================================= */
+
+
+@media(min-width:1200px){
+
+
+.gallery{
+
+
+    padding:40px 0;
+
+
+}
+
+
+
+.carousel{
+
+
+    height:480px;
+
+
+}
+
+
+
+.slide.active{
+
+
+    height:460px;
+
+
+}
+
+
+
+.slide.left{
+
+
+    transform:
+
+
+    translateX(-390px)
+
+    scale(.94);
+
+
+}
+
+
+
+.slide.right{
+
+
+    transform:
+
+
+    translateX(390px)
+
+    scale(.94);
+
+
+}
+
+
+
+}
+/* =========================================================
+   MOBILE HIDE ARROWS
 ========================================================= */
 
 @media(max-width:768px){
 
-  .gallery {
+    .gallery-arrow{
 
-    padding:30px 0;
+        display:none;
 
-  }
-
-
-  .gallery-title {
-
-    margin-bottom:10px;
-
-  }
-
-
-  .carousel {
-
-    height:360px;
-
-  }
-
-
-  .slide.active {
-
-    width:94vw;
-
-    height:340px;
-
-  }
-
-
-  .slide.left,
-  .slide.right {
-
-    display:none;
-
-  }
-
-
-  .gallery-arrow {
-
-    display:none;
-
-  }
-
-
-  .gallery-dots {
-
-    display:none;
-
-  }
-
-
-  .lightbox {
-
-    padding:12px;
-
-  }
-
-
-  .lightbox-img {
-
-    max-width:100%;
-
-    max-height:85vh;
-
-    border-radius:14px;
-
-  }
+    }
 
 }

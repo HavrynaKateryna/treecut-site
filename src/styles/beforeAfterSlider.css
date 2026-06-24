@@ -1,78 +1,513 @@
+/* =========================================================
+   BEFORE / AFTER SLIDER
+========================================================= */
+
 .ba-slider {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  user-select: none;
-  touch-action: none;
+
+  width:100%;
+
+  max-width:900px;
+
+  margin:0 auto;
+
+
+  user-select:none;
+
+  touch-action:pan-y;
+
 }
+
+
+
+
+/* =========================================================
+   IMAGES CONTAINER
+========================================================= */
+
 
 .ba-images {
-  position: relative;
-  height: 520px;
-  border-radius: 24px;
-  overflow: hidden;
 
-  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+
+  position:relative;
+
+
+  width:100%;
+
+
+  height:520px;
+
+
+  overflow:hidden;
+
+
+  border-radius:24px;
+
+
+
+  border:
+
+    1px solid rgba(255,255,255,.1);
+
+
+
+  box-shadow:
+
+    0 30px 80px rgba(0,0,0,.45);
+
+
+
+  background:
+
+    var(--surface);
+
 }
 
-/* обе картинки */
+
+
+
+/* =========================================================
+   IMAGES
+========================================================= */
+
+
 .ba-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  inset: 0;
+
+
+  position:absolute;
+
+
+  inset:0;
+
+
+  width:100%;
+
+
+  height:100%;
+
+
+  object-fit:cover;
+
+
 }
 
-/* BEFORE слой — теперь через clipPath (ВАЖНО!) */
+
+
+
+
+/* =========================================================
+   BEFORE LAYER
+========================================================= */
+
+
 .ba-before {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
 
-  transition: clip-path 0.12s linear;
+
+  position:absolute;
+
+
+  inset:0;
+
+
+  overflow:hidden;
+
+
+  transition:
+
+    clip-path .12s linear;
+
+
 }
 
-/* handle линия */
+
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+
 .ba-handle {
-  position: absolute;
-  top: 0;
-  bottom: 0;
 
-  width: 2px;
-  background: #ef6d14;
 
-  transform: translateX(-50%);
+  position:absolute;
 
-  transition: left 0.12s linear;
+
+  top:0;
+
+
+  bottom:0;
+
+
+
+  width:3px;
+
+
+
+  background:
+
+    linear-gradient(
+
+      180deg,
+
+      transparent,
+
+      var(--primary),
+
+      transparent
+
+    );
+
+
+
+  transform:
+
+    translateX(-50%);
+
+
+
+  z-index:5;
+
+
+
+  transition:
+
+    left .12s linear;
+
+
 }
 
-/* точка (как Apple slider) */
+
+
+
+/* =========================================================
+   HANDLE BUTTON
+========================================================= */
+
+
 .ba-dot {
-  position: absolute;
-  top: 50%;
-  left: 50%;
 
-  width: 18px;
-  height: 18px;
 
-  border-radius: 50%;
-  background: #ef6d14;
+  position:absolute;
 
-  transform: translate(-50%, -50%);
 
-  box-shadow: 0 0 0 6px rgba(239,109,20,0.2);
+  top:50%;
+
+
+  left:50%;
+
+
+
+  width:46px;
+
+
+  height:46px;
+
+
+
+  display:flex;
+
+
+  align-items:center;
+
+
+  justify-content:center;
+
+
+
+  border-radius:50%;
+
+
+
+  background:
+
+    rgba(255,139,43,.95);
+
+
+
+  border:
+
+    3px solid rgba(255,255,255,.9);
+
+
+
+  transform:
+
+    translate(-50%,-50%);
+
+
+
+  box-shadow:
+
+
+    0 10px 35px rgba(0,0,0,.4),
+
+
+    0 0 0 8px rgba(255,139,43,.18);
+
+
+
+  transition:
+
+    transform .25s ease,
+
+    box-shadow .25s ease;
+
+
+
 }
 
-/* hover эффект */
+
+
+/* маленькие стрелки внутри */
+
+.ba-dot::before {
+
+
+  content:"↔";
+
+
+  color:#fff;
+
+
+  font-size:22px;
+
+
+  font-weight:700;
+
+
+}
+
+
+
+
+
 .ba-slider:hover .ba-dot {
-  transform: translate(-50%, -50%) scale(1.1);
+
+
+  transform:
+
+    translate(-50%,-50%)
+
+    scale(1.12);
+
+
+
+  box-shadow:
+
+
+    0 15px 45px rgba(0,0,0,.5),
+
+
+    0 0 0 12px rgba(255,139,43,.2);
+
+
 }
 
-/* mobile */
-@media (max-width: 768px) {
-  .ba-images {
-    height: 320px;
-    border-radius: 18px;
-  }
+
+
+
+
+/* =========================================================
+   LABELS
+========================================================= */
+
+
+.ba-label {
+
+
+  position:absolute;
+
+
+  top:20px;
+
+
+
+  padding:7px 14px;
+
+
+  border-radius:999px;
+
+
+
+  background:
+
+    rgba(0,0,0,.45);
+
+
+
+  backdrop-filter:blur(10px);
+
+
+
+  color:#fff;
+
+
+
+  font-size:13px;
+
+
+  font-weight:700;
+
+
+  z-index:10;
+
+
+}
+
+
+
+
+.ba-label.before {
+
+
+  left:20px;
+
+
+}
+
+
+
+.ba-label.after {
+
+
+  right:20px;
+
+
+}
+
+
+
+
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+
+@media(min-width:768px){
+
+
+.ba-images {
+
+
+  height:560px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+
+@media(max-width:768px){
+
+
+.ba-images {
+
+
+  height:340px;
+
+
+  border-radius:18px;
+
+
+}
+
+
+
+.ba-dot {
+
+
+  width:40px;
+
+
+  height:40px;
+
+
+}
+
+
+
+.ba-dot::before {
+
+
+  font-size:18px;
+
+
+}
+
+
+
+.ba-label {
+
+
+  top:14px;
+
+
+  padding:6px 12px;
+
+
+  font-size:12px;
+
+
+}
+
+
+.ba-label.before {
+
+
+  left:14px;
+
+
+}
+
+
+
+.ba-label.after {
+
+
+  right:14px;
+
+
+}
+
+
+}
+
+
+
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+
+@media(max-width:375px){
+
+
+.ba-images {
+
+
+  height:280px;
+
+
+}
+
+
+
 }

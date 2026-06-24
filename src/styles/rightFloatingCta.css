@@ -1,131 +1,237 @@
-/* =========================
-   RIGHT FAB — FIXED CTA BUTTONS
-========================= */
+/* =========================================================
+   FLOATING CONTACT BUTTONS
+========================================================= */
 
-.right-fab {
-  position: fixed;
+.floating-contact {
 
-  right: 18px;
-  bottom: 18px;
+    position:fixed;
 
-  display: flex;
-  flex-direction: column;
+    right:16px;
 
-  gap: 12px;
+    bottom:16px;
 
-  z-index: 999999;
+    display:flex;
 
-  opacity: 1;
+    flex-direction:column;
 
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
+    gap:10px;
+
+    z-index:2000;
+
 }
 
 
-/* =========================
-   SHOW / HIDE
-========================= */
-
-.right-fab.show {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 
-.right-fab.hide {
-  opacity: 0;
-  transform: translateY(20px);
-  pointer-events: none;
-}
+
+/* =========================================================
+   BUTTON BASE
+========================================================= */
+
+.floating-contact__btn {
+
+    width:52px;
+
+    height:52px;
 
 
-/* =========================
-   BUTTONS
-========================= */
+    display:flex;
 
-.fab {
+    align-items:center;
 
-  width: 58px;
-  height: 58px;
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-
-  font-size: 25px;
-
-  text-decoration: none;
+    justify-content:center;
 
 
-  box-shadow:
-    0 12px 35px rgba(0,0,0,0.35);
+    border-radius:16px;
 
 
-  transition:
+    color:#fff;
+
+
+    font-size:21px;
+
+
+    text-decoration:none;
+
+
+    background:
+
+
+    rgba(255,255,255,.06);
+
+
+
+    border:
+
+    1px solid rgba(255,255,255,.12);
+
+
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+
+
+    box-shadow:
+
+    0 12px 35px rgba(0,0,0,.35);
+
+
+
+    transition:
+
     transform .25s ease,
+
+    border-color .25s ease,
+
     box-shadow .25s ease;
 
 }
 
 
-.fab:hover {
 
-  transform:
-    translateY(-4px)
-    scale(1.05);
+.floating-contact__btn:hover {
+
+
+    transform:
+
+    translateY(-3px);
+
+
+
+    border-color:
+
+    var(--primary);
+
+
+
+    box-shadow:
+
+    0 18px 45px rgba(0,0,0,.45);
 
 }
 
 
-/* =========================
-   COLORS
-========================= */
-
-.fab.call {
-
-  background: var(--primary);
-
-}
 
 
-.fab.whatsapp {
 
- background:
+/* =========================================================
+   CALL BUTTON
+========================================================= */
+
+.floating-contact__btn--call {
+
+
+    background:
+
+
     linear-gradient(
-      110deg,
-      #021c1b 0%,
-      rgba(1,89,87,.45) 50%,
-      #003b39 100%
+        135deg,
+        #ff8b2b,
+        #ff963f
     );
 
+
+    border:none;
+
+
 }
 
+
+
+
+
+/* =========================================================
+   WHATSAPP BUTTON
+========================================================= */
+
+.floating-contact__btn--whatsapp {
+
+
+    background:
+
+
+    linear-gradient(
+        135deg,
+        rgba(15,36,33,.95),
+        rgba(1,89,87,.65)
+    );
+
+
+}
+
+
+
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.floating-contact__btn svg {
+
+    width:22px;
+
+    height:22px;
+
+}
+
+
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:768px){
 
-.right-fab {
 
-  right:12px;
+.floating-contact {
 
-  bottom:90px; /* выше нижнего контента */
 
-  gap:8px;
+    right:12px;
+
+
+    bottom:12px;
+
+
+    gap:8px;
+
+
+}
+
+
+
+.floating-contact__btn {
+
+
+    width:46px;
+
+
+    height:46px;
+
+
+    border-radius:14px;
+
+
+    font-size:18px;
+
 
 }
 
 
-.fab {
 
-  width:46px;
-  height:46px;
+.floating-contact__btn svg {
 
-  font-size:20px;
+
+    width:19px;
+
+    height:19px;
+
 
 }
+
 
 }

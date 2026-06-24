@@ -1,21 +1,20 @@
 import { FaPhone, FaWhatsapp } from "react-icons/fa";
 import { createPortal } from "react-dom";
 
-export default function RightFab() {
+export default function FloatingContact() {
   return createPortal(
-    <div className="right-fab">
+    <div className="floating-contact">
 
       <a
-        className="fab call"
+        className="floating-contact__btn floating-contact__btn--call"
         href="tel:+15596804185"
         aria-label="Call now"
       >
         <FaPhone />
       </a>
 
-
       <a
-        className="fab whatsapp"
+        className="floating-contact__btn floating-contact__btn--whatsapp"
         href="https://wa.me/15596804185"
         target="_blank"
         rel="noopener noreferrer"

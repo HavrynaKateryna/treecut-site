@@ -4,99 +4,197 @@
 
 .modal-overlay {
 
-    position:fixed;
+  position:fixed;
 
-    inset:0;
+  inset:0;
 
-    display:flex;
+  display:flex;
 
-    justify-content:center;
+  justify-content:center;
 
-    align-items:center;
+  align-items:center;
 
+  padding:20px;
 
-    padding:
-
-    40px 18px;
-
-
-    background:
+  background:
 
     rgba(0,0,0,.72);
 
+  backdrop-filter:
 
-    backdrop-filter:
+    blur(10px);
 
-    blur(12px);
+  -webkit-backdrop-filter:
 
-    -webkit-backdrop-filter:
+    blur(10px);
 
-    blur(12px);
+  z-index:999998;
 
-
-    z-index:999998;
-
-
-    overflow-y:auto;
+  overflow-y:auto;
 
 }
 
 
 
-
 /* =========================================================
-   MODAL
+   MODAL WINDOW
 ========================================================= */
-
 
 .modal {
 
-    position:relative;
+  position:relative;
+
+  width:100%;
+
+  max-width:720px;
+
+  max-height:90vh;
 
 
-    width:100%;
+  border-radius:28px;
 
 
-    max-width:720px;
-
-
-    max-height:
-
-    calc(100vh - 80px);
-
-
-
-    border-radius:28px;
-
-
-    background:
+  background:
 
     linear-gradient(
-        110deg,
-        #021c1b 0%,
-        rgba(1,89,87,.45) 50%,
-        #003b39 100%
+      110deg,
+      #021c1b 0%,
+      rgba(1,89,87,.45) 50%,
+      #003b39 100%
     );
 
 
-    border:
+  border:
 
     1px solid rgba(255,255,255,.12);
 
 
+  backdrop-filter:
 
-    box-shadow:
+    blur(18px);
 
-    0 40px 120px rgba(0,0,0,.7);
-
-
-
-    backdrop-filter:
+  -webkit-backdrop-filter:
 
     blur(18px);
 
 
-    overflow:hidden;
+  box-shadow:
+
+    0 40px 120px rgba(0,0,0,.7);
+
+
+  overflow-y:auto;
+
+
+  animation:
+
+    modalShow .25s ease;
+
+}
+
+
+
+/* =========================================================
+   HANDLE MOBILE
+========================================================= */
+
+.modal-handle {
+
+  width:64px;
+
+  height:6px;
+
+  border-radius:999px;
+
+
+  background:
+
+    rgba(255,255,255,.25);
+
+
+  margin:
+
+    14px auto 0;
+
+}
+
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes modalShow {
+
+  from {
+
+    opacity:0;
+
+    transform:translateY(20px) scale(.98);
+
+  }
+
+
+  to {
+
+    opacity:1;
+
+    transform:translateY(0) scale(1);
+
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:768px){
+
+
+.modal-overlay {
+
+  align-items:flex-start;
+
+  padding:
+
+    20px 14px;
+
+
+  overflow-y:auto;
+
+}
+
+
+
+.modal {
+
+  margin-top:30px;
+
+  margin-bottom:30px;
+
+
+  max-height:none;
+
+
+  width:100%;
+
+
+  border-radius:22px;
+
+
+}
+
+
+
+.modal-handle {
+
+  margin-top:12px;
+
+}
+
 
 
 }

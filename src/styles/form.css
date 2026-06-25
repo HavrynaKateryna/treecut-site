@@ -4,51 +4,18 @@
 
 .form-wrapper {
 
-  position: relative;
+  position:relative;
 
-  width:100%;
 
-  padding:32px;
+  padding:
 
-  padding-top:72px;
+    70px 38px 38px;
+
 
   display:flex;
 
   flex-direction:column;
 
-  overflow:hidden;
-
-}
-
-
-
-/* =========================================================
-   TITLE
-========================================================= */
-
-.form-title {
-
-  width:100%;
-
-  margin-bottom:24px;
-
-  padding-inline:30px;
-
-  text-align:center;
-
-
-  font-family:"Montserrat",sans-serif;
-
-  font-size:clamp(26px,4vw,34px);
-
-  font-weight:800;
-
-  line-height:1.1;
-
-  letter-spacing:-.03em;
-
-
-  color:var(--text);
 
 }
 
@@ -62,14 +29,18 @@
 
   position:absolute;
 
-  top:16px;
 
-  right:16px;
+  top:18px;
+
+  right:18px;
 
 
   width:44px;
 
   height:44px;
+
+
+  border-radius:50%;
 
 
   display:flex;
@@ -79,12 +50,14 @@
   justify-content:center;
 
 
-  border-radius:50%;
-
-
   background:
 
     rgba(255,255,255,.08);
+
+
+  border:
+
+    1px solid rgba(255,255,255,.12);
 
 
   color:#fff;
@@ -96,26 +69,12 @@
   cursor:pointer;
 
 
-  z-index:20;
+  transition:.25s ease;
 
 
-  border:
+  backdrop-filter:
 
-    1px solid rgba(255,255,255,.1);
-
-
-  backdrop-filter:blur(10px);
-
-  -webkit-backdrop-filter:blur(10px);
-
-
-  transition:
-
-    transform .25s ease,
-
-    background .25s ease,
-
-    box-shadow .25s ease;
+    blur(10px);
 
 }
 
@@ -123,20 +82,19 @@
 
 .form-close:hover {
 
+  background:
 
-  background:var(--primary);
+    var(--primary);
 
 
   transform:
 
-    rotate(90deg)
-
-    scale(1.05);
+    rotate(90deg) scale(1.08);
 
 
   box-shadow:
 
-    0 10px 30px rgba(255,139,43,.35);
+    0 10px 30px rgba(239,109,20,.35);
 
 }
 
@@ -144,12 +102,44 @@
 
 .form-close:active {
 
-
   transform:
 
-    rotate(90deg)
+    rotate(90deg) scale(.95);
 
-    scale(.95);
+}
+
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.form-title {
+
+  margin:0 0 24px;
+
+
+  text-align:center;
+
+
+  font-family:
+
+    "Montserrat",
+    sans-serif;
+
+
+  font-size:
+
+    clamp(24px,5vw,34px);
+
+
+  line-height:1.2;
+
+
+  font-weight:800;
+
+
+  color:#fff;
 
 }
 
@@ -161,11 +151,10 @@
 
 .form {
 
-  width:100%;
-
   display:flex;
 
   flex-direction:column;
+
 
   gap:14px;
 
@@ -173,7 +162,9 @@
 
 
 
-
+/* =========================================================
+   INPUTS
+========================================================= */
 
 .form input,
 .form textarea {
@@ -182,16 +173,12 @@
   width:100%;
 
 
-  padding:15px 16px;
+  padding:
+
+    15px 16px;
 
 
   border-radius:14px;
-
-
-  border:
-
-    1px solid rgba(255,255,255,.12);
-
 
 
   background:
@@ -199,37 +186,34 @@
     rgba(0,0,0,.25);
 
 
+  border:
+
+    1px solid rgba(255,255,255,.12);
+
 
   color:#fff;
-
-
-  font-family:"Inter",sans-serif;
-
-
-  font-size:15px;
 
 
   outline:none;
 
 
+  font-family:
 
-  transition:
+    "Inter",
+    sans-serif;
 
-    border-color .2s ease,
 
-    box-shadow .2s ease,
+  font-size:15px;
 
-    background .2s ease;
+
+  transition:.25s ease;
 
 }
 
 
 
-
-
 .form input::placeholder,
 .form textarea::placeholder {
-
 
   color:
 
@@ -239,35 +223,23 @@
 
 
 
-
 .form input:focus,
 .form textarea:focus {
-
 
   border-color:
 
     var(--primary);
 
 
-
-  background:
-
-    rgba(0,0,0,.35);
-
-
-
   box-shadow:
 
-    0 0 0 3px rgba(255,139,43,.15);
+    0 0 0 3px rgba(239,109,20,.15);
 
 }
 
 
 
-
-
 .form textarea {
-
 
   min-height:120px;
 
@@ -277,48 +249,35 @@
 
 
 
-
-
-
 /* =========================================================
-   SUBMIT BUTTON
+   SUBMIT
 ========================================================= */
 
 .form-submit {
 
-
-  width:100%;
-
-
-  margin-top:6px;
+  margin-top:8px;
 
 
-  padding:16px;
+  padding:
+
+    16px;
 
 
   border-radius:999px;
 
 
-
   background:
 
-
-    linear-gradient(
-
-      135deg,
-
-      #ef6d14,
-
-      #ff963f
-
-    );
-
+    var(--primary);
 
 
   color:#fff;
 
 
-  font-family:"Inter",sans-serif;
+  font-family:
+
+    "Inter",
+    sans-serif;
 
 
   font-size:16px;
@@ -327,139 +286,71 @@
   font-weight:700;
 
 
-
   cursor:pointer;
 
 
-
-  transition:
-
-    transform .2s ease,
-
-    filter .2s ease,
-
-    box-shadow .2s ease;
+  transition:.25s ease;
 
 }
-
-
 
 
 
 .form-submit:hover {
 
+  transform:
 
-  transform:translateY(-2px);
-
-
-  filter:brightness(1.05);
+    translateY(-2px);
 
 
   box-shadow:
 
-    0 12px 30px rgba(255,139,43,.3);
+    0 12px 30px rgba(239,109,20,.35);
 
 }
-
-
 
 
 
 .form-submit:disabled {
 
-
   opacity:.6;
 
   cursor:not-allowed;
-
-  transform:none;
 
 }
 
 
 
-
-
-
 /* =========================================================
-   SUCCESS MESSAGE
+   SUCCESS
 ========================================================= */
 
 .success-message {
 
-
   margin-bottom:18px;
 
 
-  padding:14px 18px;
+  padding:14px;
 
 
   border-radius:14px;
 
 
+  text-align:center;
+
 
   background:
 
-    rgba(34,197,94,.15);
-
+    rgba(0,255,150,.12);
 
 
   border:
 
-    1px solid rgba(34,197,94,.35);
-
+    1px solid rgba(0,255,150,.25);
 
 
   color:#fff;
 
-
-  text-align:center;
-
-
-  font-family:"Inter",sans-serif;
-
-
-  font-size:15px;
-
 }
-
-
-
-
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(min-width:768px){
-
-
-.form-wrapper {
-
-  padding:40px;
-
-  padding-top:80px;
-
-}
-
-
-
-.form input,
-.form textarea {
-
-
-  font-size:16px;
-
-}
-
-
-
-}
-
-
-
-
 
 
 
@@ -472,10 +363,9 @@
 
 .form-wrapper {
 
+  padding:
 
-  padding:24px;
-
-  padding-top:68px;
+    70px 20px 28px;
 
 }
 
@@ -483,28 +373,9 @@
 
 .form-title {
 
-
   font-size:26px;
 
-  padding-inline:15px;
-
-
-}
-
-
-
-.form-close {
-
-
-  top:14px;
-
-  right:14px;
-
-
-  width:42px;
-
-  height:42px;
-
+  margin-bottom:20px;
 
 }
 
@@ -513,11 +384,11 @@
 .form input,
 .form textarea {
 
+  padding:
 
-  padding:14px;
+    14px;
 
 }
-
 
 
 }

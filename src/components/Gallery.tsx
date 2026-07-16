@@ -5,7 +5,10 @@ import "../styles/gallery.css";
 export default function Gallery() {
   const images = useMemo(
     () => [
-      "/2.webp",
+      "/public/19.jpg",
+      "/public/22.jpg",
+      "/public/17.jpg",
+      "/public/20.jpg",
       "/3.webp",
       "/4.webp",
       "/5.webp",
@@ -18,6 +21,15 @@ export default function Gallery() {
       "/12.webp",
       "/13.webp",
       "/14.webp",
+      "/public/15.webp",
+      "/public/16.jpg",
+      "/public/17.jpg",
+      "/public/18.jpg",
+      "/public/19.jpg",
+      
+      "/public/21.jpg",
+      "/public/22.jpg",
+      "/2.webp",
     ],
     []
   );

@@ -1,20 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
+import { HelmetProvider } from "react-helmet-async";
 
-// Main text font
+// fonts
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
 import "@fontsource/inter/700.css";
 
-// Headings font
 import "@fontsource/montserrat/500.css";
 import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 
-// Natural / accent font
 import "@fontsource/lora/400.css";
 import "@fontsource/lora/500.css";
 import "@fontsource/lora/600.css";
@@ -40,6 +39,8 @@ if (!root) throw new Error("Root element not found");
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <App />
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
   </React.StrictMode>
 );

@@ -2,457 +2,223 @@
    FOOTER
 ========================================================= */
 
-.footer {
-
+.footer{
 
     width:100%;
 
-
-
-    padding:60px 0 20px;
-
-
-
-    background:
-
-
-    linear-gradient(
-        120deg,
-        rgba(2,28,27,.95),
-        rgba(1,89,87,.35),
-        rgba(0,59,57,.95)
-    );
-
-
+    background:transparent;
 
     border-top:
-
-
     1px solid rgba(255,255,255,.08);
 
-
-
-    color:#fff;
-
-
 }
-
-
-
 
 
 /* =========================================================
    GRID
 ========================================================= */
 
-
-.footer__grid {
-
+.footer__grid{
 
     display:grid;
 
-
     grid-template-columns:1fr;
-
-
 
     gap:32px;
 
-
 }
-
-
-
 
 
 /* =========================================================
    TITLES
 ========================================================= */
 
-
 .footer__col h3,
-.footer__col h4 {
-
-
-    color:#fff;
-
-
-    font-family:"Montserrat",sans-serif;
-
-
-    font-weight:800;
-
+.footer__col h4{
 
     margin-bottom:16px;
 
+    color:#fff;
+
+    font-family:"Montserrat",sans-serif;
+
+    font-weight:800;
 
 }
 
-
-
-.footer__col h3 {
-
+.footer__col h3{
 
     font-size:22px;
 
-
 }
 
-
-
-.footer__col h4 {
-
+.footer__col h4{
 
     font-size:17px;
 
-
 }
-
-
-
 
 
 /* =========================================================
    TEXT + LINKS
 ========================================================= */
 
-
 .footer__col p,
-.footer__col a {
-
+.footer__col a{
 
     display:block;
 
+    margin-bottom:10px;
 
     color:
-
-
     rgba(255,255,255,.72);
-
-
 
     text-decoration:none;
 
-
-
-    margin-bottom:10px;
-
-
-
-    font-family:"Inter",sans-serif;
-
-
-
     font-size:14px;
-
-
 
     line-height:1.6;
 
-
-
     transition:.2s ease;
-
 
 }
 
-
-
-.footer__col a:hover {
-
+.footer__col a:hover{
 
     color:var(--primary);
 
-
 }
-
-
-
 
 
 /* =========================================================
    SOCIAL
 ========================================================= */
 
-
-.footer__socials {
-
+.footer__socials{
 
     display:flex;
-
 
     gap:12px;
 
-
 }
 
-
-
-.footer__socials a {
-
+.footer__socials a{
 
     width:42px;
 
-
     height:42px;
-
-
 
     display:flex;
 
-
     align-items:center;
-
 
     justify-content:center;
 
-
-
     border-radius:50%;
 
-
-
     background:
-
-
     rgba(255,255,255,.06);
 
-
-
     border:
-
-
     1px solid rgba(255,255,255,.1);
-
-
 
     color:#fff;
 
-
-
     font-size:18px;
 
-
-
-    transition:.2s ease;
-
+    transition:.25s ease;
 
 }
 
-
-
-.footer__socials a:hover {
-
-
-    color:var(--primary);
-
-
-
-    border-color:var(--primary);
-
-
+.footer__socials a:hover{
 
     transform:translateY(-3px);
 
+    color:var(--primary);
+
+    border-color:var(--primary);
 
 }
-
-
-
 
 
 /* =========================================================
    BOTTOM
 ========================================================= */
 
-
-.footer__bottom {
-
+.footer__bottom{
 
     margin-top:40px;
 
-
-
-    padding-top:18px;
-
-
+    padding-top:20px;
 
     text-align:center;
 
-
-
     border-top:
-
-
-    1px solid rgba(255,255,255,.1);
-
-
+    1px solid rgba(255,255,255,.08);
 
     color:
-
-
     rgba(255,255,255,.5);
-
-
-
-    font-family:"Inter",sans-serif;
-
-
 
     font-size:13px;
 
-
 }
-
-
-
-
-
 
 
 /* =========================================================
-   MOBILE 0 - 375
+   MOBILE
+   0 - 768
 ========================================================= */
 
-
-@media(max-width:375px){
-
-
-.footer{
-
-
-    padding:50px 0 18px;
-
-
-}
-
-
+@media(max-width:768px){
 
 .footer__grid{
 
-
-    gap:26px;
-
+    gap:28px;
 
 }
-
-
 
 .footer__col h3{
 
-
     font-size:20px;
 
-
 }
 
-
-
 }
-
-
-
 
 
 /* =========================================================
-   MOBILE 376 - 767
+   TABLET
+   769 - 1439
 ========================================================= */
 
-
-@media(min-width:376px) and (max-width:767px){
-
-
-.footer{
-
-
-    padding:70px 0 20px;
-
-
-}
-
-
-}
-
-
-
-
-
-
-
-/* =========================================================
-   TABLET 768 - 1199
-========================================================= */
-
-
-@media(min-width:768px) and (max-width:1199px){
-
-
-.footer{
-
-
-    padding:90px 0 20px;
-
-
-}
-
-
+@media(min-width:769px) and (max-width:1439px){
 
 .footer__grid{
 
-
     grid-template-columns:
-
-
     repeat(2,minmax(0,1fr));
 
-
-
-    gap:35px;
-
+    gap:40px;
 
 }
 
-
-
 }
-
-
-
 
 
 /* =========================================================
-   DESKTOP 1200+
+   DESKTOP
+   1440+
 ========================================================= */
 
-
-@media(min-width:1200px){
-
-
-.footer{
-
-
-    padding:100px 0 24px;
-
-
-}
-
-
+@media(min-width:1440px){
 
 .footer__grid{
 
-
     grid-template-columns:
-
-
     repeat(3,minmax(0,1fr));
 
-
-
-    gap:50px;
-
+    gap:56px;
 
 }
-
-
 
 }

@@ -5,609 +5,1026 @@
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
 }
+
 
 html {
-  scroll-behavior: smooth;
-  overscroll-behavior: none;
+
+    scroll-behavior:smooth;
+
+    overscroll-behavior:none;
+
 }
 
-html,
+
+
 body {
-  height: 100%;
-  overscroll-behavior: none;
+
+
+    min-height:100%;
+
+
+    font-family:"Inter",sans-serif;
+
+
+    background:#081917;
+
+
+    color:#fff;
+
+
+    line-height:1.6;
+
+
+    overflow-x:hidden;
+
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+
 }
+
+
+
+
 
 /* =========================================================
-   DESIGN TOKENS
+   TOKENS
 ========================================================= */
+
 
 :root {
-  --bg: #081917;
-  --surface: #0f2421;
-  --surface-2: #122d29;
 
-  --primary: #ff8b2b;
-  --primary-hover: #ff9a47;
 
-  --text: #ffffff;
-  --muted: #9ca3af;
+    --bg:#081917;
 
-  --border: rgba(255, 255, 255, 0.08);
 
-  --header-height: 84px;
-  --container: 1440px;
+    --surface:#0f2421;
 
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-  --space-5: 48px;
-  --space-6: 64px;
 
-  --z-content: 1;
-  --z-header: 1000;
-  --z-fab: 2000;
-  --z-menu: 5000;
-  --z-overlay: 6000;
-  --z-modal: 7000;
+    --surface-2:#122d29;
+
+
+
+    --primary:#ff8b2b;
+
+
+    --primary-hover:#ff9a47;
+
+
+
+    --text:#ffffff;
+
+
+    --muted:#9ca3af;
+
+
+
+    --border:
+    rgba(255,255,255,.08);
+
+
+
+    --header-height:84px;
+
+
+    --container:1440px;
+
+
+
+    --z-header:1000;
+
+    --z-menu:5000;
+
+    --z-overlay:6000;
+
+    --z-modal:7000;
+
+
 }
 
+
+
+
+
 /* =========================================================
-   BODY
+   GLOBAL BACKGROUND
 ========================================================= */
+
 
 body {
-  font-family: "Inter", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
 
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
 
-body::before {
-  content: "";
+    background:
 
-  position: fixed;
-  inset: 0;
 
-  pointer-events: none;
+    linear-gradient(
 
-  z-index: -1;
+        180deg,
 
-  background:
-    radial-gradient(
-      circle at top,
-      rgba(34, 197, 94, 0.12),
-      transparent 45%
+        #061513 0%,
+
+        #081917 45%,
+
+        #061513 100%
+
     );
 
-  opacity: 0.8;
+
 }
 
-/* =========================================================
-   ROOT
-========================================================= */
+
+
+/*
+    Единый мягкий зеленый фон
+    на весь сайт
+*/
+
 
 #root {
-  width: 100%;
-  overflow-x: hidden;
+
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+
 }
+
+
+
+
 
 /* =========================================================
-   TYPOGRAPHY
+   REMOVE SECTION BACKGROUNDS
 ========================================================= */
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: "Montserrat", sans-serif;
 
-  color: var(--text);
+section,
+.section,
+.about,
+.services-section,
+.gallery,
+.faq-section {
 
-  font-weight: 800;
 
-  line-height: 1.1;
+    background:transparent !important;
 
-  letter-spacing: -0.03em;
+
 }
 
-h1 {
-  font-size: clamp(42px, 7vw, 82px);
-}
 
-h2 {
-  position: relative;
 
-  margin-bottom: 40px;
 
-  text-align: center;
-
-  font-size: clamp(32px, 5vw, 56px);
-}
-
-h2::after {
-  content: "";
-
-  display: block;
-
-  width: 70px;
-  height: 3px;
-
-  margin: 14px auto 0;
-
-  border-radius: 999px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      transparent
-    );
-
-  opacity: 0.9;
-}
-
-h2.left {
-  text-align: left;
-}
-
-h2.left::after {
-  margin: 14px 0 0;
-}
 
 /* =========================================================
-   SECTION TITLES
+   GLOBAL SECTION SPACING
 ========================================================= */
 
-.section-title,
-.services-title,
-.gallery-title,
-.faq-title,
-.section-header h2 {
 
-  width: 100%;
+.section {
 
-  margin-bottom: 40px;
 
-  text-align: center;
+    position:relative;
 
-  font-family: "Montserrat", sans-serif;
 
-  font-size: clamp(32px, 5vw, 52px);
+    width:100%;
 
-  font-weight: 800;
 
-  line-height: 1.15;
+    padding-block:
 
-  letter-spacing: -0.03em;
 
-  color: var(--text);
+    clamp(80px,10vw,120px);
+
+
 }
+
+
+
 
 
 /* =========================================================
    CONTAINER
 ========================================================= */
 
+
 .container {
-  width: 100%;
 
-  max-width: var(--container);
 
-  margin: 0 auto;
+    width:100%;
 
-  padding-inline: 24px;
+
+    max-width:var(--container);
+
+
+    margin-inline:auto;
+
+
+    padding-inline:
+
+
+    clamp(20px,3vw,40px);
+
+
 }
+
+
+
 
 
 /* =========================================================
-   SECTION
+   TYPOGRAPHY
 ========================================================= */
 
-section[id] {
-  scroll-margin-top: var(--header-height);
+
+h1,
+h2,
+h3,
+h4 {
+
+
+    font-family:"Montserrat",sans-serif;
+
+
+    color:var(--text);
+
+
+    font-weight:800;
+
+
+    line-height:1.1;
+
+
+    letter-spacing:-.03em;
+
+
 }
+
+
+
+h1 {
+
+
+    font-size:
+
+    clamp(42px,7vw,82px);
+
+
+}
+
+
+
+h2 {
+
+
+    font-size:
+
+    clamp(32px,5vw,56px);
+
+
+}
+
+
+
 
 
 /* =========================================================
-   HEADER
+   COMMON CARD STYLE
 ========================================================= */
 
-.header {
 
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-
-  height: var(--header-height);
-
-  z-index: 999999;
-
-  background: rgba(8,25,23,.85);
-
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-
-  border-bottom: 1px solid var(--border);
-}
+.glass-card,
+.service-card,
+.faq-item,
+.about__stats div {
 
 
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal-overlay {
-
-  position: fixed;
-
-  inset: 0;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 20px;
-
-  background: rgba(0,0,0,.7);
-
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  z-index: var(--z-overlay);
-}
+    background:
 
 
-.modal {
+    linear-gradient(
 
-  position: relative;
+        120deg,
 
-  width: 100%;
+        rgba(2,28,27,.92),
 
-  max-width: 720px;
+        rgba(1,89,87,.45),
 
-  overflow: hidden;
+        rgba(0,59,57,.92)
 
-  border-radius: 24px;
+    );
 
-  background: rgba(15,36,33,.95);
 
-  border: 1px solid var(--border);
+    border:
 
-  backdrop-filter: blur(20px);
+    1px solid rgba(255,255,255,.1);
+
+
+    backdrop-filter:blur(12px);
+
+
+    -webkit-backdrop-filter:blur(12px);
+
 
 }
 
 
-/* =========================================================
-   MODAL CLOSE
-========================================================= */
 
-.modal-close {
-
-  position: absolute;
-
-  top: 12px;
-
-  right: 12px;
-
-  width: 44px;
-
-  height: 44px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: rgba(255,255,255,.08);
-
-  color: #fff;
-
-  font-size: 22px;
-
-  cursor: pointer;
-
-  z-index: var(--z-modal);
-}
-
-
-/* =========================================================
-   MODAL OPEN
-========================================================= */
-
-body.modal-open .header {
-
-  opacity: 0;
-
-  transform: translateY(-100%);
-
-  pointer-events: none;
-
-}
-
-
-/* =========================================================
-   FLOATING BUTTONS
-========================================================= */
-
-.right-fab {
-
-  position: fixed;
-
-  top: 50%;
-
-  right: 18px;
-
-  transform: translateY(-50%);
-
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 12px;
-
-  z-index: var(--z-fab);
-
-}
-
-
-.right-fab.hide {
-
-  opacity: 0;
-
-  transform: translate(80px,-50%);
-
-  pointer-events: none;
-
-}
-
-
-.fab {
-
-  width: 58px;
-
-  height: 58px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 50%;
-
-  text-decoration: none;
-
-  font-size: 24px;
-
-  box-shadow: 0 12px 35px rgba(0,0,0,.35);
-
-}
-
-
-.fab.call {
-
-  background: var(--primary);
-
-  color: #fff;
-
-}
-
-
-.fab.whatsapp {
-
-  background: var(--surface-2);
-
-  color: #fff;
-
-}
 
 
 /* =========================================================
    BUTTONS
 ========================================================= */
 
+
 button {
 
-  border: none;
 
-  background: none;
+    border:none;
 
-  color: inherit;
+    background:none;
 
-  font-family: "Inter", sans-serif;
+    font-family:inherit;
 
-  cursor: pointer;
+    cursor:pointer;
+
+
 }
 
-
-.btn-primary,
-.btn-secondary {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 14px 26px;
-
-  border-radius: 999px;
-
-  transition: all .2s ease;
-
-}
 
 
 .btn-primary {
 
-  background: var(--primary);
 
-  color: #fff;
+    background:
 
-  font-weight: 700;
+    linear-gradient(
 
-}
+        135deg,
 
+        var(--primary),
 
-.btn-primary:hover {
+        var(--primary-hover)
 
-  background: var(--primary-hover);
-
-  transform: translateY(-2px);
-
-}
+    );
 
 
-.btn-secondary {
+    color:#fff;
 
-  border: 1px solid var(--border);
-
-  color: var(--text);
 
 }
+
+
+
 
 
 /* =========================================================
-   CARD SYSTEM
+   IMAGES
 ========================================================= */
 
-.glass-card {
-
-  background: rgba(255,255,255,.03);
-
-  border: 1px solid var(--border);
-
-  border-radius: 24px;
-
-  backdrop-filter: blur(10px);
-
-}
-
-
-/* =========================================================
-   REVIEWS
-========================================================= */
-
-.review-card .text {
-
-  font-family: "Lora", serif;
-
-}
-
-
-/* =========================================================
-   FORMS
-========================================================= */
-
-input,
-textarea {
-
-  font-family: "Inter", sans-serif;
-
-}
-
-
-/* =========================================================
-   IMAGE
-========================================================= */
 
 img {
 
-  display: block;
 
-  max-width: 100%;
+    display:block;
+
+    max-width:100%;
+
 
 }
+
+
+
 
 
 /* =========================================================
-   SCROLLBAR
+   APP LAYOUT
 ========================================================= */
 
-::-webkit-scrollbar {
 
-  width: 10px;
+.app-layout {
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+.page-content {
+
+
+    flex:1;
+
+
+    padding-top:
+
+
+    var(--header-height);
+
 
 }
 
 
-::-webkit-scrollbar-track {
 
-  background: rgba(255,255,255,.04);
+main {
+
+
+    width:100%;
+
+
+}
+
+
+
+section {
+
+
+    width:100%;
+
 
 }
 
 
-::-webkit-scrollbar-thumb {
 
-  background: rgba(255,139,43,.7);
-
-  border-radius: 999px;
-
-}
 
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media (max-width: 768px) {
 
-  .section-title,
-  .services-title,
-  .gallery-title,
-  .faq-title,
-  .section-header h2 {
-
-    font-size: clamp(28px,8vw,36px);
-
-    margin-bottom: 24px;
-
-  }
+@media(max-width:768px){
 
 
-  .container {
-
-    padding-inline: 20px;
-
-  }
+:root {
 
 
-  .right-fab {
-
-    right: 12px;
-
-    gap: 10px;
-
-  }
+    --header-height:72px;
 
 
-  .fab {
+}
 
-    width: 52px;
 
-    height: 52px;
 
-    font-size: 22px;
+.section {
 
-  }
+
+    padding-block:70px;
+
+
+}
+
+
+}
+
+/* =========================================================
+   GLOBAL SECTION SYSTEM
+   FINAL OVERRIDES
+========================================================= */
+
+
+/* =========================================================
+   ROOT COLORS
+========================================================= */
+
+:root {
+
+    --page-bg:#061b18;
+
+    --section-space-mobile:70px;
+
+    --section-space-tablet:90px;
+
+    --section-space-desktop:110px;
+
+}
+
+
+
+
+
+/* =========================================================
+   BODY BACKGROUND
+========================================================= */
+
+html,
+body {
+
+    background:
+
+    radial-gradient(
+        circle at 20% 15%,
+        rgba(255,139,43,.08),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at 80% 50%,
+        rgba(0,255,200,.04),
+        transparent 45%
+    ),
+
+    var(--page-bg);
+
+    color:var(--text);
+
+}
+
+
+
+
+
+/* =========================================================
+   ALL SECTIONS RESET
+========================================================= */
+
+
+section,
+.about,
+.services-section,
+.gallery,
+.faq-section,
+.reviews,
+.footer {
+
+
+    background:transparent !important;
+
+
+}
+
+
+
+
+
+/* =========================================================
+   COMMON SECTION SPACING
+========================================================= */
+
+
+.about,
+.services-section,
+.gallery,
+.faq-section,
+.reviews {
+
+
+    padding-block:
+
+    var(--section-space-mobile);
+
+
+}
+
+
+
+
+
+/* =========================================================
+   REMOVE RANDOM SECTION GAPS
+========================================================= */
+
+
+section:first-child {
+
+    padding-top:0;
+
+}
+
+
+section:last-child {
+
+    padding-bottom:0;
+
+}
+
+
+
+
+
+/* =========================================================
+   COMMON CONTAINER
+========================================================= */
+
+
+.container {
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin-inline:auto;
+
+    padding-inline:20px;
+
+}
+
+
+
+
+
+/* =========================================================
+   ALL SECTION HEADERS
+========================================================= */
+
+
+.section-header,
+.services-header,
+.gallery-header,
+.faq-header,
+.reviews .section-header {
+
+
+    margin-bottom:40px;
+
+
+}
+
+
+
+
+
+/* =========================================================
+   ALL TITLES SAME
+========================================================= */
+
+
+h1,
+h2,
+.section-title,
+.gallery-title,
+.faq-title,
+.services-header h2 {
+
+
+    font-family:"Montserrat",sans-serif;
+
+
+    font-size:
+
+    clamp(34px,5vw,54px);
+
+
+    line-height:1.1;
+
+
+    font-weight:800;
+
+
+    letter-spacing:-.03em;
+
+
+    color:var(--text);
+
+
+    margin-top:0;
+
+
+    margin-bottom:16px;
+
+
+}
+
+
+
+
+
+/* =========================================================
+   ALL SUBTEXT SAME
+========================================================= */
+
+
+.section-header p,
+.services-header p,
+.gallery-subtitle,
+.faq-subtitle {
+
+
+    max-width:620px;
+
+
+    margin-inline:auto;
+
+
+    font-size:16px;
+
+
+    line-height:1.7;
+
+
+    color:
+
+    rgba(255,255,255,.75);
+
+
+}
+
+
+
+
+
+/* =========================================================
+   REMOVE OLD SECTION BACKGROUNDS
+========================================================= */
+
+
+.about::before,
+.faq-section::before {
+
+
+    display:none !important;
+
+
+}
+
+
+
+
+
+/* =========================================================
+   ALL CARDS SAME STYLE
+========================================================= */
+
+
+.service-card,
+.review-card,
+.faq-item,
+.about__stats div {
+
+
+    background:
+
+    linear-gradient(
+
+        120deg,
+
+        rgba(2,28,27,.92),
+
+        rgba(1,89,87,.38),
+
+        rgba(0,59,57,.92)
+
+    ) !important;
+
+
+    border:
+
+    1px solid rgba(255,255,255,.10);
+
+
+    backdrop-filter:blur(12px);
+
+
+    -webkit-backdrop-filter:blur(12px);
+
+
+}
+
+
+
+
+
+/* =========================================================
+   CARD HOVER SAME
+========================================================= */
+
+
+@media(hover:hover){
+
+
+.service-card:hover,
+.review-card:hover,
+.faq-item:hover {
+
+
+    transform:translateY(-4px);
+
+
+    border-color:
+
+    rgba(255,139,43,.45);
+
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.25);
+
+
+}
+
+
+}
+
+
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+
+@media(min-width:769px){
+
+
+.about,
+.services-section,
+.gallery,
+.faq-section,
+.reviews {
+
+
+    padding-block:
+
+    var(--section-space-tablet);
+
+
+}
+
+
+}
+
+
+
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+
+@media(min-width:1440px){
+
+
+.about,
+.services-section,
+.gallery,
+.faq-section,
+.reviews {
+
+
+    padding-block:
+
+    var(--section-space-desktop);
+
+
+}
+
+
+
+}
+
+
+
+
+
+/* =========================================================
+   FOOTER SAME BACKGROUND
+========================================================= */
+
+
+.footer {
+
+
+    background:
+
+    transparent !important;
+
+
+    border-top:
+
+    1px solid rgba(255,255,255,.08);
+
+
+}
+
+
+
+
+
+
+/* =========================================================
+   FIX ANCHOR SCROLL
+========================================================= */
+
+
+section {
+
+    scroll-margin-top:
+
+    calc(var(--header-height) + 20px);
+
+}
+
+/* =========================================================
+   FIX ALL SECTION HEADERS ALIGNMENT
+========================================================= */
+
+
+.services-header,
+.gallery-header,
+.faq-header,
+.reviews .section-header {
+
+
+    width:100%;
+
+
+    text-align:center;
+
+
+    margin-inline:auto;
+
+
+}
+
+
+
+/* TITLES CENTER */
+
+.services-header h2,
+.gallery-title,
+.faq-title,
+.reviews h2 {
+
+
+    width:100%;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+/* SUBTITLES CENTER */
+
+
+.services-header p,
+.gallery-subtitle,
+.faq-subtitle,
+.reviews .section-header p {
+
+
+    text-align:center;
+
+
+    margin-left:auto;
+
+
+    margin-right:auto;
+
+
+}
+
+
+
+
+
+/* FORCE FAQ CONTENT CENTER */
+
+
+.faq-title {
+
+
+    display:block;
+
+
+}
+
+
+
+
+
+/* FORCE GALLERY TITLE CENTER */
+
+
+.gallery-title {
+
+
+    display:block;
+
 
 }

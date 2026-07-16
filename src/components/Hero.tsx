@@ -10,15 +10,19 @@ export default function Hero({ openModal }: Props) {
 
       <div className="container hero__container">
 
+        {/* LEFT */}
+
         <div className="hero__left">
 
           <div className="hero__badge">
             Licensed & Insured Tree Service
           </div>
 
+
           <h1>
             Fast & Safe <span>Tree Removal Services</span>
           </h1>
+
 
           <p className="hero__text">
             Professional tree removal, trimming and emergency tree services
@@ -50,7 +54,7 @@ export default function Hero({ openModal }: Props) {
 
           <div className="hero__buttons">
 
-            <button 
+            <button
               className="btn-primary"
               onClick={openModal}
             >
@@ -58,8 +62,8 @@ export default function Hero({ openModal }: Props) {
             </button>
 
 
-            <a 
-              href="tel:+15596804185" 
+            <a
+              href="tel:+15596804185"
               className="btn-secondary"
             >
               Call Now
@@ -67,18 +71,23 @@ export default function Hero({ openModal }: Props) {
 
           </div>
 
+
         </div>
 
 
+
+        {/* RIGHT IMAGE */}
 
         <div className="hero__right">
 
           <div className="hero__image-wrap">
 
             <img
-              src="/hero.webp"
+              src="/hero.png"
               alt="Tree service team"
               loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
 
           </div>

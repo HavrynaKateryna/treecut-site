@@ -2,25 +2,16 @@
    ABOUT
 ========================================================= */
 
+
 .about {
+
+    position:relative;
 
     width:100%;
 
-    padding:60px 0;
+    padding-block:
 
-    background:
-
-    radial-gradient(
-        circle at 20% 20%,
-        rgba(255,139,43,.14),
-        transparent 45%
-    ),
-
-    radial-gradient(
-        circle at 80% 60%,
-        rgba(0,255,200,.06),
-        transparent 70%
-    );
+    clamp(80px,10vw,110px);
 
 }
 
@@ -32,6 +23,7 @@
    GRID
 ========================================================= */
 
+
 .about__grid {
 
     width:100%;
@@ -40,7 +32,7 @@
 
     grid-template-columns:1fr;
 
-    gap:32px;
+    gap:40px;
 
     align-items:center;
 
@@ -54,6 +46,7 @@
    TEXT
 ========================================================= */
 
+
 .about__text {
 
     position:relative;
@@ -62,26 +55,39 @@
 
 }
 
+
+
 .about__text h2 {
 
     margin-bottom:18px;
 
 }
 
+
+
 .about__text p {
+
 
     max-width:560px;
 
+
     margin-bottom:14px;
 
-    font-size:15px;
+
+    font-size:16px;
+
 
     line-height:1.7;
 
+
     color:
+
     rgba(255,255,255,.78);
 
+
 }
+
+
 
 .about__text p:last-child {
 
@@ -97,44 +103,67 @@
    STATS
 ========================================================= */
 
+
 .about__stats {
+
 
     display:flex;
 
+
     flex-wrap:wrap;
 
-    gap:10px;
 
-    margin-top:24px;
+    gap:12px;
+
+
+    margin-top:28px;
+
 
 }
 
+
+
 .about__stats div {
 
-    padding:10px 14px;
+
+    padding:
+
+    10px 14px;
+
+
 
     border-radius:14px;
 
+
+
     background:
 
-    linear-gradient(
-        120deg,
-        rgba(2,28,27,.95),
-        rgba(1,89,87,.45),
-        rgba(0,59,57,.95)
-    );
+
+    rgba(255,255,255,.04);
+
+
 
     border:
+
     1px solid rgba(255,255,255,.1);
+
+
 
     backdrop-filter:blur(12px);
 
+
     -webkit-backdrop-filter:blur(12px);
+
+
 
     font-size:13px;
 
+
+
     color:
+
     rgba(255,255,255,.88);
+
 
 }
 
@@ -146,57 +175,92 @@
    IMAGE
 ========================================================= */
 
+
 .about__image {
+
 
     position:relative;
 
-    width:100%;
 
 }
+
+
 
 .about__image::before {
 
+
     content:"";
+
 
     position:absolute;
 
+
     inset:0;
+
 
     z-index:2;
 
-    border-radius:22px;
+
+
+    border-radius:24px;
+
+
 
     background:
 
+
     linear-gradient(
+
         180deg,
+
         transparent 45%,
+
         rgba(0,0,0,.35)
+
     );
+
+
 
     pointer-events:none;
 
+
 }
+
+
 
 .about__image img {
 
+
     width:100%;
 
-    height:320px;
 
-    display:block;
+    height:360px;
+
+
 
     object-fit:cover;
 
-    object-position:50% 35%;
 
-    border-radius:22px;
+
+    object-position:center 35%;
+
+
+
+    border-radius:24px;
+
+
 
     border:
+
     1px solid rgba(255,255,255,.12);
 
+
+
     box-shadow:
-    0 20px 60px rgba(0,0,0,.30);
+
+
+    0 20px 60px rgba(0,0,0,.3);
+
 
 }
 
@@ -205,42 +269,77 @@
 
 
 /* =========================================================
-   MOBILE SMALL
+   MOBILE
+   0 - 375
 ========================================================= */
+
 
 @media(max-width:375px){
 
-.about{
 
-    padding:50px 0;
+.about {
 
-}
 
-.about__grid{
+    padding-block:60px;
 
-    gap:28px;
 
 }
 
-.about__text p{
 
-    font-size:14px;
 
-}
+.about__grid {
 
-.about__stats div{
 
-    padding:9px 12px;
+    gap:30px;
 
-    font-size:12px;
 
 }
 
-.about__image img{
+
+
+.about__text p {
+
+
+    font-size:15px;
+
+
+}
+
+
+
+.about__image img {
+
 
     height:280px;
 
+
 }
+
+
+
+.about__stats {
+
+
+    gap:10px;
+
+
+}
+
+
+
+.about__stats div {
+
+
+    padding:
+
+    9px 12px;
+
+
+    font-size:12px;
+
+
+}
+
 
 }
 
@@ -250,36 +349,41 @@
 
 /* =========================================================
    TABLET
+   376 - 768
 ========================================================= */
 
-@media(min-width:768px){
 
-.about{
+@media(min-width:376px) and (max-width:768px){
 
-    padding:80px 0;
 
-}
+.about {
 
-.about__grid{
 
-    grid-template-columns:
-    repeat(2,minmax(0,1fr));
+    padding-block:80px;
 
-    gap:48px;
 
 }
 
-.about__text p{
 
-    font-size:16px;
+
+.about__grid {
+
+
+    gap:40px;
+
+
+}
+
+
+
+.about__image img {
+
+
+    height:380px;
+
 
 }
 
-.about__image img{
-
-    height:420px;
-
-}
 
 }
 
@@ -289,41 +393,68 @@
 
 /* =========================================================
    DESKTOP
+   1440+
 ========================================================= */
 
-@media(min-width:1200px){
 
-.about{
+@media(min-width:1440px){
 
-    padding:90px 0;
+
+.about {
+
+
+    padding-block:110px;
+
 
 }
 
-.about__grid{
+
+
+.about__grid {
+
 
     grid-template-columns:
+
     .95fr 1fr;
 
-    gap:60px;
+
+
+    gap:70px;
+
 
 }
 
-.about__image img{
 
-    height:500px;
 
-}
+.about__image img {
 
-.about__stats{
 
-    gap:12px;
+    height:520px;
+
 
 }
 
-.about__stats div{
 
-    padding:11px 15px;
+
+.about__stats {
+
+
+    gap:14px;
+
 
 }
+
+
+
+.about__stats div {
+
+
+    padding:
+
+    11px 16px;
+
+
+}
+
 
 }

@@ -2,54 +2,42 @@
    HEADER
 ========================================================= */
 
-.header {
 
+.header {
 
     position:fixed;
 
-
     top:0;
-
 
     left:0;
 
-
-
     width:100%;
 
-
     height:var(--header-height);
-
-
 
     z-index:var(--z-header);
 
 
-
     background:
 
-
-    linear-gradient(
-        110deg,
-        rgba(2,28,27,.95),
-        rgba(1,89,87,.55),
-        rgba(0,59,57,.95)
-    );
-
+    rgba(6,34,31,.82);
 
 
     backdrop-filter:blur(18px);
 
-
     -webkit-backdrop-filter:blur(18px);
-
 
 
     border-bottom:
 
-
     1px solid rgba(255,255,255,.08);
 
+
+    transition:
+
+    background .3s ease,
+
+    border-color .3s ease;
 
 }
 
@@ -64,38 +52,28 @@
 
 .header__inner {
 
-
     width:100%;
 
-
     height:100%;
-
 
 
     max-width:var(--container);
 
 
-
-    margin:0 auto;
-
+    margin-inline:auto;
 
 
     padding-inline:20px;
 
 
-
     display:flex;
 
-
     align-items:center;
-
 
     justify-content:space-between;
 
 
-
     gap:20px;
-
 
 }
 
@@ -110,9 +88,7 @@
 
 .logo {
 
-
     display:flex;
-
 
     align-items:center;
 
@@ -120,9 +96,7 @@
     gap:12px;
 
 
-
     color:#fff;
-
 
 
     font-size:15px;
@@ -131,13 +105,10 @@
     font-weight:800;
 
 
-
     letter-spacing:.03em;
 
 
-
     white-space:nowrap;
-
 
 }
 
@@ -145,31 +116,23 @@
 
 .logo-circle {
 
-
     width:42px;
 
-
     height:42px;
-
 
 
     border-radius:50%;
 
 
-
     overflow:hidden;
-
 
 
     border:
 
-
     1px solid rgba(255,255,255,.12);
 
 
-
     flex-shrink:0;
-
 
 }
 
@@ -177,16 +140,12 @@
 
 .logo-circle img {
 
-
     width:100%;
-
 
     height:100%;
 
 
-
     object-fit:cover;
-
 
 }
 
@@ -201,9 +160,7 @@
 
 .nav {
 
-
     display:none;
-
 
 
     align-items:center;
@@ -211,19 +168,15 @@
 
     gap:24px;
 
-
 }
 
 
 
 .nav button {
 
-
     color:
 
-
     rgba(255,255,255,.75);
-
 
 
     font-size:16px;
@@ -232,9 +185,7 @@
     font-weight:600;
 
 
-
     transition:.2s ease;
-
 
 }
 
@@ -242,9 +193,7 @@
 
 .nav button:hover {
 
-
     color:#fff;
-
 
 }
 
@@ -259,13 +208,10 @@
 
 .header-contact {
 
-
     display:none;
 
 
-
     align-items:center;
-
 
 }
 
@@ -273,52 +219,39 @@
 
 .header-phone {
 
-
     display:inline-flex;
-
 
 
     align-items:center;
 
 
-
     gap:8px;
-
 
 
     padding:
 
-
     11px 18px;
-
 
 
     border-radius:999px;
 
 
-
     background:var(--primary);
-
 
 
     color:#fff;
 
 
-
     text-decoration:none;
-
 
 
     font-size:14px;
 
 
-
     font-weight:700;
 
 
-
     transition:.2s ease;
-
 
 }
 
@@ -330,9 +263,7 @@
     transform:translateY(-2px);
 
 
-
     background:var(--primary-hover);
-
 
 }
 
@@ -350,9 +281,7 @@
 
     width:44px;
 
-
     height:44px;
-
 
 
     display:flex;
@@ -364,31 +293,23 @@
     justify-content:center;
 
 
-
     border-radius:12px;
-
 
 
     background:
 
-
     rgba(255,255,255,.06);
-
 
 
     border:
 
-
     1px solid rgba(255,255,255,.1);
-
 
 
     color:#fff;
 
 
-
     font-size:23px;
-
 
 }
 
@@ -407,31 +328,24 @@
     position:fixed;
 
 
-
     inset:0;
-
 
 
     z-index:var(--z-menu);
 
 
-
     background:
-
 
     rgba(0,0,0,.72);
 
 
-
     backdrop-filter:blur(12px);
-
 
 
     display:flex;
 
 
     justify-content:flex-end;
-
 
 }
 
@@ -448,23 +362,19 @@
     height:100%;
 
 
-
     padding:
-
 
     100px 24px 30px;
 
 
+    background:
 
-    background:#0b1d1a;
-
+    rgba(6,34,31,.96);
 
 
     border-left:
 
-
     1px solid rgba(255,255,255,.08);
-
 
 
     display:flex;
@@ -476,12 +386,9 @@
     gap:16px;
 
 
-
     animation:
 
-
     menuSlide .25s ease;
-
 
 }
 
@@ -495,12 +402,10 @@
     position:absolute;
 
 
-
     top:18px;
 
 
     right:18px;
-
 
 
     width:42px;
@@ -509,24 +414,18 @@
     height:42px;
 
 
-
     border-radius:50%;
-
 
 
     background:
 
-
     rgba(255,255,255,.08);
-
 
 
     color:#fff;
 
 
-
     font-size:22px;
-
 
 }
 
@@ -540,21 +439,16 @@
     text-align:left;
 
 
-
     color:#fff;
-
 
 
     font-size:16px;
 
 
-
     font-weight:600;
 
 
-
     opacity:.85;
-
 
 }
 
@@ -564,7 +458,6 @@
 
 
     opacity:1;
-
 
 }
 
@@ -578,44 +471,33 @@
     display:inline-flex;
 
 
-
     align-items:center;
-
 
 
     gap:10px;
 
 
-
     margin-top:10px;
-
 
 
     padding:
 
-
     13px 16px;
-
 
 
     border-radius:14px;
 
 
-
     background:var(--primary);
-
 
 
     color:#fff;
 
 
-
     text-decoration:none;
 
 
-
     font-weight:700;
-
 
 }
 
@@ -633,25 +515,18 @@
 
 from {
 
-
     opacity:0;
 
-
     transform:translateX(20px);
-
 
 }
 
 
-
 to {
-
 
     opacity:1;
 
-
     transform:translateX(0);
-
 
 }
 
@@ -663,14 +538,15 @@ to {
 
 
 /* =========================================================
-   TABLET + DESKTOP
+   TABLET
+   769 - 1439
 ========================================================= */
 
 
-@media(min-width:768px){
+@media(min-width:769px) and (max-width:1439px){
 
 
-.header__inner{
+.header__inner {
 
 
     padding-inline:24px;
@@ -680,34 +556,15 @@ to {
 
 
 
-.nav{
+.burger {
 
 
-    display:flex;
+    width:46px;
 
-
-}
-
-
-
-.header-contact{
-
-
-    display:flex;
+    height:46px;
 
 
 }
-
-
-
-.burger{
-
-
-    display:none;
-
-
-}
-
 
 
 }
@@ -717,14 +574,113 @@ to {
 
 
 /* =========================================================
-   SMALL MOBILE
+   DESKTOP
+   1440+
+========================================================= */
+
+
+@media(min-width:1440px){
+
+
+.header__inner {
+
+
+    padding-inline:40px;
+
+
+}
+
+
+
+.nav {
+
+
+    display:flex;
+
+
+}
+
+
+
+.header-contact {
+
+
+    display:flex;
+
+
+}
+
+
+
+.burger {
+
+
+    display:none;
+
+
+}
+
+
+}
+
+
+
+
+
+/* =========================================================
+   MOBILE
+   0 - 768
+========================================================= */
+
+
+@media(max-width:768px){
+
+
+:root {
+
+
+    --header-height:72px;
+
+
+}
+
+
+
+.header {
+
+
+    height:var(--header-height);
+
+
+}
+
+
+
+.header__inner {
+
+
+    padding-inline:20px;
+
+
+}
+
+
+}
+
+
+
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ONLY SIZE ADJUSTMENT
 ========================================================= */
 
 
 @media(max-width:375px){
 
 
-.logo span{
+.logo span {
 
 
     display:none;
@@ -734,23 +690,24 @@ to {
 
 
 
-.header{
+.logo-circle {
 
 
-    height:76px;
+    width:38px;
+
+    height:38px;
 
 
 }
 
 
 
-.logo-circle{
+.burger {
 
 
-    width:38px;
+    width:40px;
 
-
-    height:38px;
+    height:40px;
 
 
 }

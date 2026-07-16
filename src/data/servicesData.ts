@@ -8,7 +8,6 @@ export interface Service {
   tag?: string;
 }
 
-
 export const services: Service[] = [
   {
     id: "tree-removal",
@@ -21,41 +20,37 @@ export const services: Service[] = [
       "We remove trees of all sizes using professional equipment and safe techniques while protecting your property.",
     image: "/images/tree-cut.jpg",
   },
-
   {
     id: "emergency-tree-removal",
     number: "02",
     tag: "24/7 RESPONSE",
     title: "Emergency Tree Removal",
     description:
-      "Fast help with storm damaged and hazardous trees.",
+      "Fast help with storm-damaged and hazardous trees.",
     full:
       "Our team quickly removes fallen and dangerous trees after storms to keep your property safe.",
     image: "/images/danger-tree.jpg",
   },
-
   {
     id: "tree-trimming",
     number: "03",
     title: "Tree Trimming",
     description:
-      "Improve tree health, safety and appearance.",
+      "Improve tree health, safety, and appearance.",
     full:
-      "Professional trimming helps maintain healthy trees and improves the look of your property.",
+      "Professional trimming helps maintain healthy trees while improving the beauty and safety of your property.",
     image: "/images/branches.jpg",
   },
-
   {
-    id: "stump-grinding",
-    number: "04",
-    title: "Stump Grinding",
-    description:
-      "Remove old stumps and restore your yard.",
-    full:
-      "We completely remove unwanted stumps and prepare the area for new landscaping.",
-    image: "/images/stump.jpg",
-  },
-
+  id: "wood-slabs",
+  number: "04",
+  title: "Wood Slabs",
+  description:
+    "Custom wood slab milling, drying, and preparation.",
+  full:
+    "We transform quality logs into beautiful live-edge wood slabs. Our process includes professional milling, careful drying, and preparation, creating durable natural wood pieces ready for furniture, countertops, tables, shelving, and custom woodworking projects.",
+  image: "/images/wood-slabs.jpg",
+},
   {
     id: "storm-cleanup",
     number: "05",
@@ -63,18 +58,17 @@ export const services: Service[] = [
     description:
       "Quick cleanup after storms and severe weather.",
     full:
-      "We remove fallen trees, branches and debris after storms.",
+      "We remove fallen trees, broken branches, and storm debris to restore your property quickly and safely.",
     image: "/images/storm-clean.jpg",
   },
-
   {
-    id: "lot-clearing",
+    id: "land-clearing",
     number: "06",
-    title: "Lot Clearing",
+    title: "Land Clearing",
     description:
-      "Prepare your property for construction or landscaping.",
+      "From overgrown land to construction-ready property.",
     full:
-      "Complete clearing of trees, brush and unwanted vegetation.",
-    image: "/images/lot-clearing.jpg",
+      "We prepare overgrown properties for construction by clearing trees, brush, bushes, vines, and vegetation. We also remove stumps and roots, haul away all debris, and leave your lot clean and ready for building, grading, fencing, or development.",
+    image: "/images/land-clearing.jpg",
   },
 ];

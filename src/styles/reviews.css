@@ -6,28 +6,9 @@
 
     width:100%;
 
-
-    padding:60px 0;
-
-
-    background:
-
-
-    radial-gradient(
-        circle at 20% 20%,
-        rgba(255,139,43,.14),
-        transparent 45%
-    ),
-
-
-    radial-gradient(
-        circle at 80% 60%,
-        rgba(0,255,200,.06),
-        transparent 70%
-    );
+    background:transparent;
 
 }
-
 
 
 /* =========================================================
@@ -36,120 +17,77 @@
 
 .reviews .section-header {
 
-
     width:100%;
-
 
     text-align:center;
 
-
-    margin-bottom:32px;
-
+    margin-bottom:40px;
 
 }
-
-
 
 .google-rating {
 
-
     display:flex;
-
 
     align-items:center;
 
-
     justify-content:center;
-
 
     gap:10px;
 
-
     margin-top:14px;
 
-
 }
-
-
 
 .google-rating span {
 
-
     color:var(--primary);
-
 
     font-size:18px;
 
-
     letter-spacing:2px;
 
-
 }
-
-
 
 .google-rating strong {
 
-
     color:var(--text);
-
 
     font-size:15px;
 
-
     font-weight:700;
 
-
 }
-
-
-
 
 
 /* =========================================================
    GRID
 ========================================================= */
 
-
 .reviews-grid {
-
 
     display:grid;
 
-
     grid-template-columns:1fr;
 
-
-    gap:16px;
-
+    gap:18px;
 
 }
-
-
-
 
 
 /* =========================================================
    CARD
 ========================================================= */
 
-
 .review-card {
-
 
     position:relative;
 
-
-    padding:18px;
-
+    padding:20px;
 
     border-radius:22px;
 
-
-
     background:
-
-
     linear-gradient(
         120deg,
         rgba(2,28,27,.95),
@@ -157,438 +95,218 @@
         rgba(0,59,57,.95)
     );
 
-
-
     border:
-
     1px solid rgba(255,255,255,.1);
-
-
 
     backdrop-filter:blur(12px);
 
-
     -webkit-backdrop-filter:blur(12px);
-
-
 
     transition:.25s ease;
 
-
 }
 
+@media (hover:hover){
 
-
-@media(hover:hover){
-
-
-.review-card:hover {
-
+.review-card:hover{
 
     transform:translateY(-4px);
 
-
     border-color:
-
     rgba(255,139,43,.45);
 
-
     box-shadow:
-
-
     0 15px 35px rgba(0,0,0,.25);
 
-
 }
 
-
 }
-
-
-
-
-
 
 
 /* =========================================================
    TOP
 ========================================================= */
 
-
-.review-top {
-
+.review-top{
 
     display:flex;
 
-
     align-items:center;
-
 
     gap:12px;
 
-
     margin-bottom:14px;
 
-
 }
-
-
-
 
 
 /* =========================================================
    AVATAR
 ========================================================= */
 
-
-.avatar {
-
+.avatar{
 
     width:44px;
 
-
     height:44px;
-
 
     flex-shrink:0;
 
-
-
     display:flex;
-
 
     align-items:center;
 
-
     justify-content:center;
-
-
 
     border-radius:50%;
 
-
-
     background:var(--primary);
-
-
 
     color:#fff;
 
-
-
     font-family:"Montserrat",sans-serif;
-
-
 
     font-size:16px;
 
-
     font-weight:800;
 
-
 }
-
-
-
 
 
 /* =========================================================
    USER
 ========================================================= */
 
-
-.name {
-
+.name{
 
     color:var(--text);
 
-
-    font-family:"Inter",sans-serif;
-
-
     font-size:15px;
-
 
     font-weight:700;
 
-
 }
 
-
-
-.stars {
-
+.stars{
 
     margin-top:3px;
 
-
     color:var(--primary);
-
 
     font-size:15px;
 
-
     letter-spacing:1px;
 
-
 }
-
-
-
 
 
 /* =========================================================
    TEXT
 ========================================================= */
 
-
-.review-card .text {
-
+.review-card .text{
 
     margin-bottom:14px;
 
-
-
     color:
-
-
     rgba(255,255,255,.85);
-
-
 
     font-family:"Lora",serif;
 
-
-
     font-size:15px;
-
 
     line-height:1.65;
 
-
 }
-
-
-
 
 
 /* =========================================================
    TIME
 ========================================================= */
 
-
-.time {
-
+.time{
 
     color:
-
-
     rgba(255,255,255,.45);
-
-
-
-    font-family:"Inter",sans-serif;
-
-
 
     font-size:12px;
 
-
 }
-
-
-
-
-
 
 
 /* =========================================================
-   MOBILE 0 - 375
+   MOBILE
+   0 - 768
 ========================================================= */
 
-
-@media(max-width:375px){
-
-
-.reviews{
-
-
-    padding:50px 0;
-
-
-}
-
-
-
-.review-card{
-
-
-    padding:16px;
-
-
-}
-
-
-
-.review-card .text{
-
-
-    font-size:14px;
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-/* =========================================================
-   MOBILE 376 - 768
-========================================================= */
-
-
-@media(min-width:376px) and (max-width:768px){
-
-
-.reviews{
-
-
-    padding:70px 0;
-
-
-}
-
-
+@media(max-width:768px){
 
 .reviews-grid{
 
-
-    gap:18px;
-
+    gap:16px;
 
 }
 
-
-
 .review-card{
-
 
     padding:18px;
 
+}
+
+.review-card .text{
+
+    font-size:14px;
 
 }
 
-
 }
-
-
-
-
-
 
 
 /* =========================================================
-   TABLET 769 - 1199
+   TABLET
+   769 - 1439
 ========================================================= */
 
-
-@media(min-width:769px) and (max-width:1199px){
-
-
-.reviews{
-
-
-    padding:90px 0;
-
-
-}
-
-
+@media(min-width:769px) and (max-width:1439px){
 
 .reviews-grid{
 
-
     grid-template-columns:
-
-
     repeat(2,minmax(0,1fr));
-
-
-
-    gap:20px;
-
-
-}
-
-
-
-.review-card{
-
-
-    padding:22px;
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-/* =========================================================
-   DESKTOP 1200+
-========================================================= */
-
-
-@media(min-width:1200px){
-
-
-.reviews{
-
-
-    padding:70px 0;
-
-
-}
-
-
-
-.reviews-grid{
-
-
-    grid-template-columns:
-
-
-    repeat(3,minmax(0,1fr));
-
-
 
     gap:22px;
 
-
 }
-
-
 
 .review-card{
 
+    padding:22px;
 
-    padding:24px;
-
+}
 
 }
 
 
+/* =========================================================
+   DESKTOP
+   1440+
+========================================================= */
+
+@media(min-width:1440px){
+
+.reviews-grid{
+
+    grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+    gap:28px;
+
+}
+
+.review-card{
+
+    padding:24px;
+
+}
 
 }

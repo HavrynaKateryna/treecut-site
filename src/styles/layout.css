@@ -1,152 +1,231 @@
 /* =========================================================
-   APP LAYOUT ROOT
+   APP
 ========================================================= */
+
 
 .app-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
 }
+
+
 
 /* =========================================================
-   PAGE CONTENT
+   HEADER SPACE
 ========================================================= */
 
+
 .page-content {
-  flex: 1;
 
-  padding-top: var(--header-height);
 
-  width: 100%;
+    flex:1;
 
-  overflow-x: clip;
+
+    padding-top:
+
+    var(--header-height);
+
+
 }
+
+
 
 /* =========================================================
    MAIN
 ========================================================= */
 
+
 main {
-  display: block;
-  width: 100%;
+
+
+    display:block;
+
+
+    width:100%;
+
+
 }
+
+
 
 /* =========================================================
-   SECTION SYSTEM
+   SECTIONS
 ========================================================= */
 
+
 section {
-  width: 100%;
+
+
+    width:100%;
+
+
 }
+
+
 
 .section {
-  position: relative;
 
-  width: 100%;
 
-  padding-block: clamp(80px, 10vw, 140px);
+    position:relative;
+
+
+    width:100%;
+
+
+    padding-block:
+
+    clamp(80px,10vw,140px);
+
+
 }
 
-/* anchor offset for fixed header */
+
+
 section[id] {
-  scroll-margin-top: calc(var(--header-height) + 20px);
+
+
+    scroll-margin-top:
+
+    calc(var(--header-height) + 20px);
+
+
 }
+
+
 
 /* =========================================================
    CONTAINER
 ========================================================= */
 
+
 .container {
-  width: 100%;
 
-  max-width: var(--container);
 
-  margin-inline: auto;
+    width:100%;
 
-  padding-inline: clamp(20px, 4vw, 40px);
 
-  box-sizing: border-box;
+    max-width:
+
+    var(--container);
+
+
+    margin-inline:auto;
+
+
+    padding-inline:
+
+    clamp(20px,3vw,40px);
+
+
 }
+
+
 
 /* =========================================================
-   SECTION SPACING HELPERS
+   GRIDS
 ========================================================= */
 
-.section-sm {
-  padding-block: clamp(48px, 7vw, 80px);
-}
-
-.section-lg {
-  padding-block: clamp(120px, 12vw, 180px);
-}
-
-/* =========================================================
-   COMMON GRID
-========================================================= */
 
 .grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(32px, 5vw, 80px);
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(2,minmax(0,1fr));
+
+
+    gap:
+
+    clamp(32px,5vw,80px);
+
+
 }
+
+
 
 .grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(24px, 4vw, 40px);
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(3,minmax(0,1fr));
+
+
+    gap:
+
+    clamp(24px,4vw,40px);
+
+
 }
+
+
 
 /* =========================================================
-   COMMON CONTENT WIDTHS
+   TABLET
 ========================================================= */
 
-.content-narrow {
-  max-width: 720px;
-  margin-inline: auto;
+
+@media(max-width:992px){
+
+
+    .grid-2,
+    .grid-3 {
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
 }
 
-.content-medium {
-  max-width: 960px;
-  margin-inline: auto;
-}
 
-/* =========================================================
-   ROOT
-========================================================= */
-
-#root {
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: clip;
-}
-
-@supports not (overflow: clip) {
-  #root {
-    overflow-x: hidden;
-  }
-}
 
 /* =========================================================
    MOBILE
 ========================================================= */
 
-@media (max-width: 992px) {
-  .grid-2 {
-    grid-template-columns: 1fr;
-  }
 
-  .grid-3 {
-    grid-template-columns: 1fr;
-  }
-}
+@media(max-width:768px){
 
-@media (max-width: 768px) {
-  .section {
-    padding-block: 80px;
-  }
 
-  .container {
-    padding-inline: 20px;
-  }
+    .section {
+
+
+        padding-block:
+
+        80px;
+
+
+    }
+
+
+
+    .container {
+
+
+        padding-inline:
+
+        20px;
+
+
+    }
+
+
 }

@@ -169,6 +169,8 @@
   height: 100%;
 
   overflow: hidden;
+
+  position: relative;
 }
 
 .hero__image-wrap::before {
@@ -213,6 +215,27 @@
   object-position: center;
 
   filter: contrast(1.03) saturate(1.05);
+
+  transition: transform 0.4s ease;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 767px) {
+  .hero__image-wrap img {
+    object-position: 72% center;
+    transform: scale(1.08);
+  }
+
+  .hero__image-wrap::before {
+    background: linear-gradient(
+      180deg,
+      rgba(6, 27, 24, 0.35),
+      rgba(6, 27, 24, 0.88)
+    );
+  }
 }
 
 /* =====================================================

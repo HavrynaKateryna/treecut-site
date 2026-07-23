@@ -1,558 +1,291 @@
-/* =========================================================
+/* =====================================================
    ADMIN PAGE
-========================================================= */
-
+===================================================== */
 
 .admin-page {
+  min-height: 100svh;
 
-  min-height:100vh;
+  padding: calc(var(--header-height) + 30px) 20px
+    60px;
 
+  color: var(--text);
 
-  padding:
-
-  calc(var(--header-height) + 30px)
-  24px
-  60px;
-
-
-  color:var(--text);
-
-
-  background:
-
-  radial-gradient(
+  background: radial-gradient(
     circle at top,
-    rgba(255,139,43,.10),
+    rgba(239, 109, 20, 0.1),
     transparent 45%
   );
-
 }
 
-
-
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
-
+===================================================== */
 
 .admin-header {
-
-  margin-bottom:40px;
-
+  margin-bottom: 32px;
 }
-
-
 
 .admin-header h1 {
+  margin: 0;
 
-  font-family:"Montserrat",sans-serif;
+  font-family: "Montserrat", sans-serif;
 
+  font-size: clamp(28px, 5vw, 42px);
 
-  font-size:
+  font-weight: 800;
 
-  clamp(28px,5vw,42px);
+  line-height: 1.15;
 
+  letter-spacing: -0.03em;
 
-  font-weight:800;
-
-
-  letter-spacing:-.03em;
-
-
-  color:var(--primary);
-
+  color: var(--accent);
 }
-
-
 
 .admin-header p {
+  margin-top: 10px;
 
-  margin-top:10px;
+  font-size: 15px;
 
-
-  color:
-
-  rgba(255,255,255,.65);
-
-
-  font-size:15px;
-
+  color: rgba(255, 255, 255, 0.65);
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    LOADING / EMPTY
-========================================================= */
-
+===================================================== */
 
 .loading,
 .empty {
+  margin-top: 80px;
 
+  text-align: center;
 
-  text-align:center;
-
-
-  margin-top:80px;
-
-
-  color:
-
-  rgba(255,255,255,.55);
-
-
+  color: rgba(255, 255, 255, 0.55);
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    TABLE WRAPPER
-========================================================= */
-
+===================================================== */
 
 .table-wrapper {
+  width: 100%;
 
+  overflow-x: auto;
 
-  width:100%;
+  border-radius: 20px;
 
-
-  overflow-x:auto;
-
-
-  border-radius:24px;
-
-
-  scrollbar-width:thin;
-
-
+  scrollbar-width: thin;
 }
 
-
-
-/* =========================================================
+/* =====================================================
    TABLE
-========================================================= */
-
+===================================================== */
 
 .admin-table {
+  width: 100%;
 
+  min-width: 760px;
 
-  width:100%;
+  border-collapse: collapse;
 
+  overflow: hidden;
 
-  min-width:850px;
-
-
-  border-collapse:collapse;
-
-
-  overflow:hidden;
-
-
-  background:
-
-
-  linear-gradient(
+  background: linear-gradient(
     120deg,
-    rgba(2,28,27,.95),
-    rgba(1,89,87,.45),
-    rgba(0,59,57,.95)
+    rgba(2, 28, 27, 0.95),
+    rgba(1, 89, 87, 0.45),
+    rgba(0, 59, 57, 0.95)
   );
 
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-  border:
+  backdrop-filter: blur(14px);
 
-  1px solid rgba(255,255,255,.1);
+  -webkit-backdrop-filter: blur(14px);
 
-
-  backdrop-filter:blur(14px);
-
-
-  -webkit-backdrop-filter:blur(14px);
-
-
-  border-radius:24px;
-
+  border-radius: 24px;
 }
 
-
-
-/* =========================================================
+/* =====================================================
    TABLE HEADER
-========================================================= */
-
+===================================================== */
 
 .admin-table th {
+  padding: 14px;
 
+  text-align: left;
 
-  padding:
+  font-family: "Inter", sans-serif;
 
-  16px;
+  font-size: 13px;
 
+  font-weight: 600;
 
-  text-align:left;
+  color: rgba(255, 255, 255, 0.55);
 
-
-  font-family:"Inter",sans-serif;
-
-
-  font-size:13px;
-
-
-  font-weight:600;
-
-
-  color:
-
-  rgba(255,255,255,.55);
-
-
-  background:
-
-  rgba(255,255,255,.04);
-
-
+  background: rgba(255, 255, 255, 0.04);
 }
 
-
-
-/* =========================================================
+/* =====================================================
    CELLS
-========================================================= */
-
+===================================================== */
 
 .admin-table td {
+  padding: 14px;
 
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 
-  padding:
+  color: white;
 
-  16px;
-
-
-  border-top:
-
-  1px solid rgba(255,255,255,.06);
-
-
-  color:white;
-
-
-  font-size:14px;
-
+  font-size: 14px;
 }
 
-
-
-.admin-table tr {
-
-
-  transition:.2s ease;
-
+.admin-table tbody tr {
+  transition: 0.2s ease;
 }
 
-
-
-.admin-table tbody tr:hover {
-
-
-  background:
-
-  rgba(255,255,255,.04);
-
-
+@media (hover: hover) {
+  .admin-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    MESSAGE
-========================================================= */
-
+===================================================== */
 
 .message {
+  max-width: 260px;
 
+  overflow: hidden;
 
-  max-width:260px;
+  white-space: nowrap;
 
+  text-overflow: ellipsis;
 
-  white-space:nowrap;
-
-
-  overflow:hidden;
-
-
-  text-overflow:ellipsis;
-
-
-  color:
-
-  rgba(255,255,255,.7);
-
-
+  color: rgba(255, 255, 255, 0.7);
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    STATUS
-========================================================= */
-
+===================================================== */
 
 .status {
+  display: inline-flex;
 
+  align-items: center;
 
-  display:inline-flex;
+  padding: 6px 12px;
 
+  border-radius: 999px;
 
-  align-items:center;
+  font-size: 11px;
 
+  font-weight: 700;
 
-  padding:
-
-  6px 12px;
-
-
-  border-radius:999px;
-
-
-  font-size:11px;
-
-
-  font-weight:700;
-
-
-  text-transform:uppercase;
-
+  text-transform: uppercase;
 }
-
-
 
 .status.new {
+  background: rgba(77, 163, 255, 0.15);
 
-
-  background:
-
-  rgba(77,163,255,.15);
-
-
-  color:#4da3ff;
-
-
+  color: #4da3ff;
 }
-
-
 
 .status.in_progress {
+  background: rgba(255, 193, 7, 0.15);
 
-
-  background:
-
-  rgba(255,193,7,.15);
-
-
-  color:#ffcc66;
-
-
+  color: #ffcc66;
 }
-
-
 
 .status.done {
+  background: rgba(40, 167, 69, 0.15);
 
-
-  background:
-
-  rgba(40,167,69,.15);
-
-
-  color:#4dff88;
-
-
+  color: #4dff88;
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    ACTIONS
-========================================================= */
-
+===================================================== */
 
 .actions {
+  display: flex;
 
+  gap: 8px;
 
-  display:flex;
-
-
-  gap:8px;
-
-
-  flex-wrap:wrap;
-
+  flex-wrap: wrap;
 }
-
-
 
 .actions button {
+  padding: 8px 12px;
 
+  border-radius: 10px;
 
-  padding:
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-  8px 12px;
+  background: rgba(255, 255, 255, 0.06);
 
+  color: white;
 
-  border-radius:10px;
+  font-size: 12px;
 
+  cursor: pointer;
 
-  font-size:12px;
-
-
-  color:white;
-
-
-  background:
-
-  rgba(255,255,255,.06);
-
-
-  border:
-
-  1px solid rgba(255,255,255,.1);
-
-
-  cursor:pointer;
-
-
-  transition:.25s ease;
-
-
+  transition: 0.25s ease;
 }
 
+@media (hover: hover) {
+  .actions button:hover {
+    transform: translateY(-2px);
 
-
-.actions button:hover {
-
-
-  transform:translateY(-2px);
-
-
-  background:
-
-  rgba(255,255,255,.12);
-
-
+    background: rgba(255, 255, 255, 0.12);
+  }
 }
-
-
 
 /* DELETE */
 
-
 .actions .delete {
+  color: var(--accent);
 
+  background: rgba(239, 109, 20, 0.12);
 
-  color:var(--primary);
-
-
-  background:
-
-  rgba(255,139,43,.12);
-
-
-  border-color:
-
-  rgba(255,139,43,.3);
-
-
+  border-color: rgba(239, 109, 20, 0.3);
 }
-
-
 
 .actions .delete:hover {
-
-
-  background:
-
-  rgba(255,139,43,.22);
-
-
+  background: rgba(239, 109, 20, 0.22);
 }
 
+/* =====================================================
+   TABLET
+===================================================== */
 
+@media (min-width: 768px) {
+  .admin-page {
+    padding: calc(var(--header-height) + 30px)
+      30px 70px;
+  }
 
+  .admin-header {
+    margin-bottom: 40px;
+  }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-
-@media(max-width:768px){
-
-
-.admin-page {
-
-
-  padding:
-
-  calc(var(--header-height) + 20px)
-  16px
-  40px;
-
-
+  .admin-table {
+    min-width: 850px;
+  }
 }
 
+/* =====================================================
+   DESKTOP
+===================================================== */
 
+@media (min-width: 1440px) {
+  .admin-page {
+    padding-inline: 40px;
+  }
 
-.admin-header {
+  .table-wrapper {
+    max-width: 1440px;
 
-
-  margin-bottom:28px;
-
-
-}
-
-
-
-.table-wrapper {
-
-
-  border-radius:18px;
-
-
-}
-
-
-
-.admin-table {
-
-
-  min-width:760px;
-
-
-}
-
-
-
-.admin-table th,
-.admin-table td {
-
-
-  padding:
-
-  12px;
-
-
-}
-
-
+    margin-inline: auto;
+  }
 }

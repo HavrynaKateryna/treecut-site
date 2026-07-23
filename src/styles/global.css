@@ -1,1030 +1,355 @@
-/* =========================================================
+/* =====================================================
+   TIM'S TREE SERVICE - GLOBAL CSS
+===================================================== */
+
+/* =====================================================
    RESET
-========================================================= */
+===================================================== */
 
 *,
 *::before,
 *::after {
-
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 html {
-
-    scroll-behavior:smooth;
-
-    overscroll-behavior:none;
-
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
-
-
 
 body {
+  min-height: 100vh;
 
+  font-family: "Inter", sans-serif;
 
-    min-height:100%;
+  color: #ffffff;
 
+  line-height: 1.6;
 
-    font-family:"Inter",sans-serif;
+  overflow-x: hidden;
 
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(239, 108, 23, 0.05),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 45%,
+      rgba(0, 89, 86, 0.18),
+      transparent 50%
+    ),
+    rgb(6, 27, 24);
 
-    background:#081917;
+  -webkit-font-smoothing: antialiased;
 
-
-    color:#fff;
-
-
-    line-height:1.6;
-
-
-    overflow-x:hidden;
-
-
-    -webkit-font-smoothing:antialiased;
-
-    text-rendering:optimizeLegibility;
-
-
+  text-rendering: optimizeLegibility;
 }
 
-
-
-
-
-/* =========================================================
-   TOKENS
-========================================================= */
-
+/* =====================================================
+   VARIABLES
+===================================================== */
 
 :root {
+  /* COLORS */
 
+  --primary: rgb(0, 89, 86);
 
-    --bg:#081917;
+  --primary-light: rgb(0, 110, 107);
 
+  --primary-dark: rgb(0, 60, 58);
 
-    --surface:#0f2421;
+  --accent: rgb(239, 108, 23);
 
+  --accent-hover: rgb(255, 132, 46);
 
-    --surface-2:#122d29;
+  --background: rgb(6, 27, 24);
 
+  --surface: rgb(13, 48, 45);
 
+  --white: #ffffff;
 
-    --primary:#ff8b2b;
+  --text-muted: #fff;
 
+  --border: rgba(255, 255, 255, 0.08);
 
-    --primary-hover:#ff9a47;
+  /* LAYOUT */
 
+  --header-height: 84px;
 
+  --container: 1440px;
 
-    --text:#ffffff;
+  /* SECTIONS */
 
+  --section-mobile: 10px;
 
-    --muted:#9ca3af;
+  --section-tablet: 30px;
 
+  --section-desktop: 50px;
 
+  /* Z INDEX */
 
-    --border:
-    rgba(255,255,255,.08);
+  --z-header: 1000;
 
+  --z-floating: 2000;
 
+  --z-menu: 5000;
 
-    --header-height:84px;
+  --z-overlay: 6000;
 
-
-    --container:1440px;
-
-
-
-    --z-header:1000;
-
-    --z-menu:5000;
-
-    --z-overlay:6000;
-
-    --z-modal:7000;
-
-
+  --z-modal: 7000;
 }
 
-
-
-
-
-/* =========================================================
-   GLOBAL BACKGROUND
-========================================================= */
-
-
-body {
-
-
-    background:
-
-
-    linear-gradient(
-
-        180deg,
-
-        #061513 0%,
-
-        #081917 45%,
-
-        #061513 100%
-
-    );
-
-
-}
-
-
-
-/*
-    Единый мягкий зеленый фон
-    на весь сайт
-*/
-
+/* =====================================================
+   ROOT
+===================================================== */
 
 #root {
+  width: 100%;
 
+  min-height: 100vh;
 
-    width:100%;
-
-    min-height:100vh;
-
-    overflow-x:hidden;
-
-    position:relative;
-
-
+  overflow-x: hidden;
 }
 
+/* =====================================================
+   BASE ELEMENTS
+===================================================== */
 
+a {
+  color: inherit;
 
-
-
-/* =========================================================
-   REMOVE SECTION BACKGROUNDS
-========================================================= */
-
-
-section,
-.section,
-.about,
-.services-section,
-.gallery,
-.faq-section {
-
-
-    background:transparent !important;
-
-
+  text-decoration: none;
 }
 
+button {
+  border: none;
 
+  background: none;
 
+  cursor: pointer;
 
-
-/* =========================================================
-   GLOBAL SECTION SPACING
-========================================================= */
-
-
-.section {
-
-
-    position:relative;
-
-
-    width:100%;
-
-
-    padding-block:
-
-
-    clamp(80px,10vw,120px);
-
-
+  font-family: inherit;
 }
 
+img {
+  display: block;
 
-
-
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-
-.container {
-
-
-    width:100%;
-
-
-    max-width:var(--container);
-
-
-    margin-inline:auto;
-
-
-    padding-inline:
-
-
-    clamp(20px,3vw,40px);
-
-
+  max-width: 100%;
 }
 
+ul,
+ol {
+  list-style: none;
+}
 
-
-
-
-/* =========================================================
+/* =====================================================
    TYPOGRAPHY
-========================================================= */
-
+===================================================== */
 
 h1,
 h2,
 h3,
 h4 {
+  font-family: "Montserrat", sans-serif;
 
+  color: #ffffff;
 
-    font-family:"Montserrat",sans-serif;
+  font-weight: 800;
 
+  line-height: 1.1;
 
-    color:var(--text);
-
-
-    font-weight:800;
-
-
-    line-height:1.1;
-
-
-    letter-spacing:-.03em;
-
-
+  letter-spacing: -0.04em;
 }
-
-
 
 h1 {
-
-
-    font-size:
-
-    clamp(42px,7vw,82px);
-
-
+  font-size: clamp(40px, 5vw, 72px);
 }
-
-
 
 h2 {
-
-
-    font-size:
-
-    clamp(32px,5vw,56px);
-
-
+  font-size: clamp(30px, 4vw, 48px);
 }
 
-
-
-
-
-/* =========================================================
-   COMMON CARD STYLE
-========================================================= */
-
-
-.glass-card,
-.service-card,
-.faq-item,
-.about__stats div {
-
-
-    background:
-
-
-    linear-gradient(
-
-        120deg,
-
-        rgba(2,28,27,.92),
-
-        rgba(1,89,87,.45),
-
-        rgba(0,59,57,.92)
-
-    );
-
-
-    border:
-
-    1px solid rgba(255,255,255,.1);
-
-
-    backdrop-filter:blur(12px);
-
-
-    -webkit-backdrop-filter:blur(12px);
-
-
+h3 {
+  font-size: clamp(20px, 2vw, 28px);
 }
 
-
-
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-
-button {
-
-
-    border:none;
-
-    background:none;
-
-    font-family:inherit;
-
-    cursor:pointer;
-
-
+p {
+  color: var(--text-muted);
 }
 
-
-
-.btn-primary {
-
-
-    background:
-
-    linear-gradient(
-
-        135deg,
-
-        var(--primary),
-
-        var(--primary-hover)
-
-    );
-
-
-    color:#fff;
-
-
-}
-
-
-
-
-
-/* =========================================================
-   IMAGES
-========================================================= */
-
-
-img {
-
-
-    display:block;
-
-    max-width:100%;
-
-
-}
-
-
-
-
-
-/* =========================================================
-   APP LAYOUT
-========================================================= */
-
-
-.app-layout {
-
-
-    min-height:100vh;
-
-
-    display:flex;
-
-
-    flex-direction:column;
-
-
-}
-
-
-
-.page-content {
-
-
-    flex:1;
-
-
-    padding-top:
-
-
-    var(--header-height);
-
-
-}
-
-
-
-main {
-
-
-    width:100%;
-
-
-}
-
-
-
-section {
-
-
-    width:100%;
-
-
-}
-
-
-
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-
-@media(max-width:768px){
-
-
-:root {
-
-
-    --header-height:72px;
-
-
-}
-
-
-
-.section {
-
-
-    padding-block:70px;
-
-
-}
-
-
-}
-
-/* =========================================================
-   GLOBAL SECTION SYSTEM
-   FINAL OVERRIDES
-========================================================= */
-
-
-/* =========================================================
-   ROOT COLORS
-========================================================= */
-
-:root {
-
-    --page-bg:#061b18;
-
-    --section-space-mobile:70px;
-
-    --section-space-tablet:90px;
-
-    --section-space-desktop:110px;
-
-}
-
-
-
-
-
-/* =========================================================
-   BODY BACKGROUND
-========================================================= */
-
-html,
-body {
-
-    background:
-
-    radial-gradient(
-        circle at 20% 15%,
-        rgba(255,139,43,.08),
-        transparent 35%
-    ),
-
-    radial-gradient(
-        circle at 80% 50%,
-        rgba(0,255,200,.04),
-        transparent 45%
-    ),
-
-    var(--page-bg);
-
-    color:var(--text);
-
-}
-
-
-
-
-
-/* =========================================================
-   ALL SECTIONS RESET
-========================================================= */
-
-
-section,
-.about,
-.services-section,
-.gallery,
-.faq-section,
-.reviews,
-.footer {
-
-
-    background:transparent !important;
-
-
-}
-
-
-
-
-
-/* =========================================================
-   COMMON SECTION SPACING
-========================================================= */
-
-
-.about,
-.services-section,
-.gallery,
-.faq-section,
-.reviews {
-
-
-    padding-block:
-
-    var(--section-space-mobile);
-
-
-}
-
-
-
-
-
-/* =========================================================
-   REMOVE RANDOM SECTION GAPS
-========================================================= */
-
-
-section:first-child {
-
-    padding-top:0;
-
-}
-
-
-section:last-child {
-
-    padding-bottom:0;
-
-}
-
-
-
-
-
-/* =========================================================
-   COMMON CONTAINER
-========================================================= */
-
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container {
+  width: 100%;
 
-    width:100%;
+  max-width: var(--container);
 
-    max-width:1200px;
+  margin-inline: auto;
 
-    margin-inline:auto;
-
-    padding-inline:20px;
-
+  padding-inline: clamp(20px, 3vw, 40px);
 }
 
-
-
-
-
-/* =========================================================
-   ALL SECTION HEADERS
-========================================================= */
-
-
-.section-header,
-.services-header,
-.gallery-header,
-.faq-header,
-.reviews .section-header {
-
-
-    margin-bottom:40px;
-
-
-}
-
-
-
-
-
-/* =========================================================
-   ALL TITLES SAME
-========================================================= */
-
-
-h1,
-h2,
-.section-title,
-.gallery-title,
-.faq-title,
-.services-header h2 {
-
-
-    font-family:"Montserrat",sans-serif;
-
-
-    font-size:
-
-    clamp(34px,5vw,54px);
-
-
-    line-height:1.1;
-
-
-    font-weight:800;
-
-
-    letter-spacing:-.03em;
-
-
-    color:var(--text);
-
-
-    margin-top:0;
-
-
-    margin-bottom:16px;
-
-
-}
-
-
-
-
-
-/* =========================================================
-   ALL SUBTEXT SAME
-========================================================= */
-
-
-.section-header p,
-.services-header p,
-.gallery-subtitle,
-.faq-subtitle {
-
-
-    max-width:620px;
-
-
-    margin-inline:auto;
-
-
-    font-size:16px;
-
-
-    line-height:1.7;
-
-
-    color:
-
-    rgba(255,255,255,.75);
-
-
-}
-
-
-
-
-
-/* =========================================================
-   REMOVE OLD SECTION BACKGROUNDS
-========================================================= */
-
-
-.about::before,
-.faq-section::before {
-
-
-    display:none !important;
-
-
-}
-
-
-
-
-
-/* =========================================================
-   ALL CARDS SAME STYLE
-========================================================= */
-
-
-.service-card,
-.review-card,
-.faq-item,
-.about__stats div {
-
-
-    background:
-
-    linear-gradient(
-
-        120deg,
-
-        rgba(2,28,27,.92),
-
-        rgba(1,89,87,.38),
-
-        rgba(0,59,57,.92)
-
-    ) !important;
-
-
-    border:
-
-    1px solid rgba(255,255,255,.10);
-
-
-    backdrop-filter:blur(12px);
-
-
-    -webkit-backdrop-filter:blur(12px);
-
-
-}
-
-
-
-
-
-/* =========================================================
-   CARD HOVER SAME
-========================================================= */
-
-
-@media(hover:hover){
-
-
-.service-card:hover,
-.review-card:hover,
-.faq-item:hover {
-
-
-    transform:translateY(-4px);
-
-
-    border-color:
-
-    rgba(255,139,43,.45);
-
-
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.25);
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-
-@media(min-width:769px){
-
-
-.about,
-.services-section,
-.gallery,
-.faq-section,
-.reviews {
-
-
-    padding-block:
-
-    var(--section-space-tablet);
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================================================
-   DESKTOP
-========================================================= */
-
-
-@media(min-width:1440px){
-
-
-.about,
-.services-section,
-.gallery,
-.faq-section,
-.reviews {
-
-
-    padding-block:
-
-    var(--section-space-desktop);
-
-
-}
-
-
-
-}
-
-
-
-
-
-/* =========================================================
-   FOOTER SAME BACKGROUND
-========================================================= */
-
-
-.footer {
-
-
-    background:
-
-    transparent !important;
-
-
-    border-top:
-
-    1px solid rgba(255,255,255,.08);
-
-
-}
-
-
-
-
-
-
-/* =========================================================
-   FIX ANCHOR SCROLL
-========================================================= */
-
+/* =====================================================
+   SECTION BASE
+===================================================== */
 
 section {
+  width: 100%;
 
-    scroll-margin-top:
-
-    calc(var(--header-height) + 20px);
-
+  scroll-margin-top: calc(
+    var(--header-height) + 20px
+  );
 }
 
-/* =========================================================
-   FIX ALL SECTION HEADERS ALIGNMENT
-========================================================= */
+.section {
+  width: 100%;
 
-
-.services-header,
-.gallery-header,
-.faq-header,
-.reviews .section-header {
-
-
-    width:100%;
-
-
-    text-align:center;
-
-
-    margin-inline:auto;
-
-
+  padding-block: clamp(
+    var(--section-mobile),
+    5vw,
+    var(--section-desktop)
+  );
 }
 
+/* =====================================================
+   COMMON SECTION HEADER
+===================================================== */
 
+.section-header {
+  width: 100%;
 
-/* TITLES CENTER */
+  text-align: center;
 
-.services-header h2,
-.gallery-title,
-.faq-title,
-.reviews h2 {
-
-
-    width:100%;
-
-
-    text-align:center;
-
-
+  margin-inline: auto;
 }
 
+.section-header h2 {
+  max-width: 850px;
 
-
-
-
-/* SUBTITLES CENTER */
-
-
-.services-header p,
-.gallery-subtitle,
-.faq-subtitle,
-.reviews .section-header p {
-
-
-    text-align:center;
-
-
-    margin-left:auto;
-
-
-    margin-right:auto;
-
-
+  margin-inline: auto;
 }
 
+.section-header p {
+  max-width: 620px;
 
-
-
-
-/* FORCE FAQ CONTENT CENTER */
-
-
-.faq-title {
-
-
-    display:block;
-
-
+  margin-inline: auto;
 }
 
+/* =====================================================
+   BUTTON BASE
+===================================================== */
 
+.btn-primary {
+  display: inline-flex;
 
+  align-items: center;
 
+  justify-content: center;
 
-/* FORCE GALLERY TITLE CENTER */
+  padding: 14px 32px;
 
+  border-radius: 999px;
 
-.gallery-title {
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-hover)
+  );
 
+  color: #ffffff;
 
-    display:block;
+  font-weight: 700;
 
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
 
+.btn-primary:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 15px 35px rgba(239, 108, 23, 0.3);
+}
+
+/* =====================================================
+   UTILITIES
+===================================================== */
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 72px;
+  }
+
+  .container {
+    padding-inline: 20px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 9vw, 50px);
+  }
+
+  h2 {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+  .container {
+    padding-inline: 16px;
+  }
+
+  .section {
+    padding-block: 50px;
+  }
+}
+
+/* =====================================================
+   SCROLLBAR
+===================================================== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(6, 27, 24);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 89, 86);
+
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(239, 108, 23);
 }

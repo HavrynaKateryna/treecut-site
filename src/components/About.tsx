@@ -15,22 +15,25 @@ export default function About() {
           <h2>About Tim’s Tree Service</h2>
 
           <p>
-            Family-owned tree service company with 8+ years of experience.
+            For over 8 years, our team has been providing professional tree removal and tree services for homeowners and businesses. During this time, we have safely completed 1,000+ tree removals and hundreds of residential and commercial projects, earning a reputation for reliable service, quality workmanship, and customer satisfaction.
           </p>
 
           <p>
-            We specialize in safe tree removal, trimming, and emergency response
-            for residential and commercial properties.
+            Our crew consists of 5 experienced professionals who specialize in tree removal, tree trimming, palm tree trimming, stump removal, emergency tree removal, and hazardous tree removal. Whether a tree is located near a home, fence, roof, power line, or another difficult area, we have the knowledge and equipment to complete the job safely and efficiently.
           </p>
 
           <p>
-            Our focus is safety, speed, and leaving your property clean.
+            We use professional-grade equipment, including chainsaws, climbing gear, Bobcat machinery, bucket trucks, and cranes when needed, allowing us to handle projects of any size.
           </p>
-
+ 
+             <p>Safety is our highest priority. Every project is carefully planned to protect your property while delivering fast, reliable, and affordable tree services. After every job, we perform a complete cleanup, leaving your property clean and safe.</p>
+              <p>
+            If you're looking for a trusted tree service company that values honesty, professionalism, and quality, our team is ready to help.
+          </p>
           <div className="about__stats">
 
             <div>8+ Years Experience</div>
-            <div>500+ Projects</div>
+            <div>1000+ Projects</div>
             <div>Licensed & Insured</div>
 
           </div>

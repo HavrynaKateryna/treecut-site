@@ -8,6 +8,7 @@ import FAQ from "../components/FAQ";
 import Reviews from "../components/Reviews";
 import Modal from "../components/Modal";
 import RequestForm from "../components/RequestForm";
+import HowItWorks from "../components/HowItWorks";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -24,10 +25,11 @@ export default function Home() {
 
       <About />
       <Services />
+      <HowItWorks />
       <Gallery />
+
       <FAQ />
       <Reviews />
-
       <Modal open={open} onClose={close}>
         {!success ? (
           <RequestForm

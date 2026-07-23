@@ -1,4 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+} from "framer-motion";
 import { useMemo, useState } from "react";
 
 type FAQItem = {
@@ -7,47 +10,52 @@ type FAQItem = {
 };
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<
+    number | null
+  >(null);
 
   const data: FAQItem[] = useMemo(
     () => [
       {
         q: "How much does tree removal cost?",
-        a: "The price depends on the tree height, access conditions, and job complexity. An exact quote is provided after assessment.",
+        a: "The price depends on the tree size, location, and job complexity.",
       },
       {
-        q: "Do you provide on-site services?",
-        a: "Yes, we offer on-site services and can perform all work at your location at a convenient time.",
+        q: "Can I get a quote from photos?",
+        a: "Yes. In most cases, photos are enough for a free estimate.",
       },
       {
-        q: "Do I need to prepare the site before work?",
-        a: "It is recommended to clear the area around the tree and remove any fragile or valuable items.",
+        q: "Do you remove trees near houses or power lines?",
+        a: "Yes. We safely remove trees in tight and difficult spaces.",
       },
       {
-        q: "How long does tree cutting take?",
-        a: "On average, the job takes from 1 hour to several hours depending on the complexity and conditions.",
+        q: "Do you provide emergency tree service?",
+        a: "Yes. We remove storm-damaged and hazardous trees.",
+      },
+      {
+        q: "How long does the job take?",
+        a: "Most tree removal jobs are completed in one day.",
       },
       {
         q: "Do you clean up after the job?",
-        a: "Yes, upon request we provide cleanup, cutting, and removal of all wood and debris.",
-      },
-      {
-        q: "Are your services insured and safe?",
-        a: "Yes, all work is fully insured and performed using professional equipment. Safety is always a priority.",
+        a: "Yes. We remove branches and debris, leaving your property clean.",
       },
     ],
-    []
+    [],
   );
 
   const toggle = (index: number) => {
-    setOpenIndex((prev) => (prev === index ? null : index));
+    setOpenIndex((prev) =>
+      prev === index ? null : index,
+    );
   };
 
   return (
-    <section id="faq" className="faq-section">
-
+    <section
+      id="faq"
+      className="section faq-section"
+    >
       <div className="container">
-
         <motion.h2
           className="faq-title"
           initial={{ opacity: 0, y: 20 }}
@@ -63,8 +71,10 @@ export default function FAQ() {
             const isOpen = openIndex === index;
 
             return (
-              <div key={index} className="faq-item">
-
+              <div
+                key={index}
+                className="faq-item"
+              >
                 <button
                   className="faq-question"
                   onClick={() => toggle(index)}
@@ -72,7 +82,9 @@ export default function FAQ() {
                 >
                   <span>{item.q}</span>
 
-                  <span className={`chevron ${isOpen ? "open" : ""}`}>
+                  <span
+                    className={`chevron ${isOpen ? "open" : ""}`}
+                  >
                     ›
                   </span>
                 </button>
@@ -81,14 +93,25 @@ export default function FAQ() {
                   {isOpen && (
                     <motion.div
                       className="faq-answer"
-                      initial={{ maxHeight: 0, opacity: 0 }}
-                      animate={{ maxHeight: 300, opacity: 1 }}
-                      exit={{ maxHeight: 0, opacity: 0 }}
+                      initial={{
+                        maxHeight: 0,
+                        opacity: 0,
+                      }}
+                      animate={{
+                        maxHeight: 300,
+                        opacity: 1,
+                      }}
+                      exit={{
+                        maxHeight: 0,
+                        opacity: 0,
+                      }}
                       transition={{
                         duration: 0.35,
                         ease: "easeInOut",
                       }}
-                      style={{ overflow: "hidden" }}
+                      style={{
+                        overflow: "hidden",
+                      }}
                     >
                       <div className="faq-answer-inner">
                         <p>{item.a}</p>
@@ -96,12 +119,10 @@ export default function FAQ() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );

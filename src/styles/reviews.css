@@ -1,312 +1,244 @@
-/* =========================================================
-   REVIEWS SECTION
-========================================================= */
+/* =====================================================
+   REVIEWS
+===================================================== */
 
 .reviews {
-
-    width:100%;
-
-    background:transparent;
-
+  width: 100%;
+  background: transparent;
 }
 
-
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 .reviews .section-header {
-
-    width:100%;
-
-    text-align:center;
-
-    margin-bottom:40px;
-
+  width: 100%;
+  text-align: center;
+  margin-bottom: 28px;
 }
 
 .google-rating {
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:14px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .google-rating span {
-
-    color:var(--primary);
-
-    font-size:18px;
-
-    letter-spacing:2px;
-
+  color: var(--accent);
+  font-size: 18px;
+  letter-spacing: 2px;
 }
 
 .google-rating strong {
-
-    color:var(--text);
-
-    font-size:15px;
-
-    font-weight:700;
-
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
 }
 
-
-/* =========================================================
+/* =====================================================
    GRID
-========================================================= */
+===================================================== */
 
 .reviews-grid {
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:18px;
-
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
-
-/* =========================================================
+/* =====================================================
    CARD
-========================================================= */
+===================================================== */
 
 .review-card {
+  position: relative;
 
-    position:relative;
+  padding: 20px;
 
-    padding:20px;
+  border-radius: 24px;
 
-    border-radius:22px;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 89, 86, 0.85),
+    rgba(0, 65, 63, 0.75),
+    rgba(0, 45, 43, 0.9)
+  );
 
-    background:
-    linear-gradient(
-        120deg,
-        rgba(2,28,27,.95),
-        rgba(1,89,87,.45),
-        rgba(0,59,57,.95)
-    );
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-    border:
-    1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(16px);
 
-    backdrop-filter:blur(12px);
+  -webkit-backdrop-filter: blur(16px);
 
-    -webkit-backdrop-filter:blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 
-    transition:.25s ease;
+  overflow: hidden;
 
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-@media (hover:hover){
+/* glowing accent */
 
-.review-card:hover{
+.review-card::before {
+  content: "";
 
-    transform:translateY(-4px);
+  position: absolute;
 
-    border-color:
-    rgba(255,139,43,.45);
+  top: -80px;
 
-    box-shadow:
-    0 15px 35px rgba(0,0,0,.25);
+  right: -80px;
 
+  width: 180px;
+
+  height: 180px;
+
+  background: radial-gradient(
+    circle,
+    rgba(239, 108, 23, 0.25),
+    transparent 70%
+  );
+
+  opacity: 0;
+
+  transition: 0.35s ease;
 }
 
+.review-card:hover::before {
+  opacity: 1;
 }
 
+@media (hover: hover) {
+  .review-card:hover {
+    transform: translateY(-8px);
 
-/* =========================================================
+    border-color: rgba(239, 108, 23, 0.45);
+
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  }
+}
+/* =====================================================
    TOP
-========================================================= */
+===================================================== */
 
-.review-top{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    margin-bottom:14px;
-
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-
-/* =========================================================
+/* =====================================================
    AVATAR
-========================================================= */
+===================================================== */
 
-.avatar{
-
-    width:44px;
-
-    height:44px;
-
-    flex-shrink:0;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:var(--primary);
-
-    color:#fff;
-
-    font-family:"Montserrat",sans-serif;
-
-    font-size:16px;
-
-    font-weight:800;
-
+.avatar {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 800;
 }
 
-
-/* =========================================================
+/* =====================================================
    USER
-========================================================= */
+===================================================== */
 
-.name{
-
-    color:var(--text);
-
-    font-size:15px;
-
-    font-weight:700;
-
+.name {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
 }
 
-.stars{
-
-    margin-top:3px;
-
-    color:var(--primary);
-
-    font-size:15px;
-
-    letter-spacing:1px;
-
+.stars {
+  margin-top: 3px;
+  color: var(--accent);
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
-
-/* =========================================================
+/* =====================================================
    TEXT
-========================================================= */
+===================================================== */
 
-.review-card .text{
-
-    margin-bottom:14px;
-
-    color:
-    rgba(255,255,255,.85);
-
-    font-family:"Lora",serif;
-
-    font-size:15px;
-
-    line-height:1.65;
-
+.review-card .text {
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-family: "Lora", serif;
+  font-size: 14px;
+  line-height: 1.65;
 }
 
-
-/* =========================================================
+/* =====================================================
    TIME
-========================================================= */
+===================================================== */
 
-.time{
-
-    color:
-    rgba(255,255,255,.45);
-
-    font-size:12px;
-
+.time {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
 }
 
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
-/* =========================================================
-   MOBILE
-   0 - 768
-========================================================= */
-
-@media(max-width:768px){
-
-.reviews-grid{
-
-    gap:16px;
-
+@media (min-width: 375px) {
+  .review-card {
+    padding: 20px;
+  }
 }
 
-.review-card{
-
-    padding:18px;
-
-}
-
-.review-card .text{
-
-    font-size:14px;
-
-}
-
-}
-
-
-/* =========================================================
+/* =====================================================
    TABLET
-   769 - 1439
-========================================================= */
+===================================================== */
 
-@media(min-width:769px) and (max-width:1439px){
+@media (min-width: 768px) {
+  .reviews .section-header {
+    margin-bottom: 40px;
+  }
 
-.reviews-grid{
+  .reviews-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+    gap: 22px;
+  }
 
-    grid-template-columns:
-    repeat(2,minmax(0,1fr));
+  .review-card {
+    padding: 22px;
+  }
 
-    gap:22px;
-
+  .review-card .text {
+    font-size: 15px;
+  }
 }
 
-.review-card{
-
-    padding:22px;
-
-}
-
-}
-
-
-/* =========================================================
+/* =====================================================
    DESKTOP
-   1440+
-========================================================= */
+===================================================== */
 
-@media(min-width:1440px){
+@media (min-width: 1440px) {
+  .reviews-grid {
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    );
+    gap: 28px;
+  }
 
-.reviews-grid{
-
-    grid-template-columns:
-    repeat(3,minmax(0,1fr));
-
-    gap:28px;
-
-}
-
-.review-card{
-
-    padding:24px;
-
-}
-
+  .review-card {
+    padding: 24px;
+    border-radius: 22px;
+  }
 }

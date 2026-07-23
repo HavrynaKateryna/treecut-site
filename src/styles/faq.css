@@ -1,326 +1,250 @@
-/* =========================================================
-   FAQ SECTION
-========================================================= */
+/* =====================================================
+   FAQ
+===================================================== */
 
 .faq-section {
+  position: relative;
 
-    position:relative;
+  width: 100%;
 
-    width:100%;
+  color: var(--text);
 
-    color:var(--text);
+  scroll-margin-top: calc(
+    var(--header-height) + 20px
+  );
 
-    scroll-margin-top:
-    calc(var(--header-height) + 20px);
+  overflow: hidden;
 
-    overflow:hidden;
-
-    background:transparent;
-
+  background: transparent;
 }
 
 .faq-section > * {
+  position: relative;
 
-    position:relative;
-
-    z-index:1;
-
+  z-index: 1;
 }
 
-
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
+===================================================== */
 
 .faq-header {
+  width: 100%;
 
-    text-align:center;
+  text-align: center;
 
-    margin-bottom:40px;
-
+  margin-bottom: 32px;
 }
 
 .faq-title {
+  margin-bottom: 16px;
 
-    margin-bottom:16px;
-
+  text-align: center;
 }
 
 .faq-subtitle {
+  max-width: 620px;
 
-    max-width:620px;
+  margin-inline: auto;
 
-    margin-inline:auto;
+  text-align: center;
 
-    font-size:16px;
+  font-size: 15px;
 
-    line-height:1.7;
+  line-height: 1.7;
 
-    color:
-    rgba(255,255,255,.75);
-
+  color: var(--text-muted);
 }
 
-
-/* =========================================================
+/* =====================================================
    GRID
-========================================================= */
+===================================================== */
 
 .faq {
+  width: 100%;
 
-    width:100%;
+  max-width: 1100px;
 
-    max-width:1100px;
+  margin-inline: auto;
 
-    margin-inline:auto;
+  display: grid;
 
-    display:grid;
+  grid-template-columns: 1fr;
 
-    grid-template-columns:1fr;
-
-    gap:16px;
-
+  gap: 16px;
 }
 
-
-/* =========================================================
-   ITEM
-========================================================= */
+/* =====================================================
+   CARD
+===================================================== */
 
 .faq-item {
+  overflow: hidden;
 
-    overflow:hidden;
+  border-radius: 22px;
 
-    border-radius:22px;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 89, 86, 0.85),
+    rgba(0, 65, 63, 0.75),
+    rgba(0, 45, 43, 0.9)
+  );
 
-    background:
-    linear-gradient(
-        120deg,
-        rgba(2,28,27,.95),
-        rgba(1,89,87,.45),
-        rgba(0,59,57,.95)
-    );
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-    border:
-    1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(16px);
 
-    backdrop-filter:blur(12px);
+  -webkit-backdrop-filter: blur(16px);
 
-    -webkit-backdrop-filter:blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 
-    transition:.25s ease;
-
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-@media (hover:hover){
+@media (hover: hover) {
+  .faq-item:hover {
+    transform: translateY(-6px);
 
-.faq-item:hover{
+    border-color: rgba(239, 108, 23, 0.45);
 
-    transform:translateY(-3px);
-
-    border-color:
-    rgba(255,139,43,.45);
-
-    box-shadow:
-    0 15px 35px rgba(0,0,0,.25);
-
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+  }
 }
 
-}
-
-
-/* =========================================================
+/* =====================================================
    QUESTION
-========================================================= */
+===================================================== */
 
 .faq-question {
+  width: 100%;
 
-    width:100%;
+  padding: 18px 20px;
 
-    padding:
-    18px 20px;
+  display: flex;
 
-    display:flex;
+  align-items: center;
 
-    align-items:center;
+  justify-content: space-between;
 
-    justify-content:space-between;
+  gap: 16px;
 
-    gap:16px;
+  background: none;
 
-    background:none;
+  border: none;
 
-    border:none;
+  color: var(--text);
 
-    color:var(--text);
+  font-family: "Inter", sans-serif;
 
-    font-family:"Inter",sans-serif;
+  font-size: 15px;
 
-    font-size:16px;
+  font-weight: 600;
 
-    font-weight:600;
+  line-height: 1.4;
 
-    line-height:1.4;
+  text-align: left;
 
-    text-align:left;
-
-    cursor:pointer;
-
+  cursor: pointer;
 }
 
-.faq-question:hover{
-
-    color:var(--primary);
-
-}
-
-
-/* =========================================================
+/* =====================================================
    CHEVRON
-========================================================= */
+===================================================== */
 
-.chevron{
+.chevron {
+  flex-shrink: 0;
 
-    flex-shrink:0;
+  font-size: 20px;
 
-    font-size:20px;
+  color: var(--accent);
 
-    color:var(--primary);
-
-    transition:
-    transform .3s ease;
-
+  transition: transform 0.3s ease;
 }
 
-.chevron.open{
-
-    transform:rotate(90deg);
-
+.chevron.open {
+  transform: rotate(90deg);
 }
 
-
-/* =========================================================
+/* =====================================================
    ANSWER
-========================================================= */
+===================================================== */
 
-.faq-answer{
-
-    overflow:hidden;
-
+.faq-answer {
+  overflow: hidden;
 }
 
-.faq-answer-inner{
-
-    padding:
-    0 20px 20px;
-
+.faq-answer-inner {
+  padding: 0 20px 20px;
 }
 
-.faq-answer p{
+.faq-answer p {
+  margin: 0;
 
-    margin:0;
+  font-size: 14px;
 
-    font-size:15px;
+  line-height: 1.65;
 
-    line-height:1.65;
-
-    color:
-    rgba(255,255,255,.78);
-
+  color: rgba(255, 255, 255, 0.78);
 }
 
-
-/* =========================================================
+/* =====================================================
    MOBILE
-   0 - 768
-========================================================= */
+===================================================== */
 
-@media(max-width:768px){
+@media (max-width: 767px) {
+  .faq-header {
+    margin-bottom: 26px;
+  }
 
-.faq-header{
+  .faq-item {
+    border-radius: 18px;
+  }
 
-    margin-bottom:28px;
+  .faq-question {
+    padding: 16px;
 
+    font-size: 14px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 16px 16px;
+  }
 }
 
-.faq{
-
-    gap:14px;
-
-}
-
-.faq-item{
-
-    border-radius:18px;
-
-}
-
-.faq-question{
-
-    padding:16px;
-
-    font-size:15px;
-
-}
-
-.faq-answer-inner{
-
-    padding:
-    0 16px 16px;
-
-}
-
-.faq-answer p{
-
-    font-size:14px;
-
-}
-
-}
-
-
-/* =========================================================
+/* =====================================================
    TABLET
-   769 - 1439
-========================================================= */
+===================================================== */
 
-@media(min-width:769px) and (max-width:1439px){
+@media (min-width: 768px) {
+  .faq {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
 
-.faq{
+    gap: 22px;
+  }
 
-    grid-template-columns:
-    repeat(2,minmax(0,1fr));
+  .faq-question {
+    padding: 18px 20px;
 
-    gap:20px;
-
+    font-size: 16px;
+  }
 }
 
-.faq-question{
-
-    font-size:15px;
-
-}
-
-}
-
-
-/* =========================================================
+/* =====================================================
    DESKTOP
-   1440+
-========================================================= */
+===================================================== */
 
-@media(min-width:1440px){
+@media (min-width: 1440px) {
+  .faq {
+    gap: 28px;
+  }
 
-.faq{
-
-    gap:24px;
-
-}
-
-.faq-item{
-
-    border-radius:24px;
-
-}
-
+  .faq-item {
+    border-radius: 24px;
+  }
 }

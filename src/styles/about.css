@@ -1,460 +1,188 @@
-/* =========================================================
+/* =====================================================
    ABOUT
-========================================================= */
-
+===================================================== */
 
 .about {
-
-    position:relative;
-
-    width:100%;
-
-    padding-block:
-
-    clamp(80px,10vw,110px);
-
+  position: relative;
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    GRID
-========================================================= */
-
+===================================================== */
 
 .about__grid {
-
-    width:100%;
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:40px;
-
-    align-items:center;
-
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    TEXT
-========================================================= */
-
+===================================================== */
 
 .about__text {
-
-    position:relative;
-
-    z-index:2;
-
+  position: relative;
+  z-index: 2;
 }
-
-
 
 .about__text h2 {
-
-    margin-bottom:18px;
-
+  margin-bottom: 16px;
 }
-
-
 
 .about__text p {
-
-
-    max-width:560px;
-
-
-    margin-bottom:14px;
-
-
-    font-size:16px;
-
-
-    line-height:1.7;
-
-
-    color:
-
-    rgba(255,255,255,.78);
-
-
+  max-width: 560px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #fff;
 }
-
-
 
 .about__text p:last-child {
-
-    margin-bottom:0;
-
+  margin-bottom: 0;
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    STATS
-========================================================= */
-
+===================================================== */
 
 .about__stats {
-
-
-    display:flex;
-
-
-    flex-wrap:wrap;
-
-
-    gap:12px;
-
-
-    margin-top:28px;
-
-
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
 }
-
-
 
 .about__stats div {
+  padding: 10px 14px;
+  border-radius: 14px;
 
+  background: rgba(255, 255, 255, 0.05);
 
-    padding:
+  border: 1px solid var(--border);
 
-    10px 14px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.88);
 
-
-    border-radius:14px;
-
-
-
-    background:
-
-
-    rgba(255,255,255,.04);
-
-
-
-    border:
-
-    1px solid rgba(255,255,255,.1);
-
-
-
-    backdrop-filter:blur(12px);
-
-
-    -webkit-backdrop-filter:blur(12px);
-
-
-
-    font-size:13px;
-
-
-
-    color:
-
-    rgba(255,255,255,.88);
-
-
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
+@media (hover: hover) {
+  .about__stats div:hover {
+    transform: translateY(-3px);
+    border-color: rgba(239, 108, 23, 0.45);
+  }
+}
 
-
-
-
-/* =========================================================
+/* =====================================================
    IMAGE
-========================================================= */
-
+===================================================== */
 
 .about__image {
-
-
-    position:relative;
-
-
+  position: relative;
 }
-
-
 
 .about__image::before {
+  content: "";
 
+  position: absolute;
 
-    content:"";
+  inset: 0;
 
+  z-index: 2;
 
-    position:absolute;
+  border-radius: 24px;
 
+  background: linear-gradient(
+    180deg,
+    transparent 45%,
+    rgba(0, 0, 0, 0.35)
+  );
 
-    inset:0;
-
-
-    z-index:2;
-
-
-
-    border-radius:24px;
-
-
-
-    background:
-
-
-    linear-gradient(
-
-        180deg,
-
-        transparent 45%,
-
-        rgba(0,0,0,.35)
-
-    );
-
-
-
-    pointer-events:none;
-
-
+  pointer-events: none;
 }
-
-
 
 .about__image img {
+  width: 100%;
 
+  height: 360px;
 
-    width:100%;
+  object-fit: cover;
 
+  object-position: center;
 
-    height:360px;
+  border-radius: 24px;
 
+  border: 1px solid var(--border);
 
-
-    object-fit:cover;
-
-
-
-    object-position:center 35%;
-
-
-
-    border-radius:24px;
-
-
-
-    border:
-
-    1px solid rgba(255,255,255,.12);
-
-
-
-    box-shadow:
-
-
-    0 20px 60px rgba(0,0,0,.3);
-
-
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 
-
-
-
-
-/* =========================================================
-   MOBILE
-   0 - 375
-========================================================= */
-
-
-@media(max-width:375px){
-
-
-.about {
-
-
-    padding-block:60px;
-
-
-}
-
-
-
-.about__grid {
-
-
-    gap:30px;
-
-
-}
-
-
-
-.about__text p {
-
-
-    font-size:15px;
-
-
-}
-
-
-
-.about__image img {
-
-
-    height:280px;
-
-
-}
-
-
-
-.about__stats {
-
-
-    gap:10px;
-
-
-}
-
-
-
-.about__stats div {
-
-
-    padding:
-
-    9px 12px;
-
-
-    font-size:12px;
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================================================
+/* =====================================================
    TABLET
-   376 - 768
-========================================================= */
+===================================================== */
 
+@media (min-width: 768px) {
+  .about__grid {
+    grid-template-columns: 0.95fr 1fr;
 
-@media(min-width:376px) and (max-width:768px){
+    gap: 60px;
+  }
 
-
-.about {
-
-
-    padding-block:80px;
-
-
+  .about__image img {
+    height: 480px;
+  }
 }
 
-
-
-.about__grid {
-
-
-    gap:40px;
-
-
-}
-
-
-
-.about__image img {
-
-
-    height:380px;
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================================================
+/* =====================================================
    DESKTOP
-   1440+
-========================================================= */
+===================================================== */
 
-
-@media(min-width:1440px){
-
-
-.about {
-
-
-    padding-block:110px;
-
-
+@media (min-width: 1024px) {
+  .about__grid {
+    gap: 70px;
+  }
 }
 
+/* =====================================================
+   LARGE DESKTOP
+===================================================== */
 
-
-.about__grid {
-
-
-    grid-template-columns:
-
-    .95fr 1fr;
-
-
-
-    gap:70px;
-
-
+@media (min-width: 1440px) {
+  .about__image img {
+    height: 520px;
+  }
 }
 
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
+@media (max-width: 420px) {
+  .about__grid {
+    gap: 28px;
+  }
 
-.about__image img {
+  .about__text p {
+    font-size: 15px;
+  }
 
+  .about__image img {
+    height: 300px;
+  }
 
-    height:520px;
+  .about__stats {
+    gap: 10px;
+  }
 
+  .about__stats div {
+    padding: 9px 12px;
 
-}
-
-
-
-.about__stats {
-
-
-    gap:14px;
-
-
-}
-
-
-
-.about__stats div {
-
-
-    padding:
-
-    11px 16px;
-
-
-}
-
-
+    font-size: 12px;
+  }
 }

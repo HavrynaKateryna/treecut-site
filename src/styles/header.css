@@ -1,716 +1,438 @@
-/* =========================================================
+/* =====================================================
    HEADER
-========================================================= */
-
+===================================================== */
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
 
-    position:fixed;
+  width: 100%;
+  height: var(--header-height);
 
-    top:0;
+  z-index: var(--z-header);
 
-    left:0;
+  background: transparent;
 
-    width:100%;
-
-    height:var(--header-height);
-
-    z-index:var(--z-header);
-
-
-    background:
-
-    rgba(6,34,31,.82);
-
-
-    backdrop-filter:blur(18px);
-
-    -webkit-backdrop-filter:blur(18px);
-
-
-    border-bottom:
-
-    1px solid rgba(255,255,255,.08);
-
-
-    transition:
-
-    background .3s ease,
-
-    border-color .3s ease;
-
+  transition: 0.35s ease;
 }
 
+.header.scrolled {
+  background: rgba(6, 27, 24, 0.88);
 
+  backdrop-filter: blur(18px);
 
+  border-bottom: 1px solid var(--border);
 
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
 
-/* =========================================================
-   INNER
-========================================================= */
-
+/* =====================================================
+   HEADER INNER
+===================================================== */
 
 .header__inner {
+  width: 100%;
+  height: 100%;
 
-    width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    height:100%;
+  gap: 20px;
 
-
-    max-width:var(--container);
-
-
-    margin-inline:auto;
-
-
-    padding-inline:20px;
-
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-
-    gap:20px;
-
+  padding-inline: 20px;
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    LOGO
-========================================================= */
-
+===================================================== */
 
 .logo {
+  display: flex;
+  align-items: center;
 
-    display:flex;
+  gap: 12px;
 
-    align-items:center;
+  color: #fff;
 
+  font-size: 14px;
 
-    gap:12px;
+  font-weight: 800;
 
+  letter-spacing: 0.04em;
 
-    color:#fff;
-
-
-    font-size:15px;
-
-
-    font-weight:800;
-
-
-    letter-spacing:.03em;
-
-
-    white-space:nowrap;
-
+  white-space: nowrap;
 }
-
-
 
 .logo-circle {
+  width: 44px;
+  height: 44px;
 
-    width:42px;
+  border-radius: 50%;
 
-    height:42px;
+  overflow: hidden;
 
-
-    border-radius:50%;
-
-
-    overflow:hidden;
-
-
-    border:
-
-    1px solid rgba(255,255,255,.12);
-
-
-    flex-shrink:0;
-
+  flex-shrink: 0;
 }
-
-
 
 .logo-circle img {
+  width: 100%;
+  height: 100%;
 
-    width:100%;
-
-    height:100%;
-
-
-    object-fit:cover;
-
+  object-fit: cover;
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    NAV
-========================================================= */
-
+===================================================== */
 
 .nav {
+  display: none;
 
-    display:none;
+  align-items: center;
 
-
-    align-items:center;
-
-
-    gap:24px;
-
+  gap: 28px;
 }
-
-
 
 .nav button {
+  position: relative;
 
-    color:
+  color: #fff;
 
-    rgba(255,255,255,.75);
+  font-size: 15px;
 
+  font-weight: 500;
 
-    font-size:16px;
-
-
-    font-weight:600;
-
-
-    transition:.2s ease;
-
+  transition: 0.3s ease;
 }
-
-
 
 .nav button:hover {
-
-    color:#fff;
-
+  color: #fff;
 }
 
+.nav button::after {
+  content: "";
 
+  position: absolute;
 
+  left: 0;
+  bottom: -8px;
 
+  width: 0;
+  height: 2px;
 
-/* =========================================================
-   CONTACT
-========================================================= */
+  background: var(--accent);
 
+  transition: 0.3s ease;
+}
+
+.nav button:hover::after {
+  width: 100%;
+}
+
+/* =====================================================
+   PHONE
+===================================================== */
 
 .header-contact {
+  display: none;
 
-    display:none;
-
-
-    align-items:center;
-
+  align-items: center;
 }
-
-
 
 .header-phone {
+  display: flex;
 
-    display:inline-flex;
+  align-items: center;
 
+  gap: 10px;
 
-    align-items:center;
+  color: #fff;
 
+  font-size: 15px;
 
-    gap:8px;
-
-
-    padding:
-
-    11px 18px;
-
-
-    border-radius:999px;
-
-
-    background:var(--primary);
-
-
-    color:#fff;
-
-
-    text-decoration:none;
-
-
-    font-size:14px;
-
-
-    font-weight:700;
-
-
-    transition:.2s ease;
-
+  font-weight: 600;
 }
 
+.phone-icon {
+  width: 36px;
+  height: 36px;
 
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(239, 109, 20, 0.18);
+
+  color: var(--accent);
+}
 
 .header-phone:hover {
-
-
-    transform:translateY(-2px);
-
-
-    background:var(--primary-hover);
-
+  color: var(--accent);
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    BURGER
-========================================================= */
-
+===================================================== */
 
 .burger {
+  display: flex;
 
+  flex-direction: column;
 
-    width:44px;
+  justify-content: center;
 
-    height:44px;
+  width: 44px;
+  height: 44px;
 
+  border-radius: 12px;
 
-    display:flex;
+  background: rgba(255, 255, 255, 0.08);
 
-
-    align-items:center;
-
-
-    justify-content:center;
-
-
-    border-radius:12px;
-
-
-    background:
-
-    rgba(255,255,255,.06);
-
-
-    border:
-
-    1px solid rgba(255,255,255,.1);
-
-
-    color:#fff;
-
-
-    font-size:23px;
-
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
+.burger span {
+  display: block;
 
+  width: 22px;
 
+  height: 2px;
 
+  background: #fff;
 
-/* =========================================================
+  margin: 5px auto;
+}
+
+/* =====================================================
    MOBILE MENU
-========================================================= */
-
+===================================================== */
 
 .menu-overlay {
+  position: fixed;
 
+  inset: 0;
 
-    position:fixed;
+  z-index: var(--z-menu);
 
+  display: flex;
 
-    inset:0;
+  align-items: flex-start;
 
+  justify-content: center;
 
-    z-index:var(--z-menu);
+  padding-top: 90px;
 
+  background: rgba(0, 0, 0, 0.55);
 
-    background:
+  backdrop-filter: blur(14px);
 
-    rgba(0,0,0,.72);
+  -webkit-backdrop-filter: blur(14px);
 
-
-    backdrop-filter:blur(12px);
-
-
-    display:flex;
-
-
-    justify-content:flex-end;
-
+  animation: menuFade 0.3s ease;
 }
 
-
-
-
+/* =====================================================
+   MENU CARD
+===================================================== */
 
 .menu-modal {
+  position: relative;
 
+  width: min(92%, 420px);
 
-    width:min(360px,100%);
+  padding: 32px 22px 24px;
 
+  display: flex;
 
-    height:100%;
+  flex-direction: column;
 
+  gap: 10px;
 
-    padding:
+  border-radius: 30px;
 
-    100px 24px 30px;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 89, 86, 0.95),
+    rgba(6, 27, 24, 0.98)
+  );
 
+  border: 1px solid rgba(255, 255, 255, 0.12);
 
-    background:
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
 
-    rgba(6,34,31,.96);
-
-
-    border-left:
-
-    1px solid rgba(255,255,255,.08);
-
-
-    display:flex;
-
-
-    flex-direction:column;
-
-
-    gap:16px;
-
-
-    animation:
-
-    menuSlide .25s ease;
-
+  animation: menuSlide 0.35s ease;
 }
 
-
-
-
+/* =====================================================
+   CLOSE
+===================================================== */
 
 .menu-close {
+  position: absolute;
 
+  top: 18px;
 
-    position:absolute;
+  right: 20px;
 
+  width: 42px;
 
-    top:18px;
+  height: 42px;
 
+  display: flex;
 
-    right:18px;
+  align-items: center;
 
+  justify-content: center;
 
-    width:42px;
+  border-radius: 50%;
 
+  background: rgba(255, 255, 255, 0.08);
 
-    height:42px;
+  color: white;
 
-
-    border-radius:50%;
-
-
-    background:
-
-    rgba(255,255,255,.08);
-
-
-    color:#fff;
-
-
-    font-size:22px;
-
+  font-size: 28px;
 }
 
+/* =====================================================
+   LINKS
+===================================================== */
 
+.menu-modal button:not(.menu-close) {
+  width: 100%;
 
+  padding: 15px 18px;
 
+  border-radius: 16px;
 
-.menu-modal button {
+  background: rgba(255, 255, 255, 0.05);
 
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-    text-align:left;
+  color: white;
 
+  font-family: "Montserrat", sans-serif;
 
-    color:#fff;
+  font-size: 17px;
 
+  font-weight: 700;
 
-    font-size:16px;
+  text-align: left;
 
-
-    font-weight:600;
-
-
-    opacity:.85;
-
+  transition: 0.25s ease;
 }
 
+.menu-modal button:not(.menu-close):hover {
+  background: rgba(239, 108, 23, 0.18);
 
-
-.menu-modal button:hover {
-
-
-    opacity:1;
-
+  transform: translateX(5px);
 }
 
-
-
-
+/* =====================================================
+   PHONE BUTTON
+===================================================== */
 
 .mobile-phone {
+  margin-top: 14px;
 
+  padding: 16px;
 
-    display:inline-flex;
+  border-radius: 999px;
 
+  display: flex;
 
-    align-items:center;
+  align-items: center;
 
+  justify-content: center;
 
-    gap:10px;
+  gap: 10px;
 
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-hover)
+  );
 
-    margin-top:10px;
+  color: white;
 
+  font-weight: 800;
 
-    padding:
-
-    13px 16px;
-
-
-    border-radius:14px;
-
-
-    background:var(--primary);
-
-
-    color:#fff;
-
-
-    text-decoration:none;
-
-
-    font-weight:700;
-
+  font-size: 17px;
 }
 
-
-
-
-
-/* =========================================================
+/* =====================================================
    ANIMATION
-========================================================= */
+===================================================== */
 
+@keyframes menuFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 @keyframes menuSlide {
+  from {
+    opacity: 0;
 
+    transform: translateY(-35px) scale(0.95);
+  }
 
-from {
+  to {
+    opacity: 1;
 
-    opacity:0;
-
-    transform:translateX(20px);
-
+    transform: translateY(0) scale(1);
+  }
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+/* =====================================================
+   TABLET 768+
+===================================================== */
 
-to {
-
-    opacity:1;
-
-    transform:translateX(0);
-
+@media (min-width: 768px) {
+  .header__inner {
+    padding-inline: 30px;
+  }
 }
 
+/* =====================================================
+   DESKTOP 1024+
+===================================================== */
 
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+
+  .header-contact {
+    display: flex;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .header__inner {
+    padding-inline: 40px;
+  }
 }
 
-
-
-
-
-/* =========================================================
-   TABLET
-   769 - 1439
-========================================================= */
-
-
-@media(min-width:769px) and (max-width:1439px){
-
-
-.header__inner {
-
-
-    padding-inline:24px;
-
-
-}
-
-
-
-.burger {
-
-
-    width:46px;
-
-    height:46px;
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================================================
-   DESKTOP
-   1440+
-========================================================= */
-
-
-@media(min-width:1440px){
-
-
-.header__inner {
-
-
-    padding-inline:40px;
-
-
-}
-
-
-
-.nav {
-
-
-    display:flex;
-
-
-}
-
-
-
-.header-contact {
-
-
-    display:flex;
-
-
-}
-
-
-
-.burger {
-
-
-    display:none;
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================================================
-   MOBILE
-   0 - 768
-========================================================= */
-
-
-@media(max-width:768px){
-
-
-:root {
-
-
-    --header-height:72px;
-
-
-}
-
-
-
-.header {
-
-
-    height:var(--header-height);
-
-
-}
-
-
-
-.header__inner {
-
-
-    padding-inline:20px;
-
-
-}
-
-
-}
-
-
-
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-   ONLY SIZE ADJUSTMENT
-========================================================= */
-
-
-@media(max-width:375px){
-
-
-.logo span {
-
-
-    display:none;
-
-
-}
-
-
-
-.logo-circle {
-
-
-    width:38px;
-
-    height:38px;
-
-
-}
-
-
-
-.burger {
-
-
-    width:40px;
-
-    height:40px;
-
-
-}
-
-
+/* =====================================================
+   LARGE DESKTOP 1440+
+===================================================== */
+
+@media (min-width: 1440px) {
+  .nav {
+    gap: 34px;
+  }
 }

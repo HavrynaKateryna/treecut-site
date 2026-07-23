@@ -25,6 +25,7 @@ import "./styles/header.css";
 import "./styles/hero.css";
 import "./styles/about.css";
 import "./styles/services.css";
+import "./styles/howItWorks.css";
 import "./styles/gallery.css";
 import "./styles/faq.css";
 import "./styles/footer.css";
@@ -35,12 +36,13 @@ import "./styles/rightFloatingCta.css";
 
 const root = document.getElementById("root");
 
-if (!root) throw new Error("Root element not found");
+if (!root)
+  throw new Error("Root element not found");
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <HelmetProvider>
       <App />
     </HelmetProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

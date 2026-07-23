@@ -1,224 +1,167 @@
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
-.footer{
+.footer {
+  width: 100%;
 
-    width:100%;
+  background: transparent;
 
-    background:transparent;
-
-    border-top:
-    1px solid rgba(255,255,255,.08);
-
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-
-/* =========================================================
+/* =====================================================
    GRID
-========================================================= */
+===================================================== */
 
-.footer__grid{
+.footer__grid {
+  display: grid;
 
-    display:grid;
+  grid-template-columns: 1fr;
 
-    grid-template-columns:1fr;
-
-    gap:32px;
-
+  gap: 28px;
 }
 
-
-/* =========================================================
+/* =====================================================
    TITLES
-========================================================= */
+===================================================== */
 
 .footer__col h3,
-.footer__col h4{
+.footer__col h4 {
+  margin-bottom: 16px;
 
-    margin-bottom:16px;
+  color: var(--white);
 
-    color:#fff;
+  font-family: "Montserrat", sans-serif;
 
-    font-family:"Montserrat",sans-serif;
-
-    font-weight:800;
-
+  font-weight: 800;
 }
 
-.footer__col h3{
-
-    font-size:22px;
-
+.footer__col h3 {
+  font-size: 20px;
 }
 
-.footer__col h4{
-
-    font-size:17px;
-
+.footer__col h4 {
+  font-size: 17px;
 }
 
-
-/* =========================================================
+/* =====================================================
    TEXT + LINKS
-========================================================= */
+===================================================== */
 
 .footer__col p,
-.footer__col a{
+.footer__col a {
+  display: block;
 
-    display:block;
+  margin-bottom: 10px;
 
-    margin-bottom:10px;
+  color: var(--text-muted);
 
-    color:
-    rgba(255,255,255,.72);
+  text-decoration: none;
 
-    text-decoration:none;
+  font-size: 14px;
 
-    font-size:14px;
+  line-height: 1.6;
 
-    line-height:1.6;
-
-    transition:.2s ease;
-
+  transition: 0.25s ease;
 }
 
-.footer__col a:hover{
-
-    color:var(--primary);
-
+.footer__col a:hover {
+  color: var(--accent);
 }
 
-
-/* =========================================================
+/* =====================================================
    SOCIAL
-========================================================= */
+===================================================== */
 
-.footer__socials{
+.footer__socials {
+  display: flex;
 
-    display:flex;
-
-    gap:12px;
-
+  gap: 12px;
 }
 
-.footer__socials a{
+.footer__socials a {
+  width: 42px;
+  height: 42px;
 
-    width:42px;
+  display: flex;
 
-    height:42px;
+  align-items: center;
+  justify-content: center;
 
-    display:flex;
+  border-radius: 50%;
 
-    align-items:center;
+  background: rgba(0, 89, 86, 0.35);
 
-    justify-content:center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
-    border-radius:50%;
+  color: var(--white);
 
-    background:
-    rgba(255,255,255,.06);
+  font-size: 18px;
 
-    border:
-    1px solid rgba(255,255,255,.1);
-
-    color:#fff;
-
-    font-size:18px;
-
-    transition:.25s ease;
-
+  transition: 0.3s ease;
 }
 
-.footer__socials a:hover{
+@media (hover: hover) {
+  .footer__socials a:hover {
+    transform: translateY(-4px);
 
-    transform:translateY(-3px);
+    color: var(--accent);
 
-    color:var(--primary);
+    border-color: var(--accent);
 
-    border-color:var(--primary);
-
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  }
 }
 
-
-/* =========================================================
+/* =====================================================
    BOTTOM
-========================================================= */
+===================================================== */
 
-.footer__bottom{
+.footer__bottom {
+  margin-top: 40px;
 
-    margin-top:40px;
+  padding-top: 20px;
 
-    padding-top:20px;
+  text-align: center;
 
-    text-align:center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 
-    border-top:
-    1px solid rgba(255,255,255,.08);
+  color: rgba(255, 255, 255, 0.5);
 
-    color:
-    rgba(255,255,255,.5);
-
-    font-size:13px;
-
+  font-size: 13px;
 }
 
-
-/* =========================================================
-   MOBILE
-   0 - 768
-========================================================= */
-
-@media(max-width:768px){
-
-.footer__grid{
-
-    gap:28px;
-
-}
-
-.footer__col h3{
-
-    font-size:20px;
-
-}
-
-}
-
-
-/* =========================================================
+/* =====================================================
    TABLET
-   769 - 1439
-========================================================= */
+===================================================== */
 
-@media(min-width:769px) and (max-width:1439px){
+@media (min-width: 768px) {
+  .footer__grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
 
-.footer__grid{
+    gap: 40px;
+  }
 
-    grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-    gap:40px;
-
+  .footer__col h3 {
+    font-size: 22px;
+  }
 }
 
-}
-
-
-/* =========================================================
+/* =====================================================
    DESKTOP
-   1440+
-========================================================= */
+===================================================== */
 
-@media(min-width:1440px){
+@media (min-width: 1440px) {
+  .footer__grid {
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    );
 
-.footer__grid{
-
-    grid-template-columns:
-    repeat(3,minmax(0,1fr));
-
-    gap:56px;
-
-}
-
+    gap: 56px;
+  }
 }

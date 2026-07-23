@@ -1,70 +1,75 @@
+/* =====================================================
+   FORM WRAPPER
+===================================================== */
+
 .form-wrapper {
-  padding: 38px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-
   overflow: hidden;
 }
 
+/* =====================================================
+   TITLE
+===================================================== */
+
 .form-title {
   text-align: center;
-  font-size: 34px;
+  font-size: 26px;
   font-weight: 800;
-  color: white;
+  color: var(--white);
   margin-bottom: 24px;
 }
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
 
 .form-close {
   position: absolute;
   top: 16px;
   right: 16px;
-
   width: 44px;
   height: 44px;
-
   border-radius: 50%;
-
   background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 24px;
   cursor: pointer;
-
-  transition: all 0.25s ease;
-
+  transition: 0.3s ease;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* HOVER */
-.form-close:hover {
-  background: #ef6d14;
-  color: #fff;
-
-  transform: rotate(90deg) scale(1.08);
-
-  box-shadow: 0 10px 25px rgba(239, 109, 20, 0.35);
+@media (hover: hover) {
+  .form-close:hover {
+    background: var(--accent);
+    color: white;
+    transform: rotate(90deg) scale(1.08);
+    box-shadow: 0 10px 25px
+      rgba(239, 108, 23, 0.35);
+  }
 }
 
-/* ACTIVE (click feel) */
 .form-close:active {
   transform: rotate(90deg) scale(0.95);
-  box-shadow: 0 5px 12px rgba(239, 109, 20, 0.25);
+  box-shadow: 0 5px 12px rgba(239, 108, 23, 0.25);
 }
 
-/* KEYBOARD ACCESSIBILITY */
 .form-close:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(239, 109, 20, 0.25),
-    0 10px 25px rgba(239, 109, 20, 0.35);
+    0 0 0 3px rgba(239, 108, 23, 0.25),
+    0 10px 25px rgba(239, 108, 23, 0.35);
 }
+
+/* =====================================================
+   FORM
+===================================================== */
 
 .form {
   display: flex;
@@ -72,37 +77,92 @@
   gap: 14px;
 }
 
+/* =====================================================
+   INPUTS
+===================================================== */
+
 .form input,
 .form textarea {
   padding: 16px;
   border-radius: 14px;
-
-  border: 1px solid rgba(255,255,255,0.12);
-
-  background: rgba(0,0,0,0.25);
-  color: white;
-
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--white);
   outline: none;
+  font-family: inherit;
+  transition: 0.25s ease;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .form input:focus,
 .form textarea:focus {
-  border-color: #ef6d14;
-  box-shadow: 0 0 0 3px rgba(239,109,20,0.15);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(239, 108, 23, 0.15);
 }
 
 .form textarea {
   min-height: 120px;
+  resize: none;
 }
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
 
 .form-submit {
   padding: 16px;
   border-radius: 14px;
-
-  background: #ef6d14;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    var(--accent-hover)
+  );
   color: white;
-
   font-weight: 700;
-
   cursor: pointer;
+  transition: 0.25s ease;
+}
+
+@media (hover: hover) {
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px
+      rgba(239, 108, 23, 0.35);
+  }
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (min-width: 375px) {
+  .form-wrapper {
+    padding: 28px;
+  }
+
+  .form-title {
+    font-size: 28px;
+  }
+}
+
+/* =====================================================
+   TABLET + DESKTOP
+===================================================== */
+
+@media (min-width: 768px) {
+  .form-wrapper {
+    padding: 38px;
+  }
+
+  .form-title {
+    font-size: 34px;
+  }
 }

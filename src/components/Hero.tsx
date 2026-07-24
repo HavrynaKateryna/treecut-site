@@ -70,7 +70,7 @@ export default function Hero({
         <div className="hero__right">
           <div className="hero__image-wrap">
             <img
-              src="/public/hero.webp"
+              src="/hero.webp"
               alt="Tree service team"
               loading="eager"
               fetchPriority="high"

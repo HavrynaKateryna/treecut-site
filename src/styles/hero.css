@@ -224,20 +224,254 @@
 ===================================================== */
 
 @media (max-width: 767px) {
-  .hero__image-wrap img {
-    object-position: 72% center;
-    transform: scale(1.08);
+  /* =====================================================
+     HERO MOBILE
+  ===================================================== */
+
+  .hero {
+    min-height: 100svh;
   }
+
+  .hero__container {
+    min-height: 100svh;
+
+    align-items: flex-start;
+
+    justify-content: center;
+  }
+
+  /* =====================================================
+     CONTENT
+  ===================================================== */
+
+  .hero__left {
+    width: 100%;
+
+    padding-top: 120px;
+
+    padding-bottom: 40px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    z-index: 5;
+  }
+
+  /* =====================================================
+     BADGE
+  ===================================================== */
+
+  .hero__badge {
+    width: fit-content;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 8px 16px;
+
+    margin-bottom: 28px;
+
+    border-radius: 999px;
+
+    background: rgba(6, 27, 24, 0.65);
+
+    border: 1px solid rgba(239, 108, 23, 0.45);
+
+    color: #fff;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    backdrop-filter: blur(12px);
+  }
+
+  /* =====================================================
+     TITLE
+  ===================================================== */
+
+  .hero h1 {
+    max-width: 340px;
+
+    font-size: 42px;
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+
+    color: #fff;
+
+    text-align: center;
+
+    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero h1 span {
+    display: block;
+  }
+
+  /* =====================================================
+     DESCRIPTION
+  ===================================================== */
+
+  .hero__text {
+    max-width: 340px;
+
+    margin-top: 28px;
+
+    font-size: 17px;
+
+    line-height: 1.75;
+
+    color: rgba(255, 255, 255, 0.95);
+
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* =====================================================
+     BUTTONS
+  ===================================================== */
+
+  .hero__buttons {
+    width: 100%;
+
+    max-width: 375px;
+
+    margin-top: 36px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+  }
+
+  .hero .btn-primary,
+  .hero .btn-secondary {
+    width: 100%;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 16px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+  }
+
+  .hero .btn-primary {
+    box-shadow: 0 14px 35px
+      rgba(239, 108, 23, 0.35);
+  }
+
+  .hero .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(14px);
+
+    color: #fff;
+  }
+
+  /* =====================================================
+     TRUST CARDS
+  ===================================================== */
+
+  .hero__trust {
+    width: 100%;
+
+    max-width: 375px;
+
+    margin-top: 28px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+  }
+
+  .trust-item {
+    min-height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 10px 8px;
+
+    border-radius: 14px;
+
+    background: rgba(6, 27, 24, 0.45);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(12px);
+
+    color: #fff;
+
+    font-size: 12px;
+
+    line-height: 1.35;
+  }
+
+  /* =====================================================
+     IMAGE POSITION
+  ===================================================== */
+
+  .hero__image-wrap img {
+    object-position: 60% center;
+
+    transform: scale(1);
+  }
+
+  /* =====================================================
+     IMAGE OVERLAY
+  ===================================================== */
 
   .hero__image-wrap::before {
     background: linear-gradient(
       180deg,
-      rgba(6, 27, 24, 0.35),
-      rgba(6, 27, 24, 0.88)
+      rgba(6, 27, 24, 0.65) 0%,
+
+      rgba(6, 27, 24, 0.35) 35%,
+
+      rgba(6, 27, 24, 0.75) 65%,
+
+      rgba(6, 27, 24, 0.96) 100%
+    );
+  }
+
+  .hero__image-wrap::after {
+    background: radial-gradient(
+      circle at 70% 35%,
+
+      rgba(239, 108, 23, 0.08),
+      transparent 50%
     );
   }
 }
-
 /* =====================================================
    TABLET 768+
 ===================================================== */

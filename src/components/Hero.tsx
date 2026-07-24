@@ -13,10 +13,6 @@ export default function Hero({
         {/* LEFT */}
 
         <div className="hero__left">
-          <div className="hero__badge">
-            Licensed & Insured Tree Service
-          </div>
-
           <h1>
             Fast & Safe{" "}
             <span>Tree Removal Services</span>
@@ -25,10 +21,27 @@ export default function Hero({
           <p className="hero__text">
             Professional tree removal, trimming
             and emergency tree services for
-            residential and commercial properties
-            throughout the area. Fast response and
-            free estimates.
+            residential and commercial properties.
+            Fast response. Free estimates.
           </p>
+
+          {/* Mobile Rating */}
+
+          <div className="hero__buttons">
+            <button
+              className="btn-primary"
+              onClick={openModal}
+            >
+              Free Estimate
+            </button>
+
+            <a
+              href="tel:+15596804185"
+              className="btn-secondary"
+            >
+              Call Now
+            </a>
+          </div>
 
           <div className="hero__trust">
             <div className="trust-item">
@@ -47,25 +60,9 @@ export default function Hero({
               ✓ Residential & Commercial
             </div>
           </div>
-
-          <div className="hero__buttons">
-            <button
-              className="btn-primary"
-              onClick={openModal}
-            >
-              Free Estimate
-            </button>
-
-            <a
-              href="tel:+15596804185"
-              className="btn-secondary"
-            >
-              Call Now
-            </a>
-          </div>
         </div>
 
-        {/* RIGHT IMAGE */}
+        {/* RIGHT */}
 
         <div className="hero__right">
           <div className="hero__image-wrap">

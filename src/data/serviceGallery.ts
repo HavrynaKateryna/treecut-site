@@ -25,8 +25,9 @@ export const serviceGallery: ServiceGallery[] = [
   {
     id: "palm-tree-trimming",
     before:
-      "/public/beforeafter/palm-tree-trimmingbefore.webp",
-    after:"/public/beforeafter/palm-tree-trimmingafter.webp",
+      "/beforeafter/palm-tree-trimmingbefore.webp",
+    after:
+      "/beforeafter/palm-tree-trimmingafter.webp",
   },
   {
     id: "land-clearing",

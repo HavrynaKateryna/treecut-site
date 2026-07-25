@@ -4,9 +4,16 @@
 
 .form-wrapper {
   padding: 24px;
+
   display: flex;
+
   flex-direction: column;
-  overflow: hidden;
+
+  overflow-y: auto;
+
+  max-height: 82dvh;
+
+  -webkit-overflow-scrolling: touch;
 }
 
 /* =====================================================
@@ -15,9 +22,13 @@
 
 .form-title {
   text-align: center;
+
   font-size: 26px;
+
   font-weight: 800;
+
   color: var(--white);
+
   margin-bottom: 24px;
 }
 
@@ -27,29 +38,48 @@
 
 .form-close {
   position: absolute;
+
   top: 16px;
+
   right: 16px;
+
   width: 44px;
+
   height: 44px;
+
   border-radius: 50%;
+
   background: rgba(255, 255, 255, 0.08);
+
   color: var(--white);
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   font-size: 24px;
+
   cursor: pointer;
+
   transition: 0.3s ease;
+
   backdrop-filter: blur(8px);
+
   -webkit-backdrop-filter: blur(8px);
+
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 @media (hover: hover) {
   .form-close:hover {
     background: var(--accent);
+
     color: white;
+
     transform: rotate(90deg) scale(1.08);
+
     box-shadow: 0 10px 25px
       rgba(239, 108, 23, 0.35);
   }
@@ -57,14 +87,6 @@
 
 .form-close:active {
   transform: rotate(90deg) scale(0.95);
-  box-shadow: 0 5px 12px rgba(239, 108, 23, 0.25);
-}
-
-.form-close:focus-visible {
-  outline: none;
-  box-shadow:
-    0 0 0 3px rgba(239, 108, 23, 0.25),
-    0 10px 25px rgba(239, 108, 23, 0.35);
 }
 
 /* =====================================================
@@ -73,7 +95,9 @@
 
 .form {
   display: flex;
+
   flex-direction: column;
+
   gap: 14px;
 }
 
@@ -83,13 +107,28 @@
 
 .form input,
 .form textarea {
+  width: 100%;
+
   padding: 16px;
+
   border-radius: 14px;
+
   border: 1px solid rgba(255, 255, 255, 0.12);
+
   background: rgba(0, 0, 0, 0.22);
+
   color: var(--white);
+
   outline: none;
+
   font-family: inherit;
+
+  /*
+    IMPORTANT FOR MOBILE SAFARI
+  */
+
+  font-size: 16px;
+
   transition: 0.25s ease;
 }
 
@@ -101,11 +140,13 @@
 .form input:focus,
 .form textarea:focus {
   border-color: var(--accent);
+
   box-shadow: 0 0 0 3px rgba(239, 108, 23, 0.15);
 }
 
 .form textarea {
   min-height: 120px;
+
   resize: none;
 }
 
@@ -115,21 +156,28 @@
 
 .form-submit {
   padding: 16px;
+
   border-radius: 14px;
+
   background: linear-gradient(
     135deg,
     var(--accent),
     var(--accent-hover)
   );
+
   color: white;
+
   font-weight: 700;
+
   cursor: pointer;
+
   transition: 0.25s ease;
 }
 
 @media (hover: hover) {
   .form-submit:hover {
     transform: translateY(-2px);
+
     box-shadow: 0 12px 30px
       rgba(239, 108, 23, 0.35);
   }
@@ -137,6 +185,34 @@
 
 .form-submit:active {
   transform: translateY(0);
+}
+
+.form-submit:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.success-message {
+  padding: 14px;
+
+  margin-bottom: 16px;
+
+  border-radius: 14px;
+
+  text-align: center;
+
+  background: rgba(46, 125, 50, 0.25);
+
+  border: 1px solid rgba(76, 175, 80, 0.35);
+
+  color: white;
+
+  font-size: 15px;
 }
 
 /* =====================================================
@@ -160,6 +236,8 @@
 @media (min-width: 768px) {
   .form-wrapper {
     padding: 38px;
+
+    max-height: none;
   }
 
   .form-title {

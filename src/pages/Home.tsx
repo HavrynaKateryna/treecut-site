@@ -23,13 +23,13 @@ export default function Home() {
     <>
       <Hero openModal={() => setOpen(true)} />
 
-      <About />
       <Services />
       <HowItWorks />
+      <About />
       <Gallery />
 
-      <FAQ />
       <Reviews />
+      <FAQ />
       <Modal open={open} onClose={close}>
         {!success ? (
           <RequestForm

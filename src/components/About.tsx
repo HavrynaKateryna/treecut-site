@@ -3,70 +3,47 @@ export default function About() {
     <section id="about" className="about">
       <div className="container about__grid">
         <div className="about__text">
-          <h2>About Tim’s Tree Service</h2>
+          <h2>
+            Why Homeowners Choose Tim's Tree
+            Service
+          </h2>
 
           <p>
-            For over 8 years, our team has been
-            providing professional tree removal
-            and tree services for homeowners and
-            businesses. During this time, we have
-            safely completed 1,000+ tree removals
-            and hundreds of residential and
-            commercial projects, earning a
-            reputation for reliable service,
-            quality workmanship, and customer
-            satisfaction.
+            For more than 8 years, Tim's Tree
+            Service has provided safe, reliable,
+            and professional tree removal,
+            trimming, stump grinding, and
+            emergency tree services for homeowners
+            and businesses. Every project is
+            completed with attention to safety,
+            quality, and customer satisfaction.
           </p>
 
           <p>
-            Our crew consists of 5 experienced
-            professionals who specialize in tree
-            removal, tree trimming, palm tree
-            trimming, stump removal, emergency
-            tree removal, and hazardous tree
-            removal. Whether a tree is located
-            near a home, fence, roof, power line,
-            or another difficult area, we have the
-            knowledge and equipment to complete
-            the job safely and efficiently.
-          </p>
-
-          <p>
-            We use professional-grade equipment,
-            including chainsaws, climbing gear,
-            Bobcat machinery, bucket trucks, and
-            cranes when needed, allowing us to
-            handle projects of any size.
-          </p>
-
-          <p>
-            Safety is our highest priority. Every
-            project is carefully planned to
-            protect your property while delivering
-            fast, reliable, and affordable tree
-            services. After every job, we perform
-            a complete cleanup, leaving your
-            property clean and safe.
-          </p>
-
-          <p>
-            If you're looking for a trusted tree
-            service company that values honesty,
-            professionalism, and quality, our team
-            is ready to help.
+            Our experienced crew uses professional
+            equipment, including cranes, bucket
+            trucks, climbing gear, chainsaws, and
+            Bobcat machinery to safely handle
+            projects of any size. From the first
+            cut to the final cleanup, we treat
+            every property with care and respect.
           </p>
 
           <div className="about__stats">
-            <div>8+ Years Experience</div>
-            <div>1000+ Projects</div>
-            <div>Licensed & Insured</div>
+            <div>✓ Licensed & Insured</div>
+
+            <div>✓ 1000+ Projects Completed</div>
+
+            <div>✓ Professional Equipment</div>
+
+            <div>✓ Complete Cleanup</div>
           </div>
         </div>
 
         <div className="about__image">
           <img
             src="/1.webp"
-            alt="Tree service work"
+            alt="Tim's Tree Service crew working"
           />
         </div>
       </div>

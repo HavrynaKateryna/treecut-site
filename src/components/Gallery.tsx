@@ -4,7 +4,9 @@ import {
   useRef,
   useState,
 } from "react";
+
 import OptimizedImage from "../components/OptimizedImage";
+
 import "../styles/gallery.css";
 
 export default function Gallery() {
@@ -135,12 +137,11 @@ export default function Gallery() {
 
     window.addEventListener("keydown", onKey);
 
-    return () => {
+    return () =>
       window.removeEventListener(
         "keydown",
         onKey,
       );
-    };
   }, [isOpen]);
 
   const visible = [
@@ -160,8 +161,18 @@ export default function Gallery() {
         <div className="container">
           <div className="section-header">
             <h2 className="gallery-title">
-              Gallery
+              Professional Tree Care in Action
             </h2>
+
+            <p className="gallery-subtitle">
+              Every project is completed using
+              professional equipment, safe
+              techniques, and careful attention to
+              every detail. From tree removal to
+              the final cleanup, we take pride in
+              delivering reliable results our
+              customers can trust.
+            </p>
           </div>
 
           <div
@@ -194,7 +205,7 @@ ${pos === 2 ? "right" : ""}
                   >
                     <OptimizedImage
                       src={images[i]}
-                      alt={`gallery-${i}`}
+                      alt={`Tree service project ${i + 1}`}
                       priority={
                         active ? "high" : "low"
                       }
@@ -215,7 +226,9 @@ ${pos === 2 ? "right" : ""}
               {images.map((_, i) => (
                 <button
                   key={i}
-                  className={`dot ${i === index ? "active" : ""}`}
+                  className={`dot ${
+                    i === index ? "active" : ""
+                  }`}
                   onClick={() => setIndex(i)}
                 />
               ))}
@@ -231,7 +244,7 @@ ${pos === 2 ? "right" : ""}
         >
           <img
             src={images[index]}
-            alt="preview"
+            alt="Tree service work"
             className="lightbox-img"
             onClick={(e) => e.stopPropagation()}
           />

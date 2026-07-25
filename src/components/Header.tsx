@@ -149,14 +149,6 @@ export default function Header() {
           <nav className="nav">
             <button
               onClick={() =>
-                handleScrollTo("about")
-              }
-            >
-              About Us
-            </button>
-
-            <button
-              onClick={() =>
                 handleScrollTo("services")
               }
             >
@@ -170,29 +162,33 @@ export default function Header() {
             >
               How It Works
             </button>
-
+            <button
+              onClick={() =>
+                handleScrollTo("about")
+              }
+            >
+              Why Choose Us
+            </button>
             <button
               onClick={() =>
                 handleScrollTo("gallery")
               }
             >
-              Gallery
+              Our Work
             </button>
-
-            <button
-              onClick={() =>
-                handleScrollTo("faq")
-              }
-            >
-              Questions & Answers
-            </button>
-
             <button
               onClick={() =>
                 handleScrollTo("reviews")
               }
             >
               Reviews
+            </button>
+            <button
+              onClick={() =>
+                handleScrollTo("faq")
+              }
+            >
+              Questions & Answers
             </button>
           </nav>
 
@@ -238,14 +234,6 @@ export default function Header() {
 
             <button
               onClick={() =>
-                handleScrollTo("about")
-              }
-            >
-              About Us
-            </button>
-
-            <button
-              onClick={() =>
                 handleScrollTo("services")
               }
             >
@@ -259,29 +247,33 @@ export default function Header() {
             >
               How It Works
             </button>
-
+            <button
+              onClick={() =>
+                handleScrollTo("about")
+              }
+            >
+              Why Choose Us
+            </button>
             <button
               onClick={() =>
                 handleScrollTo("gallery")
               }
             >
-              Gallery
+              Our Work
             </button>
-
-            <button
-              onClick={() =>
-                handleScrollTo("faq")
-              }
-            >
-              Questions & Answers
-            </button>
-
             <button
               onClick={() =>
                 handleScrollTo("reviews")
               }
             >
               Reviews
+            </button>
+            <button
+              onClick={() =>
+                handleScrollTo("faq")
+              }
+            >
+              Questions & Answers
             </button>
 
             <a

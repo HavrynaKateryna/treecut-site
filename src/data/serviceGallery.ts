@@ -8,21 +8,19 @@ export const serviceGallery: ServiceGallery[] = [
   {
     id: "tree-removal",
     before:
-      "/public/beforeafter/tree-removalbefore .webp",
-    after:
-      "/public/beforeafter/tree-removalafter.webp",
+      "/beforeafter/tree-trimmingbefore.webp",
+    after: "/beforeafter/tree-removalafter.webp",
   },
   {
     id: "tree-trimming",
     before:
-      "/public/beforeafter/tree-trimmingbefore.webp",
-    after:
-      "/public/beforeafter/tree-trimmingafter.webp",
+      "/beforeafter/tree-trimmingbefore.webp",
+    after: "/beforeafter/tree-trimmingafter.webp",
   },
   {
     id: "emergency-tree-removal",
-    before: "/public/tree-trimmingbefore.jpg",
-    after: "/public/tree-trimmingafter.jpg",
+    before: "/tree-trimmingbefore.jpg",
+    after: "/tree-trimmingafter.jpg",
   },
   {
     id: "palm-tree-trimming",
@@ -34,13 +32,12 @@ export const serviceGallery: ServiceGallery[] = [
   {
     id: "land-clearing",
     before:
-      "/public/beforeafter/land-clearingbefore.webp",
-    after:
-      "/public/beforeafter/land-clearingafter.webp",
+      "/beforeafter/land-clearingbefore.webp",
+    after: "/beforeafter/land-clearingafter.webp",
   },
   {
     id: "crane-assisted-tree-removal",
-    before: "/public/land-clearingbefore.PNG",
-    after: "/public/land-clearingafter.PNG",
+    before: "/land-clearingbefore.PNG",
+    after: "/land-clearingafter.PNG",
   },
 ];

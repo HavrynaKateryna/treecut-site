@@ -304,16 +304,12 @@ ${pos === 2 ? "right" : ""}
             </button>
 
             <div className="gallery-dots">
-              {images.map((image, i) => (
+              {images.map((_, i) => (
                 <button
                   key={i}
-                  className={`dot ${
-                    i === index ? "active" : ""
-                  }`}
+                  className={`dot ${i === index ? "active" : ""}`}
                   onClick={() => setIndex(i)}
-                  aria-label={`View gallery image ${
-                    i + 1
-                  }`}
+                  aria-label={`View gallery image ${i + 1}`}
                   aria-current={
                     i === index
                       ? "true"

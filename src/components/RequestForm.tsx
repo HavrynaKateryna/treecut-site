@@ -1,5 +1,4 @@
 import {
-  useEffect,
   useState,
   type ChangeEvent,
   type FormEvent,
@@ -29,19 +28,9 @@ export default function RequestForm({
 
   const [success, setSuccess] = useState(false);
 
-  /*
-    Mobile modal scroll lock
-  */
-
-  useEffect(() => {
-    document.body.classList.add("modal-open");
-
-    return () => {
-      document.body.classList.remove(
-        "modal-open",
-      );
-    };
-  }, []);
+  /* =====================================================
+     HANDLE CHANGE
+  ===================================================== */
 
   const handleChange = (
     e: ChangeEvent<
@@ -53,6 +42,10 @@ export default function RequestForm({
       [e.target.name]: e.target.value,
     }));
   };
+
+  /* =====================================================
+     VALIDATION
+  ===================================================== */
 
   const validateForm = () => {
     if (!form.name.trim()) {
@@ -88,7 +81,13 @@ export default function RequestForm({
     return true;
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  /* =====================================================
+     SUBMIT
+  ===================================================== */
+
+  const handleSubmit = async (
+    e: FormEvent<HTMLFormElement>,
+  ) => {
     e.preventDefault();
 
     if (loading) return;
@@ -125,14 +124,19 @@ export default function RequestForm({
 
       setSuccess(true);
 
-      setLoading(false);
-
       setForm({
         name: "",
         email: "",
         phone: "",
         message: "",
       });
+
+      setLoading(false);
+
+      /*
+        Give the user time to see
+        the success message.
+      */
 
       setTimeout(() => {
         onSuccess?.();
@@ -150,8 +154,14 @@ export default function RequestForm({
     }
   };
 
+  /* =====================================================
+     RENDER
+  ===================================================== */
+
   return (
     <div className="form-wrapper">
+      {/* CLOSE */}
+
       <button
         type="button"
         className="form-close"
@@ -161,29 +171,45 @@ export default function RequestForm({
         ×
       </button>
 
+      {/* TITLE */}
+
       <h2 className="form-title">
         {serviceName
           ? `Get quote: ${serviceName}`
           : "Request service"}
       </h2>
 
+      {/* SUCCESS */}
+
       {success && (
-        <div className="success-message">
+        <div
+          className="success-message"
+          role="status"
+          aria-live="polite"
+        >
           Request sent successfully
         </div>
       )}
+
+      {/* FORM */}
 
       <form
         className="form"
         onSubmit={handleSubmit}
       >
+        {/* NAME */}
+
         <input
           name="name"
+          type="text"
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
           autoComplete="name"
+          required
         />
+
+        {/* EMAIL */}
 
         <input
           name="email"
@@ -192,7 +218,10 @@ export default function RequestForm({
           value={form.email}
           onChange={handleChange}
           autoComplete="email"
+          required
         />
+
+        {/* PHONE */}
 
         <input
           name="phone"
@@ -201,14 +230,20 @@ export default function RequestForm({
           value={form.phone}
           onChange={handleChange}
           autoComplete="tel"
+          required
         />
+
+        {/* MESSAGE */}
 
         <textarea
           name="message"
           placeholder="Message"
           value={form.message}
           onChange={handleChange}
+          required
         />
+
+        {/* SUBMIT */}
 
         <button
           className="form-submit"

@@ -4,6 +4,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Phone } from "lucide-react";
+
 import "../styles/header.css";
 
 export default function Header() {
@@ -129,12 +130,17 @@ export default function Header() {
   return (
     <>
       <header
-        className={`header ${scrolled ? "scrolled" : ""}`}
+        className={`header ${
+          scrolled ? "scrolled" : ""
+        }`}
       >
         <div className="header__inner">
+          {/* LOGO */}
+
           <button
             className="logo"
             onClick={goHome}
+            aria-label="Go to homepage"
           >
             <div className="logo-circle">
               <img
@@ -146,7 +152,12 @@ export default function Header() {
             <span>TIM'S TREE SERVICE</span>
           </button>
 
-          <nav className="nav">
+          {/* DESKTOP NAV */}
+
+          <nav
+            className="nav"
+            aria-label="Main navigation"
+          >
             <button
               onClick={() =>
                 handleScrollTo("services")
@@ -162,6 +173,7 @@ export default function Header() {
             >
               How It Works
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("about")
@@ -169,6 +181,7 @@ export default function Header() {
             >
               Why Choose Us
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("gallery")
@@ -176,6 +189,7 @@ export default function Header() {
             >
               Our Work
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("reviews")
@@ -183,6 +197,7 @@ export default function Header() {
             >
               Reviews
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("faq")
@@ -192,10 +207,13 @@ export default function Header() {
             </button>
           </nav>
 
+          {/* DESKTOP PHONE */}
+
           <div className="header-contact">
             <a
               href="tel:+15596804185"
               className="header-phone"
+              aria-label="Call Tim's Tree Service"
             >
               <span className="phone-icon">
                 <Phone size={17} />
@@ -205,16 +223,28 @@ export default function Header() {
             </a>
           </div>
 
+          {/* BURGER */}
+
           <button
-            className="burger"
-            onClick={() => setOpen(!open)}
-            aria-label="menu"
+            className={`burger ${
+              open ? "active" : ""
+            }`}
+            onClick={() =>
+              setOpen((prev) => !prev)
+            }
+            aria-label={
+              open ? "Close menu" : "Open menu"
+            }
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            <span></span>
-            <span></span>
+            <span />
+            <span />
           </button>
         </div>
       </header>
+
+      {/* MOBILE / TABLET MENU */}
 
       {open && (
         <div
@@ -222,12 +252,14 @@ export default function Header() {
           onClick={() => setOpen(false)}
         >
           <div
+            id="mobile-menu"
             className="menu-modal"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               className="menu-close"
               onClick={() => setOpen(false)}
+              aria-label="Close menu"
             >
               ×
             </button>
@@ -247,6 +279,7 @@ export default function Header() {
             >
               How It Works
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("about")
@@ -254,6 +287,7 @@ export default function Header() {
             >
               Why Choose Us
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("gallery")
@@ -261,6 +295,7 @@ export default function Header() {
             >
               Our Work
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("reviews")
@@ -268,6 +303,7 @@ export default function Header() {
             >
               Reviews
             </button>
+
             <button
               onClick={() =>
                 handleScrollTo("faq")
@@ -281,7 +317,8 @@ export default function Header() {
               className="mobile-phone"
             >
               <Phone size={18} />
-              (559) 680-4185
+
+              <span>(559) 680-4185</span>
             </a>
           </div>
         </div>

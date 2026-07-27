@@ -4,6 +4,7 @@
 
 .header {
   position: fixed;
+
   top: 0;
   left: 0;
 
@@ -21,6 +22,7 @@
   background: rgba(6, 27, 24, 0.88);
 
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
   border-bottom: 1px solid var(--border);
 
@@ -54,6 +56,12 @@
 
   gap: 12px;
 
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
   color: #fff;
 
   font-size: 14px;
@@ -63,6 +71,8 @@
   letter-spacing: 0.04em;
 
   white-space: nowrap;
+
+  cursor: pointer;
 }
 
 .logo-circle {
@@ -80,11 +90,14 @@
   width: 100%;
   height: 100%;
 
+  display: block;
+
   object-fit: cover;
 }
 
 /* =====================================================
    NAV
+   Hidden until desktop
 ===================================================== */
 
 .nav {
@@ -93,22 +106,36 @@
   align-items: center;
 
   gap: 28px;
+
+  margin-left: auto;
 }
 
 .nav button {
   position: relative;
 
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
   color: #fff;
+
+  font-family: inherit;
 
   font-size: 15px;
 
   font-weight: 500;
 
+  white-space: nowrap;
+
+  cursor: pointer;
+
   transition: 0.3s ease;
 }
 
 .nav button:hover {
-  color: #fff;
+  color: var(--accent);
 }
 
 .nav button::after {
@@ -139,6 +166,8 @@
   display: none;
 
   align-items: center;
+
+  flex-shrink: 0;
 }
 
 .header-phone {
@@ -153,6 +182,12 @@
   font-size: 15px;
 
   font-weight: 600;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition: 0.3s ease;
 }
 
 .phone-icon {
@@ -177,6 +212,7 @@
 
 /* =====================================================
    BURGER
+   Visible on mobile + tablet
 ===================================================== */
 
 .burger {
@@ -184,16 +220,23 @@
 
   flex-direction: column;
 
+  align-items: center;
   justify-content: center;
 
   width: 44px;
   height: 44px;
+
+  flex-shrink: 0;
+
+  padding: 0;
 
   border-radius: 12px;
 
   background: rgba(255, 255, 255, 0.08);
 
   border: 1px solid rgba(255, 255, 255, 0.12);
+
+  cursor: pointer;
 }
 
 .burger span {
@@ -205,11 +248,27 @@
 
   background: #fff;
 
-  margin: 5px auto;
+  margin: 4px auto;
+
+  border-radius: 2px;
+
+  transition: 0.25s ease;
 }
 
 /* =====================================================
-   MOBILE MENU
+   BURGER ACTIVE
+===================================================== */
+
+.burger.active span:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.burger.active span:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* =====================================================
+   MOBILE MENU OVERLAY
 ===================================================== */
 
 .menu-overlay {
@@ -276,30 +335,35 @@
   position: absolute;
 
   top: 18px;
-
   right: 20px;
 
   width: 42px;
-
   height: 42px;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
+
+  padding: 0;
 
   border-radius: 50%;
 
+  border: 0;
+
   background: rgba(255, 255, 255, 0.08);
 
-  color: white;
+  color: #fff;
 
   font-size: 28px;
+
+  line-height: 1;
+
+  cursor: pointer;
 }
 
 /* =====================================================
-   LINKS
+   MENU LINKS
 ===================================================== */
 
 .menu-modal button:not(.menu-close) {
@@ -313,7 +377,7 @@
 
   border: 1px solid rgba(255, 255, 255, 0.08);
 
-  color: white;
+  color: #fff;
 
   font-family: "Montserrat", sans-serif;
 
@@ -322,6 +386,8 @@
   font-weight: 700;
 
   text-align: left;
+
+  cursor: pointer;
 
   transition: 0.25s ease;
 }
@@ -346,7 +412,6 @@
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 10px;
@@ -357,11 +422,19 @@
     var(--accent-hover)
   );
 
-  color: white;
+  color: #fff;
 
   font-weight: 800;
 
   font-size: 17px;
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
+}
+
+.mobile-phone:hover {
+  transform: translateY(-1px);
 }
 
 /* =====================================================
@@ -392,24 +465,38 @@
   }
 }
 
+/* =====================================================
+   BODY LOCK
+===================================================== */
+
 body.menu-open {
   overflow: hidden;
 }
+
 /* =====================================================
-   TABLET 768+
+   TABLET
+   768px+
+   BURGER STILL VISIBLE
 ===================================================== */
 
 @media (min-width: 768px) {
   .header__inner {
     padding-inline: 30px;
   }
+
+  .logo-circle {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 /* =====================================================
-   DESKTOP 1024+
+   DESKTOP
+   1100px+
+   BURGER DISAPPEARS
 ===================================================== */
 
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
   .nav {
     display: flex;
   }
@@ -428,7 +515,8 @@ body.menu-open {
 }
 
 /* =====================================================
-   LARGE DESKTOP 1440+
+   LARGE DESKTOP
+   1440px+
 ===================================================== */
 
 @media (min-width: 1440px) {

@@ -98,7 +98,7 @@ Firewood and larger logs can be left upon request.
       "Complete cleanup after every project",
     ],
 
-    image: "/servise 1.png",
+    image: "/servise 1.webp",
   },
   {
     id: "tree-trimming",
@@ -180,7 +180,7 @@ Regular professional trimming helps maintain beautiful and strong trees for year
       "Complete cleanup after every project",
     ],
 
-    image: "/servise2.png",
+    image: "/servise2.webp",
   },
   {
     id: "emergency-tree-removal",
@@ -264,7 +264,7 @@ Firewood and larger logs can be left upon request.
       "Complete cleanup after emergency work",
     ],
 
-    image: "/servise3.png",
+    image: "/servise3.webp",
   },
   {
     id: "palm-tree-trimming",
@@ -344,7 +344,7 @@ Regular palm maintenance helps keep your landscape beautiful and safe throughout
       "Complete cleanup after every project",
     ],
 
-    image: "/servise5.png",
+    image: "/servise4.webp",
   },
   {
     id: "land-clearing",
@@ -422,7 +422,7 @@ Our goal is to provide a smooth transition from an overgrown area to a usable an
       "Complete cleanup after every service",
     ],
 
-    image: "/servise6.png",
+    image: "/servise5.webp",
   },
   {
     id: "crane-assisted-tree-removal",
@@ -506,6 +506,6 @@ Our goal is to provide a professional result from the initial inspection to the 
       "Complete cleanup after every project",
     ],
 
-    image: "/servise4.png",
+    image: "/servise6.webp",
   },
 ];

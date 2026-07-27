@@ -12,33 +12,110 @@ import "../styles/gallery.css";
 export default function Gallery() {
   const images = useMemo(
     () => [
-      "/gallery/26.webp",
-      "/gallery/2.webp",
-      "/gallery/3.webp",
-      "/gallery/4.webp",
-      "/gallery/5.webp",
-      "/gallery/6.webp",
-      "/gallery/7.webp",
-      "/gallery/8.webp",
-      "/gallery/9.webp",
-      "/gallery/10.webp",
-      "/gallery/11.webp",
-      "/gallery/12.webp",
-      "/gallery/13.webp",
-      "/gallery/14.webp",
-      "/gallery/15.webp",
-      "/gallery/16.webp",
-      "/gallery/17.webp",
-      "/gallery/18.webp",
-      "/gallery/19.webp",
-      "/gallery/20.webp",
-      "/gallery/21.webp",
-      "/gallery/22.webp",
-      "/gallery/23.webp",
-      "/gallery/24.webp",
-      "/gallery/25.webp",
-
-      "/gallery/27.webp",
+      {
+        src: "/gallery/26.webp",
+        alt: "Professional tree removal and tree care service in Jacksonville Florida",
+      },
+      {
+        src: "/gallery/2.webp",
+        alt: "Professional tree trimming and pruning service",
+      },
+      {
+        src: "/gallery/3.webp",
+        alt: "Tree removal service using professional equipment",
+      },
+      {
+        src: "/gallery/4.webp",
+        alt: "Professional tree cutting and removal project",
+      },
+      {
+        src: "/gallery/5.webp",
+        alt: "Tree trimming and branch removal service",
+      },
+      {
+        src: "/gallery/6.webp",
+        alt: "Professional tree removal work completed safely",
+      },
+      {
+        src: "/gallery/7.webp",
+        alt: "Tree cutting service performed by professional tree care team",
+      },
+      {
+        src: "/gallery/8.webp",
+        alt: "Professional tree pruning and trimming project",
+      },
+      {
+        src: "/gallery/9.webp",
+        alt: "Tree removal and cleanup service",
+      },
+      {
+        src: "/gallery/10.webp",
+        alt: "Professional tree care and maintenance service",
+      },
+      {
+        src: "/gallery/11.webp",
+        alt: "Tree removal project completed by professional tree service",
+      },
+      {
+        src: "/gallery/12.webp",
+        alt: "Professional tree trimming service with safe cutting techniques",
+      },
+      {
+        src: "/gallery/13.webp",
+        alt: "Tree removal and property cleanup after professional service",
+      },
+      {
+        src: "/gallery/14.webp",
+        alt: "Professional tree cutting and trimming work",
+      },
+      {
+        src: "/gallery/15.webp",
+        alt: "Tree care service performed with professional equipment",
+      },
+      {
+        src: "/gallery/16.webp",
+        alt: "Professional tree removal and branch cutting service",
+      },
+      {
+        src: "/gallery/17.webp",
+        alt: "Tree trimming and pruning project completed safely",
+      },
+      {
+        src: "/gallery/18.webp",
+        alt: "Professional tree removal service for residential property",
+      },
+      {
+        src: "/gallery/19.webp",
+        alt: "Tree cutting and cleanup service after tree removal",
+      },
+      {
+        src: "/gallery/20.webp",
+        alt: "Professional tree trimming and property maintenance",
+      },
+      {
+        src: "/gallery/21.webp",
+        alt: "Tree removal work completed by experienced tree care professionals",
+      },
+      {
+        src: "/gallery/22.webp",
+        alt: "Professional tree pruning and branch removal service",
+      },
+      {
+        src: "/gallery/23.webp",
+        alt: "Residential tree removal and cleanup project",
+      },
+      {
+        src: "/gallery/24.webp",
+        alt: "Professional tree care and tree removal service",
+      },
+      {
+        src: "/gallery/25.webp",
+        alt: "Tree trimming and removal project completed safely",
+      },
+      {
+        src: "/gallery/27.webp",
+        alt: "Professional tree service project completed in Jacksonville Florida",
+      },
     ],
     [],
   );
@@ -87,8 +164,9 @@ export default function Gallery() {
     if (
       !dragging.current ||
       startX.current === null
-    )
+    ) {
       return;
+    }
 
     const x = e.touches[0].clientX;
 
@@ -149,9 +227,7 @@ export default function Gallery() {
 
   const visible = [
     (index - 1 + len) % len,
-
     index,
-
     (index + 1) % len,
   ];
 
@@ -187,6 +263,7 @@ export default function Gallery() {
             <button
               className="gallery-arrow left-arrow"
               onClick={prev}
+              aria-label="Previous gallery image"
             >
               ‹
             </button>
@@ -207,8 +284,8 @@ ${pos === 2 ? "right" : ""}
                     onClick={() => openImage(i)}
                   >
                     <OptimizedImage
-                      src={images[i]}
-                      alt={`Tree service project ${i + 1}`}
+                      src={images[i].src}
+                      alt={images[i].alt}
                       priority={
                         active ? "high" : "low"
                       }
@@ -221,18 +298,27 @@ ${pos === 2 ? "right" : ""}
             <button
               className="gallery-arrow right-arrow"
               onClick={next}
+              aria-label="Next gallery image"
             >
               ›
             </button>
 
             <div className="gallery-dots">
-              {images.map((_, i) => (
+              {images.map((image, i) => (
                 <button
                   key={i}
                   className={`dot ${
                     i === index ? "active" : ""
                   }`}
                   onClick={() => setIndex(i)}
+                  aria-label={`View gallery image ${
+                    i + 1
+                  }`}
+                  aria-current={
+                    i === index
+                      ? "true"
+                      : undefined
+                  }
                 />
               ))}
             </div>
@@ -246,8 +332,8 @@ ${pos === 2 ? "right" : ""}
           onClick={() => setIsOpen(false)}
         >
           <img
-            src={images[index]}
-            alt="Tree service work"
+            src={images[index].src}
+            alt={images[index].alt}
             className="lightbox-img"
             onClick={(e) => e.stopPropagation()}
           />

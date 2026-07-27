@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 import {
   useParams,
   useNavigate,
@@ -102,7 +103,14 @@ export default function ServicePage() {
                   gallery?.after ??
                   "/images/default-after.webp"
                 }
-                title={service.title}
+                beforeAlt={
+                  gallery?.beforeAlt ??
+                  `${service.title} project before professional tree service`
+                }
+                afterAlt={
+                  gallery?.afterAlt ??
+                  `${service.title} project after professional tree service`
+                }
               />
             </div>
 

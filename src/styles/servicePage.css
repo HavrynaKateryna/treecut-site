@@ -369,3 +369,120 @@
     padding-bottom: 120px;
   }
 }
+
+/* =====================================================
+   FAQ SECTION
+===================================================== */
+
+.service-faq {
+  margin-top: 80px;
+
+  padding: 40px;
+
+  border-radius: 30px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(0, 35, 33, 0.95),
+    rgba(0, 89, 86, 0.55)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.service-faq h2 {
+  margin-bottom: 35px;
+
+  font-size: clamp(28px, 4vw, 38px);
+
+  font-weight: 800;
+
+  color: var(--accent);
+}
+
+.faq-item {
+  padding: 25px 0;
+
+  border-bottom: 1px solid
+    rgba(255, 255, 255, 0.12);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item h3 {
+  margin-bottom: 12px;
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  color: white;
+}
+
+.faq-item p {
+  margin: 0;
+
+  white-space: pre-line;
+
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* =====================================================
+   AREAS WE SERVE
+===================================================== */
+
+.areas-section {
+  margin-top: 50px;
+
+  padding: 35px;
+
+  border-radius: 26px;
+
+  background: rgba(0, 35, 33, 0.75);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.areas-section h2 {
+  margin-bottom: 15px;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  color: var(--accent);
+}
+
+.areas-section p {
+  max-width: 800px;
+
+  margin: 0;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* =====================================================
+   MOBILE FAQ
+===================================================== */
+
+@media (max-width: 767px) {
+  .service-faq {
+    margin-top: 50px;
+
+    padding: 25px 20px;
+  }
+
+  .faq-item h3 {
+    font-size: 18px;
+  }
+
+  .areas-section {
+    padding: 25px 20px;
+  }
+}

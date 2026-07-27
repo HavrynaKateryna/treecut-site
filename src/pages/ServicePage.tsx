@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import {
   useParams,
@@ -6,13 +6,16 @@ import {
   Link,
 } from "react-router-dom";
 
-import { services } from "../data/servicesData";
-import { serviceGallery } from "../data/serviceGallery";
-
 import { Helmet } from "react-helmet-async";
 
+import { services } from "../data/servicesData";
+
+import { serviceGallery } from "../data/serviceGallery";
+
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
+
 import Modal from "../components/Modal";
+
 import RequestForm from "../components/RequestForm";
 
 import "../styles/servicePage.css";
@@ -23,7 +26,7 @@ export default function ServicePage() {
   const navigate = useNavigate();
 
   const service = services.find(
-    (s) => s.id === id,
+    (item) => item.id === id,
   );
 
   const gallery = serviceGallery.find(
@@ -64,24 +67,73 @@ export default function ServicePage() {
     setSuccess(false);
   };
 
+  const schema = {
+    "@context": "https://schema.org",
+
+    "@type": "Service",
+
+    name: service.h1,
+
+    description: service.seoDescription,
+
+    image: `https://timtreeremoval.vercel.app${service.image}`,
+
+    provider: {
+      "@type": "LocalBusiness",
+
+      name: "Tim's Tree Service",
+
+      areaServed: {
+        "@type": "City",
+
+        name: "Jacksonville, Florida",
+      },
+    },
+
+    serviceType: service.title,
+  };
+
   return (
     <div className="service-premium">
       <div className="container">
         <Helmet>
-          <title>
-            {service.title} | Tree Service
-            Jacksonville
-          </title>
+          <title>{service.seoTitle}</title>
 
           <meta
             name="description"
-            content={service.full}
+            content={service.seoDescription}
+          />
+
+          <meta
+            name="keywords"
+            content={service.seoKeywords.join(
+              ", ",
+            )}
+          />
+
+          <meta
+            property="og:title"
+            content={service.seoTitle}
+          />
+
+          <meta
+            property="og:description"
+            content={service.seoDescription}
+          />
+
+          <meta
+            property="og:image"
+            content={`https://timtreeremoval.vercel.app${service.image}`}
           />
 
           <link
             rel="canonical"
-            href={`https://timtreeremoval.vercel.app/services/${service.id}`}
+            href={`https://timtreemoval.vercel.app/services/${service.id}`}
           />
+
+          <script type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
         </Helmet>
 
         <section className="service-hero">
@@ -103,19 +155,13 @@ export default function ServicePage() {
                   gallery?.after ??
                   "/images/default-after.webp"
                 }
-                beforeAlt={
-                  gallery?.beforeAlt ??
-                  `${service.title} project before professional tree service`
-                }
-                afterAlt={
-                  gallery?.afterAlt ??
-                  `${service.title} project after professional tree service`
-                }
+                beforeAlt={`${service.title} before tree service Jacksonville Florida`}
+                afterAlt={`${service.title} after professional tree service Jacksonville Florida`}
               />
             </div>
 
             <div className="hero-content">
-              <h1>{service.title}</h1>
+              <h1>{service.h1}</h1>
 
               <button
                 className="btn btn-primary service-btn"
@@ -170,6 +216,15 @@ export default function ServicePage() {
               </p>
             </div>
           </div>
+        </section>
+
+        <section className="areas-section">
+          <h2>Areas We Serve</h2>
+
+          <p>
+            {service.serviceAreasText ??
+              "Tim's Tree Service proudly serves Jacksonville Florida and surrounding areas."}
+          </p>
         </section>
 
         <Modal open={open} onClose={close}>

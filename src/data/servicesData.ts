@@ -1,18 +1,40 @@
 export interface Service {
   id: string;
+
   number: string;
+
+  tag?: string;
+
   title: string;
+
   description: string;
+
   full: string;
 
+  // SEO
+  h1: string;
+
+  seoTitle: string;
+
+  seoDescription: string;
+
+  seoKeywords: string[];
+
+  // LOCAL SEO
+  areas: string[];
+
+  serviceAreasText: string;
+
+  // PROCESS
   beforeWork: string;
+
   execution: string;
+
   afterWork: string;
 
   highlights: string[];
 
   image: string;
-  tag?: string;
 }
 
 export const services: Service[] = [
@@ -25,15 +47,43 @@ export const services: Service[] = [
 
     title: "Tree Removal",
 
+    h1: "Professional Tree Removal in Jacksonville FL",
+
+    seoTitle:
+      "Tree Removal Jacksonville FL | Tim's Tree Service",
+
+    seoDescription:
+      "Professional tree removal service in Jacksonville Florida. Safe removal of dangerous, dead, and unwanted trees with complete cleanup.",
+
+    seoKeywords: [
+      "tree removal Jacksonville FL",
+      "tree removal service Jacksonville",
+      "dangerous tree removal Jacksonville",
+      "remove tree near me",
+    ],
+
+    areas: [
+      "Jacksonville",
+      "Orange Park",
+      "Fleming Island",
+      "Atlantic Beach",
+      "St Augustine",
+    ],
+
+    serviceAreasText:
+      "We provide professional tree removal services in Jacksonville FL and surrounding areas including Orange Park, Fleming Island, Atlantic Beach, and St Augustine.",
+
     description:
       "Safe and professional removal of trees of any size and complexity.",
 
     full: `
 Tree removal requires experience, careful planning, and professional equipment.
 
-Our team provides safe and professional tree removal services for residential and commercial properties. We remove trees of different sizes and complexity while protecting your home, landscape, and surrounding structures.
+Our team provides safe and professional tree removal services for residential and commercial properties.
 
-With over 8 years of experience and more than 1,000 trees safely removed, we have the knowledge and equipment to handle difficult projects, including trees located near houses, fences, power lines, and other challenging areas.
+We remove trees of different sizes and complexity while protecting your home, landscape, and surrounding structures.
+
+With over 8 years of experience and more than 1,000 trees safely removed, we have the knowledge and equipment to handle difficult projects.
 
 Our goal is to complete every project safely, efficiently, and with minimal impact on your property.
 `,
@@ -45,61 +95,60 @@ Before starting any tree removal project, our team performs a detailed inspectio
 
 We evaluate:
 
-• Tree condition and structure  
-• Tree size and location  
-• Nearby buildings, fences, and other obstacles  
-• Access to the work area  
-• Potential safety risks  
+• Tree condition and structure
+• Tree size and location
+• Nearby buildings and obstacles
+• Access to the work area
+• Potential safety risks
 
-After the inspection, we create a safe removal plan and determine the best equipment and techniques required for the project.
-
-Proper preparation allows us to complete the work safely while protecting your property.
+After inspection, we create a safe removal plan.
 `,
 
     execution: `
 Safe Tree Removal
 
-Our experienced team uses professional equipment and proven techniques to safely remove trees of different sizes and complexity.
+Our experienced team uses professional equipment and proven techniques to safely remove trees.
 
 Depending on the project, we use:
 
-• Professional chainsaws  
-• Bucket trucks  
-• Climbing equipment  
-• Bobcat machinery  
-• Crane assistance when needed  
+• Professional chainsaws
+• Bucket trucks
+• Climbing equipment
+• Bobcat machinery
+• Crane assistance when needed
 
-Every step of the removal process is carefully controlled. Large branches and tree sections are removed safely to reduce risks and protect your home, landscape, and surrounding structures.
-
-Our priority is safety, quality workmanship, and a professional result.
+Every step is carefully controlled to protect your property.
 `,
 
     afterWork: `
 Cleanup & Final Result
 
-After the tree removal is completed, our team carefully cleans the entire work area.
+After tree removal is completed, our team cleans the entire work area.
 
 We remove:
 
-• Tree branches  
-• Wood pieces  
-• Leaves and debris  
+• Tree branches
+• Wood pieces
+• Leaves and debris
 
-We make sure your property is left clean, safe, and ready to use.
-
-Firewood and larger logs can be left upon request.
+We leave your property clean, safe, and ready to use.
 `,
 
     highlights: [
-      "Over 8 years of professional tree service",
-      "1,000+ trees safely removed",
-      "Experienced and trained team",
+      "Residential and commercial tree removal",
+
+      "Dangerous tree removal",
+
       "Professional equipment",
+
+      "Experienced tree specialists",
+
       "Complete cleanup after every project",
     ],
 
     image: "/servise 1.webp",
   },
+
   {
     id: "tree-trimming",
 
@@ -107,77 +156,94 @@ Firewood and larger logs can be left upon request.
 
     title: "Tree Trimming & Pruning",
 
+    h1: "Professional Tree Trimming & Pruning in Jacksonville FL",
+
+    seoTitle:
+      "Tree Trimming Jacksonville FL | Tree Pruning Service",
+
+    seoDescription:
+      "Professional tree trimming and pruning service in Jacksonville Florida. Improve tree health, safety, and appearance with expert care.",
+
+    seoKeywords: [
+      "tree trimming Jacksonville FL",
+
+      "tree pruning Jacksonville",
+
+      "tree service Jacksonville",
+    ],
+
+    areas: [
+      "Jacksonville",
+
+      "Orange Park",
+
+      "Fleming Island",
+
+      "Atlantic Beach",
+
+      "St Augustine",
+    ],
+
+    serviceAreasText:
+      "Professional tree trimming services available throughout Jacksonville FL and nearby communities.",
+
     description:
       "Improve the health, safety, and appearance of your trees with expert trimming and pruning.",
 
     full: `
 Tree trimming and pruning help maintain healthy trees, improve appearance, and reduce potential safety risks around your property.
 
-Our professional team provides expert tree care services to remove dead, damaged, and overgrown branches while maintaining the natural shape and beauty of your trees.
+Our professional team removes dead, damaged, and overgrown branches while maintaining the natural shape of your trees.
 
-With over 8 years of hands-on experience, we understand how to properly care for different tree species and use safe techniques that support healthier growth and protect your property.
-
-Our goal is to improve tree health, safety, and appearance while providing reliable and professional service.
+With over 8 years of experience, we provide safe and reliable tree care services for Jacksonville homeowners and businesses.
 `,
 
     beforeWork: `
 Inspection & Planning
 
-Before starting any trimming or pruning project, our team carefully evaluates the condition of your trees and identifies areas that require attention.
+Before trimming, our team evaluates tree health and identifies branches requiring attention.
 
 We inspect:
 
-• Tree health and overall condition  
-• Dead, damaged, or dangerous branches  
-• Branches affecting buildings, fences, or walkways  
-• Tree structure and growth patterns  
-• Safety concerns around your property  
+• Tree condition
+• Dead or damaged branches
+• Safety concerns
+• Growth patterns
 
-After the inspection, we determine the best trimming approach to improve the tree while maintaining its natural structure and appearance.
-
-Proper planning helps us achieve safe and effective results.
+Proper planning helps achieve safe results.
 `,
 
     execution: `
 Professional Tree Trimming
 
-Our experienced team carefully removes unwanted, damaged, and overgrown branches using professional equipment and safe techniques.
+Our team carefully removes unwanted and damaged branches using professional equipment.
 
-The trimming process may include:
+The service may include:
 
-• Removing dead or hazardous branches  
-• Improving tree shape and appearance  
-• Reducing overgrown areas  
-• Creating better clearance around buildings and structures  
-• Improving air circulation and healthy growth  
-
-We focus on maintaining the natural beauty of your trees while improving safety and protecting your property.
-
-Every cut is made carefully and professionally to support the long-term health of your trees.
+• Removing dead branches
+• Improving tree shape
+• Creating clearance around buildings
+• Supporting healthy growth
 `,
 
     afterWork: `
 Cleanup & Final Result
 
-After completing the trimming and pruning service, our team cleans the entire work area.
+After trimming, we remove branches, leaves, and debris.
 
-We remove:
-
-• Cut branches  
-• Leaves and debris  
-• Remaining tree material  
-
-We leave your property clean and organized while your trees have a healthier, safer, and more attractive appearance.
-
-Regular professional trimming helps maintain beautiful and strong trees for years to come.
+Your property is left clean while your trees look healthier and safer.
 `,
 
     highlights: [
       "Professional tree trimming techniques",
+
       "Improved tree health and appearance",
-      "Reduced safety risks around your property",
+
+      "Reduced safety risks",
+
       "Experienced tree specialists",
-      "Complete cleanup after every project",
+
+      "Complete cleanup",
     ],
 
     image: "/servise2.webp",
@@ -191,87 +257,148 @@ Regular professional trimming helps maintain beautiful and strong trees for year
 
     title: "Emergency Tree Removal",
 
+    h1: "Emergency Tree Removal in Jacksonville FL",
+
+    seoTitle:
+      "Emergency Tree Removal Jacksonville FL | Storm Damage Service",
+
+    seoDescription:
+      "Fast and professional emergency tree removal in Jacksonville Florida. Storm damage, fallen trees, and hazardous tree removal services.",
+
+    seoKeywords: [
+      "emergency tree removal Jacksonville FL",
+
+      "storm damage tree removal",
+
+      "fallen tree removal Jacksonville",
+    ],
+
+    areas: [
+      "Jacksonville",
+
+      "Orange Park",
+
+      "Fleming Island",
+
+      "Atlantic Beach",
+
+      "St Augustine",
+    ],
+
+    serviceAreasText:
+      "Emergency tree removal services available in Jacksonville FL and surrounding areas after storms, accidents, and dangerous tree situations.",
+
     description:
       "Fast response for storm-damaged, fallen, or hazardous trees.",
 
     full: `
 Storms, strong winds, and unexpected tree damage can create dangerous situations for your property.
 
-Our team provides professional emergency tree removal services to safely remove fallen, damaged, or hazardous trees. We respond quickly to help protect your home, vehicles, landscape, and surrounding areas.
+Our team provides professional emergency tree removal services to safely remove fallen, damaged, or hazardous trees.
 
-With over 8 years of experience, we have the knowledge and professional equipment needed to handle emergency situations, including storm-damaged trees, fallen branches, and dangerous trees that require immediate attention.
+We respond quickly to help protect your home, vehicles, landscape, and surrounding areas.
 
-Our priority is to restore safety to your property as quickly and safely as possible.
+With over 8 years of experience, we have the equipment and knowledge needed for difficult emergency situations.
 `,
 
     beforeWork: `
 Emergency Assessment & Planning
 
-Before starting emergency tree removal, our team first evaluates the situation and identifies immediate safety risks.
+Before starting emergency tree removal, our team evaluates the situation and identifies immediate safety risks.
 
 We inspect:
 
-• Condition and stability of the damaged tree  
-• Fallen or dangerous branches  
-• Possible risks to homes, vehicles, fences, and structures  
-• Access to the work area  
-• Safe removal options for the situation  
+• Tree stability
+• Fallen branches
+• Damage to structures
+• Access to the work area
+• Safe removal options
 
-After the assessment, we create a safe action plan and determine the proper equipment and techniques needed to remove the hazard.
-
-Safety is our first priority during every emergency service.
+Safety is our first priority.
 `,
 
     execution: `
 Emergency Tree Removal Service
 
-Our experienced team uses professional equipment and safe removal techniques to handle storm-damaged and hazardous trees.
+Our experienced team uses professional equipment and safe removal techniques.
 
-Depending on the situation, we may use:
+Depending on the situation:
 
-• Professional chainsaws  
-• Bucket trucks  
-• Climbing equipment  
-• Bobcat machinery  
-• Crane assistance when required  
+• Chainsaws
+• Bucket trucks
+• Climbing equipment
+• Bobcat machinery
+• Crane assistance
 
-We carefully remove damaged trees and branches while controlling every step of the process to protect your property.
-
-Our team is prepared to handle difficult situations and complete emergency work safely and efficiently.
+We carefully remove damaged trees while protecting your property.
 `,
 
     afterWork: `
 Cleanup & Property Restoration
 
-After removing the damaged tree, our team cleans the entire work area and removes dangerous debris.
+After removing the damaged tree, we clean the entire work area.
 
 We remove:
 
-• Fallen branches  
-• Broken tree sections  
-• Wood and debris  
+• Fallen branches
+• Broken tree sections
+• Wood and debris
 
-We help restore your property by leaving the area cleaner, safer, and ready for normal use.
-
-Firewood and larger logs can be left upon request.
+Your property is left cleaner and safer.
 `,
 
     highlights: [
-      "Fast response for emergency situations",
-      "Storm damage and hazardous tree removal",
-      "8+ years of professional experience",
-      "Professional equipment and safe techniques",
-      "Complete cleanup after emergency work",
+      "Fast response for emergencies",
+
+      "Storm damage tree removal",
+
+      "8+ years of experience",
+
+      "Professional equipment",
+
+      "Complete cleanup",
     ],
 
     image: "/servise3.webp",
   },
+
   {
     id: "palm-tree-trimming",
 
     number: "04",
 
     title: "Palm Tree Trimming",
+
+    h1: "Professional Palm Tree Trimming in Jacksonville FL",
+
+    seoTitle:
+      "Palm Tree Trimming Jacksonville FL | Palm Tree Care",
+
+    seoDescription:
+      "Professional palm tree trimming service in Jacksonville Florida. Keep your palms healthy, safe, and beautiful with expert maintenance.",
+
+    seoKeywords: [
+      "palm tree trimming Jacksonville FL",
+
+      "palm tree service Jacksonville",
+
+      "palm maintenance Florida",
+    ],
+
+    areas: [
+      "Jacksonville",
+
+      "Orange Park",
+
+      "Fleming Island",
+
+      "Atlantic Beach",
+
+      "St Augustine",
+    ],
+
+    serviceAreasText:
+      "Professional palm tree trimming services for Jacksonville FL homes and businesses.",
 
     description:
       "Professional palm tree trimming to keep your palms healthy, clean, and attractive.",
@@ -281,67 +408,62 @@ Palm trees require regular maintenance to stay healthy, safe, and attractive.
 
 Our team provides professional palm tree trimming services to remove dead fronds, improve appearance, and maintain the overall condition of your palms.
 
-With over 8 years of experience, we understand how to safely care for different types of palm trees while protecting your property and keeping your landscape looking its best.
-
-Proper palm maintenance helps reduce safety risks, improve curb appeal, and keep your outdoor space clean and well-maintained.
+With over 8 years of experience, we safely care for palm trees while protecting your property.
 `,
 
     beforeWork: `
 Palm Tree Inspection & Planning
 
-Before starting palm tree trimming, our team carefully evaluates the condition of the palm and identifies areas that require attention.
+Before trimming, our team evaluates the palm tree condition.
 
 We inspect:
 
-• Dead, dry, or damaged palm fronds  
-• Overall palm tree condition and appearance  
-• Potential safety risks around the property  
-• Branches or growth affecting structures or walkways  
-• Safe access to the work area  
+• Dead or damaged fronds
+• Tree condition
+• Safety risks
+• Nearby structures
+• Access to the work area
 
-After the inspection, we determine the safest trimming approach to maintain the health and natural shape of your palm trees.
+We determine the safest trimming approach.
 `,
 
     execution: `
 Professional Palm Tree Trimming
 
-Our experienced team carefully removes unwanted and damaged palm fronds using professional equipment and safe techniques.
+Our team carefully removes unwanted palm growth.
 
-The trimming process may include:
+The service may include:
 
-• Removing dead or dry fronds  
-• Cleaning the palm crown  
-• Removing old growth  
-• Improving the appearance of the palm  
-• Reducing potential hazards from falling branches  
+• Removing dead fronds
+• Cleaning palm crowns
+• Improving appearance
+• Reducing hazards
 
-We focus on maintaining the natural beauty of your palms while improving safety and enhancing the appearance of your property.
-
-Every project is completed carefully with attention to detail and professional workmanship.
+Every project is completed safely and professionally.
 `,
 
     afterWork: `
 Cleanup & Final Result
 
-After completing the palm tree trimming service, our team cleans the entire work area.
+After trimming, we remove:
 
-We remove:
+• Palm fronds
+• Leaves
+• Tree debris
 
-• Trimmed palm fronds  
-• Leaves and debris  
-• Unwanted tree material  
-
-We leave your property clean and organized while your palm trees have a healthier, cleaner, and more attractive appearance.
-
-Regular palm maintenance helps keep your landscape beautiful and safe throughout the year.
+Your property is left clean and organized.
 `,
 
     highlights: [
-      "Professional palm tree maintenance",
-      "Improved safety and curb appeal",
-      "Experienced tree service specialists",
+      "Professional palm maintenance",
+
+      "Improved safety and appearance",
+
+      "Experienced specialists",
+
       "Safe trimming techniques",
-      "Complete cleanup after every project",
+
+      "Complete cleanup",
     ],
 
     image: "/servise4.webp",
@@ -353,77 +475,112 @@ Regular palm maintenance helps keep your landscape beautiful and safe throughout
 
     title: "Land & Brush Clearing",
 
+    h1: "Professional Land Clearing Service in Jacksonville FL",
+
+    seoTitle:
+      "Land Clearing Jacksonville FL | Brush Removal Service",
+
+    seoDescription:
+      "Professional land and brush clearing service in Jacksonville Florida. Remove overgrown vegetation, brush, and unwanted growth.",
+
+    seoKeywords: [
+      "land clearing Jacksonville FL",
+
+      "brush removal Jacksonville",
+
+      "lot clearing Jacksonville",
+    ],
+
+    areas: [
+      "Jacksonville",
+
+      "Orange Park",
+
+      "Fleming Island",
+
+      "Atlantic Beach",
+
+      "St Augustine",
+    ],
+
+    serviceAreasText:
+      "Professional land clearing and brush removal services for residential and commercial properties in Jacksonville FL and nearby areas.",
+
     description:
       "Clearing overgrown lots, brush, small trees, and unwanted vegetation for residential and commercial properties.",
 
     full: `
 Overgrown areas, unwanted vegetation, and small trees can make your property difficult to use and maintain.
 
-Our team provides professional land and brush clearing services for residential and commercial properties. We remove brush, small trees, vines, bushes, and unwanted vegetation to help property owners improve access, prepare land for future projects, and create cleaner outdoor spaces.
+Our team provides professional land and brush clearing services for residential and commercial properties.
 
-With over 8 years of experience and professional equipment, we safely handle clearing projects of different sizes and complexity.
+We remove brush, small trees, vines, bushes, and unwanted vegetation to create cleaner and more usable outdoor spaces.
 
-Whether you need land preparation, property cleanup, or vegetation removal, our team provides reliable and efficient service.
+With over 8 years of experience and professional equipment, we handle clearing projects of different sizes and complexity.
 `,
 
     beforeWork: `
 Site Assessment & Planning
 
-Before starting any land clearing project, our team evaluates the property and identifies the areas that require clearing.
+Before starting land clearing, our team evaluates your property.
 
 We inspect:
 
-• Overgrown brush and vegetation  
-• Small trees and unwanted growth  
-• Property access and working conditions  
-• Terrain and possible obstacles  
-• Safety risks around the work area  
+• Brush and vegetation
+• Small trees
+• Property access
+• Terrain conditions
+• Possible obstacles
 
-After the inspection, we create a clearing plan and determine the proper equipment and techniques needed to complete the project safely and efficiently.
+After inspection, we create a safe clearing plan.
 `,
 
     execution: `
 Professional Land Clearing Service
 
-Our experienced team removes unwanted vegetation, brush, and small trees using professional equipment and safe methods.
+Our team removes unwanted vegetation using professional equipment.
 
-The clearing process may include:
+The process may include:
 
-• Removing thick brush and overgrown vegetation  
-• Clearing small trees and unwanted growth  
-• Removing bushes, vines, and debris  
-• Improving access to the property  
-• Preparing land for construction, fencing, landscaping, or future projects  
+• Brush removal
+• Small tree removal
+• Vegetation clearing
+• Property preparation
+• Debris removal
 
-We work carefully to complete each project efficiently while maintaining a safe and organized work environment.
+We complete projects efficiently while maintaining a safe work area.
 `,
 
     afterWork: `
 Cleanup & Final Result
 
-After completing the clearing work, our team removes leftover vegetation and debris from the property.
+After clearing work, we remove leftover vegetation and debris.
 
-We clear away:
+We clear:
 
-• Cut branches  
-• Brush and vegetation waste  
-• Unwanted materials from the work area  
+• Branches
+• Brush
+• Vegetation waste
+• Unwanted materials
 
-We leave your property cleaner, more accessible, and ready for its next purpose.
-
-Our goal is to provide a smooth transition from an overgrown area to a usable and improved space.
+Your property is left cleaner and ready for future use.
 `,
 
     highlights: [
-      "Residential and commercial land clearing",
+      "Residential and commercial clearing",
+
       "Brush and vegetation removal",
-      "Professional equipment and experienced team",
-      "Property preparation for future projects",
-      "Complete cleanup after every service",
+
+      "Professional equipment",
+
+      "Property preparation",
+
+      "Complete cleanup",
     ],
 
     image: "/servise5.webp",
   },
+
   {
     id: "crane-assisted-tree-removal",
 
@@ -431,79 +588,100 @@ Our goal is to provide a smooth transition from an overgrown area to a usable an
 
     title: "Crane-Assisted Tree Removal",
 
+    h1: "Crane Tree Removal Service in Jacksonville FL",
+
+    seoTitle:
+      "Crane Tree Removal Jacksonville FL | Large Tree Removal",
+
+    seoDescription:
+      "Safe crane-assisted tree removal in Jacksonville Florida. Professional equipment for large, dangerous, and difficult tree removal projects.",
+
+    seoKeywords: [
+      "crane tree removal Jacksonville",
+
+      "large tree removal Jacksonville FL",
+
+      "tree removal crane service",
+    ],
+
+    areas: [
+      "Jacksonville",
+
+      "Orange Park",
+
+      "Fleming Island",
+
+      "Atlantic Beach",
+
+      "St Augustine",
+    ],
+
+    serviceAreasText:
+      "Crane-assisted tree removal services for large and dangerous trees throughout Jacksonville FL and surrounding communities.",
+
     description:
       "Safe removal of large or hazardous trees using crane assistance when needed.",
 
     full: `
 Some trees are too large, damaged, or located in difficult areas where traditional removal methods are not enough.
 
-Our team provides professional crane-assisted tree removal for complex projects that require additional equipment, advanced planning, and experienced operators.
+Our team provides professional crane-assisted tree removal for complex projects requiring advanced equipment and planning.
 
-With over 8 years of experience, we safely handle large and hazardous trees using professional equipment, including crane assistance when necessary.
-
-This method allows us to remove difficult trees safely while reducing risks to your home, landscape, and surrounding structures.
+With over 8 years of experience, we safely remove large and hazardous trees while protecting your property.
 `,
 
     beforeWork: `
 Inspection & Crane Planning
 
-Before starting a crane-assisted tree removal project, our team performs a detailed evaluation of the tree and property.
+Before crane-assisted removal, our team evaluates:
 
-We inspect:
+• Tree size and condition
+• Nearby structures
+• Equipment access
+• Crane placement area
+• Safety risks
 
-• Tree size, condition, and stability  
-• Location of nearby homes, fences, and structures  
-• Access points for equipment  
-• Safe crane placement area  
-• Potential risks during removal  
-
-After the inspection, we create a detailed removal plan and determine the safest equipment, lifting method, and techniques required for the project.
-
-Proper planning is essential for safe and controlled tree removal.
+We create a detailed removal plan.
 `,
 
     execution: `
 Professional Crane-Assisted Removal
 
-Our experienced team uses advanced equipment and professional techniques to safely remove large or difficult-to-access trees.
+Our experienced team uses:
 
-The process may include:
+• Crane equipment
+• Chainsaws
+• Bucket trucks
+• Climbing equipment
+• Rigging systems
 
-• Crane equipment  
-• Professional chainsaws  
-• Bucket trucks  
-• Climbing equipment  
-• Specialized rigging techniques  
-
-Large sections of the tree are carefully secured, lifted, and removed in a controlled manner.
-
-Using crane assistance allows our team to safely handle challenging projects while protecting your property and surrounding areas.
+Large sections are carefully lifted and removed in a controlled process.
 `,
 
     afterWork: `
 Cleanup & Final Result
 
-After the tree removal is completed, our team carefully cleans the entire work area.
+After removal, our team cleans the work area.
 
 We remove:
 
-• Tree branches  
-• Wood sections  
-• Debris and leftover materials  
+• Branches
+• Wood sections
+• Debris
 
-We make sure your property is left clean, safe, and ready to use.
-
-Firewood and larger logs can be left upon request.
-
-Our goal is to provide a professional result from the initial inspection to the final cleanup.
+Your property is left clean and safe.
 `,
 
     highlights: [
-      "Professional crane-assisted tree removal",
-      "Experience with large and complex trees",
-      "Advanced equipment and safe techniques",
-      "Protection of surrounding property",
-      "Complete cleanup after every project",
+      "Crane-assisted tree removal",
+
+      "Large tree specialists",
+
+      "Advanced equipment",
+
+      "Safe removal techniques",
+
+      "Complete cleanup",
     ],
 
     image: "/servise6.webp",

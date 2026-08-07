@@ -70,32 +70,6 @@ export default function Footer() {
               <FaWhatsapp />
             </a>
           </div>
-
-          <div className="footer__socials">
-            <a
-              href="https://instagram.com/tim.tree_service"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaInstagram />
-            </a>
-
-            <a
-              href="https://facebook.com/removal.s.trees"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebook />
-            </a>
-
-            <a
-              href="https://wa.me/15596804185"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaWhatsapp />
-            </a>
-          </div>
         </div>
       </div>
 

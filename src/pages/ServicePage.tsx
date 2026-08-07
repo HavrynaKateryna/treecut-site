@@ -94,48 +94,46 @@ export default function ServicePage() {
   };
 
   return (
-    <div className="service-premium">
-      <div className="container">
-        <Helmet>
-          <title>{service.seoTitle}</title>
+    <>
+      <Helmet>
+        <title>{service.seoTitle}</title>
 
-          <meta
-            name="description"
-            content={service.seoDescription}
-          />
+        <meta
+          name="description"
+          content={service.seoDescription}
+        />
 
-          <meta
-            name="keywords"
-            content={service.seoKeywords.join(
-              ", ",
-            )}
-          />
+        <meta
+          name="keywords"
+          content={service.seoKeywords.join(", ")}
+        />
 
-          <meta
-            property="og:title"
-            content={service.seoTitle}
-          />
+        <meta
+          property="og:title"
+          content={service.seoTitle}
+        />
 
-          <meta
-            property="og:description"
-            content={service.seoDescription}
-          />
+        <meta
+          property="og:description"
+          content={service.seoDescription}
+        />
 
-          <meta
-            property="og:image"
-            content={`https://timtreeremoval.vercel.app${service.image}`}
-          />
+        <meta
+          property="og:image"
+          content={`https://timtreeremoval.vercel.app${service.image}`}
+        />
 
-          <link
-            rel="canonical"
-            href={`https://timtreemoval.vercel.app/services/${service.id}`}
-          />
+        <link
+          rel="canonical"
+          href={`https://timtreeremoval.vercel.app/services/${service.id}`}
+        />
 
-          <script type="application/ld+json">
-            {JSON.stringify(schema)}
-          </script>
-        </Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(schema)}
+        </script>
+      </Helmet>
 
+      <main className="service-premium">
         <section className="service-hero">
           <Link
             to="/#services"
@@ -144,8 +142,14 @@ export default function ServicePage() {
             ← All Services
           </Link>
 
+          <div className="hero-title">
+            <h1>{service.h1}</h1>
+          </div>
+
           <div className="hero-grid">
-            <div className="hero-image">
+            {/* LEFT SIDE - BEFORE AFTER */}
+
+            <div className="service-hero-media">
               <BeforeAfterSlider
                 before={
                   gallery?.before ??
@@ -157,18 +161,25 @@ export default function ServicePage() {
                 }
                 beforeAlt={`${service.title} before tree service Jacksonville Florida`}
                 afterAlt={`${service.title} after professional tree service Jacksonville Florida`}
+                beforePosition={
+                  gallery?.beforePosition
+                }
+                afterPosition={
+                  gallery?.afterPosition
+                }
+                beforeFit={gallery?.beforeFit}
+                afterFit={gallery?.afterFit}
               />
             </div>
 
-            <div className="hero-content">
-              <h1>{service.h1}</h1>
+            {/* RIGHT SIDE - DESCRIPTION */}
 
-              <button
-                className="btn btn-primary service-btn"
-                onClick={() => setOpen(true)}
-              >
-                Request service
-              </button>
+            <div className="hero-content">
+              <p className="service-subtitle">
+                Professional tree care services
+                for residential and commercial
+                properties in Jacksonville FL.
+              </p>
 
               <p className="service-description">
                 {service.full}
@@ -186,10 +197,16 @@ export default function ServicePage() {
                   ),
                 )}
               </div>
+
+              <button
+                className="btn btn-primary service-btn"
+                onClick={() => setOpen(true)}
+              >
+                Request service
+              </button>
             </div>
           </div>
         </section>
-
         <section className="service-info">
           <div className="info-grid">
             <div className="info-card">
@@ -240,7 +257,7 @@ export default function ServicePage() {
             </div>
           )}
         </Modal>
-      </div>
-    </div>
+      </main>
+    </>
   );
 }

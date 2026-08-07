@@ -54,67 +54,67 @@ export default function Gallery() {
       },
       {
         src: "/gallery/11.webp",
-        alt: "Tree removal project completed by professional tree service",
+        alt: "Professional tree removal project",
       },
       {
         src: "/gallery/12.webp",
-        alt: "Professional tree trimming service with safe cutting techniques",
+        alt: "Professional tree trimming service",
       },
       {
         src: "/gallery/13.webp",
-        alt: "Tree removal and property cleanup after professional service",
+        alt: "Tree removal and property cleanup",
       },
       {
         src: "/gallery/14.webp",
-        alt: "Professional tree cutting and trimming work",
+        alt: "Professional tree cutting work",
       },
       {
         src: "/gallery/15.webp",
-        alt: "Tree care service performed with professional equipment",
+        alt: "Tree care service with equipment",
       },
       {
         src: "/gallery/16.webp",
-        alt: "Professional tree removal and branch cutting service",
+        alt: "Professional tree removal service",
       },
       {
         src: "/gallery/17.webp",
-        alt: "Tree trimming and pruning project completed safely",
+        alt: "Tree trimming project completed safely",
       },
       {
         src: "/gallery/18.webp",
-        alt: "Professional tree removal service for residential property",
+        alt: "Residential tree removal service",
       },
       {
         src: "/gallery/19.webp",
-        alt: "Tree cutting and cleanup service after tree removal",
+        alt: "Tree cleanup after removal",
       },
       {
         src: "/gallery/20.webp",
-        alt: "Professional tree trimming and property maintenance",
+        alt: "Tree maintenance service",
       },
       {
         src: "/gallery/21.webp",
-        alt: "Tree removal work completed by experienced tree care professionals",
+        alt: "Professional tree care project",
       },
       {
         src: "/gallery/22.webp",
-        alt: "Professional tree pruning and branch removal service",
+        alt: "Tree pruning service",
       },
       {
         src: "/gallery/23.webp",
-        alt: "Residential tree removal and cleanup project",
+        alt: "Residential tree removal project",
       },
       {
         src: "/gallery/24.webp",
-        alt: "Professional tree care and tree removal service",
+        alt: "Professional tree service",
       },
       {
         src: "/gallery/25.webp",
-        alt: "Tree trimming and removal project completed safely",
+        alt: "Tree trimming project",
       },
       {
         src: "/gallery/27.webp",
-        alt: "Professional tree service project completed in Jacksonville Florida",
+        alt: "Professional tree service Jacksonville Florida",
       },
     ],
     [],
@@ -130,19 +130,17 @@ export default function Gallery() {
 
   const currentX = useRef(0);
 
-  const lastMoveTime = useRef(0);
-
   const velocity = useRef(0);
+
+  const lastMoveTime = useRef(0);
 
   const dragging = useRef(false);
 
-  const next = () => {
+  const next = () =>
     setIndex((prev) => (prev + 1) % len);
-  };
 
-  const prev = () => {
+  const prev = () =>
     setIndex((prev) => (prev - 1 + len) % len);
-  };
 
   const openImage = (i: number) => {
     setIndex(i);
@@ -164,9 +162,8 @@ export default function Gallery() {
     if (
       !dragging.current ||
       startX.current === null
-    ) {
+    )
       return;
-    }
 
     const x = e.touches[0].clientX;
 
@@ -190,17 +187,12 @@ export default function Gallery() {
       e.changedTouches[0].clientX -
       startX.current;
 
-    const v = velocity.current;
-
     dragging.current = false;
 
     startX.current = null;
 
-    if (diff < -50 || v < -0.5) {
-      next();
-    } else if (diff > 50 || v > 0.5) {
-      prev();
-    }
+    if (diff < -50) next();
+    else if (diff > 50) prev();
   };
 
   useEffect(() => {
@@ -218,16 +210,19 @@ export default function Gallery() {
 
     window.addEventListener("keydown", onKey);
 
-    return () =>
+    return () => {
       window.removeEventListener(
         "keydown",
         onKey,
       );
+    };
   }, [isOpen]);
 
   const visible = [
     (index - 1 + len) % len,
+
     index,
+
     (index + 1) % len,
   ];
 
@@ -247,28 +242,24 @@ export default function Gallery() {
               Every project is completed using
               professional equipment, safe
               techniques, and careful attention to
-              every detail. From tree removal to
-              the final cleanup, we take pride in
-              delivering reliable results our
-              customers can trust.
+              every detail.
             </p>
           </div>
 
           <div
-            className="carousel"
+            className="gallery-carousel"
             onTouchStart={onStart}
             onTouchMove={onMove}
             onTouchEnd={onEnd}
           >
             <button
-              className="gallery-arrow left-arrow"
+              className="gallery-arrow gallery-left-arrow"
               onClick={prev}
-              aria-label="Previous gallery image"
             >
               ‹
             </button>
 
-            <div className="slider">
+            <div className="gallery-slider">
               {visible.map((i, pos) => {
                 const active = i === index;
 
@@ -276,10 +267,10 @@ export default function Gallery() {
                   <div
                     key={i}
                     className={`
-slide
-${active ? "active" : ""}
-${pos === 0 ? "left" : ""}
-${pos === 2 ? "right" : ""}
+gallery-slide
+${active ? "gallery-slide-active" : ""}
+${pos === 0 ? "gallery-slide-left" : ""}
+${pos === 2 ? "gallery-slide-right" : ""}
 `}
                     onClick={() => openImage(i)}
                   >
@@ -296,9 +287,8 @@ ${pos === 2 ? "right" : ""}
             </div>
 
             <button
-              className="gallery-arrow right-arrow"
+              className="gallery-arrow gallery-right-arrow"
               onClick={next}
-              aria-label="Next gallery image"
             >
               ›
             </button>
@@ -307,14 +297,12 @@ ${pos === 2 ? "right" : ""}
               {images.map((_, i) => (
                 <button
                   key={i}
-                  className={`dot ${i === index ? "active" : ""}`}
-                  onClick={() => setIndex(i)}
-                  aria-label={`View gallery image ${i + 1}`}
-                  aria-current={
+                  className={`gallery-dot ${
                     i === index
-                      ? "true"
-                      : undefined
-                  }
+                      ? "gallery-dot-active"
+                      : ""
+                  }`}
+                  onClick={() => setIndex(i)}
                 />
               ))}
             </div>

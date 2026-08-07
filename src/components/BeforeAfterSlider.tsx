@@ -4,18 +4,41 @@ import "../styles/beforeAfterSlider.css";
 
 type Props = {
   before: string;
+
   after: string;
+
   beforeAlt: string;
+
   afterAlt: string;
+
+  beforePosition?: string;
+
+  afterPosition?: string;
+
+  beforeFit?: "cover" | "contain";
+
+  afterFit?: "cover" | "contain";
 };
 
 export default function BeforeAfterSlider({
   before,
+
   after,
+
   beforeAlt,
+
   afterAlt,
+
+  beforePosition = "center",
+
+  afterPosition = "center",
+
+  beforeFit = "cover",
+
+  afterFit = "cover",
 }: Props) {
-  const [value, setValue] = useState(50);
+  const [value, setValue] = useState(100);
+
   const [dragging, setDragging] = useState(false);
 
   const ref = useRef<HTMLDivElement | null>(null);
@@ -35,7 +58,7 @@ export default function BeforeAfterSlider({
     setValue(percent);
   };
 
-  const onPointerDown = (
+  const startDrag = (
     e: React.PointerEvent<HTMLDivElement>,
   ) => {
     setDragging(true);
@@ -47,7 +70,7 @@ export default function BeforeAfterSlider({
     update(e.clientX);
   };
 
-  const onPointerMove = (
+  const moveDrag = (
     e: React.PointerEvent<HTMLDivElement>,
   ) => {
     if (!dragging) return;
@@ -55,7 +78,7 @@ export default function BeforeAfterSlider({
     update(e.clientX);
   };
 
-  const stop = (
+  const stopDrag = (
     e: React.PointerEvent<HTMLDivElement>,
   ) => {
     setDragging(false);
@@ -73,52 +96,66 @@ export default function BeforeAfterSlider({
 
   return (
     <div
-      className="ba-slider"
-      ref={ref}
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={stop}
-      onPointerCancel={stop}
+      className={`ba-wrapper ${
+        dragging ? "is-dragging" : ""
+      }`}
+      style={{
+        touchAction: "none",
+      }}
     >
-      <div className="ba-images">
-        {/* AFTER IMAGE */}
-
-        <img
-          src={after}
-          className="ba-img"
-          alt={afterAlt}
-          loading="eager"
-          decoding="async"
-        />
-
-        {/* BEFORE IMAGE */}
-
-        <div
-          className="ba-before"
-          style={{
-            clipPath: `inset(0 ${
-              100 - value
-            }% 0 0)`,
-          }}
-        >
+      <div
+        className="ba-slider"
+        ref={ref}
+        onPointerDown={startDrag}
+        onPointerMove={moveDrag}
+        onPointerUp={stopDrag}
+        onPointerCancel={stopDrag}
+        onPointerLeave={stopDrag}
+      >
+        <div className="ba-images">
           <img
-            src={before}
+            src={after}
             className="ba-img"
-            alt={beforeAlt}
-            loading="lazy"
+            alt={afterAlt}
+            loading="eager"
             decoding="async"
+            style={{
+              objectFit: afterFit,
+
+              objectPosition: afterPosition,
+            }}
           />
-        </div>
 
-        {/* SLIDER HANDLE */}
+          <div
+            className="ba-before"
+            style={{
+              clipPath: `inset(0 ${
+                100 - value
+              }% 0 0)`,
+            }}
+          >
+            <img
+              src={before}
+              className="ba-img"
+              alt={beforeAlt}
+              loading="lazy"
+              decoding="async"
+              style={{
+                objectFit: beforeFit,
 
-        <div
-          className="ba-handle"
-          style={{
-            left: `${value}%`,
-          }}
-        >
-          <div className="ba-dot" />
+                objectPosition: beforePosition,
+              }}
+            />
+          </div>
+
+          <div
+            className="ba-handle"
+            style={{
+              left: `${value}%`,
+            }}
+          >
+            <div className="ba-dot"></div>
+          </div>
         </div>
       </div>
     </div>

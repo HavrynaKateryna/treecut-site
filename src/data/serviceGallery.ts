@@ -1,9 +1,17 @@
 export interface ServiceGallery {
   id: string;
+
   before: string;
   after: string;
+
   beforeAlt: string;
   afterAlt: string;
+
+  beforePosition?: string;
+  afterPosition?: string;
+
+  beforeFit?: "cover" | "contain";
+  afterFit?: "cover" | "contain";
 }
 
 export const serviceGallery: ServiceGallery[] = [
@@ -20,6 +28,12 @@ export const serviceGallery: ServiceGallery[] = [
 
     afterAlt:
       "Tree removal project after professional tree service",
+
+    beforePosition: "center",
+    afterPosition: "center",
+
+    beforeFit: "cover",
+    afterFit: "cover",
   },
 
   {
@@ -35,6 +49,12 @@ export const serviceGallery: ServiceGallery[] = [
 
     afterAlt:
       "Tree trimming project after professional pruning service",
+
+    beforePosition: "center top",
+    afterPosition: "center top",
+
+    beforeFit: "cover",
+    afterFit: "cover",
   },
 
   {
@@ -49,6 +69,9 @@ export const serviceGallery: ServiceGallery[] = [
 
     afterAlt:
       "Emergency tree removal project after professional service",
+
+    beforeFit: "contain",
+    afterFit: "contain",
   },
 
   {
@@ -65,6 +88,14 @@ export const serviceGallery: ServiceGallery[] = [
 
     afterAlt:
       "Palm tree after professional trimming service",
+
+    beforePosition: "center top",
+
+    afterPosition: "center top",
+
+    beforeFit: "cover",
+
+    afterFit: "cover",
   },
 
   {
@@ -80,19 +111,33 @@ export const serviceGallery: ServiceGallery[] = [
 
     afterAlt:
       "Property after professional land clearing service",
+
+    beforeFit: "contain",
+
+    afterFit: "contain",
   },
 
   {
     id: "crane-assisted-tree-removal",
 
-    before: "/land-clearingbefore.PNG",
+    before:
+      "/beforeafter/crane-assisted-tree-removalbefore.webp",
 
-    after: "/land-clearingafter.PNG",
+    after:
+      "/beforeafter/crane-assisted-tree-removalafter.webp",
 
     beforeAlt:
       "Tree removal site before crane-assisted tree removal",
 
     afterAlt:
       "Tree removal site after crane-assisted tree removal",
+
+    beforePosition: "center center",
+
+    afterPosition: "center center",
+
+    beforeFit: "contain",
+
+    afterFit: "contain",
   },
 ];

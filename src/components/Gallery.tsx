@@ -255,6 +255,8 @@ export default function Gallery() {
             <button
               className="gallery-arrow gallery-left-arrow"
               onClick={prev}
+              aria-label="Show previous gallery image"
+              type="button"
             >
               ‹
             </button>
@@ -267,11 +269,11 @@ export default function Gallery() {
                   <div
                     key={i}
                     className={`
-gallery-slide
-${active ? "gallery-slide-active" : ""}
-${pos === 0 ? "gallery-slide-left" : ""}
-${pos === 2 ? "gallery-slide-right" : ""}
-`}
+            gallery-slide
+            ${active ? "gallery-slide-active" : ""}
+            ${pos === 0 ? "gallery-slide-left" : ""}
+            ${pos === 2 ? "gallery-slide-right" : ""}
+          `}
                     onClick={() => openImage(i)}
                   >
                     <OptimizedImage
@@ -289,6 +291,8 @@ ${pos === 2 ? "gallery-slide-right" : ""}
             <button
               className="gallery-arrow gallery-right-arrow"
               onClick={next}
+              aria-label="Show next gallery image"
+              type="button"
             >
               ›
             </button>
@@ -303,6 +307,13 @@ ${pos === 2 ? "gallery-slide-right" : ""}
                       : ""
                   }`}
                   onClick={() => setIndex(i)}
+                  aria-label={`Show gallery image ${i + 1}`}
+                  aria-current={
+                    i === index
+                      ? "true"
+                      : undefined
+                  }
+                  type="button"
                 />
               ))}
             </div>

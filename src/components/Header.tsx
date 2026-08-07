@@ -145,7 +145,7 @@ export default function Header() {
             <div className="logo-circle">
               <img
                 src="/logo.webp"
-                alt="Tim's Tree Service"
+                alt="Tree service company logo"
               />
             </div>
 

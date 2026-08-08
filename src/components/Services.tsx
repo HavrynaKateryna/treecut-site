@@ -25,6 +25,11 @@ export default function Services() {
                 <div className="service-image">
                   <img
                     src={s.image}
+                    srcSet={`
+                      ${s.image.replace(".webp", "-mobile.webp")} 180w,
+                      ${s.image} 600w
+                    `}
+                    sizes="(max-width: 767px) 91px, 300px"
                     alt={s.title}
                   />
                 </div>

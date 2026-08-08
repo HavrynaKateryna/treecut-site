@@ -68,6 +68,11 @@ export default function Hero({
           <div className="hero__image-wrap">
             <img
               src="/hero.webp"
+              srcSet="
+    /hero-mobile.webp 800w,
+    /hero.webp 1600w
+  "
+              sizes="100vw"
               alt="Tree service team"
               loading="eager"
               fetchPriority="high"

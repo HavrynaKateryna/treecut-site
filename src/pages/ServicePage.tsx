@@ -175,12 +175,6 @@ export default function ServicePage() {
             {/* RIGHT SIDE - DESCRIPTION */}
 
             <div className="hero-content">
-              <p className="service-subtitle">
-                Professional tree care services
-                for residential and commercial
-                properties in Jacksonville FL.
-              </p>
-
               <p className="service-description">
                 {service.full}
               </p>

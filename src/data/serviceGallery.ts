@@ -60,9 +60,11 @@ export const serviceGallery: ServiceGallery[] = [
   {
     id: "emergency-tree-removal",
 
-    before: "/tree-trimmingbefore.jpg",
+    before:
+      "/beforeafter/emergency-tree-removalbefore.webp",
 
-    after: "/tree-trimmingafter.jpg",
+    after:
+      "/beforeafter/emergency-tree-removalafter.webp",
 
     beforeAlt:
       "Emergency tree removal project before professional service",

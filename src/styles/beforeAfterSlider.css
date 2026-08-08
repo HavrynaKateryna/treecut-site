@@ -2,30 +2,22 @@
    BEFORE / AFTER SLIDER
 ===================================================== */
 
-.ba-slider {
-  width: 100%;
-  max-width: 900px;
-  margin-inline: auto;
-
-  user-select: none;
-  touch-action: pan-y;
-}
-
-/* =====================================================
-   IMAGES CONTAINER
-===================================================== */
-
-.ba-images {
+.ba-wrapper {
   position: relative;
 
   width: 100%;
+  max-width: 900px;
+
+  margin-inline: auto;
 
   aspect-ratio: 3 / 2;
 
   overflow: hidden;
 
-  border-radius: 18px;
+  user-select: none;
+  touch-action: none;
 
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
@@ -46,6 +38,10 @@
   height: 100%;
 
   object-fit: cover;
+
+  display: block;
+
+  pointer-events: none;
 }
 
 /* =====================================================
@@ -58,6 +54,8 @@
   inset: 0;
 
   overflow: hidden;
+
+  pointer-events: none;
 
   transition: clip-path 0.12s linear;
 }
@@ -86,6 +84,8 @@
   z-index: 5;
 
   transition: left 0.12s linear;
+
+  cursor: ew-resize;
 }
 
 /* =====================================================
@@ -133,8 +133,24 @@
   font-weight: 700;
 }
 
+/* =====================================================
+   DRAGGING
+===================================================== */
+
+.ba-wrapper.is-dragging {
+  cursor: ew-resize;
+}
+
+.ba-wrapper.is-dragging .ba-dot {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* =====================================================
+   HOVER
+===================================================== */
+
 @media (hover: hover) {
-  .ba-slider:hover .ba-dot {
+  .ba-wrapper:hover .ba-dot {
     transform: translate(-50%, -50%) scale(1.12);
 
     box-shadow:
@@ -144,45 +160,11 @@
 }
 
 /* =====================================================
-   LABELS
-===================================================== */
-
-.ba-label {
-  position: absolute;
-
-  top: 14px;
-
-  padding: 6px 12px;
-
-  border-radius: 999px;
-
-  background: rgba(0, 0, 0, 0.45);
-
-  backdrop-filter: blur(10px);
-
-  color: white;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  z-index: 10;
-}
-
-.ba-label.before {
-  left: 14px;
-}
-
-.ba-label.after {
-  right: 14px;
-}
-
-/* =====================================================
-   TABLET / DESKTOP
+   TABLET
 ===================================================== */
 
 @media (min-width: 768px) {
-  .ba-images {
+  .ba-wrapper {
     aspect-ratio: 3 / 2;
 
     border-radius: 24px;
@@ -196,22 +178,6 @@
   .ba-dot::before {
     font-size: 22px;
   }
-
-  .ba-label {
-    top: 20px;
-
-    padding: 7px 14px;
-
-    font-size: 13px;
-  }
-
-  .ba-label.before {
-    left: 20px;
-  }
-
-  .ba-label.after {
-    right: 20px;
-  }
 }
 
 /* =====================================================
@@ -219,7 +185,7 @@
 ===================================================== */
 
 @media (min-width: 1440px) {
-  .ba-slider {
+  .ba-wrapper {
     max-width: 1000px;
   }
 }
